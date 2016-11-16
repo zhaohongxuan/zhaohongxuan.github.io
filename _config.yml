@@ -64,7 +64,7 @@ pagination_dir: page
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
 theme: next
-
+hightlight_theme: night
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
@@ -82,3 +82,12 @@ sidebar:
   position:left
 
 avatar: https://avatars2.githubusercontent.com/u/8613196?v=3&s=466
+
+social:
+   Github: https://github.com/javaor
+   Twitter: https://twitter.com/Loving_Dou
+  
+social_icons:
+   enable: true
+   Github: github
+   Twitter: twitter 
