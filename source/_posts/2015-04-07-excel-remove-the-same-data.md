@@ -2,7 +2,7 @@
 layout: post
 title:  "Excel剔除一组数据"
 keywords: "Excel"
-description: "Excel去除重复数据，或者剔除一组数据"
+date: 2015-04-07 22:12:34
 category: 办公软件
 tags: excel
 ---

@@ -2,7 +2,7 @@
 layout: post
 title:  "【微信接口学习】基础接口"
 keywords: "微信,wechat"
-description: "微信接口学习之基础接口"
+date: 2015-04-04 21:12:34
 category: 微信开发
 tags: wechat
 ---
