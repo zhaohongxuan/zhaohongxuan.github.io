@@ -4,6 +4,7 @@ title:  "Hello Jekyll!"
 keywords: "hello, jekyll"
 description: "hello jekyll"
 category: 杂文其他
+date: 2015-04-01 07:06:55
 tags: [jekyll]
 ---
 
@@ -70,7 +71,7 @@ tags: [jekyll]
 3. 项目3
    * 项目1
    * 项目2
-   
+
 # 3. 代码
 
 测试行代码： `code`
