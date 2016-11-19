@@ -2,7 +2,7 @@
 layout: post
 title:  "Maven整合Spring MVC搭建笔记"
 keywords: "Spring MVC"
-description: "使用Maven整合Spring MVC实现简单的登录功能"
+date: 2015-09-12
 category: spring框架
 tags: springmvc
 ---
@@ -10,10 +10,10 @@ tags: springmvc
 Maven是一个有效的项目管理构建工具，可以帮我们管理项目的生命周期，和项目中依赖的jar包，下面使用Maven来整合Spring来实现一个简单的登录功能。
 
 
-##一、在intellij中新建一个maven webapp项目，叫做HelloSpring
+## 在intellij中新建一个maven webapp项目，叫做HelloSpring
 
 ![新建项目](http://i13.tietuku.com/6687d9877206acd6.png)
-##二、在pom.xml中添加Spring包的依赖
+## 在pom.xml中添加Spring包的依赖
 
 ```xml
 <properties>
@@ -87,11 +87,13 @@ Maven是一个有效的项目管理构建工具，可以帮我们管理项目的
 
     </dependencies>
 ```
-##三、Maven中Spring jar包的依赖关系
+<!-- more -->
+
+## Maven中Spring jar包的依赖关系
 在intellij idea中打开`pom.xml`文件，右键`Diagrams`选择`Show Dependencies`就会出现Maven项目中包的依赖关系
 
 ![依赖关系](http://i13.tietuku.com/8612e375a4ff1145.png)
-##四、web.xml配置
+## web.xml配置
 web.xml需要配置`DispatcherServlet`和`listener`
 
 ```xml
@@ -143,7 +145,7 @@ web.xml需要配置`DispatcherServlet`和`listener`
 </web-app>
 ```
 
-##五、spring-servlet.xml的配置
+## spring-servlet.xml的配置
 
 在这里将Spring MVC配置文件单独从`applicationContext.xml`中抽取出来，在`spring-servlet.xml`中配置视图解析器、拦截器、自动扫描等信息
 
@@ -173,11 +175,11 @@ web.xml需要配置`DispatcherServlet`和`listener`
 
 需要注意的是`schemaLocation` 的设置一定要正确，一个schema对应一个xsd文件，如果缺少的话，就会报
 通配符的匹配很全面, 但无法找到元素 'context:component-scan' 的声明的错误~教训啊
-##六、applicationContext.xml配置
+## applicationContext.xml配置
 由于我们把Spring MVC的配置文件spring-servlet.xml提取出来了，如果需要配置事务、数据源等可以在applicationContent中配置，这个简单的demo还不需要，
 所以先空着。
 
-##七、Controller代码实现
+## Controller代码实现
 ![代码结构](http://i13.tietuku.com/0210b66098996017.png)
 
 ```java
@@ -220,7 +222,7 @@ public class AccountController {
 ```
 
 
-##八、jsp代码
+## jsp代码
 
 ```jsp
 <%--
@@ -246,7 +248,7 @@ public class AccountController {
 </html>
 
 ```
-##九、启动项目测试
+## 启动项目测试
 ![项目测试](http://i13.tietuku.com/583d1b027adf3749.png)
 
 ![运行效果](http://i13.tietuku.com/4777d2f30809bfb3.png)

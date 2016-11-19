@@ -2,16 +2,16 @@
 layout: post
 title:  "Java中使用DES对称加解密"
 keywords: "java"
-description: "使用DES对称加密，来保证服务期和各个客户端之间的联系安全可靠"
+date: 2015-09-07
 category: java
 tags: java
 ---
 
-##DES 
+## DES
 DES(Data Encryption Standard),即数据加密算法。是IBM公司于1975年研究成功并公开发表的。DES算法的入口参数有三个:Key、Data、Mode。
 其中Key为8个字节共64位,是DES算法的工作密钥;Data也为8个字节64位,是要被加密或被解密的数据;Mode为DES的工作方式,有两种:加密或解密。 
 
-###一、安卓端对请求Web服务器请求字符串进行加密
+###  安卓端对请求Web服务器请求字符串进行加密
 
 加密公共方法：
 
@@ -129,8 +129,9 @@ public class DESUtil {
 
 
 ```
+<!-- more -->
 
-###二、java后台服务器
+###  java后台服务器
 
 通过一个拦截器，拦截掉所有需要拦截的路径
 
@@ -213,7 +214,7 @@ public class SignInterceptor extends HandlerInterceptorAdapter {
 
 ```
 
-###三、在Spring MVC 配置文件添加拦截器配置
+### 在Spring MVC 配置文件添加拦截器配置
 
 ```xml
 <mvc:interceptors>

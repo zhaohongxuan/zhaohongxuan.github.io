@@ -1,8 +1,8 @@
 ---
 layout: post
 title: 使用Btrace来跟踪调试代码
-tags: java,jvm
-date: 2016-09-10 21:23:10
+tags: [java,jvm]
+date: 2016-09-10
 category: java
 ---
 
@@ -13,12 +13,12 @@ Btrace是一个开源项目，项目托管在github上
 使用VisualVM的Btrace插件最为方便，下面就写个小例子来熟悉一下
 
 
-### 一、准备工作
+### 准备工作
 1.在[visualvm官网](https://visualvm.java.net/download.html )下载visualVM可视化工具
 2.依次点击visualVM菜单栏的`Tool->plugins`打开插件窗口，选择  `Btrace workBench` 然后一路 next安装
 
 
-### 二、目标程序
+### 目标程序
   准备了一个简单的小程序：从键盘接收两个数字然后计算两个数字之和，主要目的是方便下一步用Btrace来调试打印出方法的参数的值，以及堆栈信息
 
   ```java
@@ -48,8 +48,8 @@ public class BTraceTest {
 }
 
 ```
-
-### 三、跟踪程序
+<!-- more -->
+### 跟踪程序
 运行第二步中的小程序，在VisualVM中选中这个虚拟机进程，然后右键`Trace application`进入到Btrace选项卡
 在文本框中输入调试的代码：
 

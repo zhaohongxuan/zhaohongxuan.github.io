@@ -1,19 +1,19 @@
 ---
 layout: post
 title: Java集合中的Fail-fast和Fail-Safe机制
-description: Java集合中的Fail-fast和fail-safe机制总结
+date: 2016-03-23
 tags: java
 category: java
 ---
 
 ### 1.何为Fail-fast和Fail-Safe机制？
 
-`java.util`包里的Iterator 抛出` ConcurrentModificationException`异常， 在集合迭代的时候被集合的`add`方法或者 `remove`方法调用。fail-fast 指java的集合的一种错误机制，当多个线程对集合修改操作的时候就可能抛出`ConcurrentModificationException`异常。
+java.util包里的Iterator 抛出` ConcurrentModificationException`异常， 在集合迭代的时候被集合的`add`方法或者 `remove`方法调用。fail-fast 指java的集合的一种错误机制，当多个线程对集合修改操作的时候就可能抛出`ConcurrentModificationException`异常。
 
 `java.util.concurrent`包里的Iterator 通过迭代一个集合的`snapshot` 允许并发修改集合，但是在迭代器创建之后可能不反映Collection更新。fail-safe机制意味着多个线程在操作同一个集合的时候，不会出现`ConcurrentModificationException`异常,
 但是需要复制集合获得集合的快照，所以性能上开销会比非同步的集合开销要大。
 
-多线程环境下用`java.util.concurrent`包里的集合替代 `java.util`包里的集合，比如 `CopyOnWriteList`=>`ArrayList`,`ConcurrentHashMap`=>`HashMap` etc.
+多线程环境下用`java.util.concurrent`包里的集合替代 `java.util`包里的集合，比如 CopyOnWriteList=>ArrayList,ConcurrentHashMap=>HashMap etc.
 
 ### 2.JDK中的源码分析
 
@@ -31,7 +31,10 @@ modCount用来记录List修改的次数的计数器，每修改一次(添加/删
         this.modCount = l.modCount;
         size++;
     }
-````
+```
+
+<!-- more -->
+
 当Iterator执行相应操作的时候，会先检验两个计数器的值是否相等，如果不相等就抛出`ConcurrentModificationException` 异常。
 
 ```java

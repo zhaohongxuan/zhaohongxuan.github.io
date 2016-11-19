@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Spring MVC源码探究
-description: 作为一名合格的java程序员，要多深入学习一些框架，理解框架的设计的方法，背后的原理，spring mvc框架中使用了很多设计模式，比如策略模式，工厂模式，责任链模式，适配器模式等很值得学习一下的源码。
-tags: spring java
+date: 2016-04-06
+tags: [spring ,java]
 category: spring框架
 ---
 
@@ -28,6 +28,7 @@ web.xml中的Spring MVC的前端控制器DispatcherServlet的配置，所有后�
         <url-pattern>/</url-pattern>
     </servlet-mapping>
 ```
+<!-- more -->
 
 #### DispatcherServlet 类等级视图
 ![类等级视图](../../../static/images/spring-mvc.png)

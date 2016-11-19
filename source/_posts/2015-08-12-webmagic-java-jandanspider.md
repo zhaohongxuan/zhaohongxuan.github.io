@@ -2,7 +2,7 @@
 layout: post
 title:  "根据WebMagic写的一个爬取煎蛋网的小爬虫"
 keywords: "webmagic"
-description: "使用路径表达式选择xml或者html文档中的节点元素"
+date: 2015-08-12
 category: java
 tags: java
 ---
@@ -14,7 +14,8 @@ tags: java
 这里是[WebMagic中文使用文档](https://github.com/code4craft/webmagic/tree/master/zh_docs)，一点即达 @.@
 
 介绍文档已经很详细了，下面开始，生产爬虫
-##一、分析煎蛋网无聊图html源码
+<!-- more -->
+##  分析煎蛋网无聊图html源码
 下面是煎蛋网`无聊图`页面的html源码片段
 
 ```html
@@ -83,22 +84,22 @@ tags: java
 ```
 
 先理一下思路
-####1.爬取无聊图首页图片
+### 爬取无聊图首页图片
 想要爬的图片路径在
 div[id=content]->div[id='comments']->ol[class=commentlist]->li[id='xxxx']->div->div[class='row']->...->img[src]
 img的`src链接`就是静态图片的`url`，如果是动态图`gif`的话，那么`org_src`才是图片的真正`url`，`src`只是对应缩略图的`url`
 让爬虫选中列表项列表li，然后遍历每个li,然后取每个li的`图片url`和`title`,
-####2.保存图片到本地
+### 保存图片到本地
 用httpclient根据`图片url`下载该图片保存在本地就行了
-####3.爬取下一页图片
+### 爬取下一页图片
 找到本页的下一页标签，从上面的源码片段可以看到是`class="previous-comment-page"`的a标签
 当爬虫爬完首页时，接下来爬`上一页`，煎蛋网是倒序的...
 
-##二、开始编写爬虫
-###首先，新建一个解析图片的Processor类
+## 开始编写爬虫
+### 首先，新建一个解析图片的Processor类
 新建一个`PicProcessor`类，继承自`PageProcessor`，并重写`process`方法
 
-####第一步，先处理首页图片
+### 第一步，先处理首页图片
 
 ```java
  //处理图片类
@@ -213,7 +214,7 @@ public class FileUtil {
 
 ```
 
-####第二步，爬取下一页
+### 爬取下一页
 
 ```java
  @Override
@@ -234,7 +235,7 @@ public class FileUtil {
 ```
 
 
-####第三步，网站信息配置
+### 网站信息配置
 
 ```java
 //得到网站配置
@@ -246,7 +247,7 @@ public class FileUtil {
 这里注意的是，要设置`UserAgent`，之前没加代理，刚开始启动程序可以爬，后来，煎蛋网就给屏蔽了，HttpClient返回`HTTP/1.1 302 Moved Temporarily`，煎蛋网把请求给重定向了
 设置`SleepTime`可以设置每次爬取之间的时间间隔，我写的是`10000ms`，即程序爬完一页之后休息`10s`继续爬下一页。
 
-####第三步，编写程序入口
+###  编写程序入口
 
 ```java
 public class JanDanSpiderTest {

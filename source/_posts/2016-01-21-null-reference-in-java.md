@@ -1,8 +1,8 @@
 ---
 layout: post
-title:  "Java中的null引用以及NullpointerException的一些体会"
+title:  "Java中的null引用"
 keywords: "java"
-description: "Java中的null引用以及NullpointerException的一些体会,以及一些经验"
+date: 2016-01-21
 category: java
 tags: java
 ---
@@ -44,6 +44,7 @@ tags: java
      }
    }
   ```
+<!-- more -->
 
 
 

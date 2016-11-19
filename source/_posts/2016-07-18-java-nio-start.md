@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Java NIO创建步骤
-description: Java NIO创建步骤
+date: 2016-07-18
 tags: NIO
 category: java
 ---
@@ -25,6 +25,8 @@ accptSvr.configureBlocking(false);
 Selector selector = Selector.open();
 new Thread(new ReactorTask()).start();
 ```
+<!-- more -->
+
 四、将ServerSocketChannel 注册到Reactor线程的多路多路复用器Selector上，监听ACCEPT事件
 
 ```java

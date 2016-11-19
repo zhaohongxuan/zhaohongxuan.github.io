@@ -2,18 +2,18 @@
 layout: post
 title:  "vue.js学习笔记（二）"
 keywords: "vue.jss"
-description: "MVVM框架vue.js学习笔记，vue.js简介"
+date: 2015-09-22
 category: javascript
 tags: js
 ---
 
 继续上一篇文章，中间耽误了一个多星期，去面试和复习以前的代码，继续愉快的的vue.js学习之旅 :)...
 
-##列表渲染
+## 列表渲染
 
 vue.js的`v-repeat`指令用来根据相对应的ViewModel的对象数组来渲染列表。
 
-###简单示例
+### 简单示例
 html代码：
 
 
@@ -42,8 +42,9 @@ var demo = new Vue({
 
 这些子实例继承父实例的数据作用域，因此在重复的模板元素中你既可以访问子实例的属性，也可以访问父实例的属性。还可以通过`$index`属性来获取当前实例对应的数组索引。
 
+<!-- more -->
 
-###块级重复
+### 块级重复
 `<template>`标签用来重复循环一个包含多个节点的块
 
 ```html
@@ -55,7 +56,7 @@ var demo = new Vue({
 </ul>
 ```
 
-###简单值数组
+### 简单值数组
 
 简单值 (primitive value) 是字符串、数字、boolean 等并非对象的值。
 对于包含简单值的数组，可用`$value`直接访问值:
@@ -78,7 +79,7 @@ data:{
 ```
 
 
-###使用别名
+### 使用别名
 
 如果想要访问实例对象的属性，可以通过`in`关键字来获得`repeat`对象的单个对象，有点类似于java中的`for-each`
 
@@ -102,7 +103,7 @@ new Vue({
 })
 ```
 
-###遍历对象
+### 遍历对象
 使用使用`v-repeat`遍历一个对象的所有属性，每个重复的实例会有一个特殊的属性`$key`。
 对于简单值，你也可以象访问数组中的简单值那样使用`$value`属性。
 
@@ -135,7 +136,7 @@ new Vue({
 })
 ```
 
-###迭代值域
+### 迭代值域
 `v-repeat`可以接收一个整数，然后重复显示模版多次
 
 ```html
@@ -153,11 +154,11 @@ new Vue({
 });
 ```
 
-###数组过滤器
+### 数组过滤器
 
 Vue有两个内置的过滤器来过滤或者排序数据，分别是：`filterBy`和`orderBy`。
 
-####filterBy
+#### filterBy
 语法：
 
     filterBy searchKey [in dataKey...]
@@ -165,7 +166,7 @@ Vue有两个内置的过滤器来过滤或者排序数据，分别是：`filterB
 返回原数组过滤后的结果。`searchKey` 参数是当前`ViewModel` 的一个属性名，这个属性的值会被用作查找的目标。
 `in`关键字指定具体要在哪个属性中进行查找。
 用法：
-#####1.不使用`in`关键字
+##### 1.不使用`in`关键字
 
 ```html
 <input v-model="searchText">
@@ -176,7 +177,7 @@ Vue有两个内置的过滤器来过滤或者排序数据，分别是：`filterB
 
 这个过滤器会遍历整个users数组每个元素的**每个**属性值来匹配`searchText`的内容
 比如如果一个元素为`{name:'赵宏轩',tel:'021-111111'}`,`searchText`的值为`021`,那么这条数据就是合法的数据，不会被过滤器过滤掉。
-#####2.使用`in`关键字
+##### 2.使用`in`关键字
 
 ```html
 <input v-model="searchText">
@@ -188,7 +189,7 @@ Vue有两个内置的过滤器来过滤或者排序数据，分别是：`filterB
 和上一个例子数据一样，但是如果`searchText`的值还是`021`的话，那么这条数据就会被过滤掉。因为过滤的内容限定在 `name`属性中，如果
 `searchText`的值为`赵`的话，这个元素就不会被过滤掉。
 
-####OrderBy
+####   OrderBy
 
     语法： orderBy sortKey [reverseKey].
 

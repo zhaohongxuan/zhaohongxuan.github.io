@@ -1,8 +1,7 @@
 ---
 layout: post
 title: "Spring MVC 数据类型绑定"
-keywords: "java,spring"
-description: "使用Spring MVC进行简单的或者复杂的数据绑定"
+date: 2015-04-14
 category: spring框架
 tags: [spring]
 ---
@@ -75,6 +74,7 @@ tags: [spring]
 
 </form>
 ```
+<!-- more -->
 
 controller代码
 

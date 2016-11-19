@@ -1,7 +1,7 @@
 ---
 layout: post
 title: cURL命令的使用
-description: Linux curl命令的使用
+date: 2016-05-08
 tags: linux
 category: linux
 ---
@@ -48,8 +48,9 @@ Linux curl命令的使用
 
     curl -O https://dl.google.com/dl/android/studio/install/2.0.0.20/android-studio-bundle-143.2739321-windows.exe
 
+<!-- more -->
   ### 2.显示http response的Header信息
-  
+
     curl -i [URL]
     
 比如 `curl -i http://zeusjava.com` 服务器返回的Header信息如下：

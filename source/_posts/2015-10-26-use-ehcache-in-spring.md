@@ -2,12 +2,12 @@
 layout: post
 title:  "在Spring中使用Ehcache"
 keywords: "Ehcache"
-description: "Spring和Ehcache的整合与使用"
+date: 2015-10-26
 category: spring框架
-tags: ehcache spring
+tags: [ehcache,spring]
 ---
 
-##一、首先是所需要的包的Maven依赖
+## 首先是所需要的包的Maven依赖
 1.ehcache的核心包
 
 ```xml
@@ -29,7 +29,7 @@ tags: ehcache spring
         </dependency>
 ```
 
-##二、编写Ehcache配置文件`ehcache.xml`
+## 编写Ehcache配置文件`ehcache.xml`
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -46,8 +46,9 @@ tags: ehcache spring
               timeToLiveSeconds="300" memoryStoreEvictionPolicy="LRU" />
 </ehcache>
 ```
+<!-- more -->
 
-##三、在Spring配置文件中添加ehcache配置信息
+## 在Spring配置文件中添加ehcache配置信息
 
 ```xml
 	<!-- 使用ehcache缓存 -->
@@ -57,7 +58,7 @@ tags: ehcache spring
 ```
 项目启动时候，Spring 容器会加载缓存，还需要一个缓存管理类来进行缓存的管理。
 
-##四、建立缓存管理类EhCacheManager
+## 建立缓存管理类EhCacheManager
 
 EhcacheManager中的`CACHE_KEY`是和`ehcache.xml`中的cache name保持一致
 
@@ -158,7 +159,7 @@ public class EhCacheManager {
 
 ```
 
-##五、创建Service类
+## 创建Service类
 
 ```java
 @Service("userService")
@@ -184,7 +185,7 @@ public class UserServiceImpl extends BaseServiceImpl<User,userMapper> implements
 }
 ```
 
-##六、创建测试类
+## 创建测试类
 
 ```java
 @RunWith(SpringJUnit4ClassRunner.class)     //表示继承了SpringJUnit4ClassRunner类
@@ -217,7 +218,7 @@ public class CacheTest {
 }
 
 ```
-##七、运行结果
+## 运行结果
 
 
 第一次请求

@@ -2,18 +2,18 @@
 layout: post
 title:  "微信OAuth2.0鉴权获取用户信息"
 keywords: "wechat"
-description: "网页授权获取用户的基本信息"
+date: 2015-04-22
 category: 微信开发
 tags: wechat
 ---
 在微信开发中经常需要在网页中获取用户的基本信息，和`UnionID机制`获取用户信息的方式不同,这种方式可以得到`未关注`本微信号的人的基本信息。
 
-###首先第一步要在微信公众平台上配置`回调域名`，注意
+### 首先第一步要在微信公众平台上配置`回调域名`，注意
 
 	域名不是URL，不要包涵http://等协议头	
 
-##开发步骤
-###1.用户同意授权，获取code
+## 开发步骤
+### 1.用户同意授权，获取code
 在确保微信公众账号拥有授权作用域（scope参数）的权限的前提下（服务号获得高级接口后，默认拥有scope参数中的snsapi_base和snsapi_userinfo），
 引导关注者打开如下页面：
 
@@ -40,7 +40,8 @@ tags: wechat
 	}
 ```
 snsapi_base可以改为snsapi_userinfo可以得到用户所有的信息，否则只能获得openId
-###2.通过code换取网页授权access_token
+<!-- more -->
+### 2.通过code换取网页授权access_token
 首先请注意，这里通过code换取的是一个特殊的网页授权access_token,与基础支持中的access_token（该access_token用于调用其他接口）不同。
 公众号可通过下述接口来获取网页授权access_token。如果网页授权的作用域为snsapi_base，则本步骤中获取到网页授权access_token的同时，也获取到了openid，
 snsapi_base式的网页授权流程即到此为止。
@@ -114,7 +115,7 @@ snsapi_base式的网页授权流程即到此为止。
 	}
 ```
 
-###3.拉取用户信息(需scope为 snsapi_userinfo)
+### 3.拉取用户信息(需scope为 snsapi_userinfo)
 如果网页授权作用域为snsapi_userinfo，则此时开发者可以通过access_token和openid拉取用户信息
 请求方法
 http：GET（请使用https协议）

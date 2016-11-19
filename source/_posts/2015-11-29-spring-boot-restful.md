@@ -2,17 +2,17 @@
 layout: post
 title:  "使用Spring boot 创建RestFul服务"
 keywords: "spring"
-description: "使用Spring boot简化web开发，创建简单的Rest服务"
+date: 2015-11-29
 category: spring框架
-tags: spring RESTFul
+tags: [spring, RESTFul]
 ---
 
-##准备工作
+## 准备工作
 
 1.JDK8
 2.Maven 3.0+
 
-##程序要实现的简单功能
+## 程序要实现的简单功能
 当用户访问
 
     http://localhost:8080/greeting
@@ -31,9 +31,10 @@ tags: spring RESTFul
     {"id":1,"content":"Hello, User!"}
 
 
-#创建Maven项目
+## 创建Maven项目
 
 创建一个普通的maven项目，添加maven依赖如下：
+<!-- more -->
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -123,7 +124,7 @@ public class User {
 
 当用户访问URL的时候，程序后台会自动获得URL上附带的名为`name`的参数。
 
-##创建一个resource controller
+## 创建一个resource controller
 
 在Spring4中新增了一个@RestController注解，相当于Spring3中的@Controller和@ResponseBody两个注解一起的效果
 创建一个UserController来处理Request如下：
@@ -154,7 +155,7 @@ public class UserController {
 
 ```
 
-##执行程序
+## 执行程序
 
 main方法使用Spring Boot 的`SpringApplication.run()`来加载程序。
 
@@ -174,7 +175,7 @@ public class Application {
 
 ```
 
-##测试程序
+## 测试程序
 
 在Application的main方法中运行application，在地址栏输入
 

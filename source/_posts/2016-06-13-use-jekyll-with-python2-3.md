@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 使用Jekyll共存python2和python3
-description: 使用Jekyll共存python2和python3报错
+date: 2016-06-13
 tags: jekyll
 category: jekyll
 ---
@@ -17,7 +17,7 @@ jekyll运行环境
 
 
 ![jekyll报错](https://raw.githubusercontent.com/javaor/javaor.github.io/master/pictures/jekyll/use-jekyll-with-python2-3.png)
-
+<!-- more -->
 解决办法很简单：
 
 将环境变量中的python3替换为python2即可。
@@ -34,6 +34,7 @@ C:\python3.0\Script\
 C:\python2.7\
 C:\python2.7\Script\
 ```
+
 
 
 

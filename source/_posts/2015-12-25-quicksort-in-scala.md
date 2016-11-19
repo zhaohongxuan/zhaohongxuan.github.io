@@ -2,7 +2,7 @@
 layout: post
 title:  "使用Scala实现快速排序"
 keywords: "scala"
-description: "使用Scala实现快速排序的两种方法"
+date: 2015-12-25
 category: scala
 tags: scala
 ---
@@ -32,6 +32,7 @@ tags: scala
     sort1(0, xs.length - 1)
   }
 ```
+<!-- more -->
 
 和Java写的快速排序类似，使用操作符和控制语句来实现，只不过语法和Java有所不同。但是Scala的不同点就在于它的`函数式编程`，
 函数式编程可以写出完全不同的程序，更加简单，更加优雅。

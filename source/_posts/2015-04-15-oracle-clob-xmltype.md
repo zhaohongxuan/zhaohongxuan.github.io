@@ -1,15 +1,14 @@
 ---
 layout: post
 title:  "查询oracle中clob中的xml的节点数据"
-keywords: "database"
-description: "使用oracle的xmlType函数得到xml文档里的节点的值"
+date: 2015-04-15
 category: 数据库相关
 tags: oracle
 ---
-##查询oracle中clob中的xml的节点数据
+## 查询oracle中clob中的xml的节点数据
 
 
-###查询xmltype字段里面的内容
+### 查询xmltype字段里面的内容
 现在有一个`EBIZ_THIRD_TRADE(第三方交易)`表里面有一个`TRADE_REQUEST_CONTENT`返回报文字段类型为`clob`
 下面的一个示例返回报文xml：
 
@@ -87,6 +86,7 @@ tags: oracle
 </PackageList>
 ```
 要得到其中的`  <Custom key="InsuredName">万俊</Custom>`里的`万俊`名字
+<!-- more -->
 
 ```sql
 

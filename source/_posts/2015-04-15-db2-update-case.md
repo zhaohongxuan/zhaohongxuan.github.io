@@ -1,12 +1,11 @@
 ---
 layout: post
 title:  "DB2根据条件Update数据!"
-keywords: "db2"
-description: "DB2的条件分支处理"
+date: 2015-04-15
 category: 数据库相关
 tags: db2
 ---
-##DB2根据条件Update
+## DB2根据条件Update
 
 ```sql
 UPDATE employee     
@@ -24,3 +23,4 @@ SET   taxrate=
        ELSE 0.09  
    END
 ```
+<!-- more -->

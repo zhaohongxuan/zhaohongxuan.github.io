@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Java内存模型【译】
-description: Java内存模型的一篇外文翻译，旨在加深自己对Java内存模型（JMM）的理解与认识
-tags: thread java
+date: 2016-05-17
+tags: [thread, java]
 category: java
 ---
 
@@ -23,6 +23,9 @@ java内存模型详解了多个不同的线程是何时而又如何写入一个�
 ## 内部的java内存模型
 
 >The Java memory model used internally in the JVM divides memory between thread stacks and the heap. This diagram illustrates the Java memory model from a logic perspective:
+
+<!-- more -->
+
 
 Java内存模型将JVM的内存按照线程栈和堆进行分割，下面的图表从逻辑的视图展示了Java内存模型：
 ![enter description here][http://tutorials.jenkov.com/images/java-concurrency/java-memory-model-1.png]  
@@ -48,7 +51,7 @@ It does not matter if an object was created and assigned to a local variable, or
 >Here is a diagram illustrating the call stack and local variables stored on the thread stacks, and objects stored on the heap:
 
 下面是一个图表说明了在线程栈中保存的调用栈，局部变量和在堆中保存的所有对象。
-![enter description here][1]
+![enter description here]http://tutorials.jenkov.com/images/java-concurrency/java-memory-model-2.png]
 
 >A local variable may be of a primitive type, in which case it is totally kept on the thread stack.
 A local variable may also be a reference to an object. In that case the reference (the local variable) is stored on the thread stack, but the object itself if stored on the heap.
@@ -69,7 +72,7 @@ If two threads call a method on the same object at the same time, they will both
 >Here is a diagram illustrating the points above:
 
 下图说明上述观点：
-![enter description here][2]
+![enter description here][http://tutorials.jenkov.com/images/java-concurrency/java-memory-model-3.png]
 
 
 >Two threads have a set of local variables. One of the local variables (Local Variable 2) point to a shared object on the heap (Object 3).
@@ -188,6 +191,3 @@ Since these variables are member variables, they are still stored on the heap al
 
 
 ## 硬件的内存架构（TODO）
-
-  [1]: http://tutorials.jenkov.com/images/java-concurrency/java-memory-model-2.png
-  [2]: http://tutorials.jenkov.com/images/java-concurrency/java-memory-model-3.png

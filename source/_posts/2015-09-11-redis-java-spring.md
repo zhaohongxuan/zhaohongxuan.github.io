@@ -2,7 +2,7 @@
 layout: post
 title:  "Redis 整合Spring"
 keywords: "redis"
-description: "Redis整合Spring进行数据缓存"
+date: 2015-09-11
 category: spring框架
 tags: redis
 ---
@@ -10,7 +10,7 @@ tags: redis
 Redis是一种性能非常高效的Key-Value数据库，在企业项目开发中应用广泛，因为一直用Spring，所以决定使用Spring支持的`spring-data-redis`,java中Redis有多种客户端，Spring推荐的是
 `Jedis`，这篇文章就是基于Jedis的。
 
-##SDR(Spring Data Redis)简介
+## SDR(Spring Data Redis)简介
 **SDR(Spring Data Redis)**支持低层次的通过连接器`connector`连接到`Redis`，支持高层次的友好的模板类`RedisTemplate`,RedisTemplate是建立在低级别的connection基础之上。`RedisConnection`接收或返回字节数组
 需要自身处理连接，比如关闭连接，而RedisTemplate负责处理串行化和反串行化，并且管理对连接进行管理。
 `RedisTemplate`提供操作视图，比如(Bound)ValueOperations,(Bound)ListOperations,(Bound)SetOperations,(Bound)ZSetOperations,(Bound)HashOperations。RedisTemplate是线程安全的，能够用于多个实例中。
@@ -18,7 +18,7 @@ Redis是一种性能非常高效的Key-Value数据库，在企业项目开发中
 SDR连接到`redis`通过`RedisConnectionFactory`来获得有效的`RedisConnection`。`RedisConnection`负责建立和处理和redis后端通信。`RedisConnection`提供`getNativeconnection`返回用来通信的底层`connection`。
 
 
-##Maven的pom.xml文件配置
+## Maven的pom.xml文件配置
 在`dependencies`中添加两个依赖，分别是`spring-data-redis`和`jedis`
 
 ```xml
@@ -36,8 +36,9 @@ SDR连接到`redis`通过`RedisConnectionFactory`来获得有效的`RedisConnect
 		</dependency>
 
 ```
+<!-- more -->
 
-##Properties文件中配置Redis的基本参数
+## Properties文件中配置Redis的基本参数
 
 ```java
 # Redis config
@@ -50,7 +51,7 @@ redis.maxWait=1000
 redis.testOnBorrow=true
 ```
 
-##配置`applicationContext.xml`
+## 配置`applicationContext.xml`
 在`applicationContext.xml`S中配置`jedisConnFactory`和`jedisTemplate`，加载Properties的各个属性
 
 ```xml
@@ -99,7 +100,7 @@ redis.testOnBorrow=true
 </beans>
 
 ```
-##在java类中使用Redis进行增删改查
+## 在java类中使用Redis进行增删改查
 下面是一个简单的查询的例子
 
 ```java

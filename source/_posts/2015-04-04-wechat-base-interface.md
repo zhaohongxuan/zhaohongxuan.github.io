@@ -2,11 +2,11 @@
 layout: post
 title:  "【微信接口学习】基础接口"
 keywords: "微信,wechat"
-date: 2015-04-04 21:12:34
-category: 微信开发
+date: 2015-04-04
+categories: 微信开发
 tags: wechat
 ---
-##1.获取access_token
+## 获取access_token
 access_token是公众号的全局唯一票据，公众号调用各接口时都需使用access_token。
 
 	1. access_token的存储至少要保留512个字符空间。
@@ -21,8 +21,8 @@ http请求方式: `GET`
 正常情况下，微信会返回下述JSON数据包给公众号：
 
 	{"access_token":"ACCESS_TOKEN","expires_in":7200}
-
-##2.获取微信服务器的IP地址
+<!-- more -->
+## 获取微信服务器的IP地址
 
 **接口调用请求说明**
 
@@ -35,7 +35,7 @@ http请求方式: `GET`
 		"ip_list":["127.0.0.1","127.0.0.1"]
 	}
 
-##3.上传和下载多媒体文件
+## 上传和下载多媒体文件
 
 	1. 对多媒体文件的操作是通过media_id来进行的
 	2. 每个多媒体文件在发送到服务器3天后自动删除

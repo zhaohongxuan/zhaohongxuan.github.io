@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Java List实现group by
-description:
+date: 2016-08-22
 tags: java
 category: java
 ---
@@ -39,9 +39,9 @@ List <Book> bookList =Arrays.asList(
          new Book("scala in action","scala",123.7D)
          );
 ```
+<!-- more -->
 
-
-##一、使用传统的java来实现group by
+## 使用传统的java来实现group by
 
 ```java
 Map<String,List<Book>> bookMapOld = Maps.newLinkedHashMap();
@@ -58,7 +58,7 @@ for (Iterator<Book> iterator = bookList.iterator(); iterator.hasNext(); ) {
 }
 ```
 
-##二、使用guava来的multiMap来实现group by
+## 使用guava来的multiMap来实现group by
 
 ```java
 Multimaps.asMap(Multimaps.index(bookList, new Function<Book, String>() {
@@ -68,14 +68,14 @@ Multimaps.asMap(Multimaps.index(bookList, new Function<Book, String>() {
   }));
 
 ```
-##三、使用java 8来实现group by
+## 使用java 8来实现group by
 
 ```java
 Map<String,List<Book>>bookMap =  bookList1.stream().collect(Collectors.groupingBy(b->b.getType(),Collectors.mapping((Book b)->b,Collectors.toList())));
 
 ```
 
-##四、使用groovy来实现group by
+## 使用groovy来实现group by
 groovy 使用closure来实现groovy by
 
 ```groovy

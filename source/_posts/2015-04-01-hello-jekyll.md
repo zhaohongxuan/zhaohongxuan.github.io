@@ -3,8 +3,8 @@ layout: post
 title:  "Hello Jekyll!"
 keywords: "hello, jekyll"
 description: "hello jekyll"
-category: 杂文其他
-date: 2015-04-01 07:06:55
+categories: 杂文其他
+date: 2015-04-01
 tags: [jekyll]
 ---
 

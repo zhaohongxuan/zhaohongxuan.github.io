@@ -1,10 +1,9 @@
 ---
 layout: post
 title: 小书匠Markdown编辑器，Markdown党的福音
-description: 使用小书匠markdown编辑器来写blog，同步到印象笔记等。
+date: 2016-01-26
 tags: 小书匠
 category: 杂文其他
-grammar_cjkRuby: true
 ---
 
 安利一个Markdown编辑器，绝对的物超所值，走过路过不要错过哈 O(∩_∩)O~
@@ -12,18 +11,13 @@ grammar_cjkRuby: true
 
 逛知乎的时候，看到了一款很棒的markdown编辑器，完全免费，而且支持印象笔记，双向操作即保存和修改，不仅仅支持大象，还支持有道云笔记，为知笔记，Github等等
 如下图：
-![支持绑定的工具][1]
+![支持绑定的工具](http://i8.tietuku.com/f2ca54c44aac7d01.png)
 
+<!-- more -->
 
   
 对于我这个使用Jekyll自己搭建的blo并且托管在github服务器上的人来说，真是个很好的助手，只要在github端生成一个token和小书匠编辑器进行绑定就可以直接写完操作直接子啊自己的博客上面看到自己写的内容了，除了markdown渲染效果不一样其他的都没什么不同，方便。
 而且小书匠还支持自定义模板：
-![自定义模板][2]
-
-
-
-  [1]: http://i8.tietuku.com/f2ca54c44aac7d01.png "QQ图片20160126185842.png"
-  [2]: http://i8.tietuku.com/f4b4b0f551591f70.png "QQ图片20160126190431.png"
-  
+![自定义模板](http://i8.tietuku.com/f4b4b0f551591f70.png)
   
   

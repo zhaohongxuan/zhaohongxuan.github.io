@@ -2,29 +2,30 @@
 layout: post
 title:  "使用intellij IDEA"
 keywords: "intellij"
-description: "使用更加智能的intellij IDEA代替eclipse"
+date: 2015-04-12
 category: java
 tags: [java,intellij]
 ---
-#1.intellij初体验
+#  intellij初体验
 据说是最好用的Java IDE，没有之一，吓得我赶紧下载来用用，果然第一次用好魔性，Darcula主题简直炫酷吊炸天，Github功能也集成了，
 可以直接分享项目到Github好方便有木有，工具可以直接连接SSH，对于经常需要连接SSH的人来说，简直幸福死，有了Terminal，妈妈再也
 不用担心我来回换窗口了，就像JetBrains公司的宣传语是这么说的：Develop with pleasure！让我们带着快乐编程吧~
 ## 初体验之操作Java EE项目
-###导入J2EE项目
+### 导入J2EE项目
 导入之前eclipse项目，点击`File->Import Module`选中之前的的J2EE项目，选择`Import from extern model`的`eclipse`然后点击`next`
 最后点击`finish`完成导入项目。
-###设置项目的库文件，
+### 设置项目的库文件，
 想要项目运行，就需要添加项目需要的jar包啦，点击`File->Project Structure`进入项目结构界面，点击`Module`进入模块设置，点击绿色的`+`号，
 加入spring，web等模块
 ![加入模块](http://i2.tietuku.com/5d2dd21a7a197043s.png)
-###输出的war包
+<!-- more -->
+### 输出的war包
 设置项目打的war包的
 点击`artifacts`点击绿色的`+`,选择`Web Application:Achieve`也就是war包，点击`output directory`选择输出的路径
 ![生成war包](http://i2.tietuku.com/0b9e41ca80ca029as.png)
 
 ## 初体验之集成工具的使用
-###Jboss的使用
+### Jboss的使用
 1. 点击`Run ->edit configration`进入服务器设置
 2. 点击绿色的`+`选择`Jboss server`,选择`local `进入Jboss设置
 ![Jboss设置](http://i2.tietuku.com/f1cf95cf1ccb78e1s.png)
@@ -40,7 +41,7 @@ tags: [java,intellij]
 ###SSH工具的使用
 点击菜单栏`Tools->start SSH session-Edit credentials`编辑你的服务器的IP端口等就可以登录服务器了。
 
-#2.intellij idea快捷键使用
+# 2.intellij idea快捷键使用
 
 点击菜单栏`Help->default keyMap reference`会自动打开一个PDF，里面是当前快捷键的设置，如果英文好一点的话，看起来应该毫不费力
 ![快捷键的使用](http://i2.tietuku.com/e403cd26fa8f754cs.png)

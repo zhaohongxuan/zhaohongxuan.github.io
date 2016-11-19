@@ -2,9 +2,9 @@
 layout: post
 title:  "使用Maven搭建Spring+SpringMVC+Mybatis+ehcache项目"
 keywords: "搭建框架"
-description: "从零开始搭建Spring+SpringMVC+Mybatis+ehcache项目"
+date: 2015-10-18
 category: web开发
-tags: spring maven mybatis ehcache
+tags: [spring ,maven ,mybatis, ehcache]
 ---
 
 
@@ -20,11 +20,11 @@ Spring MVC 3.2.8.RELEASE
 mybatis 3.2.8
 
 
-#一、创建Maven Web项目
+##  创建Maven Web项目
 （略）
 本项目中用的maven是 3.3.3版本的，要求jdk版本是1.7之后的
 
-#二、在pom.xml中加入项目依赖的jar包
+##  在pom.xml中加入项目依赖的jar包
 
 项目包依赖关系如下：
 ![依赖关系](../../../spring-mvc-mybatis-diagram.png)
@@ -116,9 +116,10 @@ pom文件如下：
    </dependencies>
 
 ```
+<!-- more -->
 
 
-#三、添加日志的支持
+## 添加日志的支持
 日志我们使用slf4j，并用log4j来实现
 SLF4J不同于其他日志类库，与其它有很大的不同。SLF4J(Simple logging Facade for Java)不是一个真正的日志实现，而是一个抽象层（ abstraction layer），它允许你在后台使用任意一个日志类库。
 SLF4J还有很多优点，具体可以参考 http://javarevisited.blogspot.com/2013/08/why-use-sl4j-over-log4j-for-logging-in.html
@@ -153,7 +154,7 @@ log4j.appender.A2.layout=org.apache.log4j.PatternLayout
 log4j.appender.A2.layout.ConversionPattern=%d %p [%c] - %m%n
 ```
 
-#三、整合Spring+Mybatis
+## 整合Spring+Mybatis
 把Spring和Mybatis的jar包都引入之后就可以整合这两个框架了
 先看下项目的相关配置文件
 其中gererator.properties和generatorConfig.xml是用来根据数据库自动生成mapper接口，实体，以及映射文件的
@@ -165,7 +166,7 @@ spring-mybatis是自动扫描，自动装配mapper以及datasource，sqlSessionF
 ![配置文件](http://i13.tietuku.com/477850fbcc2c12fa.png)
 
 
-###1.JDBC配置文件
+### JDBC配置文件
 
 ```html
 jdbc.driverClassName=com.mysql.jdbc.Driver
@@ -175,7 +176,7 @@ jdbc.password=root
 ```
 
 
-###2.创建spring-mybatis.xml
+### 创建spring-mybatis.xml
 创建spring-mybatis.xml来配置mybatis的一些信息，主要是数据源、事务、自动扫描、自动注入等功能
 
 ```xml
@@ -245,7 +246,7 @@ jdbc.password=root
 </beans>
 ```
 
-###3.创建数据库表
+### 创建数据库表
 
 ```sql
 
@@ -260,9 +261,9 @@ jdbc.password=root
 insert  into `user`(`id`,`user_name`,`password`) values (1,'赵宏轩','123456');  
 ```
 
-###4.创建User的Mapping映射文件,User实体和Mapper接口
+### 创建User的Mapping映射文件,User实体和Mapper接口
 
-####1.在pom.xml中添加mybatis-generator-maven-plugin插件
+#### 在pom.xml中添加mybatis-generator-maven-plugin插件
 
 ```xml
   <build>
@@ -282,7 +283,7 @@ insert  into `user`(`id`,`user_name`,`password`) values (1,'赵宏轩','123456')
 ``
 `
 
-####2.在maven项目下的src/main/resources 目录下建立名为 generatorConfig.xml的配置文件以及和generator有关的属性文件，作为mybatis-generator-maven-plugin 插件的执行目标
+#### 在maven项目下的src/main/resources 目录下建立名为 generatorConfig.xml的配置文件以及和generator有关的属性文件，作为mybatis-generator-maven-plugin 插件的执行目标
 
 ![目录结构](http://i13.tietuku.com/274205a36b4c55d5.png)
  generatorConfig.xml
@@ -354,7 +355,7 @@ jdbc.password=root
 
  ```
 
-####3.在Intellij IDEA添加一个“Run运行”选项，使用maven运行mybatis-generator-maven-plugin插件
+#### 在Intellij IDEA添加一个“Run运行”选项，使用maven运行mybatis-generator-maven-plugin插件
 1).点击Run,选择Edit Configurations
 ![运行插件](http://i13.tietuku.com/9a550cf8567c13e0.png)
 2).点击左上角的`+`，选择`maven`
@@ -362,13 +363,13 @@ jdbc.password=root
 3).输入name,选择Working directory,Command line 填上`mybatis-generator:generate -e`
 ![运行插件](http://i13.tietuku.com/1debbb8cf435b32b.png)
 
-####4.点击运行查看结果
+#### 点击运行查看结果
 运行插件控制台如果打印build Success 就说明成功了
 ![运行插件](http://i13.tietuku.com/3b215a8a2b76c929.png)
 会在指定目录产生三个文件，分别是`实体`，`Mapper接口`，`Mapping配置文件`
 ![运行插件](http://i13.tietuku.com/aa715f1fc59c8fbf.png)
 
-###5.创建mybatis-config.xml配置文件
+### 创建mybatis-config.xml配置文件
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -405,7 +406,7 @@ jdbc.password=root
 ```
 其中最后的mapper有四种配置方式，但是，在我的电脑上只有使用url的方式才行，不知道是怎么回事，待查询。
 
-###6.建立Service接口和实现类
+### 建立Service接口和实现类
 
 IUserService.java代码如下
 
@@ -453,7 +454,7 @@ public class IUserServiceImpl implements IUserService {
 
 ```
 
-###7.建立测试类
+### 建立测试类
 
 ```java
 import com.zeusjava.kernel.entity.User;
@@ -491,7 +492,7 @@ public class SSMTest {
 运行单元测试，结果如下，说明spring和mybatis的整合已经完成。
 ![运行结果](http://i11.tietuku.com/7bd3219c19d37e95.png)
 
-#四、和SpringMVC整合
+## 和SpringMVC整合
 和Spring MVC的整合就简单的多了，只需要添加一个Spring MVC配置文件，和配置一下Web.xml就行了，我在前面的博客写过一篇文章，请戳 [Maven整合Spring MVC搭建笔记-ZeusJava Blog](http://zeusjava.com/2015/09/12/maven-springmvc-demo)
 ###1.配置Spring MVC 配置文件zeusjava-servlet.xml
 ![spring mvc ](http://i11.tietuku.com/81c60aab101c6fef.png)
@@ -525,7 +526,7 @@ public class SSMTest {
 
 ```
 
-###2.配置web.xml
+### 配置web.xml
 在web.xml里配置Spring MVC的DispatcherServlet和mybatis的配置文件
 
 ```xml
@@ -567,7 +568,7 @@ public class SSMTest {
 
 </web-app>  
 ```
-###3.在WEB_INF/jsp建立一个简单的测试页面user.jsp
+### 在WEB_INF/jsp建立一个简单的测试页面user.jsp
 
 ```html
 <%@ page language="java" pageEncoding="UTF-8"%>
@@ -582,7 +583,7 @@ ID：${user.id}
 
 ```
 
-###4.建立User控制器
+### 建立User控制器
 
 通过url传入一个id，解析这个id然后查询数据库，得到User对象放入jsp页面显示。
 
@@ -624,37 +625,37 @@ public class UserController {
 }
 ```
 
-###5.添加tomcat服务器并部署war包
-####1.`File-Project Structure`点击`Artifacts`一栏
+### 添加tomcat服务器并部署war包
+####  `File-Project Structure`点击`Artifacts`一栏
 点击`+`，选择`Web-Application-Exploded`然后选择from maven选中本项目
 Web Application Exploded是没有压缩的war包，相当于文件夹
 Web Application Achieved是雅俗后的war包
 ![tomcat](http://i13.tietuku.com/39c29f83a1e66eda.png)
 
-####2.intellij会自动帮我们生成一个war包
+#### intellij会自动帮我们生成一个war包
 ![tomcat](http://i13.tietuku.com/12b7bc65c9467469.png)
 
-####3.点击`Run-Run Configurations`
+#### 点击`Run-Run Configurations`
 点击`+`选择`tomcat server->local`
 ![tomcat](http://i13.tietuku.com/703c0105327e168d.png)
 ![tomcat](http://i13.tietuku.com/9277871664046bc8.png)
-####4.点击`Configure`
+#### 点击`Configure`
 ![tomcat](http://i13.tietuku.com/41644246a4f5a562.png)
 
-###5.点击`Deployment选项卡`，点击`+`号，选择一个artifact，就是第二部的war包
+### 点击`Deployment选项卡`，点击`+`号，选择一个artifact，就是第二部的war包
 ![tomcat](http://i13.tietuku.com/6eaacb039997ba33.png)
 
 
-###6.OK启动服务器
+### OK启动服务器
 在任务栏输入`http://localhost:8081/HelloSSM/user/userInfo/1`,回车，结果如下：
 一个简单的SSM项目环境就搭建好了。
 ![tomcat运行结果](http://i11.tietuku.com/51e0b1e59d159108.png)
 
 
-#五、和ehcache的整合
+## 和ehcache的整合
 Ehcache是Hibernate的默认的cache，但是mybatis中需要自己集成，在Mybatis中使用会大大增加性能，下面开始整合mybatis和Ehcache
 
-###1.使用首先要把需要的jar包依赖加入pom中
+### 使用首先要把需要的jar包依赖加入pom中
 
 ```xml
  <dependency>
@@ -670,7 +671,7 @@ Ehcache是Hibernate的默认的cache，但是mybatis中需要自己集成，在M
 
 ```
 
-###2.在Resource中添加一个ehcache.xml的配置文件
+### 在Resource中添加一个ehcache.xml的配置文件
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -702,7 +703,7 @@ Ehcache是Hibernate的默认的cache，但是mybatis中需要自己集成，在M
     memoryStoreEvictionPolicy：当达到maxElementsInMemory限制时，Ehcache将会根据指定的策略去清理内存。默认策略是LRU（最近最少使用）。你可以设置为FIFO（先进先出）或是LFU（较少使用）   
 
 
-###3.在spring-mybatis.xml中加入chache配置
+### 在spring-mybatis.xml中加入chache配置
 
 ```xml
 	<!-- 使用ehcache缓存 -->
@@ -711,7 +712,7 @@ Ehcache是Hibernate的默认的cache，但是mybatis中需要自己集成，在M
 	</bean>
 ```
 
-###4.在mapper.xml中配置cache
+### 在mapper.xml中配置cache
 
 ```xml
 <cache type="org.mybatis.caches.ehcache.LoggingEhcache" >  
@@ -738,7 +739,7 @@ type是使用的cache类型，`LoggingEhcache`会记录下日志，如果不需�
     @ResultMap("BaseResultMap")
     User selectByPrimaryKey(Integer id);
 ```
-###5.测试性能
+### 测试性能
 测试代码
 
 ```java

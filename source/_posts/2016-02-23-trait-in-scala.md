@@ -1,10 +1,9 @@
 ---
 layout: post
 title: Scala中的特质
-description: Scala中的特质注意点
+date: 2016-02-23
 tags: scala
 category: scala
-grammar_cjkRuby: true
 ---
 
 特质的构造顺序
@@ -30,6 +29,7 @@ calss SavingsAccount extends Account with FileLogger with ShortLogger
     4.ShortLogger（第一个特质）
     5.SavingAccount（类）
     
+<!-- more -->
 
 JVM中的特质
 

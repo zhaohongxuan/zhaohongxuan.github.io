@@ -1,23 +1,23 @@
 ---
 layout: post
 title: 学习Java的NIO
-description: Java NIO中的Channel,Buffer,Selector的学习。
-tags: java nio
+date: 2016-02-28
+tags: [java, nio]
 category: java
 ---
 
 重要的概念
 
-## 一、什么是NIO?
+## 什么是NIO?
 
 NIO是从java 1.4 开始引入的一个新的 `IO API`。
 
 Channel、Buffer、Selector是NIO的核心部分。
 
 IO通过字节流和字符流操作数据，NIO基于通道(Channel)和缓冲区(Buffer)数据 
-### 1.Channel&Buffer
+### Channel&Buffer
 
-#### 1.Channel
+#### Channel
 数据总是由通道到缓冲区（`Read`），或者由缓冲区到通道（`write`）
 
 其中Channel的几个实现
@@ -29,6 +29,7 @@ IO通过字节流和字符流操作数据，NIO基于通道(Channel)和缓冲区
 分别对应文件IO/UDP/TCP网络IO.
 
 下面是一个简单的例子实现，从本地文件系统读取数据到Buffer中。
+<!-- more -->
 
 ```java
  /**
@@ -59,7 +60,8 @@ IO通过字节流和字符流操作数据，NIO基于通道(Channel)和缓冲区
     }
 ```
 
-#### 2.Buffer
+
+#### Buffer
 Buffer的几个重要实现
 	ByteBuffer
 	CharBuffer
@@ -121,7 +123,7 @@ rewind()方法将position设置为0
 
     
 
-#### 3. Selector
+#### Selector
 ![Selector](http://i4.tietuku.com/8793cae275479b76.png)
 
 Selector最重要的特点就是他允许`单线程`处理多个Channel.

@@ -2,7 +2,7 @@
 layout: post
 title:  "使用ajaxFileUpload异步上传图片"
 keywords: "js ajax"
-description: "使用ajaxFileUpload异步上传图片到后台"
+date: 2015-08-20
 category: web开发
 tags: ajax
 ---
@@ -60,6 +60,7 @@ tags: ajax
 ```
 后台采用的是Spring MVC处理文件的方式，需要引入`spring-web-3.2.4.RELEASE.jar`以及 `commons-fileupload-1.3.1.jar`两个包
 
+<!-- more -->
 后台处理代码：
 
 ```java
