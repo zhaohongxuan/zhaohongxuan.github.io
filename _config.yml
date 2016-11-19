@@ -47,7 +47,6 @@ highlight:
 default_category: uncategorized
 category_map:
 tag_map:
-
 # Date / Time format
 ## Hexo uses Moment.js to parse and display date
 ## You can customize the date format as defined in
@@ -70,13 +69,11 @@ hightlight_theme: night
 deploy:
   type:
 
-menu:
-  home: /
-  archives: /archives
-  about: /about
-  categories: /categories
-  tags: /tags
-  commonweal: /404.html
-
-
 avatar: https://avatars2.githubusercontent.com/u/8613196?v=3&s=466
+
+algolia:
+  applicationID: 'Q63IBJ0MWT'
+  apiKey: '87c50f0d165d6b9502c4ed1f0eb13f6b'
+  adminApiKey: 'fd9cc5abec7064eb5ff2bc24ce04b72b'
+  indexName: 'javaor'
+  chunkSize: 5000
