@@ -5,7 +5,7 @@
 # Site
 title: ZeusJava Blog
 subtitle: 赵小轩的代码小屋
-description: 赵小轩的代码小屋
+description: 不想当架构师的程序员不是好厨子
 author: 赵宏轩
 language: zh-Hans
 timezone: Asia/Shanghai
@@ -67,7 +67,10 @@ hightlight_theme: night
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
-  type:
+  type: git
+  repo: https://github.com/javaor/hexo-blog.git
+
+
 
 avatar: https://avatars2.githubusercontent.com/u/8613196?v=3&s=466
 
