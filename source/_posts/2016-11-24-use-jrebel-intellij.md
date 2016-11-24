@@ -15,6 +15,7 @@ Jrebel是一个优秀的热部署的插件，虽然intellj中也支持热部署�
 使用twitter或者facebook登陆得使用vpn，如果自己注册的话点击 [https://my.jrebel.com/register](https://my.jrebel.com/register)进入注册
 ![注册账号](http://ww2.sinaimg.cn/large/787edccfgw1fa33rdjxluj20zw0mkafi.jpg)
 
+<!-- more -->
 ### 获取activation Code然后激活
 切换到`Install and Activate` 选项卡
 复制出 activation Code
@@ -34,7 +35,7 @@ Jrebel是一个优秀的热部署的插件，虽然intellj中也支持热部署�
 
 ### 配置Jrebel
  安装完jrebel插件后
- 在设置界面的jrebel子选项中激活Jrebel
+ 在设置界面的jrebel子选项中激活Jrebel,激活成功后
  ![](http://ww3.sinaimg.cn/large/787edccfgw1fa347c4rluj20v30mwdkj.jpg)
 
 ### 使用Jrebel启动项目
