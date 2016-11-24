@@ -29,7 +29,7 @@ Jrebel是一个优秀的热部署的插件，虽然intellj中也支持热部署�
 
   Jrebel是最新版的7.0
 
- 点击 `ctrl+alt+s`呼出设置界面，点击plugins->browser repositories 然后搜索jrebel就有新版本的jrebel可以下载，如果速度过慢记得挂代理，或者自己到jetbrains官网下载最新的插件,
+ 点击 `ctrl+alt+s`呼出设置界面，点击`plugins->browser repositories` 然后搜索jrebel就有新版本的jrebel可以下载，如果速度过慢记得挂代理，或者自己到jetbrains官网下载最新的插件,
  [Jrebel插件地址](https://plugins.jetbrains.com/plugin/4441)
  ![](http://ww2.sinaimg.cn/large/787edccfgw1fa343gy0jnj215m0ngk1k.jpg)
 
