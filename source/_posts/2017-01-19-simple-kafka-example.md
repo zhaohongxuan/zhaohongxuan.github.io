@@ -1,4 +1,10 @@
-
+---
+layout: post
+title: Kafka入门
+tags: [kafka]
+date: 2017-01-19
+category: java
+---
 ## 1.环境配置
 kafka依赖zookeeper来调度，以及选举leader，因此需要先安装zookeeper
 ### 1.1 安装zookeeper
@@ -32,7 +38,7 @@ $ bin/zkServer.sh start
 ```shell
 $ bin/zkCli.sh
 ```
-
+<!-- more -->
 ## 1.2 安装kafka
 
 ### 1.2.1 下载并解压
