@@ -68,7 +68,8 @@ hightlight_theme: night
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: https://github.com/javaor/hexo-blog.git
+  repo: https://github.com/javaor/javaor.github.io.git
+  branch: master
 
 
 
