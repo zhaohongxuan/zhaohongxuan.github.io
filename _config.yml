@@ -3,7 +3,7 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: ZeusJava Blog
+title: Javaor's Blog
 subtitle: 赵小轩的代码小屋
 description: 不想当架构师的程序员不是好厨子
 author: 赵宏轩
@@ -12,7 +12,7 @@ timezone: Asia/Shanghai
 scheme: Muse
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://zeusjava.com
+url: http://javaor.github.io
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
@@ -68,7 +68,7 @@ hightlight_theme: night
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: https://github.com/javaor/javaor.github.io.git
+  repo: git@github.com:javaor/javaor.github.io.git
   branch: master
 
 
