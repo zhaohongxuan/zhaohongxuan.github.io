@@ -8,7 +8,7 @@ subtitle: 赵小轩的代码小屋
 description: 不想当架构师的程序员不是好厨子
 author: 赵宏轩
 language: zh-Hans
-timezone: Asia/Shanghai
+#timezone: Asia/Shanghai
 scheme: Muse
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
