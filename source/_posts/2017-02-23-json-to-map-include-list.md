@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Java中将JSON反序列化
+title: Java中将JSON反序列化为泛型对象
 tags: [json]
 date: 2017-02-23
 category: java
