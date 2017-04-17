@@ -264,10 +264,14 @@ mathjax:
 baidu_analytics: 20ec670f7b89919814242334f3ae8acc
 
 # Duoshuo ShortName
-duoshuo_shortname: javaor
+#duoshuo_shortname: javaor
 
 # Disqus
 #disqus_shortname:
+disqus:
+  enable: true
+  shortname: zeusjava-com
+  count: true
 
 # Hypercomments
 #hypercomments_id:
