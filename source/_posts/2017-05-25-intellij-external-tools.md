@@ -5,6 +5,7 @@ java工程师平时工作中用到的工具挺多的，比如javap,jstack等，i
 
 ![Paste_Image.png](http://upload-images.jianshu.io/upload_images/170138-78fbc6c74f8bc0fc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
+<!-- more -->
 在tool setting 的Program输入工具的路径，这中间可以插入宏，比如`$JDK_PATH$`，不需要自己再手动输入jdk的路径了，
 在Parameters中输入`-c $FileClass$` ，`$FileClass$`代表要解析的 class文件,`-c`代表输出分解后的代码
 在Workding Directory中输入`$OutputPath$`,代表项目的输出路径
