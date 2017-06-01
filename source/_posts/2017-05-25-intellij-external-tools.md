@@ -1,4 +1,12 @@
 
+---
+layout: post
+title: intellij idea中使用javap等JDK工具
+tags: [java]
+date: 2017-04-17
+category: java
+---
+
 java工程师平时工作中用到的工具挺多的，比如javap,jstack等，intellij idea 作为宇宙最强java ide idea一样可以帮我们实现这个功能，方法如下：
 
 `ctrl+alt+s`打开设置界面,找到`Tool-> External Tools` 点击 `+`来增加一个新的外部工具。
