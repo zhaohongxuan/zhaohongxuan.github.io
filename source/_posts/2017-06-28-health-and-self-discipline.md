@@ -1,3 +1,12 @@
+
+---
+layout: post
+title: 自律与健康
+tags: [自律]
+date: 2017-06-29
+category: 散文随笔
+---
+
 >自律给我自由
 
 一直很喜欢Keep启动时splash上这句话，使用Keep这个软件也1年多了，想总结点东西。
