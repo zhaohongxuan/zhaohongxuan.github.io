@@ -13,6 +13,7 @@ category: 摄影
 下面的照片都是直出，没有经过后期处理，还需要多加学习呀。
 
 ![图片发自简书App](http://upload-images.jianshu.io/upload_images/170138-1fc54c20425b20ef.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1080/q/50)
+ <!-- more --> 
 ![图片发自简书App](http://upload-images.jianshu.io/upload_images/170138-1801984beb325a3a.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1080/q/50)
 
 ![图片发自简书App](http://upload-images.jianshu.io/upload_images/170138-20fcf4b13193e74f.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1080/q/50)

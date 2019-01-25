@@ -1,11 +1,276 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="93ab839d-c60e-4797-9711-5beb306c1316" name="Default" comment="change duoshuo to disqus">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+    <list default="true" id="93ab839d-c60e-4797-9711-5beb306c1316" name="Default" comment="升级next，增加评论">
+      <change afterPath="$PROJECT_DIR$/source/ailpay.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/themes/next" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/_config.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/_posts/2018-02-06-photograpy-in-shanghai.md" beforeDir="false" afterPath="$PROJECT_DIR$/source/_posts/2018-02-06-photograpy-in-shanghai.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/_posts/2018-02-23-new-year-2018.md" beforeDir="false" afterPath="$PROJECT_DIR$/source/_posts/2018-02-23-new-year-2018.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/_posts/2018-07-28-manjaro-i3wm.md" beforeDir="false" afterPath="$PROJECT_DIR$/source/_posts/2018-07-28-manjaro-i3wm.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/README.en.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/_config.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/bower.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/gulpfile.coffee" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/languages/de.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/languages/default.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/languages/en.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/languages/fr-FR.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/languages/id.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/languages/ja.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/languages/ko.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/languages/pt-BR.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/languages/pt.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/languages/ru.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/languages/zh-Hans.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/languages/zh-hk.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/languages/zh-tw.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/layout/_components/algolia-search/assets.swig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/layout/_components/algolia-search/dom.swig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/layout/_custom/header.swig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/layout/_custom/sidebar.swig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/layout/_layout.swig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/layout/_macro/post-collapse.swig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/layout/_macro/post.swig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/layout/_macro/reward.swig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/layout/_macro/sidebar.swig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/layout/_macro/wechat-subscriber.swig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/layout/_partials/comments.swig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/layout/_partials/duoshuo-hot-articles.swig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/layout/_partials/footer.swig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/layout/_partials/head.swig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/layout/_partials/head/custom-head.swig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/layout/_partials/head/external-fonts.swig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/layout/_partials/header.swig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/layout/_partials/page-header.swig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/layout/_partials/pagination.swig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/layout/_partials/search.swig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/layout/_partials/search/localsearch.swig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/layout/_partials/search/swiftype.swig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/layout/_partials/search/tinysou.swig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/layout/_partials/share/add-this.swig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/layout/_partials/share/baidushare.swig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/layout/_partials/share/duoshuo_share.swig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/layout/_partials/share/jiathis.swig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/layout/_scripts/baidu-push.swig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/layout/_scripts/boostrap.swig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/layout/_scripts/commons.swig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/layout/_scripts/pages/post-details.swig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/layout/_scripts/schemes/mist.swig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/layout/_scripts/schemes/muse.swig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/layout/_scripts/schemes/pisces.swig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/layout/_scripts/third-party/analytics.swig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/layout/_scripts/third-party/analytics/application-insights.swig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/layout/_scripts/third-party/analytics/baidu-analytics.swig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/layout/_scripts/third-party/analytics/busuanzi-counter.swig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/layout/_scripts/third-party/analytics/cnzz-analytics.swig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/layout/_scripts/third-party/analytics/facebook-sdk.swig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/layout/_scripts/third-party/analytics/google-analytics.swig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/layout/_scripts/third-party/analytics/tencent-analytics.swig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/layout/_scripts/third-party/comments.swig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/layout/_scripts/third-party/comments/disqus.swig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/layout/_scripts/third-party/comments/duoshuo.swig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/layout/_scripts/third-party/comments/hypercomments.swig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/layout/_scripts/third-party/lean-analytics.swig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/layout/_scripts/third-party/localsearch.swig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/layout/_scripts/third-party/mathjax.swig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/layout/_scripts/third-party/schedule.swig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/layout/_scripts/third-party/tinysou.swig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/layout/_scripts/vendors.swig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/layout/archive.swig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/layout/category.swig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/layout/index.swig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/layout/page.swig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/layout/post.swig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/layout/schedule.swig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/layout/tag.swig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/scripts/merge-configs.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/scripts/tags/center-quote.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/scripts/tags/full-image.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/scripts/tags/group-pictures.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/scripts/tags/note.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/css/_common/components/back-to-top.styl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/css/_common/components/buttons.styl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/css/_common/components/comments.styl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/css/_common/components/components.styl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/css/_common/components/footer/footer.styl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/css/_common/components/header/header.styl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/css/_common/components/header/headerband.styl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/css/_common/components/header/menu.styl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/css/_common/components/header/site-meta.styl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/css/_common/components/header/site-nav.styl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/css/_common/components/highlight/diff.styl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/css/_common/components/highlight/highlight.styl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/css/_common/components/highlight/theme.styl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/css/_common/components/pages/archive.styl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/css/_common/components/pages/categories.styl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/css/_common/components/pages/pages.styl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/css/_common/components/pages/post-detail.styl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/css/_common/components/pages/schedule.styl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/css/_common/components/pagination.styl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/css/_common/components/post/post-collapse.styl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/css/_common/components/post/post-eof.styl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/css/_common/components/post/post-expand.styl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/css/_common/components/post/post-gallery.styl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/css/_common/components/post/post-meta.styl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/css/_common/components/post/post-more-link.styl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/css/_common/components/post/post-nav.styl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/css/_common/components/post/post-reward.styl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/css/_common/components/post/post-tags.styl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/css/_common/components/post/post-title.styl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/css/_common/components/post/post-type.styl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/css/_common/components/post/post.styl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/css/_common/components/sidebar/sidebar-author-links.styl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/css/_common/components/sidebar/sidebar-author.styl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/css/_common/components/sidebar/sidebar-blogroll.styl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/css/_common/components/sidebar/sidebar-feed-link.styl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/css/_common/components/sidebar/sidebar-nav.styl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/css/_common/components/sidebar/sidebar-toc.styl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/css/_common/components/sidebar/sidebar-toggle.styl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/css/_common/components/sidebar/sidebar.styl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/css/_common/components/sidebar/site-state.styl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/css/_common/components/tag-cloud.styl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/css/_common/components/tags/blockquote-center.styl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/css/_common/components/tags/full-image.styl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/css/_common/components/tags/group-pictures.styl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/css/_common/components/tags/note.styl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/css/_common/components/tags/tags.styl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/css/_common/components/third-party/algolia-search.styl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/css/_common/components/third-party/baidushare.styl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/css/_common/components/third-party/busuanzi-counter.styl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/css/_common/components/third-party/duoshuo.styl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/css/_common/components/third-party/jiathis.styl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/css/_common/components/third-party/localsearch.styl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/css/_common/components/third-party/third-party.styl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/css/_common/outline/outline.styl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/css/_common/scaffolding/base.styl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/css/_common/scaffolding/helpers.styl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/css/_common/scaffolding/normalize.styl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/css/_common/scaffolding/scaffolding.styl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/css/_common/scaffolding/tables.styl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/css/_custom/custom.styl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/css/_mixins/Mist.styl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/css/_mixins/Muse.styl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/css/_mixins/Pisces.styl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/css/_mixins/base.styl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/css/_mixins/custom.styl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/css/_schemes/Mist/_base.styl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/css/_schemes/Mist/_header.styl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/css/_schemes/Mist/_logo.styl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/css/_schemes/Mist/_menu.styl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/css/_schemes/Mist/_posts-expanded.styl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/css/_schemes/Mist/_search.styl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/css/_schemes/Mist/index.styl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/css/_schemes/Mist/outline/outline.styl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/css/_schemes/Mist/sidebar/sidebar-blogroll.styl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/css/_schemes/Muse/_layout.styl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/css/_schemes/Muse/_logo.styl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/css/_schemes/Muse/_menu.styl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/css/_schemes/Muse/_search.styl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/css/_schemes/Muse/index.styl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/css/_schemes/Muse/sidebar/sidebar-blogroll.styl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/css/_schemes/Pisces/_brand.styl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/css/_schemes/Pisces/_full-image.styl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/css/_schemes/Pisces/_layout.styl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/css/_schemes/Pisces/_menu.styl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/css/_schemes/Pisces/_posts.styl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/css/_schemes/Pisces/_sidebar.styl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/css/_schemes/Pisces/index.styl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/css/_variables/Mist.styl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/css/_variables/Muse.styl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/css/_variables/Pisces.styl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/css/_variables/base.styl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/css/_variables/custom.styl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/css/main.styl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/fonts/.gitkeep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/images/algolia_logo.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/images/avatar.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/images/cc-by-nc-nd.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/images/cc-by-nc-sa.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/images/cc-by-nc.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/images/cc-by-nd.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/images/cc-by-sa.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/images/cc-by.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/images/cc-zero.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/images/loading.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/images/placeholder.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/images/quote-l.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/images/quote-r.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/images/searchicon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/js/src/affix.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/js/src/algolia-search.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/js/src/bootstrap.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/js/src/hook-duoshuo.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/js/src/motion.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/js/src/post-details.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/js/src/schemes/pisces.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/js/src/scrollspy.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/js/src/utils.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/lib/algolia-instant-search/instantsearch.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/lib/algolia-instant-search/instantsearch.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/lib/fancybox/source/blank.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/lib/fancybox/source/fancybox_loading.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/lib/fancybox/source/fancybox_loading@2x.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/lib/fancybox/source/fancybox_overlay.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/lib/fancybox/source/fancybox_sprite.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/lib/fancybox/source/fancybox_sprite@2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/lib/fancybox/source/helpers/fancybox_buttons.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/lib/fancybox/source/helpers/jquery.fancybox-buttons.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/lib/fancybox/source/helpers/jquery.fancybox-buttons.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/lib/fancybox/source/helpers/jquery.fancybox-media.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/lib/fancybox/source/helpers/jquery.fancybox-thumbs.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/lib/fancybox/source/helpers/jquery.fancybox-thumbs.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/lib/fancybox/source/jquery.fancybox.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/lib/fancybox/source/jquery.fancybox.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/lib/fancybox/source/jquery.fancybox.pack.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/lib/fastclick/.bower.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/lib/fastclick/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/lib/fastclick/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/lib/fastclick/bower.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/lib/fastclick/lib/fastclick.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/lib/fastclick/lib/fastclick.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/lib/font-awesome/.bower.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/lib/font-awesome/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/lib/font-awesome/.npmignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/lib/font-awesome/HELP-US-OUT.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/lib/font-awesome/bower.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/lib/font-awesome/css/font-awesome.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/lib/font-awesome/css/font-awesome.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/lib/font-awesome/css/font-awesome.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/lib/font-awesome/fonts/FontAwesome.otf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/lib/font-awesome/fonts/fontawesome-webfont.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/lib/font-awesome/fonts/fontawesome-webfont.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/lib/font-awesome/fonts/fontawesome-webfont.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/lib/font-awesome/fonts/fontawesome-webfont.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/lib/font-awesome/fonts/fontawesome-webfont.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/lib/jquery/.bower.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/lib/jquery/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/lib/jquery_lazyload/.bower.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/lib/jquery_lazyload/CONTRIBUTING.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/lib/jquery_lazyload/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/lib/jquery_lazyload/bower.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/lib/jquery_lazyload/jquery.lazyload.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/lib/jquery_lazyload/jquery.scrollstop.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/lib/ua-parser-js/dist/ua-parser.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/lib/ua-parser-js/dist/ua-parser.pack.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/lib/velocity/.bower.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/lib/velocity/bower.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/lib/velocity/velocity.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/lib/velocity/velocity.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/lib/velocity/velocity.ui.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/source/lib/velocity/velocity.ui.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/test/.jshintrc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/test/helpers.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next/test/intern.js" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
-    <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -14,44 +279,90 @@
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+  <component name="FUSProjectUsageTrigger">
+    <session id="1306544161">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.open.time.5" value="1" />
+          <entry key="project.opened" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="gitignore" value="7" />
+          <entry key="md" value="31" />
+          <entry key="txt" value="17" />
+          <entry key="yml" value="298" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="Markdown" value="31" />
+          <entry key="PLAIN_TEXT" value="24" />
+          <entry key="YAML" value="298" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="LICENSE" value="1" />
+          <entry key="gitignore" value="2" />
+          <entry key="html" value="1" />
+          <entry key="jpg" value="2" />
+          <entry key="js" value="1" />
+          <entry key="jshintrc" value="1" />
+          <entry key="json" value="1" />
+          <entry key="md" value="14" />
+          <entry key="styl" value="1" />
+          <entry key="swig" value="1" />
+          <entry key="yml" value="12" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="HTML" value="1" />
+          <entry key="Image" value="2" />
+          <entry key="JSHint" value="1" />
+          <entry key="JSON" value="1" />
+          <entry key="JavaScript" value="1" />
+          <entry key="Markdown" value="14" />
+          <entry key="PLAIN_TEXT" value="4" />
+          <entry key="Stylus" value="1" />
+          <entry key="YAML" value="12" />
+        </counts>
+      </usages-collector>
+    </session>
+  </component>
   <component name="FavoritesManager">
     <favorites_list name="javaor.github.io" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="_config.yml" pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/themes/next/_config.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="220">
-              <caret line="250" column="65" lean-forward="false" selection-start-line="250" selection-start-column="65" selection-end-line="250" selection-end-column="65" />
-              <folding />
+            <state relative-caret-position="-16">
+              <caret line="164" selection-start-line="164" selection-end-line="164" />
+              <folding>
+                <element signature="e#4463#4467#0" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="2017-06-18-start-programming-with-macbook.md" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/source/_posts/2017-06-18-start-programming-with-macbook.md">
-          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="SPLIT">
-              <first_editor relative-caret-position="0">
-                <caret line="0" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="7" selection-end-column="3" />
-                <folding />
-              </first_editor>
-              <second_editor />
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/themes/next/source/css/_common/components/sidebar/sidebar.styl">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="315">
+              <caret line="21" column="12" selection-start-line="21" selection-start-column="12" selection-end-line="21" selection-end-column="12" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="2017-06-28-health-and-self-discipline.md" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/source/_posts/2017-06-28-health-and-self-discipline.md">
-          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="FIRST">
-              <first_editor relative-caret-position="120">
-                <caret line="8" column="0" lean-forward="true" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-                <folding />
-              </first_editor>
-              <second_editor />
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/themes/next/languages/zh-Hans.yml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="857">
+              <caret line="59" column="18" selection-start-line="59" selection-start-column="18" selection-end-line="59" selection-end-column="18" />
             </state>
           </provider>
         </entry>
@@ -60,20 +371,36 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>hexo</find>
-      <find>zeusjava</find>
-      <find>co---</find>
-      <find>embed</find>
-      <find>ds.src</find>
-      <find>sche</find>
-      <find>Mist</find>
-      <find>duoshuo-ua-admin</find>
       <find>赵小</find>
       <find>permalink</find>
       <find>timezone</find>
       <find>duoshuo</find>
       <find>dis</find>
       <find>disqus</find>
+      <find>cnzz</find>
+      <find>front-matter</find>
+      <find>comment</find>
+      <find>gitment</find>
+      <find>next</find>
+      <find>git</find>
+      <find>leancloud_visitors</find>
+      <find>fancy</find>
+      <find>menu_icons</find>
+      <find>favicon</find>
+      <find>reward_comment</find>
+      <find>canvas_nest</find>
+      <find>search</find>
+      <find>&lt;!-- more --&gt;</find>
+      <find>more</find>
+      <find>scro</find>
+      <find>Gemini</find>
+      <find>font</find>
+      <find>fonta</find>
+      <find>menu_icon</find>
+      <find>avat</find>
+      <find>menu</find>
+      <find>ava</find>
+      <find>avatar</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -94,21 +421,22 @@
         <entry key="E:/IdeaSpace/MaterialDrawer" value="8777086054093" />
       </map>
     </option>
-    <option name="externalProjectsViewState">
-      <projects_view />
-    </option>
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/themes/next/source/js/src/hook-duoshuo.js" />
         <option value="$PROJECT_DIR$/source/_posts/2017-02-23-json-to-map-include-list.md" />
-        <option value="$PROJECT_DIR$/_config.yml" />
-        <option value="$PROJECT_DIR$/themes/next/_config.yml" />
         <option value="$PROJECT_DIR$/source/_posts/2017-06-28-health-and-self.md" />
         <option value="$PROJECT_DIR$/source/_posts/2017-06-28-health-and-self-discipline.md" />
+        <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/themes/next-new/_config.yml" />
+        <option value="$PROJECT_DIR$/source/_posts/2018-07-28-manjaro-i3wm.md" />
+        <option value="$PROJECT_DIR$/source/_posts/2018-02-23-new-year-2018.md" />
+        <option value="$PROJECT_DIR$/source/_posts/2018-02-06-photograpy-in-shanghai.md" />
+        <option value="$PROJECT_DIR$/_config.yml" />
+        <option value="$PROJECT_DIR$/themes/next/_config.yml" />
       </list>
     </option>
   </component>
@@ -118,116 +446,86 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
+  <component name="NodeModulesDirectoryManager">
+    <handled-path value="$PROJECT_DIR$/node_modules" />
+  </component>
+  <component name="NodePackageJsonFileManager">
+    <packageJsonPaths>
+      <path value="$PROJECT_DIR$/package.json" />
+      <path value="$PROJECT_DIR$/themes/landscape/package.json" />
+      <path value="$PROJECT_DIR$/themes/next/package.json" />
+    </packageJsonPaths>
+  </component>
   <component name="ProjectFrameBounds">
     <option name="y" value="23" />
-    <option name="width" value="1680" />
-    <option name="height" value="978" />
+    <option name="width" value="2560" />
+    <option name="height" value="1367" />
   </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
-    <navigator currentView="ProjectPane" proportions="" version="1">
-      <flattenPackages />
-      <showMembers />
-      <showModules />
-      <showLibraryContents />
-      <hideEmptyPackages />
-      <abbreviatePackageNames />
-      <autoscrollToSource />
-      <autoscrollFromSource />
-      <sortByType />
-      <manualOrder />
+    <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
       <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="javaor.github.io" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="javaor.github.io" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="javaor.github.io" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="javaor.github.io" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="themes" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="javaor.github.io" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="javaor.github.io" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="source" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="javaor.github.io" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="javaor.github.io" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="source" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="_posts" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
+          <expand>
+            <path>
+              <item name="javaor.github.io" type="b2602c69:ProjectViewProjectNode" />
+              <item name="javaor.github.io" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="javaor.github.io" type="b2602c69:ProjectViewProjectNode" />
+              <item name="javaor.github.io" type="462c0819:PsiDirectoryNode" />
+              <item name="scaffolds" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="javaor.github.io" type="b2602c69:ProjectViewProjectNode" />
+              <item name="javaor.github.io" type="462c0819:PsiDirectoryNode" />
+              <item name="source" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="javaor.github.io" type="b2602c69:ProjectViewProjectNode" />
+              <item name="javaor.github.io" type="462c0819:PsiDirectoryNode" />
+              <item name="source" type="462c0819:PsiDirectoryNode" />
+              <item name="about" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="GoToClass.includeLibraries" value="false" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="GoToFile.includeJavaFiles" value="false" />
-    <property name="MemberChooser.sorted" value="false" />
-    <property name="MemberChooser.showClasses" value="true" />
     <property name="MemberChooser.copyJavadoc" value="false" />
-    <property name="options.lastSelected" value="org.jetbrains.plugins.scala.compiler.ScalaCompileServerForm" />
-    <property name="options.splitter.main.proportions" value="0.3" />
-    <property name="options.splitter.details.proportions" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="MemberChooser.showClasses" value="true" />
+    <property name="MemberChooser.sorted" value="false" />
+    <property name="SearchEverywhereHistoryKey" value="duoshuo&#9;FILE&#9;file://C:/IdeaSpace/javaor.github.io/themes/next/source/js/src/hook-duoshuo.js" />
     <property name="WebServerToolWindowFactoryState" value="true" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="nodejs_interpreter_path" value="C:/Program Files/nodejs/node" />
-    <property name="js.eslint.eslintPackage" value="" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1548414522308" />
     <property name="js-jscs-nodeInterpreter" value="C:\Program Files\nodejs\node.exe" />
+    <property name="js.eslint.eslintPackage" value="" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_interpreter_path" value="node" />
+    <property name="options.lastSelected" value="org.jetbrains.plugins.scala.compiler.ScalaCompileServerForm" />
+    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.splitter.main.proportions" value="0.3" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
     <property name="two.files.diff.last.used.file" value="F:/hexo-blog/package.json" />
-    <property name="SearchEverywhereHistoryKey" value="duoshuo&#9;FILE&#9;file://C:/IdeaSpace/javaor.github.io/themes/next/source/js/src/hook-duoshuo.js" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/source" />
+      <recent name="$PROJECT_DIR$/themes/next-new/source/images" />
+      <recent name="$PROJECT_DIR$/themes" />
       <recent name="C:\IdeaSpace\javaor.github.io\source\_posts" />
       <recent name="C:\IdeaSpace\javaor.github.io" />
-      <recent name="C:\IdeaSpace\javaor.github.io\themes\landscape\source\js" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -243,41 +541,6 @@
     </option>
   </component>
   <component name="RunManager">
-    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
-      <module name="" />
-      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
-      <option name="PROGRAM_PARAMETERS" />
-      <predefined_log_file id="idea.log" enabled="true" />
-      <method />
-    </configuration>
-    <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android App">
-      <module name="" />
-      <option name="DEPLOY" value="true" />
-      <option name="ARTIFACT_NAME" value="" />
-      <option name="PM_INSTALL_OPTIONS" value="" />
-      <option name="ACTIVITY_EXTRA_FLAGS" value="" />
-      <option name="MODE" value="default_activity" />
-      <option name="TARGET_SELECTION_MODE" value="SHOW_DIALOG" />
-      <option name="PREFERRED_AVD" value="" />
-      <option name="CLEAR_LOGCAT" value="false" />
-      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
-      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
-      <option name="FORCE_STOP_RUNNING_APP" value="true" />
-      <option name="DEBUGGER_TYPE" value="Java" />
-      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
-      <option name="PREFERRED_AVD" value="" />
-      <Java />
-      <Profilers>
-        <option name="ENABLE_ADVANCED_PROFILING" value="true" />
-        <option name="GAPID_ENABLED" value="false" />
-        <option name="GAPID_DISABLE_PCS" value="false" />
-        <option name="SUPPORT_LIB_ENABLED" value="true" />
-        <option name="INSTRUMENTATION_ENABLED" value="true" />
-      </Profilers>
-      <option name="DEEP_LINK" value="" />
-      <option name="ACTIVITY_CLASS" value="" />
-      <method />
-    </configuration>
     <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Tests">
       <module name="" />
       <option name="TESTING_TYPE" value="0" />
@@ -306,173 +569,42 @@
       <method />
     </configuration>
     <configuration default="true" type="Applet" factoryName="Applet">
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <module />
-      <method />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="" />
-      <envs />
-      <method />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
     <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <module name="" />
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="class" />
       <option name="VM_PARAMETERS" />
-      <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-      <method />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
     <configuration default="true" type="ArquillianTestNG" factoryName="">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <module name="" />
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="SUITE_NAME" />
-      <option name="PACKAGE_NAME" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="METHOD_NAME" />
-      <option name="GROUP_NAME" />
-      <option name="TEST_OBJECT" value="CLASS" />
       <option name="VM_PARAMETERS" />
-      <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" />
-      <option name="OUTPUT_DIRECTORY" />
-      <option name="ANNOTATION_TYPE" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <option name="USE_DEFAULT_REPORTERS" value="false" />
-      <option name="PROPERTIES_FILE" />
-      <envs />
       <properties />
       <listeners />
-      <method />
-    </configuration>
-    <configuration default="true" type="Cold Fusion runner description" factoryName="Cold Fusion" custom_browser="" web_path="">
-      <method />
-    </configuration>
-    <configuration default="true" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="myFilePath" />
-      <option name="GLUE" />
-      <option name="myNameFilter" />
-      <option name="myGeneratedName" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="" />
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="true" type="FlashRunConfigurationType" factoryName="Flash App">
-      <option name="BCName" value="" />
-      <option name="IOSSimulatorSdkPath" value="" />
-      <option name="adlOptions" value="" />
-      <option name="airProgramParameters" value="" />
-      <option name="appDescriptorForEmulator" value="Android" />
-      <option name="debugTransport" value="USB" />
-      <option name="debuggerSdkRaw" value="BC SDK" />
-      <option name="emulator" value="NexusOne" />
-      <option name="emulatorAdlOptions" value="" />
-      <option name="fastPackaging" value="true" />
-      <option name="fullScreenHeight" value="0" />
-      <option name="fullScreenWidth" value="0" />
-      <option name="launchUrl" value="false" />
-      <option name="launcherParameters">
-        <LauncherParameters>
-          <option name="browser" value="a7bb68e0-33c0-4d6f-a81a-aac1fdb870c8" />
-          <option name="launcherType" value="OSDefault" />
-          <option name="newPlayerInstance" value="false" />
-          <option name="playerPath" value="/Applications/Flash Player Debugger.app" />
-        </LauncherParameters>
-      </option>
-      <option name="mobileRunTarget" value="Emulator" />
-      <option name="moduleName" value="" />
-      <option name="overriddenMainClass" value="" />
-      <option name="overriddenOutputFileName" value="" />
-      <option name="overrideMainClass" value="false" />
-      <option name="runTrusted" value="true" />
-      <option name="screenDpi" value="0" />
-      <option name="screenHeight" value="0" />
-      <option name="screenWidth" value="0" />
-      <option name="url" value="http://" />
-      <option name="usbDebugPort" value="7936" />
-      <method />
-    </configuration>
-    <configuration default="true" type="FlexUnitRunConfigurationType" factoryName="FlexUnit" appDescriptorForEmulator="Android" class_name="" emulatorAdlOptions="" method_name="" package_name="" scope="Class">
-      <option name="BCName" value="" />
-      <option name="launcherParameters">
-        <LauncherParameters>
-          <option name="browser" value="a7bb68e0-33c0-4d6f-a81a-aac1fdb870c8" />
-          <option name="launcherType" value="OSDefault" />
-          <option name="newPlayerInstance" value="false" />
-          <option name="playerPath" value="/Applications/Flash Player Debugger.app" />
-        </LauncherParameters>
-      </option>
-      <option name="moduleName" value="" />
-      <option name="trusted" value="true" />
-      <method />
-    </configuration>
-    <configuration default="true" type="GradleRunConfiguration" factoryName="Gradle">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list />
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <method />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
     <configuration default="true" type="GrailsRunConfigurationType" factoryName="Grails">
       <setting name="vmparams" value="" />
@@ -480,81 +612,16 @@
       <setting name="passParentEnv" value="true" />
       <setting name="launchBrowser" value="true" />
       <setting name="launchBrowserUrl" value="" />
-      <method />
+      <setting name="depsClasspath" value="false" />
+      <method v="2" />
     </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <module name="" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="class" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-      <method />
-    </configuration>
-    <configuration default="true" type="JarApplication" factoryName="JAR Application">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="true" type="Java Scratch" factoryName="Java Scratch">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="SCRATCH_FILE_ID" value="0" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="" />
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="true" type="JavaScriptTestRunnerJest" factoryName="Jest">
-      <node-interpreter value="project" />
-      <working-dir value="" />
-      <envs />
-      <scope-kind value="ALL" />
-      <method />
-    </configuration>
-    <configuration default="true" type="JavaScriptTestRunnerProtractor" factoryName="Protractor">
-      <config-file value="" />
-      <node-interpreter value="project" />
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
-      <method />
-    </configuration>
-    <configuration default="true" type="JetRunConfigurationType" factoryName="Kotlin">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="javaor.github.io" />
-      <envs />
-      <method />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
     <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType" factoryName="Kotlin script">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <option name="filePath" />
       <option name="vmParameters" />
       <option name="alternativeJrePath" />
@@ -562,50 +629,48 @@
       <option name="passParentEnvs" value="true" />
       <option name="workingDirectory" />
       <option name="isAlternativeJrePathEnabled" value="false" />
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="true" type="Remote" factoryName="Remote">
-      <option name="USE_SOCKET_TRANSPORT" value="true" />
-      <option name="SERVER_MODE" value="false" />
-      <option name="SHMEM_ADDRESS" value="javadebug" />
-      <option name="HOST" value="localhost" />
-      <option name="PORT" value="5005" />
-      <method />
-    </configuration>
-    <configuration default="true" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <module name="" />
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="true" type="TestNG" factoryName="TestNG">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <module name="" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="SUITE_NAME" />
-      <option name="PACKAGE_NAME" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="METHOD_NAME" />
-      <option name="GROUP_NAME" />
-      <option name="TEST_OBJECT" value="CLASS" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="OUTPUT_DIRECTORY" />
-      <option name="ANNOTATION_TYPE" />
-      <option name="ENV_VARIABLES" />
       <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <option name="USE_DEFAULT_REPORTERS" value="false" />
-      <option name="PROPERTIES_FILE" />
-      <envs />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="WORKING_DIRECTORY" />
+      <module name="" />
+      <option name="filePath" />
+      <option name="vmParameters" />
+      <option name="alternativeJrePath" />
+      <option name="programParameters" />
+      <option name="passParentEnvs" value="true" />
+      <option name="workingDirectory" />
+      <option name="isAlternativeJrePathEnabled" value="false" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="WORKING_DIRECTORY" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="TestNG" factoryName="TestNG">
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
       <properties />
       <listeners />
-      <method />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
+      <module name="" />
+      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
+      <option name="PROGRAM_PARAMETERS" />
+      <predefined_log_file id="idea.log" enabled="true" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
     <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
       <node-interpreter>project</node-interpreter>
@@ -614,24 +679,8 @@
       <tasks />
       <arguments />
       <envs />
-      <method />
+      <method v="2" />
     </configuration>
-    <configuration default="true" type="js.build_tools.npm" factoryName="npm">
-      <command value="run" />
-      <scripts />
-      <node-interpreter value="project" />
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="true" type="osgi.bnd.run" factoryName="Run Launcher">
-      <method />
-    </configuration>
-    <configuration default="true" type="osgi.bnd.run" factoryName="Test Launcher (JUnit)">
-      <method />
-    </configuration>
-  </component>
-  <component name="ShelveChangesManager" show_recycled="false">
-    <option name="remove_strategy" value="false" />
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -644,6 +693,7 @@
       <option name="presentableId" value="Default" />
       <updated>1498750966793</updated>
       <workItem from="1498750968622" duration="875000" />
+      <workItem from="1548401293862" duration="12073000" />
     </task>
     <task id="LOCAL-00001" summary="add post">
       <created>1498751136404</created>
@@ -663,7 +713,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="875000" />
+    <option name="totallyTimeSpent" value="12948000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -675,61 +725,62 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1680" height="978" extended-state="6" />
-    <editor active="true" />
+    <frame x="0" y="23" width="2560" height="1367" extended-state="0" />
     <layout>
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4517544" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25929978" sideWeight="0.49091882" order="13" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19551282" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23413567" sideWeight="0.48504272" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.5541761" sideWeight="0.4936034" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24593717" sideWeight="0.4978678" order="17" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23076923" sideWeight="0.49604744" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.10149573" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3109426" sideWeight="0.673774" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.16720085" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="FindBugs-IDEA" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32932165" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="JRebel Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="19" side_tool="true" content_ui="tabs" />
-      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32932165" sideWeight="0.4978678" order="14" side_tool="false" content_ui="tabs" />
-      <window_info id="JRebel Executor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="16" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25160256" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
-      <window_info id="Memory View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2713348" sideWeight="0.48294243" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="CheckStyle" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="20" side_tool="false" content_ui="tabs" />
-      <window_info id="JRebel remote servers log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25929978" sideWeight="0.49091882" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.44312027" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Run with VisualVM" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="19" side_tool="false" content_ui="tabs" />
-      <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="JRebel" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
-      <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26869658" sideWeight="0.50395256" order="0" side_tool="true" content_ui="tabs" />
-      <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="18" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25877193" sideWeight="0.5090812" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug with VisualVM" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="19" side_tool="false" content_ui="tabs" />
+      <window_info id="Web" order="0" sideWeight="0.50395256" side_tool="true" weight="0.26869658" />
+      <window_info id="Project" order="1" sideWeight="0.49604744" visible="true" weight="0.15170771" />
+      <window_info id="Favorites" order="2" weight="0.16720085" />
+      <window_info id="Structure" order="3" weight="0.25" />
+      <window_info id="Designer" order="4" />
+      <window_info id="UI Designer" order="5" />
+      <window_info id="JRebel" order="6" side_tool="true" />
+      <window_info id="Image Layers" order="7" />
+      <window_info id="Capture Tool" order="8" />
+      <window_info id="Nl-Palette" order="9" />
+      <window_info anchor="bottom" id="Database Changes" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Database Console" order="0" weight="0.44312027" />
+      <window_info anchor="bottom" id="Java Enterprise" order="1" />
+      <window_info anchor="bottom" id="JRebel remote servers log" order="2" sideWeight="0.49091882" side_tool="true" weight="0.25929978" />
+      <window_info anchor="bottom" id="FindBugs-IDEA" order="3" weight="0.32932165" />
+      <window_info anchor="bottom" id="Messages" order="4" sideWeight="0.48294243" weight="0.2713348" />
+      <window_info anchor="bottom" id="Message" order="5" />
+      <window_info anchor="bottom" id="Find" order="6" sideWeight="0.5090812" weight="0.2580392" />
+      <window_info anchor="bottom" id="Run" order="7" sideWeight="0.48504272" weight="0.23413567" />
+      <window_info anchor="bottom" id="Debug" order="8" sideWeight="0.673774" weight="0.3109426" />
+      <window_info anchor="bottom" id="Cvs" order="9" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="10" weight="0.4" />
+      <window_info anchor="bottom" id="Version Control" order="11" sideWeight="0.4936034" weight="0.38509804" />
+      <window_info anchor="bottom" id="TODO" order="12" weight="0.4517544" />
+      <window_info anchor="bottom" id="Event Log" order="13" sideWeight="0.49091882" side_tool="true" weight="0.25929978" />
+      <window_info anchor="bottom" id="Application Servers" order="14" sideWeight="0.4978678" weight="0.32932165" />
+      <window_info anchor="bottom" id="Changes" order="15" />
+      <window_info anchor="bottom" id="JRebel Executor" order="16" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="17" sideWeight="0.4978678" visible="true" weight="0.2454902" />
+      <window_info anchor="bottom" id="IDEtalk Messages" order="18" />
+      <window_info anchor="bottom" id="Run with VisualVM" order="19" />
+      <window_info anchor="bottom" id="JRebel Console" order="20" side_tool="true" />
+      <window_info anchor="bottom" id="Debug with VisualVM" order="21" />
+      <window_info anchor="bottom" id="CheckStyle" order="22" />
+      <window_info anchor="right" id="SciView" />
+      <window_info anchor="right" id="Database" order="0" weight="0.10149573" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="1" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="2" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="3" weight="0.25160256" />
+      <window_info anchor="right" id="Palette" order="4" />
+      <window_info anchor="right" id="IDEtalk" order="5" />
+      <window_info anchor="right" id="Bean Validation" order="6" />
+      <window_info anchor="right" id="Maven Projects" order="7" weight="0.19551282" />
+      <window_info anchor="right" id="Palette&#9;" order="8" />
+      <window_info anchor="right" id="Remote Host" order="9" />
+      <window_info anchor="right" id="Capture Analysis" order="10" />
+      <window_info anchor="right" id="Memory View" order="11" />
+      <window_info anchor="right" id="Theme Preview" order="12" />
+      <window_info anchor="right" id="Properties" order="13" />
+      <window_info anchor="right" id="Data View" order="14" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="processedProjectFiles" value="true" />
+    <option name="version" value="1" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -753,6 +804,10 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$/themes/next" />
+      <path value="$PROJECT_DIR$/themes/next-new" />
+    </ignored-roots>
     <MESSAGE value="hexo deploy config" />
     <MESSAGE value="add hexo-deployer-git" />
     <MESSAGE value="change branch" />
@@ -771,185 +826,25 @@
     <MESSAGE value="change duoshuo to disqus" />
     <MESSAGE value="add post" />
     <MESSAGE value="edit plus" />
-    <option name="LAST_COMMIT_MESSAGE" value="edit plus" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager />
-    <watches-manager />
+    <MESSAGE value="升级next，增加评论" />
+    <option name="LAST_COMMIT_MESSAGE" value="升级next，增加评论" />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/themes/next/_config.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_config.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="26" column="15" lean-forward="false" selection-start-line="26" selection-start-column="15" selection-end-line="26" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/source/_posts/2017-02-24-json-to-map-include-list.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="FIRST">
-          <first_editor relative-caret-position="555">
-            <caret line="37" column="13" lean-forward="false" selection-start-line="37" selection-start-column="13" selection-end-line="37" selection-end-column="13" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/themes/next/source/js/src/hook-duoshuo.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="25" column="14" lean-forward="false" selection-start-line="25" selection-start-column="14" selection-end-line="25" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resume.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="0">
-            <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_config.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/source/_posts/2017-02-24-json-to-map-include-list.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="FIRST">
-          <first_editor relative-caret-position="555">
-            <caret line="37" column="13" lean-forward="false" selection-start-line="37" selection-start-column="13" selection-end-line="37" selection-end-column="13" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/themes/next/source/js/src/hook-duoshuo.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="25" column="14" lean-forward="false" selection-start-line="25" selection-start-column="14" selection-end-line="25" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_config.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="28" column="0" lean-forward="true" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/source/_posts/2017-02-24-json-to-map-include-list.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="0">
-            <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/themes/next/source/js/src/hook-duoshuo.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" column="20" lean-forward="false" selection-start-line="18" selection-start-column="20" selection-end-line="18" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_config.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/themes/next/source/js/src/hook-duoshuo.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" column="20" lean-forward="false" selection-start-line="18" selection-start-column="20" selection-end-line="18" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_config.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_config.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/tags/index.md" />
     <entry file="file://$PROJECT_DIR$/public/about/index.md" />
     <entry file="file://$PROJECT_DIR$/db.json" />
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="22" column="0" lean-forward="false" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/favicon.ico" />
     <entry file="file://$PROJECT_DIR$/debug.log" />
     <entry file="file://$PROJECT_DIR$/public/categories/index.md" />
     <entry file="file://$PROJECT_DIR$/public/2015/04/01/hello-jekyll/index.html" />
-    <entry file="file://$PROJECT_DIR$/scaffolds/draft.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="0">
-            <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/scaffolds/page.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="0">
-            <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/scaffolds/post.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="0">
-            <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/source/tags/index.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="0">
-            <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          </first_editor>
+          <first_editor />
           <second_editor />
         </state>
       </provider>
@@ -957,9 +852,7 @@
     <entry file="file://$PROJECT_DIR$/source/_posts/2015-04-03-the-start-of-my-blog.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="0">
-            <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          </first_editor>
+          <first_editor />
           <second_editor />
         </state>
       </provider>
@@ -967,46 +860,22 @@
     <entry file="file://$PROJECT_DIR$/source/_posts/2015-04-12-use-intellijidea-instead-eclipse.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="-1077">
-            <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          </first_editor>
+          <first_editor relative-caret-position="-1077" />
           <second_editor />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.deploy_git/categories/java/page/2/index.html" />
-    <entry file="file://$PROJECT_DIR$/themes/next/layout/_partials/share/duoshuo_share.swig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/themes/next-old/layout/_partials/share/duoshuo_share.swig">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/themes/next/source/css/_common/components/third-party/duoshuo.styl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/themes/landscape/source/js/script.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1157">
-          <caret line="6" column="35" lean-forward="true" selection-start-line="6" selection-start-column="35" selection-end-line="6" selection-end-column="35" />
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/themes/next-old/source/css/_common/components/third-party/duoshuo.styl">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/themes/landscape/layout/_partial/after-footer.ejs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
-          <caret line="10" column="79" lean-forward="false" selection-start-line="10" selection-start-column="79" selection-end-line="10" selection-end-column="79" />
+          <caret line="10" column="79" selection-start-line="10" selection-start-column="79" selection-end-line="10" selection-end-column="79" />
         </state>
       </provider>
     </entry>
@@ -1017,32 +886,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/source/categories/index.md">
+    <entry file="file://$PROJECT_DIR$/themes/next-old/README.en.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="0">
-            <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/themes/next/README.en.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="0">
-            <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/source/about/index.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="0">
-            <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          </first_editor>
+          <first_editor />
           <second_editor />
         </state>
       </provider>
@@ -1051,7 +898,7 @@
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="FIRST">
           <first_editor relative-caret-position="135">
-            <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+            <caret line="9" selection-start-line="9" selection-end-line="9" />
           </first_editor>
           <second_editor />
         </state>
@@ -1060,14 +907,14 @@
     <entry file="file://$PROJECT_DIR$/themes/landscape/_config.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="525">
-          <caret line="35" column="10" lean-forward="false" selection-start-line="35" selection-start-column="10" selection-end-line="35" selection-end-column="10" />
+          <caret line="35" column="10" selection-start-line="35" selection-start-column="10" selection-end-line="35" selection-end-column="10" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/themes/next/layout/post.swig">
+    <entry file="file://$PROJECT_DIR$/themes/next-old/layout/post.swig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="525">
-          <caret line="35" column="23" lean-forward="false" selection-start-line="35" selection-start-column="23" selection-end-line="35" selection-end-column="23" />
+          <caret line="35" column="23" selection-start-line="35" selection-start-column="23" selection-end-line="35" selection-end-column="23" />
         </state>
       </provider>
     </entry>
@@ -1077,51 +924,23 @@
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="FIRST">
           <first_editor relative-caret-position="555">
-            <caret line="37" column="13" lean-forward="false" selection-start-line="37" selection-start-column="13" selection-end-line="37" selection-end-column="13" />
+            <caret line="37" column="13" selection-start-line="37" selection-start-column="13" selection-end-line="37" selection-end-column="13" />
           </first_editor>
           <second_editor />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/themes/next/source/js/src/hook-duoshuo.js">
+    <entry file="file://$PROJECT_DIR$/themes/next-old/source/js/src/hook-duoshuo.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="375">
-          <caret line="25" column="14" lean-forward="false" selection-start-line="25" selection-start-column="14" selection-end-line="25" selection-end-column="14" />
+          <caret line="25" column="14" selection-start-line="25" selection-start-column="14" selection-end-line="25" selection-end-column="14" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resume.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="-225">
-            <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_config.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-104">
-          <caret line="36" column="24" lean-forward="true" selection-start-line="36" selection-start-column="24" selection-end-line="36" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/themes/next/_config.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="250" column="65" lean-forward="false" selection-start-line="250" selection-start-column="65" selection-end-line="250" selection-end-column="65" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/source/_posts/2017-06-18-start-programming-with-macbook.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="0">
-            <caret line="0" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="7" selection-end-column="3" />
-            <folding />
-          </first_editor>
+          <first_editor relative-caret-position="-225" />
           <second_editor />
         </state>
       </provider>
@@ -1130,10 +949,205 @@
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="FIRST">
           <first_editor relative-caret-position="120">
-            <caret line="8" column="0" lean-forward="true" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-            <folding />
+            <caret line="8" selection-start-line="8" selection-end-line="8" />
           </first_editor>
           <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/_posts/2017-06-18-start-programming-with-macbook.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="90">
+            <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scaffolds/draft.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor />
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/LICENSE">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="22" selection-start-line="22" selection-end-line="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/themes/landscape/source/js/script.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="35" lean-forward="true" selection-start-line="6" selection-start-column="35" selection-end-line="6" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/themes/next-old/layout/_scripts/third-party/analytics/cnzz-analytics.swig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="23" selection-start-line="3" selection-start-column="23" selection-end-line="3" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/_posts/2015-08-12-webmagic-java-jandanspider.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="294">
+            <caret line="88" column="25" selection-start-line="88" selection-start-column="25" selection-end-line="88" selection-end-column="25" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/_posts/2015-04-01-hello-jekyll.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor />
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/themes/next-old/test/.jshintrc">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="23" selection-start-line="23" selection-end-line="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/themes/next-old/_config.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="233">
+          <caret line="264" selection-start-line="264" selection-end-line="264" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/ailpay.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/themes/next/source/images/ailpay.jpeg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/_posts/2018-02-06-photograpy-in-shanghai.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="225">
+            <caret line="15" column="15" selection-start-line="15" selection-start-column="15" selection-end-line="15" selection-end-column="15" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/_posts/2018-02-23-new-year-2018.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="75">
+            <caret line="5" column="16" selection-start-line="5" selection-start-column="16" selection-end-line="5" selection-end-column="16" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/_posts/2018-07-28-manjaro-i3wm.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="FIRST">
+          <first_editor relative-caret-position="255">
+            <caret line="17" column="15" selection-start-line="17" selection-start-column="15" selection-end-line="17" selection-end-column="15" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/categories/index.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="90">
+            <caret line="6" selection-start-line="6" selection-end-line="6" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/themes/next-old/_config.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2121">
+          <caret line="179" column="48" selection-start-line="179" selection-start-column="48" selection-end-line="179" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/2018/07/28/manjaro-i3wm/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2027">
+          <caret line="242" column="11" selection-start-line="242" selection-start-column="11" selection-end-line="242" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="4" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scaffolds/post.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor />
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scaffolds/page.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor />
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/themes/next/languages/zh-Hans.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="857">
+          <caret line="59" column="18" selection-start-line="59" selection-start-column="18" selection-end-line="59" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_config.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="14" column="28" selection-start-line="14" selection-start-column="28" selection-end-line="14" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/about/index.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor />
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/themes/next/_config.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-16">
+          <caret line="164" selection-start-line="164" selection-end-line="164" />
+          <folding>
+            <element signature="e#4463#4467#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/themes/next/source/css/_common/components/sidebar/sidebar.styl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="21" column="12" selection-start-line="21" selection-start-column="12" selection-end-line="21" selection-end-column="12" />
         </state>
       </provider>
     </entry>

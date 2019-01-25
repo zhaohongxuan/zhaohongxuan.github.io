@@ -15,7 +15,7 @@ category: Linux
 接下来会分成两部分来写，第一部分是`manjaro linux`，第二部分是`i3wm`。
 ## 一、基于arch的manjaro linux
 在使用Manjaro之前使用了大约1个月时间的Deepin Linux，界面确实很华丽漂亮，但是在Deepin的下面很多界面会有卡顿的感觉，比如启动器界面，以及多任务切换的时候，还有一个重要原因：我的蓝牙耳机 Fiil Diva 连上之后断断续续，基本不能用，而在Manjaro下面可以完美使用。
-
+ <!-- more --> 
 ### 1.1 常用软件
 
 #### 1.1.1 开发工具
