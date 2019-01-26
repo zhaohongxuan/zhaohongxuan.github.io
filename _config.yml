@@ -69,7 +69,7 @@ hightlight_theme: night
 deploy:
   type: git
   repo: git@github.com:javaor/javaor.github.io.git
-  branch: gh-pages
+  branch: master
 
 
 
