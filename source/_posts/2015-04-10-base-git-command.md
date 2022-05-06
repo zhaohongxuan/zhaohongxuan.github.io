@@ -57,7 +57,7 @@ tags: git
 ### 添加远程库
 在本地的仓库下面运行
 
-	$ git remote add origin git@github.com:javaor/javaor.github.io.git
+	$ git remote add origin git@github.com:zhaohongxuan/zhaohongxuan.github.io.git
 
 将本地库内容推送到远程库上
 
@@ -66,7 +66,7 @@ tags: git
 其中`-u`参数会把本地的master分支和远程的master分支关联起来。
 ### 从远程仓库克隆
 
-	$ git clone git@github.com:javaor/javaor.github.io.git
+	$ git clone git@github.com:zhaohongxuan/zhaohongxuan.github.io.git
 
 地址可使用SSH协议的git地址，也可以使用Https协议的地址
 ## 分支管理

@@ -49,7 +49,7 @@ final在java中的用法有很多，可以修饰field，可以修饰Method，可
   同理，在printOriginalNumbers方法中方为外部类的变量`phoneNumber1`，`phoneNumber2`的时候JDK8以前的编译器给出错误提示。
 
     ```java
-    package io.github.javaor;
+    package io.github.zhaohongxuan;
     /**
      * Created by zhaohongxuan
      */

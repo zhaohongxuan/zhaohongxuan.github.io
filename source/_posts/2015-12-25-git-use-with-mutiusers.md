@@ -13,6 +13,6 @@ tags: git
 
 使用下面命令设置本项目中的用户和邮箱
 
-    git config user.name javaor
+    git config user.name zhaohongxuan
     git config user.email hxzhenu@gmail.com
 

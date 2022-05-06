@@ -56,4 +56,4 @@ i3wm的所有窗口都平铺在桌面上，可以按照你的需求平铺或堆�
 关于i3wm的配置，就不写太多了，就推荐一个视频教程就够了
 教程地址：[i3wm configuration](https://www.youtube.com/watch?v=j1I63wGcvU4&list=PL5ze0DjYv5DbCv9vNEzFmP6sU7ZmkGzcf
 )
-附上我的配置文件地址：https://github.com/javaor/dot_files/tree/master/i3
+附上我的配置文件地址：https://github.com/zhaohongxuan/dot_files/tree/master/i3
