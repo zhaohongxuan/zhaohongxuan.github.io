@@ -1,5 +1,7 @@
 
-## Hank's Blog ![Build Status](https://github.com/zhaohongxuan/blog_source/actions/workflows/deploy.yml/badge.svg?branch=gh-pages)
+## Hank's Blog 
+[![CI](https://github.com/zhaohongxuan/zhaohongxuan.github.io/actions/workflows/deploy.yml/badge.svg)](https://github.com/zhaohongxuan/zhaohongxuan.github.io/actions/workflows/deploy.yml)
+[![pages-build-deployment](https://github.com/zhaohongxuan/zhaohongxuan.github.io/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/zhaohongxuan/zhaohongxuan.github.io/actions/workflows/pages/pages-build-deployment)
 
 [Hank's Blog](https://zhaohongxuan.github.io) is a based github page blog powered by [Hexo](https://github.com/hexojs/hexo), and hexo is a fast, simple & powerful blog framework, powered by Node.js.
 
