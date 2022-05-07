@@ -7,15 +7,15 @@ category: obsidian
 
 ## 背景
 
-Obsidian目前是我的主力笔记软件，Hexo是我的Github Pages引擎。孟子曰：
+Obsidian目前是我的主力笔记软件，`Hexo`是我的Blog的Github Pages引擎。孟子曰：
 
 > 鱼，我所欲也；熊掌，亦我所欲也。二者不可得兼。
 
 虽说二者不可兼得，但是程序员思维总是会指导我：必定有一个方案可以解决这个问题，如果没有那那就创造一个。
 
-在没有Obsidian之前我写Blog的流程是直接在VSCode中打开`blog_source`文件夹，然后编辑md文件，提交到Github然后自动生成Github Pages.
+在没有Obsidian之前我写Blog的流程是直接在VSCode中打开`zhaohongxuan.github.io`文件夹，然后编辑md文件，提交到Github然后自动生成Github Pages.
 
-在使用Obsidian之后我会现在Obsidian中建立相关的页面，然后编辑完成之后copy到blog_source文件夹，提交到github，这就导致了一个心智负担：每次都得做重复的工作，copy文件，然后提交代码，间接导致了我不想写Blog（逃。
+在使用Obsidian之后我会现在Obsidian中建立相关的页面，然后编辑完成之后copy到`zhaohongxuan.github.io`文件夹，提交到github, 这就导致了一个心智负担：每次都得做重复的工作，copy文件，然后提交代码，间接导致了我不想写Blog（逃。
 
 如何才能在愉快的一边在Obsidian里写笔记一边还能无缝发布Blog呢？
 
@@ -35,16 +35,18 @@ Obsidian目前是我的主力笔记软件，Hexo是我的Github Pages引擎。�
 如果要覆盖是更新，记得要加上`--delete` <sup>2</sup>
 
 ```shell
-rsync -avu --delete ~/Library/Mobile\ Documents/iCloud~md~obsidian/Documents/xuan/Blog/ ~/VSCodeProjects/blog_source/source/_posts/
+rsync -avu --delete ~/Library/Mobile\ Documents/iCloud~md~obsidian/Documents/xuan/Blog/ ~/VSCodeProjects/zhaohongxuan.github.io/source/_posts/
 ```
 
 ## 将变化的post提交到github
 
 这一步需要进入到Github Page的目录，我这里用的是Hexo blog，然后添加所有的md文件，提交到Github
 ```shell
-cd ~/VSCodeProjects/blog_source/source/_posts/
-git add *.md 
-git commit -m "Commit from Obsidian" 
+cd ~/VSCodeProjects/zhaohongxuan.github.io/
+git checkout src --force
+cd source/_posts
+git add .
+git commit -m "Commit from Obsidian"
 git push
 
 ```
@@ -60,9 +62,8 @@ git push
 
 ```shell
 #!/bin/sh
-#!/bin/sh
-rsync -avu --delete ~/Library/Mobile\ Documents/iCloud~md~obsidian/Documents/xuan/Blog/ ~/VSCodeProjects/blog_source/source/_posts/
-cd /VSCodeProjects/blog_source
+rsync -avu --delete ~/Library/Mobile\ Documents/iCloud~md~obsidian/Documents/xuan/Blog/ ~/VSCodeProjects/zhaohongxuan.github.io/source/_posts/
+cd ~/VSCodeProjects/zhaohongxuan.github.io
 hexo server
 open 'http://localhost:4000'
 
@@ -75,8 +76,8 @@ open 'http://localhost:4000'
 将脚本写入到一个sh文件里，`sync-commit-obsidian-posts.sh` 然后存放在一个目录里，我这里存放在`~/Developer/scripts/`下面
 ```bash
 #!/bin/sh
-rsync -avu --delete ~/Library/Mobile\ Documents/iCloud~md~obsidian/Documents/xuan/Blog/ ~/VSCodeProjects/blog_source/source/_posts/
-cd ~/VSCodeProjects/blog_source/source/_posts/
+rsync -avu --delete ~/Library/Mobile\ Documents/iCloud~md~obsidian/Documents/xuan/Blog/ ~/VSCodeProjects/zhaohongxuan.github.io/source/_posts/
+cd ~/VSCodeProjects/zhaohongxuan.github.io/source/_posts/
 git add .
 git commit -m "Commit from Obsidian"
 git push
