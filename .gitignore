@@ -7,3 +7,4 @@ public/
 .deploy*/
 .idea
 .ffs_db
+package-lock.json

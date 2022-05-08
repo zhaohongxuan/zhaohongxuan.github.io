@@ -3,7 +3,11 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "build": "hexo generate"
+    "draft": "hexo new draft \"Title\"",
+    "clean": "hexo clean",
+    "start": "hexo clean & hexo server -l -p 4000",
+    "build": "hexo clean & hexo generate",
+    "deploy": "bash scripts/hexo_deploy.sh"
   },
   "hexo": {
     "version": "6.1.0"
@@ -19,6 +23,7 @@
     "hexo-generator-searchdb": "^1.0.3",
     "hexo-generator-sitemap": "^3.0.1",
     "hexo-generator-tag": "^0.2.0",
+    "hexo-next-darkmode": "^0.1.8",
     "hexo-renderer-ejs": "^2.0.0",
     "hexo-renderer-marked": "^5.0.0",
     "hexo-renderer-stylus": "^0.3.1",
