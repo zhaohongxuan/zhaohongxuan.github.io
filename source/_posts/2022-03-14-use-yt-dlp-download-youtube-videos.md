@@ -1,7 +1,7 @@
 ---
 title: 使用Yt-dlp高效下载Youtube的视频
 date: 2022-03-14 23:45:29
-tags: 命令行
+tags: tools/dlp
 category: 工具
 ---
 

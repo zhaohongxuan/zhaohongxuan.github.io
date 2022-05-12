@@ -1,7 +1,7 @@
 ---
 title: 10款插件让你的Obsidian更加好用
 date: 2022-05-05 13:35:58
-tags: obsidian 写作工具
+tags: tools/obsidian
 category: obsidian
 ---
 Obsidian 是一款非常优秀的`双链笔记`软件，用它可以很方便的来管理自己的笔记，打造自己的数字花园（Digital Garden），虽然和Roam等纯粹的Outliner型笔记不太一样，它基于纯文本md文件，且支持文件夹，给了一些用户选择的自由，最重要的是启动速度很快（特别是和Notion相比，虽然是基于Electron的，不知道用了什么黑魔法）

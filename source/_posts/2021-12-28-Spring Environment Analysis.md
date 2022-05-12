@@ -1,10 +1,7 @@
 ---
-title: Spring Environment 源码分析
+title: Spring Environment源码分析
 date: 2021-12-28 17:08:10
-tag: 
-	- spring
-	- java
-	- 源码分析
+tag: spring java
 category: 源码分析
 ---
 
@@ -85,7 +82,7 @@ Manipulating property sources
 
 ConfigurableEnvironment提供两大功能，设置profile和操作委托对象[[Spring PropertySource]] 来实现对Property的操作
 
-
+[![pages-build-deployment](https://github.com/zhaohongxuan/zhaohongxuan.github.io/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/zhaohongxuan/zhaohongxuan.github.io/actions/workflows/pages/pages-build-deployment)
 
 
 ### AbstractEnvironment
