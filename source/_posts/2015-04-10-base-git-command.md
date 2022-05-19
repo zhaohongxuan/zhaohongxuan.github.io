@@ -3,7 +3,7 @@ layout: post
 title:  "Git常见命令!"
 date: 2015-04-10
 category: 版本控制
-tags: git
+tags: #tools/git
 ---
 ## Git基本操作命令
 ### 创建Git版本仓库
