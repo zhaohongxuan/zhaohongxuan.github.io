@@ -2,7 +2,7 @@
 layout: post
 title: Spring MVC源码探究
 date: 2016-04-06
-tags: [spring ,java]
+tags: [java/spring]
 category: spring框架
 ---
 

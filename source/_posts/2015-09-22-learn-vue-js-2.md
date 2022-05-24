@@ -4,7 +4,7 @@ title:  "vue.js学习笔记（二）"
 keywords: "vue.jss"
 date: 2015-09-22
 category: javascript
-tags: js
+tags: Coding/javascript/Vue
 ---
 
 继续上一篇文章，中间耽误了一个多星期，去面试和复习以前的代码，继续愉快的的vue.js学习之旅 :)...

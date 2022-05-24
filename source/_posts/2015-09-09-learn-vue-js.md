@@ -4,7 +4,7 @@ title:  "vue.js学习笔记（一）"
 keywords: "vue.jss"
 date: 2015-09-09
 category: javascript
-tags: js
+tags: Coding/javascript/Vue
 ---
 
 ## 简介

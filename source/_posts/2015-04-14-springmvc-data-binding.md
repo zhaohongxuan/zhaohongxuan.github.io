@@ -3,7 +3,7 @@ layout: post
 title: "Spring MVC 数据类型绑定"
 date: 2015-04-14
 category: spring框架
-tags: [spring]
+tags: [java/spring]
 ---
 今天遇到一个问题，使用Spring MVC 从页面传递一个用户`List`到Controller，然后再后台解析List得到多个用户对象，在网上搜了很多答案感觉都不行,
 后来调试代码发现，最`关键`在于:List需要绑定在对象(ActionForm),直接写在request-mapping函数的参数是不行的,更重要的一点是要创建对象(ArrayList)。

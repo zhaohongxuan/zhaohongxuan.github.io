@@ -1,11 +1,8 @@
 ---
 title: 微信读书Cookie自动延期机制分析
 date: 2022-05-16 12:57:00
-tags: 
-	- obsidian
-	- 微信读书
-	- cookie
-category: 前端技术
+tags: [obsidian,微信读书,cookie]
+category: Obsidian微信读书插件
 ---
 
 >HTTP Cookie（也叫 Web Cookie 或浏览器 Cookie）是服务器发送到用户浏览器并保存在本地的一小块数据，它会在浏览器下次向同一服务器再发起请求时被携带并发送到服务器上。通常，它用于告知服务端两个请求是否来自同一浏览器，如保持用户的登录状态。Cookie 使基于[无状态](https://developer.mozilla.org/en-US/docs/Web/HTTP/Overview#http_is_stateless_but_not_sessionless)的HTTP协议记录稳定的状态信息成为了可能。
