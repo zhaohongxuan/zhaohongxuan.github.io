@@ -7,7 +7,7 @@ category: Obsidian微信读书插件
 
 ## 背景
 
-前几天写了个Obsidian微信读书的插件[GitHub - zhaohongxuan/obsidian-weread-plugin](https://github.com/zhaohongxuan/obsidian-weread-plugin)，在B站上发了一个视频[学了3天typescript写了一个微信读书的Obsidian插件_哔哩哔哩_bilibili](https://www.bilibili.com/video/BV1f34y1h7jk#reply114024637264)，最初版本是需要手动从控制台复制 Cookie设置到设置界面才能使用的，很多B站网友给我私信说获取Cookie有问题，虽然在readme里已经写的很清楚了，但是对小白来说可能这也是个比较困难的步骤，所以我在想是否可以实现二维码扫码登录呢？
+前几天写了个Obsidian微信读书的插件[GitHub - zhaohongxuan/obsidian-weread-plugin](https://github.com/zhaohongxuan/obsidian-weread-plugin)，在B站上发了一个视频[学了3天typescript写了一个微信读书的Obsidian插件_哔哩哔哩](https://www.bilibili.com/video/BV1f34y1h7jk#reply114024637264)，最初版本是需要手动从控制台`复制Cookie`设置到设置界面才能使用的，很多B站网友给我私信说获取Cookie有问题，虽然在readme里已经写的很清楚了，但是对小白来说可能这也是个比较困难的步骤，所以我在想是否可以实现二维码扫码登录呢？
 
 ## 思路
 
@@ -17,6 +17,8 @@ category: Obsidian微信读书插件
 1. 展示二维码扫码框
 2. intercept 登录操作获取到Cookie
 3. 将Cookie设置到setting 中
+
+<!-- more -->
 
 ## 步骤
 
