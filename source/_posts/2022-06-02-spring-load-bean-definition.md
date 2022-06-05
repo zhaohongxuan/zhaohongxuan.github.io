@@ -1,8 +1,8 @@
 ---
-title: Spring加载BeanDefinition源码解析
+title: 【源码分析】Spring是如何加载BeanDefinition的？
 alias: Spring加载BeanDefinition源码解析
 date: 2022-06-02 07:58
-tags: [java/spring,源码解析]
+tags: [java/spring,源码分析]
 category: spring源码
 ---
 
