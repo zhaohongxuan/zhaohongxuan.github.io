@@ -2,7 +2,7 @@
 layout: post
 title: Java NIO创建步骤
 date: 2016-07-18
-tags: NIO
+tags: java/nio
 category: java
 ---
 

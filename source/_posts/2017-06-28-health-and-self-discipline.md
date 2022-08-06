@@ -2,7 +2,7 @@
 ---
 layout: post
 title: 自律与健康
-tags: [自律]
+tags: 思考
 date: 2017-06-29
 category: 散文随笔
 ---

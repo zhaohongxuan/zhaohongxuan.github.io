@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Java中的互斥锁和读写锁
-tags: [concurrent]
+tags: java/thread
 date: 2016-11-26
 category: java
 ---

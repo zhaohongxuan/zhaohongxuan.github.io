@@ -2,7 +2,7 @@
 ---
 layout: post
 title: 【程序员摄影】之世博公园
-tags: [总结]
+tags: 摄影
 date: 2018-02-06
 category: 摄影
 ---

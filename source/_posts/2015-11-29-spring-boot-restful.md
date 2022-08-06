@@ -4,7 +4,7 @@ title:  "使用Spring boot 创建RestFul服务"
 keywords: "spring"
 date: 2015-11-29
 category: spring框架
-tags: [spring, RESTFul]
+tags: [java/spring]
 ---
 
 ## 准备工作

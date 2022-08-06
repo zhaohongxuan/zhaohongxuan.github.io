@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 使用Btrace来跟踪调试代码
-tags: [java,jvm]
+tags: java/jvm
 date: 2016-09-10
 category: java
 ---

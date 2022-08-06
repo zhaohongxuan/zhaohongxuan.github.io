@@ -2,7 +2,7 @@
 layout: post
 title: Java集合中的Fail-fast和Fail-Safe机制
 date: 2016-03-23
-tags: java
+tags: java/collection
 category: java
 ---
 

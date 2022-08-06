@@ -2,7 +2,7 @@
 layout: post
 title: cURL命令的使用
 date: 2016-05-08
-tags: linux
+tags: linux/curl
 category: linux
 ---
 

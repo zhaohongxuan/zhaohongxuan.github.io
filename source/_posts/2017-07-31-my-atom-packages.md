@@ -2,7 +2,7 @@
 ---
 layout: post
 title: Atom优秀package列表（持续更新）
-tags: [总结]
+tags: tools/atom
 date: 2017-07-31
 category: 工具效率
 ---

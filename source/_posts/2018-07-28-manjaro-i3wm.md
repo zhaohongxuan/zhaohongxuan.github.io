@@ -1,9 +1,9 @@
 ---
 layout: post
 title: 使用Manjaro Linux + i3wm心得
-tags: [总结]
+tags: linux/manjaro
 date: 2018-07-28
-category: Linux
+category: linux
 ---
 
 

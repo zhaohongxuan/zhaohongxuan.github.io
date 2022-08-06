@@ -1,7 +1,7 @@
 ---
 title: React 组件参数传递
 date: 2018-09-06 00:12:36
-tags: React
+tags: javacript/react
 category: 前端开发
 ---
 

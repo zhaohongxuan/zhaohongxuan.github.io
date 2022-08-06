@@ -2,7 +2,7 @@
 ---
 layout: post
 title: 开始自己的Mac人生
-tags: [Mac]
+tags: tools/mac
 date: 2017-06-18
 category: 散文随笔
 ---

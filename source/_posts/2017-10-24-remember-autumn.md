@@ -2,7 +2,7 @@
 ---
 layout: post
 title: 秋
-tags: [总结]
+tags: 思考
 date: 2017-10-24
 category: 散文随笔
 ---

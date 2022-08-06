@@ -2,7 +2,7 @@
 ---
 layout: post
 title: intellij idea中使用javap等JDK工具
-tags: [java]
+tags: java/intellij
 date: 2017-04-17
 category: java
 ---

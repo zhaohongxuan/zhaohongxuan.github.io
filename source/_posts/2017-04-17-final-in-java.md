@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Java中final关键字总结
-tags: [java]
+tags: java
 date: 2017-04-17
 category: java
 ---

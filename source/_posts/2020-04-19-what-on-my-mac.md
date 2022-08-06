@@ -1,7 +1,7 @@
 ---
 title: 我的Mac上都有什么？
 date: 2020-04-19 23:40:29
-tags: Mac
+tags: tools/mac
 ---
 
 >  子曰： 工欲善其事必先利其器

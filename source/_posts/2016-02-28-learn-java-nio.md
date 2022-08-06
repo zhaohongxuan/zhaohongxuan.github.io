@@ -2,7 +2,7 @@
 layout: post
 title: 学习Java的NIO
 date: 2016-02-28
-tags: [java, nio]
+tags: [java/nio]
 category: java
 ---
 

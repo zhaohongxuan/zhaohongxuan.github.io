@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Kafka入门
-tags: [kafka]
+tags: java/kafka
 date: 2017-01-19
 category: java
 ---

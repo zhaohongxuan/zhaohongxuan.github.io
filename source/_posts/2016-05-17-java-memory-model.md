@@ -2,7 +2,7 @@
 layout: post
 title: Java内存模型【译】
 date: 2016-05-17
-tags: [thread, java]
+tags: java/thread
 category: java
 ---
 
