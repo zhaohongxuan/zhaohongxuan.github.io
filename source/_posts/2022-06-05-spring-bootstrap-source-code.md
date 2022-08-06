@@ -1,9 +1,9 @@
 ---
-title: 【源码分析】SpringBoot是如何启动的？
-alias: 【源码分析】SpringBoot是如何启动的？
+title: SpringBoot是如何启动的？
+alias: SpringBoot是如何启动的？
 date: 2022-06-05 07:27
 tags: [java/spring,源码分析]
-category: spring源码
+category: 源码解析
 ---
 
 ## Spring Boot 启动

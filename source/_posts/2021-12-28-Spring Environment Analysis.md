@@ -1,8 +1,8 @@
 ---
-title: 【源码分析】Spring Environment体系分析
+title: Spring Environment体系分析
 date: 2021-12-28 17:08:10
 tag: [java/spring,源码分析]
-category: spring源码
+category: 源码解析
 ---
 
 ## Spring Environment 体系

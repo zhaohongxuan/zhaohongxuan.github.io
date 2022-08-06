@@ -1,9 +1,9 @@
 ---
-title: 【源码分析】Spring是如何加载BeanDefinition的？
+title: Spring是如何加载BeanDefinition的？
 alias: Spring加载BeanDefinition源码解析
 date: 2022-06-02 07:58
 tags: [java/spring,源码分析]
-category: spring源码
+category: 源码解析
 ---
 
 Spring Bean生命周期中，BeanDefinition是最重要的部分，在初始化和实例化Bean之前，首先要把所有的需要Spring管理的Bean对应的BeanDefinition加载到Spring容器中，这一步非常关键，因为BeanDefinition是Bean关联的元数据，这一篇文章就以`AnnotationConfigApplicationContext`来分析一下Spring容器是如何加载BeanDefinition的。
