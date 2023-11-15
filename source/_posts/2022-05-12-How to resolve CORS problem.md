@@ -2,7 +2,7 @@
 title: 使用Middle Server解决浏览器CORS跨域问题
 date: 2022-05-12 11:46:00
 tags: [obsidian,cors,http,midderServer]
-category: Obsidian微信读书插件
+category: obsidian
 ---
 
 ## 问题产生

@@ -2,7 +2,7 @@
 title: 微信读书Obsidian实现二维码扫描登录
 date: 2022-05-24 08:06
 tags: [obsidian,二维码登录,electron,BrowserWindow]
-category: Obsidian微信读书插件
+category: obsidian
 ---
 
 ## 背景
