@@ -1,6 +1,6 @@
 ---
 title: 在Obsidian中写Hexo Blog
-date: 2023-04-03 18:45:29
+date: 2022-05-03 18:45:29
 tags: linux/rsync obsidian
 category: obsidian
 ---
