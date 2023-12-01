@@ -714,11 +714,11 @@ clarity_analytics: # <project_id>
 # Show number of visitors of each article.
 # You can visit https://www.leancloud.cn to get AppID and AppKey.
 leancloud_visitors:
-  enable: true
-  app_id: HbuWBEDfNGrqaNqXpFS8o68f-gzGzoHsz
-  app_key: dsW2t3NSphppw7HIr5zwRbKg
+  enable: false
+  app_id: ONGrpFBbBTFpXH60aqwAdKVm-gzGzoHsz
+  app_key: xZiFUAvyagbAGJOONyj3HALT
   # Required for apps from CN region
-  server_url: https://zhaohongxuan.github.io
+  server_url: https://hbuwbedf.lc-cn-n1-shared.com
   # Dependencies: https://github.com/theme-next/hexo-leancloud-counter-security
   # If you don't care about security in leancloud counter and just want to use it directly
   # (without hexo-leancloud-counter-security plugin), set `security` to `false`.
@@ -736,7 +736,7 @@ firestore:
 # Show Views / Visitors of the website / page with busuanzi.
 # For more information: http://ibruce.info/2015/04/04/busuanzi/
 busuanzi_count:
-  enable: false
+  enable: true
   total_visitors: true
   total_visitors_icon: fa fa-user
   total_views: true
