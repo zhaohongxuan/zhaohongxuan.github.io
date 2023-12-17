@@ -137,7 +137,8 @@ export url='https://gh.jwsc.eu.org/master' && sh -c "$(curl -kfsSl $url/install.
 如果你买的是现成的机场的话，一般会有clash订阅的地址，copy粘贴到里面即可。
 ![image.png](https://cdn.jsdelivr.net/gh/zhaohongxuan/picgo@master/20231217080551.png)
 
-如果是自己搭建的V2ray的话，需要生成订阅链接，把其他协议如ss，ssr，vmess等转换为clash，有很多开源工具可以使用，这里笔者使用的是： https://convert.imgki.com/
+
+如果是自己搭建的V2ray的话，需要生成订阅链接，把其他协议如ss，ssr，vmess等转换为clash，可以使用开源工具[sub-web](https://github.com/CareyWang/sub-web)自己搭建，也可以使用别人搭建的公益网站，，**注意⚠️**：使用第三方的转换工具可能会导致节点泄漏，这里笔者使用公益网站的是：https://convert.imgki.com/
 
 使用方法很简单，把vmess协议的链接放进去，然后点击生成订阅，剩下的可以上一步一样。
 ![image.png](https://cdn.jsdelivr.net/gh/zhaohongxuan/picgo@master/20231217081026.png)
