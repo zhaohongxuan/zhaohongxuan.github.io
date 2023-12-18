@@ -7,9 +7,12 @@ tags:
   - Clash
   - ShellClash
 category: 科学上网
+cover: https://cdn.jsdelivr.net/gh/zhaohongxuan/picgo@master/20231217075829.png
 ---
 
 一直想在家中实现全局科学上网，这样在家里就不需要一直开着各种客户端了，一方面是每个设备科学上网的客户端都还不一样，存在重复配置，另一方面，客户端也会加快电池的消耗，本来打算投资软路由或者旁路由的，经过一番搜索发现小米的AX1800路由器是基于openwrt的，可以通过[ShellClash项目](https://github.com/juewuy/ShellCrash/blob/master/README_CN.md)在不影响原系统的情况下实现科学上网，这篇文章记录一下安装的经过，理论上所有的openwrt的路由器都可以安装，只要搜索自己路由器的型号，查找ssh登录的方法就行了。
+
+<!-- more-->
 
 ### 固件准备
 
@@ -18,7 +21,8 @@ category: 科学上网
 在路由器的系统状态页点击：手动升级，然后选择下载的固件，进行降级。
 ![image.png](https://cdn.jsdelivr.net/gh/zhaohongxuan/picgo@master/20231217074805.png)
 
-<!-- more-->
+
+
 ### 开启ssh并设置root密码
 
 路由器降级成功之后，在路由器管理界面，打开Chrome控制台，将下面的脚本粘贴进去，

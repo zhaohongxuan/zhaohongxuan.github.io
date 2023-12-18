@@ -3,8 +3,11 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
+
 title: Hank's Blog
 subtitle: Love life, love coding
+avatar: https://avatars.githubusercontent.com/u/8613196?v=4
+
 description: 编程/跑步/写作
 author: Hank Zhao
 language: zh-CN
@@ -59,7 +62,7 @@ pagination_dir: page
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: next
+theme: stellar
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
