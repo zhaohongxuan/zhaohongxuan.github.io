@@ -25,6 +25,7 @@ async function daily_poem(tp) {
   
 module.exports = daily_poem;
 ```
+代码中对cite的位置做了调整，默认是向左对齐的，我改成了向右对齐，如果不喜欢的，可以手动修改。
 
 ### 使用脚本
 
