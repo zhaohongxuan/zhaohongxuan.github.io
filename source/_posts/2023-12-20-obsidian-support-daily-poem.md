@@ -7,9 +7,7 @@ tags:
 category: 效率工具
 ---
 
-一直使用Templater的Quote功能，使用方法也很简单，直接使用`<% tp.web.daily_quote() %>` ，但是默认调用的接口是：，返回的英文的名言，如果想要其他的内容，比如中文的名言或者每日诗词等就没法做到。
-
-好在Templater的作者还留了一个口子：用户脚本，用户可以自己按照[CommomJS](https://flaviocopes.com/commonjs/)的规范来编写自己的脚本，文档参考这里：[Templater User function](https://silentvoid13.github.io/Templater/user-functions/script-user-functions.html)
+一直使用Templater的Quote功能，使用方法也很简单，直接使用`<% tp.web.daily_quote() %>` ，但是默认调用的接口是：https://api.quotable.io, 返回的英文的名言，如果想要中文的名言或者每日诗词等就没法做到。 好在Templater的作者还留了一个口子：用户脚本，用户可以自己按照[CommomJS](https://flaviocopes.com/commonjs/)的规范来编写自己的脚本，文档参考这里：[Templater User function](https://silentvoid13.github.io/Templater/user-functions/script-user-functions.html)，这里需要注意的是：**不支持第三方node module！！**
 
 <!-- more -->
 
