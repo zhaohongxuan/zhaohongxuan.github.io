@@ -29,7 +29,7 @@
     "hexo-renderer-stylus": "^0.3.1",
     "hexo-server": "^0.3.2",
     "hexo-symbols-count-time": "^0.4.4",
-    "hexo-theme-next": "^8.11.1",
+    "hexo-theme-next": "^8.19.1",
     "hexo-word-counter": "^0.0.3"
   }
 }
