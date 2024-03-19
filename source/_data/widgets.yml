@@ -1,12 +1,19 @@
 welcome:
   layout: markdown
-  title: 欢迎欢迎
   linklist: # 与 linklist 组件写法相同
-    columns: 1 
+    columns: 4
     items:
-      - icon:
-        title: 
-        url:
-  content: |
-    欢迎使用 [Stellar](https://github.com/xaoxuu/hexo-theme-stellar/) 主题，下面是您的入门指南，祝您使用愉快！
-  src: # 可以设置外部 md 文件链接
+      - icon: '<i class="fa-brands fa-github"></i>'
+        url:  https://github.com/zhaohongxuan
+      - icon: '<i class="fa-brands fa-x-twitter"></i>'
+        url: https://x.com/hank_zhao
+      - icon: '<i class="fa-solid fa-person-running"></i>'
+        url: '/workouts'
+      - icon: '<i class="fa-solid fa-square-rss"></i>'
+        url: /atom.xml
+  content: | 
+    魔都程序员，后端为业，也会写一些前端，喜欢命令行、喜欢vim；
+    喜欢跑步，跑步是习惯和日常。
+    喜欢骑行，大学的时候经常骑着山地车在各个城市跑。
+    喜欢读书，偏爱历史、哲学多一点；
+    喜欢写作，水平不咋样，笔记工具为Obsdian，正在构建第二大脑；

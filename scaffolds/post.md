@@ -2,6 +2,6 @@
 title: {{ title }}
 date: {{ date }}
 cover:
-categories:
-tags:
+categories: []
+tags: []
 ---

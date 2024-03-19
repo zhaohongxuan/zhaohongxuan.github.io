@@ -5,36 +5,34 @@ preconnect:
 
 inject:
   head:
-    - <link rel="apple-touch-icon" sizes="180x180" href="/assets/xaoxuu/favicon/apple-touch-icon.png">
-    - <link rel="icon" type="image/png" sizes="32x32" href="/assets/xaoxuu/favicon/favicon-32x32.png">
-    - <link rel="icon" type="image/png" sizes="16x16" href="/assets/xaoxuu/favicon/favicon-16x16.png">
-    - <link rel="manifest" href="/assets/xaoxuu/favicon/site.webmanifest">
     - <link rel="shortcut icon" href="/assets/xaoxuu/favicon/favicon.ico">
     - <meta name="theme-color" content="#f8f8f8">
     - <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/lxgw-wenkai-screen-webfont/1.7.0/style.min.css" media="all" />
+    - <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.2/css/brands.min.css" rel="stylesheet" media="all">
+    - <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.2/css/all.css" rel="stylesheet">
 
-menubar:
-  items: 
-    - id: post
-      theme: '#1BCDFC'
-      icon: solar:documents-bold-duotone
-      title: 博客
-      url: /
-    - id: tags
-      theme: '#FA6400'
-      icon: solar:planet-bold-duotone
-      title: Tags
-      url: /tags/
-    - id: archives
-      theme: '#3DC550'
-      icon: solar:notebook-bookmark-bold-duotone
-      title: 归档
-      url: /archives/
-    - id: about
-      theme: '#F44336'
-      icon: solar:chat-square-like-bold-duotone
-      title: 关于
-      url: /about/
+# menubar:
+#    items: 
+#      - id: post
+#        theme: '#1BCDFC'
+#        icon: solar:documents-bold-duotone
+#        title: 博客
+#        url: /
+#      - id: projects
+#        theme: '#3DC550'
+#        icon: solar:notebook-bookmark-bold-duotone
+#        title: 归档
+#        url: /projects/
+#      - id: workouts
+#        theme: '#FA6400'
+#        icon: solar:planet-bold-duotone
+#        title: 运动
+#        url: /workouts/
+#      - id: about
+#        theme: '#F44336'
+#        icon: solar:chat-square-like-bold-duotone
+#        title: 关于
+#        url: /about/
 
 site_tree:
   home:
@@ -47,6 +45,7 @@ site_tree:
     menu_id: topic
 
 article:
+  auto_cover: false
   share: [wechat, weibo, email, link]
 
 
@@ -67,19 +66,3 @@ comments:
   service: utterances
   utterances:
     repo: zhaohongxuan/zhaohongxuan.github.io
-
-
-footer:
-  social:
-    github:
-      icon: '<img src="/assets/placeholder/social/08a41b181ce68.svg"/>'
-      url: https://
-    music:
-      icon: '<img src="/assets/placeholder/social/3845874.svg"/>'
-      url: https://
-    unsplash:
-      icon: '<img src="/assets/placeholder/social/3616429.svg"/>'
-      url: https://
-    comments:
-      icon: '<img src="/assets/placeholder/social/942ebbf1a4b91.svg"/>'
-      url: https://
