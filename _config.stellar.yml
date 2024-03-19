@@ -20,16 +20,16 @@ menubar:
       icon: solar:documents-bold-duotone
       title: 博客
       url: /
-    - id: archives　
-      theme: '#3DC550'
-      icon: solar:notebook-bookmark-bold-duotone
-      title: 归档
-      url: /archives/
     - id: tags
       theme: '#FA6400'
       icon: solar:planet-bold-duotone
       title: Tags
       url: /tags/
+    - id: archives
+      theme: '#3DC550'
+      icon: solar:notebook-bookmark-bold-duotone
+      title: 归档
+      url: /archives/
     - id: about
       theme: '#F44336'
       icon: solar:chat-square-like-bold-duotone
