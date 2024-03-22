@@ -23,7 +23,10 @@ site_tree:
 
 article:
   auto_cover: false
-  share: [wechat, weibo, email, link]
+  share: [wechat, x, email, link]
+  related_posts:
+    enable: true
+    title: 您可能感兴趣的文章
 
 
 style:
@@ -43,11 +46,6 @@ comments:
   service: utterances
   utterances:
     repo: zhaohongxuan/zhaohongxuan.github.io
-
-
-# footer:
-#   content: |
-
 footer:
    content: | # 支持 Markdown 格式
     本站由 [{author.name}](/) 使用 [{theme.name}]({theme.tree}) 主题创建。
