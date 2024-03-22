@@ -9,12 +9,12 @@ categories: [技术分享]
 
 Raft算法诞生与2013年，论文名字叫作《In Search of an Understandable Consensus Algorithm》，寻找一个更加容易理解的共识算法，从名字就能看出来，作者对 Paxos 的绝望。
 
+<!-- more -->
 
 ## 复制状态机
 
 在分布式系统中，为了提升高可用，一般使用基于副本的容错模型：复制状态机，复制状态机使用多个成员组成集群，成员之间数据完全一致（也称为副本），它可以保证即使在小部分（≤ (N-1)/2）节点故障的情况下，系统仍然能正常对外提供服务。
 
-<!-- more -->
 
 复制状态机一般和共识算法一起才能发挥作用，下面是一个典型的复制状态机架构。
 ![image.png](https://raw.githubusercontent.com/zhaohongxuan/picgo/master/20240112161859.png)

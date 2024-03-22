@@ -8,31 +8,8 @@ inject:
     - <link rel="shortcut icon" href="/assets/xaoxuu/favicon/favicon.ico">
     - <meta name="theme-color" content="#f8f8f8">
     - <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/lxgw-wenkai-screen-webfont/1.7.0/style.min.css" media="all" />
-    - <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.2/css/brands.min.css" rel="stylesheet" media="all">
     - <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.2/css/all.css" rel="stylesheet">
 
-# menubar:
-#    items: 
-#      - id: post
-#        theme: '#1BCDFC'
-#        icon: solar:documents-bold-duotone
-#        title: 博客
-#        url: /
-#      - id: projects
-#        theme: '#3DC550'
-#        icon: solar:notebook-bookmark-bold-duotone
-#        title: 归档
-#        url: /projects/
-#      - id: workouts
-#        theme: '#FA6400'
-#        icon: solar:planet-bold-duotone
-#        title: 运动
-#        url: /workouts/
-#      - id: about
-#        theme: '#F44336'
-#        icon: solar:chat-square-like-bold-duotone
-#        title: 关于
-#        url: /about/
 
 site_tree:
   home:
@@ -66,3 +43,14 @@ comments:
   service: utterances
   utterances:
     repo: zhaohongxuan/zhaohongxuan.github.io
+
+
+# footer:
+#   content: |
+
+footer:
+   content: | # 支持 Markdown 格式
+    本站由 [{author.name}](/) 使用 [{theme.name}]({theme.tree}) 主题创建。
+    本博客所有文章除特别声明外，均采用 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) 许可协议，转载请注明出处。
+    <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
