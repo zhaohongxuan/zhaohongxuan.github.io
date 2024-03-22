@@ -23,10 +23,14 @@ site_tree:
 
 article:
   auto_cover: false
+  auto_excerpt: 128
   share: [wechat, x, email, link]
+  category_color:
+    '技术分享': '#f44336'
   related_posts:
     enable: true
     title: 您可能感兴趣的文章
+    max_count: 3
 
 
 style:
