@@ -1,0 +1,620 @@
+
+<!DOCTYPE html><html lang="zh-CN">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="hexo-theme" content="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.27.0" theme-name="Stellar" theme-version="1.27.0">
+  
+  <meta name="generator" content="Hexo 6.3.0">
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  <link rel="preconnect" href="https://gcore.jsdelivr.net" crossorigin><link rel="preconnect" href="https://unpkg.com" crossorigin><link rel="preconnect" href="https://cdn.bootcdn.net" crossorigin>
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="theme-color" content="#f8f8f8">
+  
+  <title>RIME 输入法使用体验 - Hank's Blog</title>
+
+  
+    <meta name="description" content="磨刀不误砍柴工，输入法是平时使用频率极高的工具类软件，因此值得花时间去让这个工具变得更加趁手，在 2022 年我学会了双拼输入法（如果你还在使用全拼，我强烈建议学一下双拼，可以参考我之前写的这篇博客：也许你该试试双拼输入法 | Hank’s Blog">
+<meta property="og:type" content="article">
+<meta property="og:title" content="RIME 输入法使用体验">
+<meta property="og:url" content="https://zhaohongxuan.github.io/2024/03/20/most-powerful-input-method-rime/index.html">
+<meta property="og:site_name" content="Hank&#39;s Blog">
+<meta property="og:description" content="磨刀不误砍柴工，输入法是平时使用频率极高的工具类软件，因此值得花时间去让这个工具变得更加趁手，在 2022 年我学会了双拼输入法（如果你还在使用全拼，我强烈建议学一下双拼，可以参考我之前写的这篇博客：也许你该试试双拼输入法 | Hank’s Blog">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/zhaohongxuan/picgo/master/WX20240320-185930@2x.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zhaohongxuan/picgo/master/20240122182514.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/zhaohongxuan/picgo@master/20240317165220.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/zhaohongxuan/picgo@master/20240317180116.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/zhaohongxuan/picgo@master/20240317180314.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/zhaohongxuan/picgo@master/20240317171250.png">
+<meta property="article:published_time" content="2024-03-20T17:46:30.000Z">
+<meta property="article:modified_time" content="2024-03-26T08:48:56.373Z">
+<meta property="article:author" content="Hank Zhao">
+<meta property="article:tag" content="双拼输入法">
+<meta property="article:tag" content="Rime">
+<meta property="article:tag" content="鼠须管">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/zhaohongxuan/picgo/master/WX20240320-185930@2x.png">
+  
+  
+  
+  <meta name="keywords" content="双拼输入法,Rime,鼠须管">
+
+  <!-- feed -->
+  
+    <link rel="alternate" href="/atom.xml" title="Hank's Blog" type="application/atom+xml">
+  
+
+  <link rel="stylesheet" href="/css/main.css?v=1.27.0">
+
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+
+  
+
+  <link rel="shortcut icon" href="/assets/xaoxuu/favicon/favicon.ico"><meta name="theme-color" content="#f8f8f8"><link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/lxgw-wenkai-screen-webfont/1.7.0/style.min.css" media="all" /><link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.2/css/all.css" rel="stylesheet">
+<style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.75}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}.darkmode-ignore,img{display:flex!important}.beian img{display:inline-block!important}</style></head>
+<body>
+
+<div class="l_body s:aa content tech" id="start" layout="post" ><aside class="l_left"><div class="leftbar-container">
+
+
+<header class="header"><div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="https://avatars.githubusercontent.com/u/8613196?v=4" onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a><a class="title" href="/"><div class="main" ff="title">Hank's Blog</div><div class="sub normal cap">做点有趣的事情</div><div class="sub hover cap" style="opacity:0"> 编程/跑步/写作</div></a></div></header>
+
+<div class="nav-area">
+<div class="search-wrapper" id="search-wrapper"><form class="search-form"><a class="search-button" onclick="document.getElementById(&quot;search-input&quot;).focus();"><svg t="1705074644177" viewBox="0 0 1025 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1560" width="200" height="200"><path d="M1008.839137 935.96571L792.364903 719.491476a56.783488 56.783488 0 0 0-80.152866 0 358.53545 358.53545 0 1 1 100.857314-335.166073 362.840335 362.840335 0 0 1-3.689902 170.145468 51.248635 51.248635 0 1 0 99.217358 26.444296 462.057693 462.057693 0 1 0-158.255785 242.303546l185.930047 185.725053a51.248635 51.248635 0 0 0 72.568068 0 51.248635 51.248635 0 0 0 0-72.978056z" p-id="1561"></path><path d="M616.479587 615.969233a50.428657 50.428657 0 0 0-61.498362-5.534852 174.655348 174.655348 0 0 1-177.525271 3.484907 49.403684 49.403684 0 0 0-58.833433 6.76482l-3.074918 2.869923a49.403684 49.403684 0 0 0 8.609771 78.10292 277.767601 277.767601 0 0 0 286.992355-5.739847 49.403684 49.403684 0 0 0 8.404776-76.667958z" p-id="1562"></path></svg></a><input type="text" class="search-input" id="search-input" placeholder="站内搜索"></form><div id="search-result"></div><div class="search-no-result">没有找到内容！</div></div>
+
+
+<nav class="menu dis-select"></nav>
+</div>
+<div class="widgets">
+
+
+<widget class="widget-wrapper post-list"><div class="widget-header dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><a class="item title" href="/2016/04/06/spring-mvc-source-code/"><span class="title">Spring MVC源码探究</span></a><a class="item title" href="/2016/05/08/how-use-curl/"><span class="title">cURL命令的使用</span></a><a class="item title" href="/2016/05/17/java-memory-model/"><span class="title">Java内存模型【译】</span></a><a class="item title" href="/2016/06/02/java-skill-tree/"><span class="title">Java工程师（后端）技能树</span></a><a class="item title" href="/2016/07/18/java-nio-start/"><span class="title">Java NIO创建步骤</span></a><a class="item title" href="/2016/08/22/list-group-by-guava/"><span class="title">Java List实现group by</span></a><a class="item title" href="/2016/09/10/use-btrace-to-trace-java-program/"><span class="title">使用Btrace来跟踪调试代码</span></a><a class="item title" href="/2016/11/26/lock-in-java/"><span class="title">Java中的互斥锁和读写锁</span></a><a class="item title" href="/2017/01/11/art-of-thinking-clearly/"><span class="title">清醒思考的艺术</span></a><a class="item title" href="/2017/01/19/simple-kafka-example/"><span class="title">Kafka入门</span></a></div></widget>
+</div>
+
+</div></aside><div class="l_main" id="main">
+
+
+
+
+
+<div class="article banner top">
+  <div class="content">
+    <div class="top bread-nav footnote"><div class="left"><div class="flex-row" id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a>
+<span class="sep"></span><a class="cap breadcrumb" href="/">文章</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/%E5%B7%A5%E5%85%B7%E6%95%88%E7%8E%87/">工具效率</a></div>
+<div class="flex-row" id="post-meta"><span class="text created">发布于：<time datetime="2024-03-20T17:46:30.000Z">2024-03-20</time></span><span class="sep updated"></span><span class="text updated">更新于：<time datetime="2024-03-26T08:48:56.373Z">2024-03-26</time></span></div></div></div>
+    
+    <div class="bottom only-title">
+      
+      <div class="text-area">
+        <h1 class="text title"><span>RIME 输入法使用体验</span></h1>
+        
+      </div>
+    </div>
+    
+  </div>
+  </div><article class="md-text content"><p>磨刀不误砍柴工，输入法是平时<strong>使用频率极高</strong>的工具类软件，因此值得花时间去让这个工具变得更加趁手，在 2022 年我学会了双拼输入法（如果你还在使用全拼，我强烈建议学一下双拼，可以参考我之前写的这篇博客：<a href="https://zhaohongxuan.github.io/2023/06/30/how-i-learn-shuang-pin/">也许你该试试双拼输入法 | Hank’s Blog</a></p>
+<span id="more"></span>
+
+<p>我一直用的是 macOS 系统自带的双拼输入法，今年年初看到很多 X 友都强烈推荐 RIME输入法，我决定使用这个开源的输入法，使用至今已经3个多月了，这篇文章就来总结一下我的使用体验。<br>这篇文章只是我的体验，不会详细介绍 RIME 输入法的详细功能，更详细的配置可以查官方文档，希望能对你使用输入法产生一些启发。<br><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://raw.githubusercontent.com/zhaohongxuan/picgo/master/WX20240320-185930@2x.png" alt="image.png"></p>
+<h2 id="为什么是RIME？"><a href="#为什么是RIME？" class="headerlink" title="为什么是RIME？"></a>为什么是RIME？</h2><ul>
+<li>RIME是一个高度定制的输入法，意味着它非常的自由。</li>
+<li>它是基于 yaml 配置的，没有GUI，因此需要你有一些程序基础和耐心才能配置。</li>
+<li>强大的拓展系统，可以使用 lua 实现自定义功能。</li>
+<li>体积小巧，无须联网，没有隐私问题。</li>
+</ul>
+<p>基于上面这些对于一个程序员来说完全不是问题，而且是优势，因此我选择使用它来作为我的输入法再好不过了。<br>当然，如果你对输入法没有感受到痛点，我建议还是使用成品输入法，现在关闭这篇文章还来得及，至少现在来说，支持双拼的<strong>微信输入法</strong>已经足够好用了（除去隐私问题）。</p>
+<h2 id="基础配置"><a href="#基础配置" class="headerlink" title="基础配置"></a>基础配置</h2><p>在Mac平台的一个比较受欢迎的实现是 Squirrel 输入法，中文又称鼠须管，别担心配置文件是在各个平台通用的，因此只需要维护一个自己的一套输入法配置就好了，所有平台都可以共享。</p>
+<p>强烈建议不要从头开始写一份配置，目前网络上友有很多鼠须管配置文件，我使用的是<a target="_blank" rel="noopener" href="https://github.com/Mintimate/oh-my-rime">mint-rime</a>，也成为oh-my-rime，你也可以基于其他的配置文件来二次配置。</p>
+<p>薄荷拼音的基本配置可以参考这里：<a target="_blank" rel="noopener" href="https://www.mintimate.cc/">oh-my-rime Input Method | Mint Pinyin</a>，讲的可以说是非常细致了。</p>
+<h3 id="安装配置"><a href="#安装配置" class="headerlink" title="安装配置"></a>安装配置</h3><h4 id="下载安装"><a href="#下载安装" class="headerlink" title="下载安装"></a>下载安装</h4><p>直接下载配置文件zip包，解压之后放置在 <code>~/Library/Rime</code> 中，然后在菜单栏点击菜单栏【ㄓ】-【重新部署】即可完成基础配。如果是使用全拼输入法的话这里就可以正常使用了。</p>
+<p>这种方式适合大部分用户，方便快捷，后续可以使用云盘来同步配置文件。</p>
+<h4 id="软链接安装"><a href="#软链接安装" class="headerlink" title="软链接安装"></a>软链接安装</h4><p>如果是Git用户，可以fork一份配置，然后git clone到本地的项目文件夹 ，进入仓库目录，将本地目录创建软链接到到 Rime 的配置目录：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ln -s &quot;$(pwd)&quot; ~/Library/Rime</span><br></pre></td></tr></table></figure>
+
+<p>⚠️ 使用这种方式的时候要注意，如果是public repo 的话<code>custom_phrase.txt</code> 中不要放置敏感的信息。</p>
+<h2 id="进阶配置"><a href="#进阶配置" class="headerlink" title="进阶配置"></a>进阶配置</h2><p>安装完成之后一般就能使用了，但是如果要实现一些自定义的功能，需要修改配置，修改配置的方法有两种：</p>
+<ul>
+<li>直接修改原始配置：</li>
+<li>Patch 配置，<br>我建议使用第二种方式，Patch 在不影响原始配置文件的情况下来实现自定义的功能，支持覆盖配置和新增配置，后续在更新作者配置的时候更加方便，如果使用Github的话，只需要写一个Github action就可以定时同步配置了</li>
+</ul>
+<p>下面来介绍一下我Patch的一些配置，你可以做一些参考。</p>
+<h3 id="Patch-自己的输入方案"><a href="#Patch-自己的输入方案" class="headerlink" title="Patch 自己的输入方案"></a>Patch 自己的输入方案</h3><p>默认情况下，RIME使用的一般都是拼音输入法，我们可以根据自己的需求修改自己的方案，在 <code>default.yaml</code> 可以配置自己需要的输入方案<br>我自己是双拼用户，所以，在schema list中只保留了小鹤双拼</p>
+<p>我这里根据自己的需要，只保留了<code>小鹤双拼</code>的方案，设置方法很简单，新增一个 <code>default.custom.yaml</code> 中把其他的schema都删除掉，只保留double_pinyin_flypy，然后设置候选字一页为 9 个：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">patch:</span></span><br><span class="line">  <span class="attr">schema_list:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">schema:</span> <span class="string">double_pinyin_flypy</span>    <span class="comment"># 小鹤双拼</span></span><br><span class="line">  <span class="attr">menu:</span></span><br><span class="line">    <span class="attr">page_size:</span> <span class="number">9</span></span><br></pre></td></tr></table></figure>
+
+<p>你可以根据自己的需求保留相应的方案，使用的时候使用 <code>ctrl + ~</code> 切换方案。</p>
+<h3 id="Patch-自定义皮肤"><a href="#Patch-自定义皮肤" class="headerlink" title="Patch 自定义皮肤"></a>Patch 自定义皮肤</h3><p>首先要理解如何自定义皮肤，下面是鼠须管输入法皮肤每个配置项，你可以自己根据自己的喜好来定制自己的专属皮肤。<br><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://raw.githubusercontent.com/zhaohongxuan/picgo/master/20240122182514.png" alt="image.png"><br>也可以使用 Squirrel 皮肤设计软件<a target="_blank" rel="noopener" href="https://github.com/LEOYoon-Tsaw/Squirrel-Designer">GitHub - LEOYoon-Tsaw&#x2F;Squirrel-Designer: Squirrel Theme Simulator</a>来设计皮肤，目前我使用的皮肤就是这个皮肤设计软件自带的 flat 主题，我感觉非常漂亮。<br><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/zhaohongxuan/picgo@master/20240317165220.png" alt="image.png">
+　</p>
+<p>新增一个 <code>squirrel.custom.yaml</code> 配置文件用来覆盖默认的主题配置，分别patch 掉 style和preset_color_schemes字段。</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">patch:</span></span><br><span class="line">  <span class="attr">style:</span></span><br><span class="line">    <span class="comment"># 选择皮肤，亮色与暗色主题</span></span><br><span class="line">    <span class="attr">color_scheme:</span> <span class="string">flat_light</span></span><br><span class="line">    <span class="attr">color_scheme_dark:</span> <span class="string">purity_of_form_custom</span></span><br><span class="line">  <span class="attr">preset_color_schemes:</span></span><br><span class="line">    <span class="attr">flat_light:</span></span><br><span class="line">        <span class="attr">name:</span> <span class="string">&quot;&#x27;flat_light&#x27;&quot;</span></span><br><span class="line">        <span class="attr">font_face:</span> <span class="string">&quot;Helvetica&quot;</span></span><br><span class="line">        <span class="attr">font_point:</span> <span class="number">15.0</span></span><br><span class="line">        <span class="attr">candidate_list_layout:</span> <span class="string">linear</span></span><br><span class="line">        <span class="attr">text_orientation:</span> <span class="string">horizontal</span></span><br><span class="line">        <span class="attr">inline_preedit:</span> <span class="literal">false</span></span><br><span class="line">        <span class="attr">translucency:</span> <span class="literal">true</span></span><br><span class="line">        <span class="attr">mutual_exclusive:</span> <span class="literal">true</span></span><br><span class="line">        <span class="attr">corner_radius:</span> <span class="number">15.0</span></span><br><span class="line">        <span class="attr">hilited_corner_radius:</span> <span class="number">13.0</span></span><br><span class="line">        <span class="attr">border_height:</span> <span class="number">-5.0</span></span><br><span class="line">        <span class="attr">border_width:</span> <span class="number">-5.0</span></span><br><span class="line">        <span class="attr">line_spacing:</span> <span class="number">4.0</span></span><br><span class="line">        <span class="attr">spacing:</span> <span class="number">10.0</span></span><br><span class="line">        <span class="attr">alpha:</span> <span class="number">60.0</span></span><br><span class="line">        <span class="attr">shadow_size:</span> <span class="number">1.0</span></span><br><span class="line">        <span class="attr">color_space:</span> <span class="string">display_p3</span></span><br><span class="line">        <span class="attr">back_color:</span> <span class="number">0x1AFFFFFF</span></span><br><span class="line">        <span class="attr">candidate_text_color:</span> <span class="number">0xB3000000</span></span><br><span class="line">        <span class="attr">comment_text_color:</span> <span class="number">0x80333333</span></span><br><span class="line">        <span class="attr">label_color:</span> <span class="number">0xBB333333</span></span><br><span class="line">        <span class="attr">hilited_candidate_back_color:</span> <span class="number">0x7DC6C6C6</span></span><br><span class="line">        <span class="attr">hilited_candidate_text_color:</span> <span class="number">0x000000</span></span><br><span class="line">        <span class="attr">hilited_comment_text_color:</span> <span class="number">0xBF333333</span></span><br><span class="line">        <span class="attr">hilited_candidate_label_color:</span> <span class="number">0x000000</span></span><br><span class="line">        <span class="attr">preedit_back_color:</span> <span class="number">0x1A000000</span></span><br><span class="line">        <span class="attr">text_color:</span> <span class="number">0xBF323232</span></span><br><span class="line">        <span class="attr">hilited_text_color:</span> <span class="number">0xBF1A1A1A</span></span><br></pre></td></tr></table></figure>
+
+
+<p>然后重新部署就可以生效了。</p>
+<h3 id="Patch-双拼-preedit-format"><a href="#Patch-双拼-preedit-format" class="headerlink" title="Patch 双拼 preedit_format"></a>Patch 双拼 preedit_format</h3><p>默认情况下，输入双拼音节，comment框中会自动转换为全拼，但是按回车之后上屏的依然还是双拼，我感觉还是不习惯，可以把这个配置改掉，我在Github上找到了解决的方案：<a target="_blank" rel="noopener" href="https://github.com/rime/squirrel/issues/261">双拼模式下怎么能不让输入框的拼音自动展开成全拼？ · Issue #261 · rime&#x2F;squirrel · GitHub</a></p>
+<p>在 <code>double_pinyin_flypy.schema.yaml</code> 文件里，找到 translator配置项，把 preedit_format 设置为 <code>[]</code>，这样双拼就不会自动展开成全拼了。 </p>
+<p>最终结果如下：<br><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/zhaohongxuan/picgo@master/20240317180116.png" alt="image.png"></p>
+<h3 id="macOS更新托盘图标"><a href="#macOS更新托盘图标" class="headerlink" title="macOS更新托盘图标"></a>macOS更新托盘图标</h3><p><a target="_blank" rel="noopener" href="https://github.com/lewangdev/rime-ice/releases/tag/0.0.1-squirrel-system-tray-icon">Release Squirrel System Tray Icon for MacOS Ventura&#x2F;Sonoma  · lewangdev&#x2F;rime-ice · GitHub</a><br>默认的托盘图标很窄，可以参考这个连接：修改为系统输入法一样的宽图标，强迫症狂喜。</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/zhaohongxuan/picgo@master/20240317180314.png" alt="image.png"></p>
+<h2 id="配置同步"><a href="#配置同步" class="headerlink" title="配置同步"></a>配置同步</h2><p>如果在一个设备上修改了配置，如何在其他的设备上还能够正常同步？</p>
+<h3 id="同步至-iCloud"><a href="#同步至-iCloud" class="headerlink" title="同步至 iCloud"></a>同步至 iCloud</h3><p>1、配置文件里打开 <code>installation.yaml</code>，将 <code>id</code> 改为自己设备的名称，比如家里的Macbook Pro之类的。<br>2、复制下面路径代码粘贴进去，将 <code>admin</code> 替换为 Mac 管理员名称（代码里 <code>RimeSync</code> 是同步后文件夹名称，支持自定义）。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sync_dir: &quot;/Users/admin/Library/Mobile Documents/com~apple~CloudDocs/RimeSync&quot;</span><br></pre></td></tr></table></figure>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/zhaohongxuan/picgo@master/20240317171250.png" alt="image.png"></p>
+<p>更多同步的选项可以看文档：<a target="_blank" rel="noopener" href="https://www.mintimate.cc/zh/guide/deviceSync.html">多设备同步 | oh-my-rime输入法</a></p>
+<h3 id="Git-同步"><a href="#Git-同步" class="headerlink" title="Git 同步"></a>Git 同步</h3><p>上面的「软链接安装」章节已经提到了，如果使用Git管理的话，最好通过软链接的方式安装，就和正常管理一个项目一样简单。</p>
+<h2 id="手机端"><a href="#手机端" class="headerlink" title="手机端"></a>手机端</h2><p>iPhone上面可以使用【仓输入法】<a target="_blank" rel="noopener" href="https://github.com/imfuxiao/Hamster">GitHub - imfuxiao&#x2F;Hamster: librime for iOS App</a>，配置文件和电脑端的位置文件一样，只需要把配置文件复制一份到iCloud的仓输入法文件夹就可以了，然后部署就可以了。</p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/Mintimate/oh-my-rime">GitHub - Mintimate&#x2F;oh-my-rime: The Simple Config Template Of Rime By Mintimate. QQ Chat-Group: 703260572</a></li>
+<li><a target="_blank" rel="noopener" href="https://dvel.me/posts/rime-ice/">Rime 配置：雾凇拼音 - Dvel’s Blog</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/ssnhd/rime?tab=readme-ov-file">GitHub - ssnhd&#x2F;rime: Rime Squirrel 鼠须管配置文件（朙月拼音、小鹤双拼、自然码双拼）</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/iDvel/rime-ice">GitHub - iDvel&#x2F;rime-ice: Rime 配置：雾凇拼音 | 长期维护的简体词库</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/imfuxiao/Hamster">GitHub - imfuxiao&#x2F;Hamster: librime for iOS App</a></li>
+</ul>
+
+<div class="article-footer fs14">
+    <section id="license">
+      <div class="header"><span>许可协议</span></div>
+      <div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
+</div>
+    </section>
+    
+    <section id="share">
+      <div class="header"><span>分享文章</span></div>
+      <div class="body">
+        <div class="link"><input class="copy-area" readonly="true" id="copy-link" value="https://zhaohongxuan.github.io/2024/03/20/most-powerful-input-method-rime/" /></div>
+        <div class="social-wrap dis-select"><a class="social share-item wechat" onclick="util.toggle(&quot;qrcode-wechat&quot)"><img class="lazy"  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/social/b32ef3da1162a.svg" /></a><a class="social share-item email" href="mailto:?subject=RIME 输入法使用体验 - Hank's Blog&amp;body=https://zhaohongxuan.github.io/2024/03/20/most-powerful-input-method-rime/"><img class="lazy"  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/social/a1b00e20f425d.svg" /></a><a class="social share-item link" onclick="util.copy(&quot;copy-link&quot;, &quot;复制成功&quot;)"><img class="lazy"  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/social/8411ed322ced6.svg" /></a></div>
+        
+        <div class="qrcode" id="qrcode-wechat" style="opacity:0;height:0">
+          <img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://api.qrserver.com/v1/create-qr-code/?size=256x256&data=https://zhaohongxuan.github.io/2024/03/20/most-powerful-input-method-rime/"/>
+        </div>
+        
+      </div>
+    </section>
+    </div>
+</article>
+<div class="related-wrap" id="read-next"><section class="body"><div class="item" id="prev"></div><div class="item" id="next"><div class="note">较早文章</div><a href="/2024/02/22/raft-notes/">Raft算法笔记</a></div></section></div>
+
+<div class="related-wrap" id="related-posts">
+    <section class='header'>
+      <div class='title cap theme'>您可能感兴趣的文章</div>
+    </section>
+    <section class='body'>
+    <div class="related-posts"><a class="item" href="/2023/06/30/how-i-learn-shuang-pin/" title="也许你该试试双拼输入法"><span class="title">也许你该试试双拼输入法</span><span class="excerpt">这周最大的收获是学习了双拼输入法，而且带动了一个同事也开始学习双拼输入法了，还跟我说怎么不早告诉他😂。学习的过程也踩了不少坑，感觉有必要写出来，让后人少走弯路。
+为何入坑？最初开始学习双拼是在twitter TL上看到一条双拼的推：...</span></a><a class="item" href="/2017/07/31/my-atom-packages/" title="Atom优秀package列表（持续更新）"><span class="title">Atom优秀package列表（持续更新）</span></a></div></section></div>
+
+
+  <div class="related-wrap md-text" id="comments">
+    <section class='header cmt-title cap theme'>
+      <p>快来参与讨论吧~</p>
+
+    </section>
+    <section class='body cmt-body utterances'>
+      
+
+<svg class="loading" style="vertical-align:middle;fill:currentColor;overflow:hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2709"><path d="M832 512c0-176-144-320-320-320V128c211.2 0 384 172.8 384 384h-64zM192 512c0 176 144 320 320 320v64C300.8 896 128 723.2 128 512h64z" p-id="2710"></path></svg>
+
+<div id="utterances" repo="zhaohongxuan/zhaohongxuan.github.io" issue-term="pathname" theme="preferred-color-scheme"></div>
+
+    </section>
+  </div>
+
+
+
+<footer class="page-footer footnote"><hr><div class="text"><p>本站由 <a href="/">Hank Zhao</a> 使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.27.0">Stellar</a> 主题创建。<br>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。<br><span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span></p>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+</div></footer>
+<div class="main-mask" onclick="sidebar.dismiss()"></div></div><aside class="l_right">
+<div class="widgets">
+
+
+
+<widget class="widget-wrapper toc" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">本文目录</span><a class="cap-action" onclick="sidebar.toggleTOC()" ><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg></a></div><div class="widget-body"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E6%98%AFRIME%EF%BC%9F"><span class="toc-text">为什么是RIME？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE"><span class="toc-text">基础配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE"><span class="toc-text">安装配置</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BD%E5%AE%89%E8%A3%85"><span class="toc-text">下载安装</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BD%AF%E9%93%BE%E6%8E%A5%E5%AE%89%E8%A3%85"><span class="toc-text">软链接安装</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%9B%E9%98%B6%E9%85%8D%E7%BD%AE"><span class="toc-text">进阶配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Patch-%E8%87%AA%E5%B7%B1%E7%9A%84%E8%BE%93%E5%85%A5%E6%96%B9%E6%A1%88"><span class="toc-text">Patch 自己的输入方案</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Patch-%E8%87%AA%E5%AE%9A%E4%B9%89%E7%9A%AE%E8%82%A4"><span class="toc-text">Patch 自定义皮肤</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Patch-%E5%8F%8C%E6%8B%BC-preedit-format"><span class="toc-text">Patch 双拼 preedit_format</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#macOS%E6%9B%B4%E6%96%B0%E6%89%98%E7%9B%98%E5%9B%BE%E6%A0%87"><span class="toc-text">macOS更新托盘图标</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E5%90%8C%E6%AD%A5"><span class="toc-text">配置同步</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%8C%E6%AD%A5%E8%87%B3-iCloud"><span class="toc-text">同步至 iCloud</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Git-%E5%90%8C%E6%AD%A5"><span class="toc-text">Git 同步</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%8B%E6%9C%BA%E7%AB%AF"><span class="toc-text">手机端</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="toc-text">参考资料</span></a></li></ol></div><div class="widget-footer">
+
+<a class="top" onclick="util.scrollTop()"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 12c0-4.714 0-7.071 1.464-8.536C4.93 2 7.286 2 12 2c4.714 0 7.071 0 8.535 1.464C22 4.93 22 7.286 22 12c0 4.714 0 7.071-1.465 8.535C19.072 22 16.714 22 12 22s-7.071 0-8.536-1.465C2 19.072 2 16.714 2 12Z"/><path stroke-linecap="round" stroke-linejoin="round" d="m9 15.5l3-3l3 3m-6-4l3-3l3 3"/></g></svg><span>回到顶部</span></a></div></widget>
+</div></aside><div class='float-panel blur'>
+  <button type='button' style='display:none' class='laptop-only rightbar-toggle mobile' onclick='sidebar.rightbar()'>
+    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg>
+  </button>
+  <button type='button' style='display:none' class='mobile-only leftbar-toggle mobile' onclick='sidebar.leftbar()'>
+    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 11c0-3.771 0-5.657 1.172-6.828C4.343 3 6.229 3 10 3h4c3.771 0 5.657 0 6.828 1.172C22 5.343 22 7.229 22 11v2c0 3.771 0 5.657-1.172 6.828C19.657 21 17.771 21 14 21h-4c-3.771 0-5.657 0-6.828-1.172C2 18.657 2 16.771 2 13z"/><path id="sep" stroke-linecap="round" d="M5.5 10h6m-5 4h4m4.5 7V3"/></g></svg>
+  </button>
+</div>
+</div><div class="scripts">
+<script type="text/javascript">
+  const ctx = {
+    date_suffix: {
+      just: `刚刚`,
+      min: `分钟前`,
+      hour: `小时前`,
+      day: `天前`,
+    },
+    root : `/`,
+  };
+
+  // required plugins (only load if needs)
+  if (`local_search`) {
+    ctx.search = {};
+    ctx.search.service = `local_search`;
+    if (ctx.search.service == 'local_search') {
+      let service_obj = Object.assign({}, `{"field":"all","path":"/search.json","content":true,"sort":"-date"}`);
+      ctx.search[ctx.search.service] = service_obj;
+    }
+  }
+  const def = {
+    avatar: `https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/avatar/round/3442075.svg`,
+    cover: `https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/cover/76b86c0226ffd.svg`,
+  };
+  const deps = {
+    jquery: `https://cdn.bootcdn.net/ajax/libs/jquery/3.7.1/jquery.min.js`,
+    marked: `https://cdn.bootcdn.net/ajax/libs/marked/4.0.18/marked.min.js`
+  }
+  
+
+</script>
+
+<script type="text/javascript">
+  const utils = {
+    // 懒加载 css https://github.com/filamentgroup/loadCSS
+    css: (href, before, media, attributes) => {
+      var doc = window.document;
+      var ss = doc.createElement("link");
+      var ref;
+      if (before) {
+        ref = before;
+      } else {
+        var refs = (doc.body || doc.getElementsByTagName("head")[0]).childNodes;
+        ref = refs[refs.length - 1];
+      }
+      var sheets = doc.styleSheets;
+      if (attributes) {
+        for (var attributeName in attributes) {
+          if (attributes.hasOwnProperty(attributeName)) {
+            ss.setAttribute(attributeName, attributes[attributeName]);
+          }
+        }
+      }
+      ss.rel = "stylesheet";
+      ss.href = href;
+      ss.media = "only x";
+      function ready(cb) {
+        if (doc.body) {
+          return cb();
+        }
+        setTimeout(function () {
+          ready(cb);
+        });
+      }
+      ready(function () {
+        ref.parentNode.insertBefore(ss, before ? ref : ref.nextSibling);
+      });
+      var onloadcssdefined = function (cb) {
+        var resolvedHref = ss.href;
+        var i = sheets.length;
+        while (i--) {
+          if (sheets[i].href === resolvedHref) {
+            return cb();
+          }
+        }
+        setTimeout(function () {
+          onloadcssdefined(cb);
+        });
+      };
+      function loadCB() {
+        if (ss.addEventListener) {
+          ss.removeEventListener("load", loadCB);
+        }
+        ss.media = media || "all";
+      }
+      if (ss.addEventListener) {
+        ss.addEventListener("load", loadCB);
+      }
+      ss.onloadcssdefined = onloadcssdefined;
+      onloadcssdefined(loadCB);
+      return ss;
+    },
+
+    js: (src, opt) => new Promise((resolve, reject) => {
+      var script = document.createElement('script');
+      if (src.startsWith('/')){
+        src = ctx.root + src.substring(1);
+      }
+      script.src = src;
+      if (opt) {
+        for (let key of Object.keys(opt)) {
+          script[key] = opt[key]
+        }
+      } else {
+        // 默认异步，如果需要同步，第二个参数传入 {} 即可
+        script.async = true
+      }
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    }),
+
+    jq: (fn) => {
+      if (typeof jQuery === 'undefined') {
+        utils.js(deps.jquery).then(fn)
+      } else {
+        fn()
+      }
+    },
+    
+    onLoading: (el) => {
+      if (el) {
+        $(el).append('<div class="loading-wrap"><svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2"><path stroke-dasharray="60" stroke-dashoffset="60" stroke-opacity=".3" d="M12 3C16.9706 3 21 7.02944 21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3Z"><animate fill="freeze" attributeName="stroke-dashoffset" dur="1.3s" values="60;0"/></path><path stroke-dasharray="15" stroke-dashoffset="15" d="M12 3C16.9706 3 21 7.02944 21 12"><animate fill="freeze" attributeName="stroke-dashoffset" dur="0.3s" values="15;0"/><animateTransform attributeName="transform" dur="1.5s" repeatCount="indefinite" type="rotate" values="0 12 12;360 12 12"/></path></g></svg></div>');
+      }
+    },
+    onLoadSuccess: (el) => {
+      if (el) {
+        $(el).find('.loading-wrap').remove();
+      }
+    },
+    onLoadFailure: (el) => {
+      if (el) {
+        $(el).find('.loading-wrap svg').remove();
+        $(el).find('.loading-wrap').append('<svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path stroke-dasharray="60" stroke-dashoffset="60" d="M12 3L21 20H3L12 3Z"><animate fill="freeze" attributeName="stroke-dashoffset" dur="0.5s" values="60;0"/></path><path stroke-dasharray="6" stroke-dashoffset="6" d="M12 10V14"><animate fill="freeze" attributeName="stroke-dashoffset" begin="0.6s" dur="0.2s" values="6;0"/></path></g><circle cx="12" cy="17" r="1" fill="currentColor" fill-opacity="0"><animate fill="freeze" attributeName="fill-opacity" begin="0.8s" dur="0.4s" values="0;1"/></circle></svg>');
+        $(el).find('.loading-wrap').addClass('error');
+      }
+    },
+    request: (el, url, callback, onFailure) => {
+      let retryTimes = 3;
+      utils.onLoading(el);
+      function req() {
+        return new Promise((resolve, reject) => {
+          let status = 0; // 0 等待 1 完成 2 超时
+          let timer = setTimeout(() => {
+            if (status === 0) {
+              status = 2;
+              timer = null;
+              reject('请求超时');
+              if (retryTimes == 0) {
+                onFailure();
+              }
+            }
+          }, 5000);
+          fetch(url).then(function(response) {
+            if (status !== 2) {
+              clearTimeout(timer);
+              resolve(response);
+              timer = null;
+              status = 1;
+            }
+            if (response.ok) {
+              return response.json();
+            }
+            throw new Error('Network response was not ok.');
+          }).then(function(data) {
+            retryTimes = 0;
+            utils.onLoadSuccess(el);
+            callback(data);
+          }).catch(function(error) {
+            if (retryTimes > 0) {
+              retryTimes -= 1;
+              setTimeout(() => {
+                req();
+              }, 5000);
+            } else {
+              utils.onLoadFailure(el);
+              onFailure();
+            }
+          });
+        });
+      }
+      req();
+    },
+  };
+</script>
+
+<script>
+  const sidebar = {
+    leftbar: () => {
+      if (l_body) {
+        l_body.toggleAttribute('leftbar');
+        l_body.removeAttribute('rightbar');
+      }
+    },
+    rightbar: () => {
+      if (l_body) {
+        l_body.toggleAttribute('rightbar');
+        l_body.removeAttribute('leftbar');
+      }
+    },
+    dismiss: () => {
+      if (l_body) {
+        l_body.removeAttribute('leftbar');
+        l_body.removeAttribute('rightbar');
+      }
+    },
+    toggleTOC: () => {
+      document.querySelector('#data-toc').classList.toggle('collapse');
+    }
+  }
+</script>
+
+<!-- required -->
+<script src="/js/main.js?v=1.27.0" async></script>
+
+<!-- optional -->
+
+  <script>
+  function loadUtterances() {
+    const els = document.querySelectorAll("#comments #utterances");
+    if (els.length === 0) return;
+    els.forEach((el, i) => {
+      try {
+        el.innerHTML = '';
+      } catch (error) {
+        console.error(error);
+      }
+      var script = document.createElement('script');
+      script.src = 'https://utteranc.es/client.js';
+      script.async = true;
+      for (let key of Object.keys(el.attributes)) {
+        let attr = el.attributes[key];
+        if (['class', 'id'].includes(attr.name) === false) {
+          script.setAttribute(attr.name, attr.value);
+        }
+      }
+      el.appendChild(script);
+    });
+  }
+  window.addEventListener('DOMContentLoaded', (event) => {
+      loadUtterances();
+  });
+</script>
+
+
+
+
+<script defer>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    ctx.services = Object.assign({}, JSON.parse(`{"mdrender":{"js":"/js/services/mdrender.js"},"siteinfo":{"js":"/js/services/siteinfo.js","api":null},"ghinfo":{"js":"/js/services/ghinfo.js"},"sites":{"js":"/js/services/sites.js"},"friends":{"js":"/js/services/friends.js"},"timeline":{"js":"/js/services/timeline.js"},"fcircle":{"js":"/js/services/fcircle.js"},"weibo":{"js":"/js/services/weibo.js"},"memos":{"js":"/js/services/memos.js"}}`));
+    for (let id of Object.keys(ctx.services)) {
+      const js = ctx.services[id].js;
+      if (id == 'siteinfo') {
+        ctx.cardlinks = document.querySelectorAll('a.link-card[cardlink]');
+        if (ctx.cardlinks?.length > 0) {
+          utils.js(js, { defer: true }).then(function () {
+            setCardLink(ctx.cardlinks);
+          });
+        }
+      } else {
+        const els = document.getElementsByClassName(`ds-${id}`);
+        if (els?.length > 0) {
+          utils.jq(() => {
+            if (id == 'timeline' || 'memos' || 'marked') {
+              utils.js(deps.marked).then(function () {
+                utils.js(js, { defer: true });
+              });
+            } else {
+              utils.js(js, { defer: true });
+            }
+          });
+        }
+      }
+    }
+  });
+</script>
+
+<script>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    ctx.search = {
+      path: `/search.json`,
+    }
+    utils.js('/js/search/local-search.js', { defer: true });
+  });
+</script><script>
+  window.FPConfig = {
+    delay: 0,
+    ignoreKeywords: [],
+    maxRPS: 5,
+    hoverDelay: 25
+  };
+</script>
+<script defer src="https://cdn.bootcdn.net/ajax/libs/flying-pages/2.1.2/flying-pages.min.js"></script><script defer src="https://cdn.bootcdn.net/ajax/libs/vanilla-lazyload/17.8.4/lazyload.min.js"></script>
+<script>
+  // https://www.npmjs.com/package/vanilla-lazyload
+  // Set the options globally
+  // to make LazyLoad self-initialize
+  window.lazyLoadOptions = {
+    elements_selector: ".lazy",
+  };
+  // Listen to the initialization event
+  // and get the instance of LazyLoad
+  window.addEventListener(
+    "LazyLoad::Initialized",
+    function (event) {
+      window.lazyLoadInstance = event.detail.instance;
+    },
+    false
+  );
+  document.addEventListener('DOMContentLoaded', function () {
+    window.lazyLoadInstance?.update();
+  });
+</script><script>
+  ctx.fancybox = {
+    selector: `.timenode p>img`,
+    css: `https://cdn.bootcdn.net/ajax/libs/fancyapps-ui/5.0.22/fancybox/fancybox.min.css`,
+    js: `https://cdn.bootcdn.net/ajax/libs/fancyapps-ui/5.0.22/fancybox/fancybox.umd.min.js`
+  };
+  var selector = '[data-fancybox]:not(.error)';
+  if (ctx.fancybox.selector) {
+    selector += `, ${ctx.fancybox.selector}`
+  }
+  var needFancybox = document.querySelectorAll(selector).length !== 0;
+  if (!needFancybox) {
+    const els = document.getElementsByClassName('ds-memos');
+    if (els != undefined && els.length > 0) {
+      needFancybox = true;
+    }
+  }
+  if (needFancybox) {
+    utils.css(ctx.fancybox.css);
+    utils.js(ctx.fancybox.js, { defer: true }).then(function () {
+      Fancybox.bind(selector, {
+        hideScrollbar: false,
+        Thumbs: {
+          autoStart: false,
+        },
+        caption: (fancybox, slide) => {
+          return slide.triggerEl.alt || null
+        }
+      });
+    })
+  }
+</script><script>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    const swiper_api = document.getElementById('swiper-api');
+    if (swiper_api != undefined) {
+      utils.css(`https://unpkg.com/swiper@10.3.1/swiper-bundle.min.css`);
+      utils.js(`https://unpkg.com/swiper@10.3.1/swiper-bundle.min.js`, { defer: true }).then(function () {
+        const effect = swiper_api.getAttribute('effect') || '';
+        var swiper = new Swiper('.swiper#swiper-api', {
+          slidesPerView: 'auto',
+          spaceBetween: 8,
+          centeredSlides: true,
+          effect: effect,
+          loop: true,
+          pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+          },
+          navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+          },
+        });
+      })
+    }
+  });
+</script><script>
+  document.addEventListener('DOMContentLoaded', function () {
+    window.codeElements = document.querySelectorAll('.code');
+    if (window.codeElements.length > 0) {
+      ctx.copycode = {
+        default_text: `Copy`,
+        success_text: `Copied`,
+        toast: `复制成功`,
+      };
+      utils.js('/js/plugins/copycode.js');
+    }
+  });
+</script>
+
+
+<!-- inject -->
+
+</div></body></html>
