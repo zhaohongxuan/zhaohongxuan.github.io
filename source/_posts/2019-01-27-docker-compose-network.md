@@ -2,7 +2,7 @@
 title: 理解docker-compse中的网络连接
 date: 2019-01-29 23:21:51
 tags: Python Docker
-category: 后端开发
+category: 技术随笔
 ---
 
 读《Docker从入门到实践》

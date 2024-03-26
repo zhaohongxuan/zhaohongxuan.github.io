@@ -3,7 +3,7 @@ layout: post
 title:  "vue.js学习笔记（二）"
 keywords: "vue.jss"
 date: 2015-09-22
-category: javascript
+category: 技术随笔
 tags: Coding/javascript/Vue
 ---
 

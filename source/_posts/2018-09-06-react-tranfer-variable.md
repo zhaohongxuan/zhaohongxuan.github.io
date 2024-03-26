@@ -2,7 +2,7 @@
 title: React 组件参数传递
 date: 2018-09-06 00:12:36
 tags: javacript/react
-category: 前端开发
+category: 技术随笔
 ---
 
 ![image.png](https://upload-images.jianshu.io/upload_images/170138-94373511a5284ef8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)

@@ -6,7 +6,7 @@ tags:
   - AX1800
   - Clash
   - ShellClash
-category: 科学上网
+category: [工具效率]
 cover: https://cdn.jsdelivr.net/gh/zhaohongxuan/picgo@master/20231217075829.png
 ---
 

@@ -2,7 +2,7 @@
 title: 让Alfred3支持iterm2
 date: 2018-11-19 21:41:42
 tags: tools/iterm2
-category: Mac
+category: [工具效率]
 ---
 
 alfred设置中选择`Terminal/Shell`，Application选择custom

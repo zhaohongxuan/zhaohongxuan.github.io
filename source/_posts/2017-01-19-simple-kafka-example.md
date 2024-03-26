@@ -3,7 +3,7 @@ layout: post
 title: Kafka入门
 tags: java/kafka
 date: 2017-01-19
-category: java
+category: 技术随笔
 ---
 ## 1.环境配置
 kafka依赖zookeeper来调度，以及选举leader，因此需要先安装zookeeper

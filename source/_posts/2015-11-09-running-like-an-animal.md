@@ -3,7 +3,7 @@ layout: post
 title:  "跑在立冬边上"
 keywords: "run"
 date: 2015-11-09
-category: 杂文其他
+category: 散文随笔
 tags: 跑步
 ---
 

@@ -2,6 +2,7 @@
 title: 认识布鲁姆分类学
 date: 2023-02-05 21:25:18
 tags: [布鲁姆分类学,Bloom-Taxonomy,方法论]
+category: 散文随笔
 ---
 
 

@@ -3,7 +3,7 @@ layout: post
 title:  "Xpath语法学习"
 keywords: "xml xpath"
 date: 2015-08-11
-category: web开发
+category: 技术随笔
 tags: xml
 ---
 最近写爬虫时，需要解析`html`，有好多种选择xml文档节点的方法，先熟悉一下使用`xpath`来选取节点、解析节点

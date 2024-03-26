@@ -2,7 +2,7 @@
 title: 理解Jvm Class文件结构
 date: 2022-07-31 09:19
 tags: [jvm]
-category: 深入理解JVM
+category: 技术随笔
 ---
 # 理解Jvm Class 文件结构
 

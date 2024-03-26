@@ -3,7 +3,7 @@ layout: post
 title:  "微信OAuth2.0鉴权获取用户信息"
 keywords: "wechat"
 date: 2015-04-22
-category: 微信开发
+category: 技术随笔
 tags: wechat
 ---
 在微信开发中经常需要在网页中获取用户的基本信息，和`UnionID机制`获取用户信息的方式不同,这种方式可以得到`未关注`本微信号的人的基本信息。

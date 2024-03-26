@@ -3,7 +3,7 @@
 title: 你会使用 git zsh alias 吗？
 date: 2021-01-02 20:45:29
 tags: tools/git 
-category: linux
+category: 技术随笔
 ---
 
 

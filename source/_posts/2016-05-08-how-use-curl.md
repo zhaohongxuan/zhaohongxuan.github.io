@@ -3,7 +3,7 @@ layout: post
 title: cURL命令的使用
 date: 2016-05-08
 tags: linux/curl
-category: linux
+category: 技术随笔
 ---
 
 Linux curl命令的使用

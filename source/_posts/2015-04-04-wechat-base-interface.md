@@ -3,7 +3,7 @@ layout: post
 title:  "【微信接口学习】基础接口"
 keywords: "微信,wechat"
 date: 2015-04-04
-categories: 微信开发
+categories: 技术随笔
 tags: wechat
 ---
 ## 获取access_token

@@ -3,7 +3,7 @@
 title: 技术人如何面向晋升编程？
 date: 2021-01-28 18:45:29
 tags: 晋升
-category: 软技能
+category: 散文随笔
 ---
 这一篇文章不谈技术，以一个过来人的身份谈一谈大厂技术打工人的生存问题（逃 ，其实不仅国内大厂有这种问题，诸如Google、Facebook等国外大厂也有同样的问题 ，只要你在这个体系里面生存就一定要遵循这个规则。
 ![](https://cdn.jsdelivr.net/gh/zhaohongxuan/picgo@master/20210130162202.png)
