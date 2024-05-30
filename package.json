@@ -31,7 +31,7 @@
     "hexo-server": "^0.3.2",
     "hexo-symbols-count-time": "^0.4.4",
     "hexo-theme-next": "^8.19.1",
-    "hexo-theme-stellar": "^1.20.0",
+    "hexo-theme-stellar": "^1.28.1",
     "hexo-word-counter": "^0.0.3"
   }
 }
