@@ -1,6 +1,6 @@
 ---
 title: 使用Obsidian Dataview搭建微信读书阅读主页
-categories: [效率工具]
+categories: [工具效率]
 tags: [微信读书,obsidian]
 date: 2024-05-31 17:13:14
 ---
@@ -110,4 +110,3 @@ Obsdian的玩法很多，你可以根据自己的实际需求来进行更改，�
 - [Obsidian - Sharpen your thinking](https://obsidian.md/)
 - [GitHub - zhaohongxuan/obsidian-weread-plugin: Obsidian Weread Plugin is a plugin to sync Weread(微信读书) hightlights and annotations into your Obsidian Vault.](https://github.com/zhaohongxuan/obsidian-weread-plugin)
 - [Snippet so you can use Dataview Cards from Minimal theme in any theme - Share & showcase - Obsidian Forum](https://forum.obsidian.md/t/snippet-so-you-can-use-dataview-cards-from-minimal-theme-in-any-theme/56866/12)
-
