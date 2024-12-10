@@ -23,15 +23,13 @@
     "hexo-generator-searchdb": "^1.0.3",
     "hexo-generator-sitemap": "^3.0.1",
     "hexo-generator-tag": "^0.2.0",
-    "hexo-next-darkmode": "^0.1.8",
     "hexo-related-popular-posts": "^5.0.1",
     "hexo-renderer-ejs": "^2.0.0",
     "hexo-renderer-marked": "^5.0.0",
     "hexo-renderer-stylus": "^0.3.1",
     "hexo-server": "^0.3.2",
     "hexo-symbols-count-time": "^0.4.4",
-    "hexo-theme-next": "^8.19.1",
-    "hexo-theme-stellar": "^1.28.1",
+    "hexo-theme-stellar": "^1.29.1",
     "hexo-word-counter": "^0.0.3"
   }
 }
