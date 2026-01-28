@@ -1,0 +1,951 @@
+
+<!DOCTYPE html><html lang="zh-CN">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="hexo-theme" content="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.33.1" theme-name="Stellar" theme-version="1.33.1">
+  
+  
+  <meta name="generator" content="Hexo 6.3.0">
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  <link rel="preconnect" href="https://gcore.jsdelivr.net" crossorigin><link rel="preconnect" href="https://unpkg.com" crossorigin><link rel="preconnect" href="https://cdn.bootcdn.net" crossorigin>
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000">
+  <meta name="theme-color" content="#f9fafb">
+  <title>Spring MVC源码探究 - Hank's Blog</title>
+
+  
+    <meta name="description" content="作为一名合格的java程序员，要多深入学习一些框架，理解框架的设计的方法，背后的原理，spring mvc框架中使用了很多设计模式，比如策略模式，Spring MVC中大量使用了策略模式，像HandlerMapping接口，HandlerAdapter接口,ViewResolver接口都使用了策略模式，在执行handler和Interceptor拦截器的时候使用了责任链模式，在执行handler的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Spring MVC源码探究">
+<meta property="og:url" content="https://zhaohongxuan.github.io/2016/04/06/spring-mvc-source-code/">
+<meta property="og:site_name" content="Hank&#39;s Blog">
+<meta property="og:description" content="作为一名合格的java程序员，要多深入学习一些框架，理解框架的设计的方法，背后的原理，spring mvc框架中使用了很多设计模式，比如策略模式，Spring MVC中大量使用了策略模式，像HandlerMapping接口，HandlerAdapter接口,ViewResolver接口都使用了策略模式，在执行handler和Interceptor拦截器的时候使用了责任链模式，在执行handler的">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://avatars.githubusercontent.com/u/8613196?v=4">
+<meta property="article:published_time" content="2016-04-06T00:00:00.000Z">
+<meta property="article:modified_time" content="2026-01-28T22:53:37.435Z">
+<meta property="article:author" content="Hank Zhao">
+<meta property="article:tag" content="java&#x2F;spring">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://avatars.githubusercontent.com/u/8613196?v=4">
+  
+  
+  
+  <meta name="keywords" content="java/spring">
+
+  <!-- feed -->
+  
+    <link rel="alternate" href="/atom.xml" title="Hank's Blog" type="application/atom+xml">
+  
+
+  <link rel="stylesheet" href="/css/main.css?v=1.33.1">
+
+
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+
+  
+
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Hank Zhao","sameAs":[],"image":"https://avatars.githubusercontent.com/u/8613196?v=4"},"dateCreated":"2016-04-06T00:00:00+00:00","dateModified":"2026-01-28T22:53:37+00:00","datePublished":"2016-04-06T00:00:00+00:00","description":"作为一名合格的java程序员，要多深入学习一些框架，理解框架的设计的方法，背后的原理，spring mvc框架中使用了很多设计模式，比如策略模式，Spring MVC中大量使用了策略模式，像HandlerMapping接口，HandlerAdapter接口,ViewResolver接口都使用了策略模式，在执行handler和Interceptor拦截器的时候使用了责任链模式，在执行handler的时候会用到适配器模式等等，可以说沉淀了很多前辈的精华，想成为架构师的话，学习源码必不可少，下面就围绕着Spring MVC 的前端控制器DispatcherServlet一步一步的来学习Spring MVC的源码。\n1 web.xml中DispatcherServlet的配置web.xml中的Spring MVC的前端控制器DispatcherServlet的配置，所有后端Controller的请求都由这个DispatcherServlet分发。\n123456789101112&lt;servlet&gt;        &lt;servlet-name&gt;MySpringServlet&lt;/servlet-name&gt;        &lt;servlet-class&gt;org.springframework.web.servlet.DispatcherServlet&lt;/servlet-class&gt;        &lt;init-param&gt;            &lt;param-name&gt;contextConfigLocation&lt;/param-name&gt;            &lt;param-value&gt;classpath:spring/spring-mvc.xml&lt;/param-value&gt;        &lt;/init-param&gt;    &lt;/servlet&gt;    &lt;servlet-mapping&gt;        &lt;servlet-name&gt;MySpringServlet&lt;/servlet-name&gt;        &lt;url-pattern&gt;/&lt;/url-pattern&gt;    &lt;/servlet-mapping&gt;","headline":"Spring MVC源码探究","mainEntityOfPage":{"@type":"WebPage","@id":"https://zhaohongxuan.github.io/2016/04/06/spring-mvc-source-code/"},"publisher":{"@type":"Organization","name":"Hank Zhao","sameAs":[],"image":"https://avatars.githubusercontent.com/u/8613196?v=4","logo":{"@type":"ImageObject","url":"https://avatars.githubusercontent.com/u/8613196?v=4"}},"url":"https://zhaohongxuan.github.io/2016/04/06/spring-mvc-source-code/","keywords":"java/spring","image":[]}</script>
+  <link rel="shortcut icon" href="/assets/xaoxuu/favicon/favicon.ico"><meta name="theme-color" content="#f8f8f8"><link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/lxgw-wenkai-screen-webfont/1.7.0/style.min.css" media="all" /><link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.2/css/all.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="l_body content" id="start" layout="post" type="tech" ><aside class="l_left"><div class="sidebg"></div><div class="leftbar-container">
+
+
+<header class="header"><div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="https://avatars.githubusercontent.com/u/8613196?v=4" onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a><a class="title" href="/"><div class="main">Hank's Blog</div><div class="sub normal cap">做点有趣的事情</div><div class="sub hover cap" style="opacity:0"> 编程/跑步/写作</div></a></div></header>
+
+<div class="nav-area">
+
+<nav class="menu dis-select"></nav>
+</div>
+<div class="widgets">
+<div class="search-wrapper" id="search-wrapper"><form class="search-form"><a class="search-button" onclick="document.getElementById(&quot;search-input&quot;).focus();"><svg t="1705074644177" viewBox="0 0 1025 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1560" width="200" height="200"><path d="M1008.839137 935.96571L792.364903 719.491476a56.783488 56.783488 0 0 0-80.152866 0 358.53545 358.53545 0 1 1 100.857314-335.166073 362.840335 362.840335 0 0 1-3.689902 170.145468 51.248635 51.248635 0 1 0 99.217358 26.444296 462.057693 462.057693 0 1 0-158.255785 242.303546l185.930047 185.725053a51.248635 51.248635 0 0 0 72.568068 0 51.248635 51.248635 0 0 0 0-72.978056z" p-id="1561"></path><path d="M616.479587 615.969233a50.428657 50.428657 0 0 0-61.498362-5.534852 174.655348 174.655348 0 0 1-177.525271 3.484907 49.403684 49.403684 0 0 0-58.833433 6.76482l-3.074918 2.869923a49.403684 49.403684 0 0 0 8.609771 78.10292 277.767601 277.767601 0 0 0 286.992355-5.739847 49.403684 49.403684 0 0 0 8.404776-76.667958z" p-id="1562"></path></svg></a><input type="text" class="search-input" id="search-input" placeholder="站内搜索"></form><div id="search-result"></div><div class="search-no-result">没有找到内容！</div></div>
+
+
+
+<widget class="widget-wrapper recent post-list"><div class="widget-header dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><a class="item title" href="/2024/10/10/layoff-first-time/"><span class="title">记录人生第一次裁员</span></a><a class="item title" href="/2025/02/19/2024-review/"><span class="title">2024：拥抱不确定</span></a><a class="item title" href="/2026/01/28/2025-review/"><span class="title">2025：平凡的一年</span></a><a class="item title" href="/2023/02/05/bloom-taxonomy/"><span class="title">认识布鲁姆分类学</span></a><a class="item title" href="/2022/12/31/bye-2022/"><span class="title">再见2022</span></a><a class="item title" href="/2023/05/05/autogroup-your-chrome/"><span class="title">自动分组chrome标签页</span></a><a class="item title" href="/2023/06/30/how-i-learn-shuang-pin/"><span class="title">也许你该试试双拼输入法</span></a><a class="item title" href="/2023/07/08/apple-watch-to-shuzixindong/"><span class="title">将Apple Watch跑步数据同步到Garmin</span></a><a class="item title" href="/2023/11/05/shangma-auto-sign-tool/"><span class="title">上海马拉松自动签到工具</span></a><a class="item title" href="/2023/12/17/xiaomi-ax1800-shellclash/"><span class="title">小米AX1800实现科学上网</span></a></div></widget>
+</div>
+
+</div></aside><div class="l_main" id="main">
+
+
+
+
+
+<div class="article banner top">
+  <div class="content">
+    <div class="top bread-nav footnote"><div class="left"><div class="flex-row" id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a>
+<span class="sep"></span><a class="cap breadcrumb" href="/">文章</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/spring%E6%A1%86%E6%9E%B6/">spring框架</a></div>
+<div class="flex-row" id="post-meta"><span class="text created">发布于：<time datetime="2016-04-06T00:00:00.000Z">2016-04-06</time></span><span class="sep updated"></span><span class="text updated">更新于：<time datetime="2026-01-28T22:53:37.435Z">2026-01-28</time></span></div></div></div>
+    
+    <div class="bottom only-title">
+      
+      <div class="text-area">
+        <h1 class="text title"><span>Spring MVC源码探究</span></h1>
+        
+      </div>
+    </div>
+    
+  </div>
+  </div><article class="md-text content"><p>作为一名合格的java程序员，要多深入学习一些框架，理解框架的设计的方法，背后的原理，spring mvc框架中使用了很多设计模式，比如<code>策略模式</code>，Spring MVC中大量使用了策略模式，像HandlerMapping接口，HandlerAdapter接口,ViewResolver接口<br>都使用了策略模式，在执行<code>handler</code>和<code>Interceptor</code>拦截器的时候使用了<code>责任链模式</code>，在<code>执行handler</code>的时候会用到<code>适配器模式</code>等等，可以说沉淀了很多前辈的精华，想成为架构师的话，学习源码必不可少，下面就围绕着Spring MVC 的前端控制器<br><code>DispatcherServlet</code>一步一步的来学习Spring MVC的源码。</p>
+<h3 id="1-web-xml中DispatcherServlet的配置"><a href="#1-web-xml中DispatcherServlet的配置" class="headerlink" title="1 web.xml中DispatcherServlet的配置"></a>1 web.xml中DispatcherServlet的配置</h3><p>web.xml中的Spring MVC的前端控制器DispatcherServlet的配置，所有后端Controller的请求都由这个<code>DispatcherServlet</code>分发。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">servlet</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>MySpringServlet<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">servlet-class</span>&gt;</span>org.springframework.web.servlet.DispatcherServlet<span class="tag">&lt;/<span class="name">servlet-class</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">init-param</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">param-name</span>&gt;</span>contextConfigLocation<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">param-value</span>&gt;</span>classpath:spring/spring-mvc.xml<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">init-param</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">servlet</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">servlet-mapping</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>MySpringServlet<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>/<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">servlet-mapping</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+
+<h4 id="DispatcherServlet-类等级视图"><a href="#DispatcherServlet-类等级视图" class="headerlink" title="DispatcherServlet 类等级视图"></a>DispatcherServlet 类等级视图</h4><p><img src="/../../../static/images/spring-mvc.png" alt="类等级视图"></p>
+<h4 id="DispactcherServlet-中的doService-方法"><a href="#DispactcherServlet-中的doService-方法" class="headerlink" title="DispactcherServlet 中的doService()方法"></a>DispactcherServlet 中的doService()方法</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * Exposes the DispatcherServlet-specific request attributes and delegates to &#123;<span class="doctag">@link</span> #doDispatch&#125;</span></span><br><span class="line"><span class="comment">	 * for the actual dispatching.</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">doService</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">		<span class="keyword">if</span> (logger.isDebugEnabled()) &#123;</span><br><span class="line">			<span class="type">String</span> <span class="variable">resumed</span> <span class="operator">=</span> WebAsyncUtils.getAsyncManager(request).hasConcurrentResult() ? <span class="string">&quot; resumed&quot;</span> : <span class="string">&quot;&quot;</span>;</span><br><span class="line">			logger.debug(<span class="string">&quot;DispatcherServlet with name &#x27;&quot;</span> + getServletName() + <span class="string">&quot;&#x27;&quot;</span> + resumed +</span><br><span class="line">					<span class="string">&quot; processing &quot;</span> + request.getMethod() + <span class="string">&quot; request for [&quot;</span> + getRequestUri(request) + <span class="string">&quot;]&quot;</span>);</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="comment">// Keep a snapshot of the request attributes in case of an include,</span></span><br><span class="line">		<span class="comment">// to be able to restore the original attributes after the include.</span></span><br><span class="line">		Map&lt;String, Object&gt; attributesSnapshot = <span class="literal">null</span>;</span><br><span class="line">		<span class="keyword">if</span> (WebUtils.isIncludeRequest(request)) &#123;</span><br><span class="line">			attributesSnapshot = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;String, Object&gt;();</span><br><span class="line">			Enumeration&lt;?&gt; attrNames = request.getAttributeNames();</span><br><span class="line">			<span class="keyword">while</span> (attrNames.hasMoreElements()) &#123;</span><br><span class="line">				<span class="type">String</span> <span class="variable">attrName</span> <span class="operator">=</span> (String) attrNames.nextElement();</span><br><span class="line">				<span class="keyword">if</span> (<span class="built_in">this</span>.cleanupAfterInclude || attrName.startsWith(<span class="string">&quot;org.springframework.web.servlet&quot;</span>)) &#123;</span><br><span class="line">					attributesSnapshot.put(attrName, request.getAttribute(attrName));</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="comment">// Make framework objects available to handlers and view objects.</span></span><br><span class="line">		request.setAttribute(WEB_APPLICATION_CONTEXT_ATTRIBUTE, getWebApplicationContext());</span><br><span class="line">		request.setAttribute(LOCALE_RESOLVER_ATTRIBUTE, <span class="built_in">this</span>.localeResolver);</span><br><span class="line">		request.setAttribute(THEME_RESOLVER_ATTRIBUTE, <span class="built_in">this</span>.themeResolver);</span><br><span class="line">		request.setAttribute(THEME_SOURCE_ATTRIBUTE, getThemeSource());</span><br><span class="line"></span><br><span class="line">		<span class="type">FlashMap</span> <span class="variable">inputFlashMap</span> <span class="operator">=</span> <span class="built_in">this</span>.flashMapManager.retrieveAndUpdate(request, response);</span><br><span class="line">		<span class="keyword">if</span> (inputFlashMap != <span class="literal">null</span>) &#123;</span><br><span class="line">			request.setAttribute(INPUT_FLASH_MAP_ATTRIBUTE, Collections.unmodifiableMap(inputFlashMap));</span><br><span class="line">		&#125;</span><br><span class="line">		request.setAttribute(OUTPUT_FLASH_MAP_ATTRIBUTE, <span class="keyword">new</span> <span class="title class_">FlashMap</span>());</span><br><span class="line">		request.setAttribute(FLASH_MAP_MANAGER_ATTRIBUTE, <span class="built_in">this</span>.flashMapManager);</span><br><span class="line"></span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">		    <span class="comment">//执行dispatch方法</span></span><br><span class="line">			doDispatch(request, response);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">finally</span> &#123;</span><br><span class="line">			<span class="keyword">if</span> (WebAsyncUtils.getAsyncManager(request).isConcurrentHandlingStarted()) &#123;</span><br><span class="line">				<span class="keyword">return</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="comment">// Restore the original attribute snapshot, in case of an include.</span></span><br><span class="line">			<span class="keyword">if</span> (attributesSnapshot != <span class="literal">null</span>) &#123;</span><br><span class="line">				restoreAttributesAfterInclude(request, attributesSnapshot);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<p>doService方法实现了抽象类<code>FrameworkServlet</code>的<code>doService</code>方法，在doService方法中调用了doDispatcher()方法处理分发请求</p>
+<h3 id="2-DipatcherServlet的doDispatcher-方法"><a href="#2-DipatcherServlet的doDispatcher-方法" class="headerlink" title="2.DipatcherServlet的doDispatcher()方法"></a>2.DipatcherServlet的doDispatcher()方法</h3><p>doService方法中将请求委托给doDispatch()方法由<code>doDispatch()</code>来分发相应的请求给各个Handler(Controller),我在每一个关键步骤上标注了注释，下面还有相应的源码解释。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Process the actual dispatching to the handler.</span></span><br><span class="line"><span class="comment"> * &lt;p&gt;The handler will be obtained by applying the servlet&#x27;s HandlerMappings in order.</span></span><br><span class="line"><span class="comment"> * The HandlerAdapter will be obtained by querying the servlet&#x27;s installed HandlerAdapters</span></span><br><span class="line"><span class="comment"> * to find the first that supports the handler class.</span></span><br><span class="line"><span class="comment"> * &lt;p&gt;All HTTP methods are handled by this method. It&#x27;s up to HandlerAdapters or handlers</span></span><br><span class="line"><span class="comment"> * themselves to decide which methods are acceptable.</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> request current HTTP request</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> response current HTTP response</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@throws</span> Exception in case of any kind of processing failure</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">doDispatch</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">	<span class="type">HttpServletRequest</span> <span class="variable">processedRequest</span> <span class="operator">=</span> request;</span><br><span class="line">	<span class="type">HandlerExecutionChain</span> <span class="variable">mappedHandler</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">	<span class="type">boolean</span> <span class="variable">multipartRequestParsed</span> <span class="operator">=</span> <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">	<span class="type">WebAsyncManager</span> <span class="variable">asyncManager</span> <span class="operator">=</span> WebAsyncUtils.getAsyncManager(request);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">try</span> &#123;</span><br><span class="line">		<span class="type">ModelAndView</span> <span class="variable">mv</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">		<span class="type">Exception</span> <span class="variable">dispatchException</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">		    <span class="comment">//1.检测是否是多媒体请求，比如文件上传，将HttpServletRequest包装为MultipartHttpServletRequest</span></span><br><span class="line">			processedRequest = checkMultipart(request);</span><br><span class="line">			multipartRequestParsed = processedRequest != request;</span><br><span class="line"></span><br><span class="line">			<span class="comment">//2.遍历所有的HandlerMapper对象根据请求的URL获得相应的HandlerExecutionChain，其中HandlerMapping是一个</span></span><br><span class="line">			<span class="comment">//接口，Spring给出了一个默认的实现配置在DispatcherServlet.properties文件中，如果找不到对应的HandlerMap//per，spring会给出提示 No mapping found for HTTP request with URI...</span></span><br><span class="line">	</span><br><span class="line">			mappedHandler = getHandler(processedRequest);</span><br><span class="line">			<span class="keyword">if</span> (mappedHandler == <span class="literal">null</span> || mappedHandler.getHandler() == <span class="literal">null</span>) &#123;</span><br><span class="line">				noHandlerFound(processedRequest, response);</span><br><span class="line">				<span class="keyword">return</span>;</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">			<span class="comment">//3.根据当前的request遍历所有的Adapter选择第一个支持的adapter，这里使用了责任链模式</span></span><br><span class="line">			<span class="type">HandlerAdapter</span> <span class="variable">ha</span> <span class="operator">=</span> getHandlerAdapter(mappedHandler.getHandler());</span><br><span class="line"></span><br><span class="line">			<span class="comment">// Process last-modified header, if supported by the handler.</span></span><br><span class="line">			<span class="comment">//4.处理 last-modified header 判断是否被handler支持</span></span><br><span class="line">			<span class="type">String</span> <span class="variable">method</span> <span class="operator">=</span> request.getMethod();</span><br><span class="line">			<span class="type">boolean</span> <span class="variable">isGet</span> <span class="operator">=</span> <span class="string">&quot;GET&quot;</span>.equals(method);</span><br><span class="line">			<span class="keyword">if</span> (isGet || <span class="string">&quot;HEAD&quot;</span>.equals(method)) &#123;</span><br><span class="line">				<span class="type">long</span> <span class="variable">lastModified</span> <span class="operator">=</span> ha.getLastModified(request, mappedHandler.getHandler());</span><br><span class="line">				<span class="keyword">if</span> (logger.isDebugEnabled()) &#123;</span><br><span class="line">					logger.debug(<span class="string">&quot;Last-Modified value for [&quot;</span> + getRequestUri(request) + <span class="string">&quot;] is: &quot;</span> + lastModified);</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="keyword">if</span> (<span class="keyword">new</span> <span class="title class_">ServletWebRequest</span>(request, response).checkNotModified(lastModified) &amp;&amp; isGet) &#123;</span><br><span class="line">					<span class="keyword">return</span>;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">               <span class="comment">//5.执行handler的拦截器的preHandle方法</span></span><br><span class="line">			<span class="keyword">if</span> (!mappedHandler.applyPreHandle(processedRequest, response)) &#123;</span><br><span class="line">				<span class="keyword">return</span>;</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">			<span class="keyword">try</span> &#123;</span><br><span class="line">				<span class="comment">// 6.调用真正的handler，处理业务代码</span></span><br><span class="line">				mv = ha.handle(processedRequest, response, mappedHandler.getHandler());</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">finally</span> &#123;</span><br><span class="line">				<span class="keyword">if</span> (asyncManager.isConcurrentHandlingStarted()) &#123;</span><br><span class="line">					<span class="keyword">return</span>;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			applyDefaultViewName(request, mv);</span><br><span class="line">			<span class="comment">//7.执行handler的拦截器的postHandle方法</span></span><br><span class="line">			mappedHandler.applyPostHandle(processedRequest, response, mv);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">catch</span> (Exception ex) &#123;</span><br><span class="line">			dispatchException = ex;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">//8.处理返回结果视图</span></span><br><span class="line">		processDispatchResult(processedRequest, response, mappedHandler, mv, dispatchException);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">catch</span> (Exception ex) &#123;</span><br><span class="line">		triggerAfterCompletion(processedRequest, response, mappedHandler, ex);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">catch</span> (Error err) &#123;</span><br><span class="line">		triggerAfterCompletionWithError(processedRequest, response, mappedHandler, err);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">finally</span> &#123;</span><br><span class="line">		<span class="keyword">if</span> (asyncManager.isConcurrentHandlingStarted()) &#123;</span><br><span class="line">			<span class="comment">// Instead of postHandle and afterCompletion</span></span><br><span class="line">			mappedHandler.applyAfterConcurrentHandlingStarted(processedRequest, response);</span><br><span class="line">			<span class="keyword">return</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">// Clean up any resources used by a multipart request.</span></span><br><span class="line">		<span class="keyword">if</span> (multipartRequestParsed) &#123;</span><br><span class="line">			cleanupMultipart(processedRequest);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h4 id="1-根据request获得所有的HandlerMapping并匹配一个合适的Handler（Controller）"><a href="#1-根据request获得所有的HandlerMapping并匹配一个合适的Handler（Controller）" class="headerlink" title="1. 根据request获得所有的HandlerMapping并匹配一个合适的Handler（Controller）"></a>1. 根据request获得所有的HandlerMapping并匹配一个合适的Handler（Controller）</h4><p>AbstractHandlerMapping实现了HandlerMapping接口</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">    <span class="number">1</span>：遍历所有intercepter，取指定接口的拦截器bean</span><br><span class="line">    <span class="number">2</span>：根据url找到对应的hander</span><br><span class="line">    <span class="number">3</span>：封装成chain</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">final</span> HandlerExecutionChain <span class="title function_">getHandler</span><span class="params">(HttpServletRequest request)</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">		<span class="type">Object</span> <span class="variable">handler</span> <span class="operator">=</span> getHandlerInternal(request);</span><br><span class="line">		<span class="keyword">if</span> (handler == <span class="literal">null</span>) &#123;</span><br><span class="line">			handler = getDefaultHandler();</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> (handler == <span class="literal">null</span>) &#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">// Bean name or resolved handler?</span></span><br><span class="line">		<span class="keyword">if</span> (handler <span class="keyword">instanceof</span> String) &#123;</span><br><span class="line">			<span class="type">String</span> <span class="variable">handlerName</span> <span class="operator">=</span> (String) handler;</span><br><span class="line">			handler = getApplicationContext().getBean(handlerName);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> getHandlerExecutionChain(handler, request);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">	protected HandlerExecutionChain getHandlerExecutionChain(Object handler, HttpServletRequest request) &#123;</span></span><br><span class="line"><span class="comment">		HandlerExecutionChain chain = (handler instanceof HandlerExecutionChain ?</span></span><br><span class="line"><span class="comment">				(HandlerExecutionChain) handler : new HandlerExecutionChain(handler));</span></span><br><span class="line"><span class="comment">		chain.addInterceptors(getAdaptedInterceptors());</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">		String lookupPath = this.urlPathHelper.getLookupPathForRequest(request);</span></span><br><span class="line"><span class="comment">		for (MappedInterceptor mappedInterceptor : this.mappedInterceptors) &#123;</span></span><br><span class="line"><span class="comment">			if (mappedInterceptor.matches(lookupPath, this.pathMatcher)) &#123;</span></span><br><span class="line"><span class="comment">				chain.addInterceptor(mappedInterceptor.getInterceptor());</span></span><br><span class="line"><span class="comment">			&#125;</span></span><br><span class="line"><span class="comment">		&#125;</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">		return chain;</span></span><br><span class="line"><span class="comment">	&#125;</span></span><br><span class="line"><span class="comment"></span></span><br></pre></td></tr></table></figure>
+
+<p>AbstractUrlHandlerMapping继承了AbstractHandlerMapping重写了getHandlerInternal()抽象方法。这个方法给出了根据请求的URL获得handler的实现方法。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * Look up a handler for the URL path of the given request.</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> request current HTTP request</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@return</span> the handler instance, or &#123;<span class="doctag">@code</span> null&#125; if none found</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="keyword">protected</span> Object <span class="title function_">getHandlerInternal</span><span class="params">(HttpServletRequest request)</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">		<span class="type">String</span> <span class="variable">lookupPath</span> <span class="operator">=</span> getUrlPathHelper().getLookupPathForRequest(request);</span><br><span class="line">		<span class="type">Object</span> <span class="variable">handler</span> <span class="operator">=</span> lookupHandler(lookupPath, request);</span><br><span class="line">		<span class="keyword">if</span> (handler == <span class="literal">null</span>) &#123;</span><br><span class="line">			<span class="comment">// We need to care for the default handler directly, since we need to</span></span><br><span class="line">			<span class="comment">// expose the PATH_WITHIN_HANDLER_MAPPING_ATTRIBUTE for it as well.</span></span><br><span class="line">			<span class="type">Object</span> <span class="variable">rawHandler</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">			<span class="keyword">if</span> (<span class="string">&quot;/&quot;</span>.equals(lookupPath)) &#123;</span><br><span class="line">				rawHandler = getRootHandler();</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span> (rawHandler == <span class="literal">null</span>) &#123;</span><br><span class="line">				rawHandler = getDefaultHandler();</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span> (rawHandler != <span class="literal">null</span>) &#123;</span><br><span class="line">				<span class="comment">// Bean name or resolved handler?</span></span><br><span class="line">				<span class="keyword">if</span> (rawHandler <span class="keyword">instanceof</span> String) &#123;</span><br><span class="line">					<span class="type">String</span> <span class="variable">handlerName</span> <span class="operator">=</span> (String) rawHandler;</span><br><span class="line">					rawHandler = getApplicationContext().getBean(handlerName);</span><br><span class="line">				&#125;</span><br><span class="line">				validateHandler(rawHandler, request);</span><br><span class="line">				handler = buildPathExposingHandler(rawHandler, lookupPath, lookupPath, <span class="literal">null</span>);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> (handler != <span class="literal">null</span> &amp;&amp; logger.isDebugEnabled()) &#123;</span><br><span class="line">			logger.debug(<span class="string">&quot;Mapping [&quot;</span> + lookupPath + <span class="string">&quot;] to &quot;</span> + handler);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span> (handler == <span class="literal">null</span> &amp;&amp; logger.isTraceEnabled()) &#123;</span><br><span class="line">			logger.trace(<span class="string">&quot;No handler mapping found for [&quot;</span> + lookupPath + <span class="string">&quot;]&quot;</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> handler;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-获得HandlerExecutionChain"><a href="#2-获得HandlerExecutionChain" class="headerlink" title="2.获得HandlerExecutionChain"></a>2.获得HandlerExecutionChain</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * Return the HandlerExecutionChain for this request.</span></span><br><span class="line"><span class="comment">	 * &lt;p&gt;Tries all handler mappings in order.</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> request current HTTP request</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@return</span> the HandlerExecutionChain, or &#123;<span class="doctag">@code</span> null&#125; if no handler could be found</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="keyword">protected</span> HandlerExecutionChain <span class="title function_">getHandler</span><span class="params">(HttpServletRequest request)</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">		<span class="keyword">for</span> (HandlerMapping hm : <span class="built_in">this</span>.handlerMappings) &#123;</span><br><span class="line">			<span class="keyword">if</span> (logger.isTraceEnabled()) &#123;</span><br><span class="line">				logger.trace(</span><br><span class="line">						<span class="string">&quot;Testing handler map [&quot;</span> + hm + <span class="string">&quot;] in DispatcherServlet with name &#x27;&quot;</span> + getServletName() + <span class="string">&quot;&#x27;&quot;</span>);</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="type">HandlerExecutionChain</span> <span class="variable">handler</span> <span class="operator">=</span> hm.getHandler(request);</span><br><span class="line">			<span class="keyword">if</span> (handler != <span class="literal">null</span>) &#123;</span><br><span class="line">				<span class="keyword">return</span> handler;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+
+<p>HandlerExecutionChain是由一系列的Handler和HandlerInterceptor组成的责任链，下面是HandlerExecutionChain中的成员变量</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">Log</span> <span class="variable">logger</span> <span class="operator">=</span> LogFactory.getLog(HandlerExecutionChain.class);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">final</span> Object handler;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">private</span> HandlerInterceptor[] interceptors;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">private</span> List&lt;HandlerInterceptor&gt; interceptorList;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">private</span> <span class="type">int</span> <span class="variable">interceptorIndex</span> <span class="operator">=</span> -<span class="number">1</span>;</span><br></pre></td></tr></table></figure>
+
+
+<h4 id="3-根据相应的handler去获得合适的HandlerAdapter"><a href="#3-根据相应的handler去获得合适的HandlerAdapter" class="headerlink" title="3.根据相应的handler去获得合适的HandlerAdapter"></a>3.根据相应的handler去获得合适的HandlerAdapter</h4><p>HandlerAdapter</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">package</span> org.springframework.web.servlet;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServletRequest;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServletResponse;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">HandlerAdapter</span> &#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	<span class="type">boolean</span> <span class="title function_">supports</span><span class="params">(Object handler)</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	ModelAndView <span class="title function_">handle</span><span class="params">(HttpServletRequest request, HttpServletResponse response, Object handler)</span> <span class="keyword">throws</span> Exception;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	<span class="type">long</span> <span class="title function_">getLastModified</span><span class="params">(HttpServletRequest request, Object handler)</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>HandlerAdapter的实现类HttpRequestHandlerAdapter，在<code>DispatcherServlet.properties</code>文件配置的默认实现的其中之一，在HandlerAdapter中执行Handler（Controller）的方法，并且给前端控制器<code>DispatcherServlet</code>返回一个<code>ModelAndView</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * Copyright 2002-2012 the original author or authors.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span></span><br><span class="line"><span class="comment"> * you may not use this file except in compliance with the License.</span></span><br><span class="line"><span class="comment"> * You may obtain a copy of the License at</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> *      http://www.apache.org/licenses/LICENSE-2.0</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * Unless required by applicable law or agreed to in writing, software</span></span><br><span class="line"><span class="comment"> * distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span></span><br><span class="line"><span class="comment"> * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span></span><br><span class="line"><span class="comment"> * See the License for the specific language governing permissions and</span></span><br><span class="line"><span class="comment"> * limitations under the License.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">package</span> org.springframework.web.servlet.mvc;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServletRequest;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServletResponse;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.web.HttpRequestHandler;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.servlet.HandlerAdapter;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.servlet.ModelAndView;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Adapter to use the plain &#123;<span class="doctag">@link</span> org.springframework.web.HttpRequestHandler&#125;</span></span><br><span class="line"><span class="comment"> * interface with the generic &#123;<span class="doctag">@link</span> org.springframework.web.servlet.DispatcherServlet&#125;.</span></span><br><span class="line"><span class="comment"> * Supports handlers that implement the &#123;<span class="doctag">@link</span> LastModified&#125; interface.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">HttpRequestHandlerAdapter</span> <span class="keyword">implements</span> <span class="title class_">HandlerAdapter</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//判断是否适配当前adapter</span></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">supports</span><span class="params">(Object handler)</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> (handler <span class="keyword">instanceof</span> HttpRequestHandler);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="keyword">public</span> ModelAndView <span class="title function_">handle</span><span class="params">(HttpServletRequest request, HttpServletResponse response, Object handler)</span></span><br><span class="line">			<span class="keyword">throws</span> Exception &#123;</span><br><span class="line"></span><br><span class="line">		((HttpRequestHandler) handler).handleRequest(request, response);</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="keyword">public</span> <span class="type">long</span> <span class="title function_">getLastModified</span><span class="params">(HttpServletRequest request, Object handler)</span> &#123;</span><br><span class="line">		<span class="keyword">if</span> (handler <span class="keyword">instanceof</span> LastModified) &#123;</span><br><span class="line">			<span class="keyword">return</span> ((LastModified) handler).getLastModified(request);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> -<span class="number">1L</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>HttpRequestHandler接口的实现类ResourceHttpRequestHandler,handleRequest()方法用来处理请求返回结果，数据转化，数据校验，格式化等操作都是在这一步进行。比如自动将Json数据转换为对应的实体等。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Processes a resource request.</span></span><br><span class="line"><span class="comment"> * &lt;p&gt;Checks for the existence of the requested resource in the configured list of locations.</span></span><br><span class="line"><span class="comment"> * If the resource does not exist, a &#123;<span class="doctag">@code</span> 404&#125; response will be returned to the client.</span></span><br><span class="line"><span class="comment"> * If the resource exists, the request will be checked for the presence of the</span></span><br><span class="line"><span class="comment"> * &#123;<span class="doctag">@code</span> Last-Modified&#125; header, and its value will be compared against the last-modified</span></span><br><span class="line"><span class="comment"> * timestamp of the given resource, returning a &#123;<span class="doctag">@code</span> 304&#125; status code if the</span></span><br><span class="line"><span class="comment"> * &#123;<span class="doctag">@code</span> Last-Modified&#125; value  is greater. If the resource is newer than the</span></span><br><span class="line"><span class="comment"> * &#123;<span class="doctag">@code</span> Last-Modified&#125; value, or the header is not present, the content resource</span></span><br><span class="line"><span class="comment"> * of the resource will be written to the response with caching headers</span></span><br><span class="line"><span class="comment"> * set to expire one year in the future.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">handleRequest</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span></span><br><span class="line">		<span class="keyword">throws</span> ServletException, IOException &#123;</span><br><span class="line"></span><br><span class="line">	checkAndPrepare(request, response, <span class="literal">true</span>);</span><br><span class="line"></span><br><span class="line">	<span class="comment">// check whether a matching resource exists</span></span><br><span class="line">	<span class="type">Resource</span> <span class="variable">resource</span> <span class="operator">=</span> getResource(request);</span><br><span class="line">	<span class="keyword">if</span> (resource == <span class="literal">null</span>) &#123;</span><br><span class="line">		logger.debug(<span class="string">&quot;No matching resource found - returning 404&quot;</span>);</span><br><span class="line">		response.sendError(HttpServletResponse.SC_NOT_FOUND);</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// check the resource&#x27;s media type</span></span><br><span class="line">	<span class="type">MediaType</span> <span class="variable">mediaType</span> <span class="operator">=</span> getMediaType(resource);</span><br><span class="line">	<span class="keyword">if</span> (mediaType != <span class="literal">null</span>) &#123;</span><br><span class="line">		<span class="keyword">if</span> (logger.isDebugEnabled()) &#123;</span><br><span class="line">			logger.debug(<span class="string">&quot;Determined media type &#x27;&quot;</span> + mediaType + <span class="string">&quot;&#x27; for &quot;</span> + resource);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="keyword">if</span> (logger.isDebugEnabled()) &#123;</span><br><span class="line">			logger.debug(<span class="string">&quot;No media type found for &quot;</span> + resource + <span class="string">&quot; - not sending a content-type header&quot;</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// header phase</span></span><br><span class="line">	<span class="keyword">if</span> (<span class="keyword">new</span> <span class="title class_">ServletWebRequest</span>(request, response).checkNotModified(resource.lastModified())) &#123;</span><br><span class="line">		logger.debug(<span class="string">&quot;Resource not modified - returning 304&quot;</span>);</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	setHeaders(response, resource, mediaType);</span><br><span class="line"></span><br><span class="line">	<span class="comment">// content phase</span></span><br><span class="line">	<span class="keyword">if</span> (METHOD_HEAD.equals(request.getMethod())) &#123;</span><br><span class="line">		logger.trace(<span class="string">&quot;HEAD request - skipping content&quot;</span>);</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	writeContent(response, resource);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h4 id="4-处理返回结果视图"><a href="#4-处理返回结果视图" class="headerlink" title="4.处理返回结果视图"></a>4.处理返回结果视图</h4><p>处理异常视图</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * Handle the result of handler selection and handler invocation, which is</span></span><br><span class="line"><span class="comment">	 * either a ModelAndView or an Exception to be resolved to a ModelAndView.</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">processDispatchResult</span><span class="params">(HttpServletRequest request, HttpServletResponse response,</span></span><br><span class="line"><span class="params">			HandlerExecutionChain mappedHandler, ModelAndView mv, Exception exception)</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line"></span><br><span class="line">		<span class="type">boolean</span> <span class="variable">errorView</span> <span class="operator">=</span> <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">if</span> (exception != <span class="literal">null</span>) &#123;</span><br><span class="line">			<span class="keyword">if</span> (exception <span class="keyword">instanceof</span> ModelAndViewDefiningException) &#123;</span><br><span class="line">				logger.debug(<span class="string">&quot;ModelAndViewDefiningException encountered&quot;</span>, exception);</span><br><span class="line">				mv = ((ModelAndViewDefiningException) exception).getModelAndView();</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span> &#123;</span><br><span class="line">				<span class="type">Object</span> <span class="variable">handler</span> <span class="operator">=</span> (mappedHandler != <span class="literal">null</span> ? mappedHandler.getHandler() : <span class="literal">null</span>);</span><br><span class="line">				<span class="comment">//处理异常视图</span></span><br><span class="line">				mv = processHandlerException(request, response, handler, exception);</span><br><span class="line">				errorView = (mv != <span class="literal">null</span>);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="comment">// Did the handler return a view to render?</span></span><br><span class="line">		<span class="keyword">if</span> (mv != <span class="literal">null</span> &amp;&amp; !mv.wasCleared()) &#123;</span><br><span class="line">			render(mv, request, response);</span><br><span class="line">			<span class="keyword">if</span> (errorView) &#123;</span><br><span class="line">				WebUtils.clearErrorRequestAttributes(request);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> &#123;</span><br><span class="line">			<span class="keyword">if</span> (logger.isDebugEnabled()) &#123;</span><br><span class="line">				logger.debug(<span class="string">&quot;Null ModelAndView returned to DispatcherServlet with name &#x27;&quot;</span> + getServletName() +</span><br><span class="line">						<span class="string">&quot;&#x27;: assuming HandlerAdapter completed request handling&quot;</span>);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">if</span> (WebAsyncUtils.getAsyncManager(request).isConcurrentHandlingStarted()) &#123;</span><br><span class="line">			<span class="comment">// Concurrent handling started during a forward</span></span><br><span class="line">			<span class="keyword">return</span>;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">if</span> (mappedHandler != <span class="literal">null</span>) &#123;</span><br><span class="line">			mappedHandler.triggerAfterCompletion(request, response, <span class="literal">null</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<p>渲染指定的 ModelAndView</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Render the given ModelAndView.</span></span><br><span class="line"><span class="comment"> * &lt;p&gt;This is the last stage in handling a request. It may involve resolving the view by name.</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> mv the ModelAndView to render</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> request current HTTP servlet request</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> response current HTTP servlet response</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@throws</span> ServletException if view is missing or cannot be resolved</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@throws</span> Exception if there&#x27;s a problem rendering the view</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">render</span><span class="params">(ModelAndView mv, HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">	<span class="comment">// Determine locale for request and apply it to the response.</span></span><br><span class="line">	<span class="type">Locale</span> <span class="variable">locale</span> <span class="operator">=</span> <span class="built_in">this</span>.localeResolver.resolveLocale(request);</span><br><span class="line">	response.setLocale(locale);</span><br><span class="line"></span><br><span class="line">	View view;</span><br><span class="line">	<span class="keyword">if</span> (mv.isReference()) &#123;</span><br><span class="line">		<span class="comment">// We need to resolve the view name.</span></span><br><span class="line">		view = resolveViewName(mv.getViewName(), mv.getModelInternal(), locale, request);</span><br><span class="line">		<span class="keyword">if</span> (view == <span class="literal">null</span>) &#123;</span><br><span class="line">			<span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">ServletException</span>(<span class="string">&quot;Could not resolve view with name &#x27;&quot;</span> + mv.getViewName() +</span><br><span class="line">					<span class="string">&quot;&#x27; in servlet with name &#x27;&quot;</span> + getServletName() + <span class="string">&quot;&#x27;&quot;</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="comment">// No need to lookup: the ModelAndView object contains the actual View object.</span></span><br><span class="line">		view = mv.getView();</span><br><span class="line">		<span class="keyword">if</span> (view == <span class="literal">null</span>) &#123;</span><br><span class="line">			<span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">ServletException</span>(<span class="string">&quot;ModelAndView [&quot;</span> + mv + <span class="string">&quot;] neither contains a view name nor a &quot;</span> +</span><br><span class="line">					<span class="string">&quot;View object in servlet with name &#x27;&quot;</span> + getServletName() + <span class="string">&quot;&#x27;&quot;</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Delegate to the View object for rendering.</span></span><br><span class="line">	<span class="keyword">if</span> (logger.isDebugEnabled()) &#123;</span><br><span class="line">		logger.debug(<span class="string">&quot;Rendering view [&quot;</span> + view + <span class="string">&quot;] in DispatcherServlet with name &#x27;&quot;</span> + getServletName() + <span class="string">&quot;&#x27;&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">try</span> &#123;</span><br><span class="line">		view.render(mv.getModelInternal(), request, response);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">catch</span> (Exception ex) &#123;</span><br><span class="line">		<span class="keyword">if</span> (logger.isDebugEnabled()) &#123;</span><br><span class="line">			logger.debug(<span class="string">&quot;Error rendering view [&quot;</span> + view + <span class="string">&quot;] in DispatcherServlet with name &#x27;&quot;</span> +</span><br><span class="line">					getServletName() + <span class="string">&quot;&#x27;&quot;</span>, ex);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">throw</span> ex;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-DispatcherServlet-properties"><a href="#3-DispatcherServlet-properties" class="headerlink" title="3.DispatcherServlet.properties"></a>3.DispatcherServlet.properties</h3><p>DispatcherServlet.properties中配置的一些DispatcherServlet的一些策略模式接口的实现，包括HandlerMapping，HandlerAdapter，ViewResolver等</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"># Default implementation classes <span class="keyword">for</span> DispatcherServlet<span class="string">&#x27;s strategy interfaces.</span></span><br><span class="line"><span class="string"># Used as fallback when no matching beans are found in the DispatcherServlet context.</span></span><br><span class="line"><span class="string"># Not meant to be customized by application developers.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">org.springframework.web.servlet.LocaleResolver=org.springframework.web.servlet.i18n.AcceptHeaderLocaleResolver</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">org.springframework.web.servlet.ThemeResolver=org.springframework.web.servlet.theme.FixedThemeResolver</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">org.springframework.web.servlet.HandlerMapping=org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping,\</span></span><br><span class="line"><span class="string">	org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">org.springframework.web.servlet.HandlerAdapter=org.springframework.web.servlet.mvc.HttpRequestHandlerAdapter,\</span></span><br><span class="line"><span class="string">	org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter,\</span></span><br><span class="line"><span class="string">	org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">org.springframework.web.servlet.HandlerExceptionResolver=org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerExceptionResolver,\</span></span><br><span class="line"><span class="string">	org.springframework.web.servlet.mvc.annotation.ResponseStatusExceptionResolver,\</span></span><br><span class="line"><span class="string">	org.springframework.web.servlet.mvc.support.DefaultHandlerExceptionResolver</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">org.springframework.web.servlet.RequestToViewNameTranslator=org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">org.springframework.web.servlet.ViewResolver=org.springframework.web.servlet.view.InternalResourceViewResolver</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">org.springframework.web.servlet.FlashMapManager=org.springframework.web.servlet.support.SessionFlashMapManager</span></span><br></pre></td></tr></table></figure>
+
+
+<h3 id="4-总结"><a href="#4-总结" class="headerlink" title="4.总结"></a>4.总结</h3><p>下图是Spring MVC 工作流程的时序图</p>
+<p><img src="/../../../static/images/1365825551_8302.png" alt="Spring MVC 工作流程的时序图"></p>
+<pre><code>1. 用户向服务器发送请求，请求被Spring 前端控制Servelt DispatcherServlet捕获；
+2. DispatcherServlet对请求URL进行解析，得到请求资源标识符（URI）。然后根据该URI，调用HandlerMapping获得该Handler配置的所有相关的对象（包括Handler对象以及Handler对象对应的拦截器），最后以HandlerExecutionChain对象的形式返回；
+3. DispatcherServlet 根据获得的Handler，选择一个合适的HandlerAdapter。（附注：如果成功获得HandlerAdapter后，此时将开始执行拦截器的preHandler(...)方法）
+4. 提取Request中的模型数据，填充Handler入参，开始执行Handler（Controller)。 在填充Handler的入参过程中，根据你的配置，Spring将帮你做一些额外的工作：
+      HttpMessageConveter： 将请求消息（如Json、xml等数据）转换成一个对象，将对象转换为指定的响应信息
+      数据转换：对请求消息进行数据转换。如String转换成Integer、Double等
+      数据根式化：对请求消息进行数据格式化。 如将字符串转换成格式化数字或格式化日期等
+      数据验证： 验证数据的有效性（长度、格式等），验证结果存储到BindingResult或Error中
+5.  Handler执行完成后，向DispatcherServlet 返回一个ModelAndView对象；
+6.  根据返回的ModelAndView，选择一个适合的ViewResolver（必须是已经注册到Spring容器中的ViewResolver)返回给DispatcherServlet ；
+7.  ViewResolver 结合Model和View，来渲染视图
+8.  将渲染结果返回给客户端。
+</code></pre>
+</article>
+<div class="article-footer">
+    <section id="license">
+      <div class="header"><span>许可协议</span></div>
+      <div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
+</div>
+    </section>
+    
+
+
+    <section id="share">
+      <div class="header"><span>分享文章</span></div>
+      <div class="body">
+        <div class="link"><input class="copy-area" readonly="true" id="copy-link" value="https://zhaohongxuan.github.io/2016/04/06/spring-mvc-source-code/" /></div>
+        <div class="social-wrap dis-select"><a class="social share-item wechat" onclick="util.toggle(&quot;qrcode-wechat&quot;)"><img  src="https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/social/b32ef3da1162a.svg" /></a><a class="social share-item email" href="mailto:?subject=Spring MVC源码探究 - Hank's Blog&amp;body=https://zhaohongxuan.github.io/2016/04/06/spring-mvc-source-code/"><img  src="https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/social/a1b00e20f425d.svg" /></a><a class="social share-item link" onclick="util.copy(&quot;copy-link&quot;, &quot;复制成功&quot;)"><img  src="https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/social/8411ed322ced6.svg" /></a></div>
+        
+        <div class="qrcode" id="qrcode-wechat" style="opacity:0;height:0">
+          <img src="https://api.qrserver.com/v1/create-qr-code/?size=256x256&data=https://zhaohongxuan.github.io/2016/04/06/spring-mvc-source-code/"/>
+        </div>
+        
+      </div>
+    </section>
+    </div>
+
+<div class="related-wrap" id="read-next"><section class="body"><div class="item" id="prev"><div class="note">较新文章</div><a href="/2016/05/08/how-use-curl/">cURL命令的使用</a></div><div class="item" id="next"><div class="note">较早文章</div><a href="/2016/03/23/java-collection-failfast-failsafe/">Java集合中的Fail-fast和Fail-Safe机制</a></div></section></div>
+
+
+
+
+  <div class="related-wrap md-text" id="comments">
+    <section class='header cmt-title cap theme'>
+      <p>快来参与讨论吧~</p>
+
+    </section>
+    <section class='body cmt-body utterances'>
+      
+
+<svg class="loading" style="vertical-align:middle;fill:currentColor;overflow:hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2709"><path d="M832 512c0-176-144-320-320-320V128c211.2 0 384 172.8 384 384h-64zM192 512c0 176 144 320 320 320v64C300.8 896 128 723.2 128 512h64z" p-id="2710"></path></svg>
+
+<div id="utterances" repo="zhaohongxuan/zhaohongxuan.github.io" issue-term="pathname" theme="preferred-color-scheme"></div>
+
+    </section>
+  </div>
+
+
+
+<footer class="page-footer footnote"><hr><div class="text"><p>本站由 <a href="/">Hank Zhao</a> 使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.33.1">Stellar</a> 主题创建。<br>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。<br><span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span></p>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+</div></footer>
+<div class="main-mask" onclick="sidebar.dismiss()"></div></div><aside class="l_right">
+<div class="widgets">
+
+
+
+<widget class="widget-wrapper toc" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">本文目录</span><a class="cap-action" onclick="sidebar.toggleTOC()" ><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg></a></div><div class="widget-body"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-web-xml%E4%B8%ADDispatcherServlet%E7%9A%84%E9%85%8D%E7%BD%AE"><span class="toc-text">1 web.xml中DispatcherServlet的配置</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#DispatcherServlet-%E7%B1%BB%E7%AD%89%E7%BA%A7%E8%A7%86%E5%9B%BE"><span class="toc-text">DispatcherServlet 类等级视图</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#DispactcherServlet-%E4%B8%AD%E7%9A%84doService-%E6%96%B9%E6%B3%95"><span class="toc-text">DispactcherServlet 中的doService()方法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-DipatcherServlet%E7%9A%84doDispatcher-%E6%96%B9%E6%B3%95"><span class="toc-text">2.DipatcherServlet的doDispatcher()方法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E6%A0%B9%E6%8D%AErequest%E8%8E%B7%E5%BE%97%E6%89%80%E6%9C%89%E7%9A%84HandlerMapping%E5%B9%B6%E5%8C%B9%E9%85%8D%E4%B8%80%E4%B8%AA%E5%90%88%E9%80%82%E7%9A%84Handler%EF%BC%88Controller%EF%BC%89"><span class="toc-text">1. 根据request获得所有的HandlerMapping并匹配一个合适的Handler（Controller）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E8%8E%B7%E5%BE%97HandlerExecutionChain"><span class="toc-text">2.获得HandlerExecutionChain</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E6%A0%B9%E6%8D%AE%E7%9B%B8%E5%BA%94%E7%9A%84handler%E5%8E%BB%E8%8E%B7%E5%BE%97%E5%90%88%E9%80%82%E7%9A%84HandlerAdapter"><span class="toc-text">3.根据相应的handler去获得合适的HandlerAdapter</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E5%A4%84%E7%90%86%E8%BF%94%E5%9B%9E%E7%BB%93%E6%9E%9C%E8%A7%86%E5%9B%BE"><span class="toc-text">4.处理返回结果视图</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-DispatcherServlet-properties"><span class="toc-text">3.DispatcherServlet.properties</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E6%80%BB%E7%BB%93"><span class="toc-text">4.总结</span></a></li></ol></div><div class="widget-footer"><a class="top" onclick="util.scrollTop()"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><!-- Icon from Solar by 480 Design - https://creativecommons.org/licenses/by/4.0/ --><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"><path stroke-linejoin="round" d="m9 15.5l3-3l3 3m-6-4l3-3l3 3"/><path d="M7 3.338A9.95 9.95 0 0 1 12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12c0-1.821.487-3.53 1.338-5"/></g></svg><span>回到顶部</span></a><a class="buttom" onclick="util.scrollComment()"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><!-- Icon from Solar by 480 Design - https://creativecommons.org/licenses/by/4.0/ --><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" d="M8 10.5h8M8 14h5.5M17 3.338A9.95 9.95 0 0 0 12 2C6.477 2 2 6.477 2 12c0 1.6.376 3.112 1.043 4.453c.178.356.237.763.134 1.148l-.595 2.226a1.3 1.3 0 0 0 1.591 1.592l2.226-.596a1.63 1.63 0 0 1 1.149.133A9.96 9.96 0 0 0 12 22c5.523 0 10-4.477 10-10c0-1.821-.487-3.53-1.338-5"/></svg><span>参与讨论</span></a></div></widget>
+</div></aside><div class='float-panel'>
+  <button type='button' style='display:none' class='laptop-only rightbar-toggle mobile' onclick='sidebar.rightbar()'>
+    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg>
+  </button>
+  <button type='button' style='display:none' class='mobile-only leftbar-toggle mobile' onclick='sidebar.leftbar()'>
+    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 11c0-3.771 0-5.657 1.172-6.828C4.343 3 6.229 3 10 3h4c3.771 0 5.657 0 6.828 1.172C22 5.343 22 7.229 22 11v2c0 3.771 0 5.657-1.172 6.828C19.657 21 17.771 21 14 21h-4c-3.771 0-5.657 0-6.828-1.172C2 18.657 2 16.771 2 13z"/><path id="sep" stroke-linecap="round" d="M5.5 10h6m-5 4h4m4.5 7V3"/></g></svg>
+  </button>
+</div>
+</div><div class="scripts">
+
+
+<script type="text/javascript">
+  window.canonical = {"originalHost":null,"officialHosts":["localhost"],"encoded":""};
+  const ctx = {
+    date_suffix: {
+      just: `刚刚`,
+      min: `分钟前`,
+      hour: `小时前`,
+      day: `天前`,
+    },
+    root : `/`,
+    tag_plugins: {
+      chat: Object.assign({"api":"https://siteinfo.listentothewind.cn/api/v1"}),
+    }
+  };
+
+  // required plugins (only load if needs)
+  if (`local_search`) {
+    ctx.search = {};
+    ctx.search.service = `local_search`;
+    if (ctx.search.service == 'local_search') {
+      let service_obj = Object.assign({}, `{"field":"all","path":"/search.json","content":true,"skip_search":null,"sort":"-date"}`);
+      ctx.search[ctx.search.service] = service_obj;
+    }
+  }
+  const def = {
+    avatar: `https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/avatar/round/3442075.svg`,
+    cover: `https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/cover/76b86c0226ffd.svg`,
+    loading: `https://api.iconify.design/eos-icons:three-dots-loading.svg?color=%231cd0fd`,
+  };
+  const deps = {
+    jquery: `https://gcore.jsdelivr.net/npm/jquery@3.7/dist/jquery.min.js`,
+    marked: `https://gcore.jsdelivr.net/npm/marked@13.0/lib/marked.umd.min.js`,
+    lazyload: `/%5Bobject%20Object%5D`
+  }
+  
+
+</script>
+
+<script type="text/javascript">
+  
+  function RunItem() {
+    this.list = []; // 存放回调函数
+    this.start = () => {
+      for (var i = 0; i < this.list.length; i++) {
+        this.list[i].run();
+      }
+    };
+    this.push = (fn, name, setRequestAnimationFrame = true) => {
+      let myfn = fn
+      if (setRequestAnimationFrame) {
+        myfn = () => {
+          utils.requestAnimationFrame(fn)
+        }
+      }
+      var f = new Item(myfn, name);
+      this.list.push(f);
+    };
+    this.remove = (name) => {
+      for (let index = 0; index < this.list.length; index++) {
+        const e = this.list[index];
+        if (e.name == name) {
+          this.list.splice(index, 1);
+        }
+      }
+    }
+    // 构造一个可以run的对象
+    function Item(fn, name) {
+      // 函数名称
+      this.name = name || fn.name;
+      // run方法
+      this.run = () => {
+        try {
+          fn()
+        } catch (error) {
+          console.log(error);
+        }
+      };
+    }
+  }
+
+  const utils = {
+    // 懒加载 css https://github.com/filamentgroup/loadCSS
+    css: (href, before, media, attributes) => {
+      var doc = window.document;
+      var ss = doc.createElement("link");
+      var ref;
+      if (before) {
+        ref = before;
+      } else {
+        var refs = (doc.body || doc.getElementsByTagName("head")[0]).childNodes;
+        ref = refs[refs.length - 1];
+      }
+      var sheets = doc.styleSheets;
+      if (attributes) {
+        for (var attributeName in attributes) {
+          if (attributes.hasOwnProperty(attributeName)) {
+            ss.setAttribute(attributeName, attributes[attributeName]);
+          }
+        }
+      }
+      ss.rel = "stylesheet";
+      ss.href = href;
+      ss.media = "only x";
+      function ready(cb) {
+        if (doc.body) {
+          return cb();
+        }
+        setTimeout(function () {
+          ready(cb);
+        });
+      }
+      ready(function () {
+        ref.parentNode.insertBefore(ss, before ? ref : ref.nextSibling);
+      });
+      var onloadcssdefined = function (cb) {
+        var resolvedHref = ss.href;
+        var i = sheets.length;
+        while (i--) {
+          if (sheets[i].href === resolvedHref) {
+            return cb();
+          }
+        }
+        setTimeout(function () {
+          onloadcssdefined(cb);
+        });
+      };
+      function loadCB() {
+        if (ss.addEventListener) {
+          ss.removeEventListener("load", loadCB);
+        }
+        ss.media = media || "all";
+      }
+      if (ss.addEventListener) {
+        ss.addEventListener("load", loadCB);
+      }
+      ss.onloadcssdefined = onloadcssdefined;
+      onloadcssdefined(loadCB);
+      return ss;
+    },
+
+    js: (src, opt) => new Promise((resolve, reject) => {
+      var script = document.createElement('script');
+      if (src.startsWith('/')) {
+        src = ctx.root + src.substring(1);
+      }
+      script.src = src;
+      if (opt) {
+        for (let key of Object.keys(opt)) {
+          script[key] = opt[key]
+        }
+      } else {
+        // 默认异步，如果需要同步，第二个参数传入 {} 即可
+        script.async = true
+      }
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function () {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    }),
+
+    jq: (fn) => {
+      if (typeof jQuery === 'undefined') {
+        utils.js(deps.jquery).then(fn)
+      } else {
+        fn()
+      }
+    },
+
+    onLoading: (el) => {
+      if (el) {
+        $(el).append('<div class="loading-wrap"><svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2"><path stroke-dasharray="60" stroke-dashoffset="60" stroke-opacity=".3" d="M12 3C16.9706 3 21 7.02944 21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3Z"><animate fill="freeze" attributeName="stroke-dashoffset" dur="1.3s" values="60;0"/></path><path stroke-dasharray="15" stroke-dashoffset="15" d="M12 3C16.9706 3 21 7.02944 21 12"><animate fill="freeze" attributeName="stroke-dashoffset" dur="0.3s" values="15;0"/><animateTransform attributeName="transform" dur="1.5s" repeatCount="indefinite" type="rotate" values="0 12 12;360 12 12"/></path></g></svg></div>');
+      }
+    },
+    onLoadSuccess: (el) => {
+      if (el) {
+        $(el).find('.loading-wrap').remove();
+      }
+    },
+    onLoadFailure: (el) => {
+      if (el) {
+        $(el).find('.loading-wrap svg').remove();
+        $(el).find('.loading-wrap').append('<svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path stroke-dasharray="60" stroke-dashoffset="60" d="M12 3L21 20H3L12 3Z"><animate fill="freeze" attributeName="stroke-dashoffset" dur="0.5s" values="60;0"/></path><path stroke-dasharray="6" stroke-dashoffset="6" d="M12 10V14"><animate fill="freeze" attributeName="stroke-dashoffset" begin="0.6s" dur="0.2s" values="6;0"/></path></g><circle cx="12" cy="17" r="1" fill="currentColor" fill-opacity="0"><animate fill="freeze" attributeName="fill-opacity" begin="0.8s" dur="0.4s" values="0;1"/></circle></svg>');
+        $(el).find('.loading-wrap').addClass('error');
+      }
+    },
+    request: (el, url, callback, onFailure) => {
+      const maxRetry = 3;
+      let retryCount = 0;
+
+      return new Promise((resolve, reject) => {
+        const load = () => {
+          utils.onLoading?.(el);
+
+          let timedOut = false;
+          const timeout = setTimeout(() => {
+            timedOut = true;
+            console.warn('[request] 超时:', url);
+
+            if (++retryCount >= maxRetry) {
+              utils.onLoadFailure?.(el);
+              onFailure?.();
+              reject('请求超时');
+            } else {
+              setTimeout(load, 1000);
+            }
+          }, 5000);
+
+          fetch(url).then(resp => {
+            if (timedOut) return;
+            clearTimeout(timeout);
+
+            if (!resp.ok) throw new Error('响应失败');
+            return resp;
+          }).then(data => {
+            if (timedOut) return;
+            utils.onLoadSuccess?.(el);
+            callback(data);
+            resolve(data);
+          }).catch(err => {
+            clearTimeout(timeout);
+            console.warn('[request] 错误:', err);
+
+            if (++retryCount >= maxRetry) {
+              utils.onLoadFailure?.(el);
+              onFailure?.();
+              reject(err);
+            } else {
+              setTimeout(load, 1000);
+            }
+          });
+        };
+
+        load();
+      });
+    },
+    requestWithoutLoading: (url, options = {}, maxRetry = 2, timeout = 5000) => {
+      return new Promise((resolve, reject) => {
+        let retryCount = 0;
+
+        const tryRequest = () => {
+          let timedOut = false;
+          const timer = setTimeout(() => {
+            timedOut = true;
+            if (++retryCount > maxRetry) reject('timeout');
+            else tryRequest();
+          }, timeout);
+
+          fetch(url, options)
+            .then(resp => {
+              clearTimeout(timer);
+              if (!resp.ok) throw new Error('bad response');
+              resolve(resp);
+            })
+            .catch(err => {
+              clearTimeout(timer);
+              if (++retryCount > maxRetry) reject(err);
+              else setTimeout(tryRequest, 500);
+            });
+        };
+
+        tryRequest();
+      });
+    },
+    /********************** requestAnimationFrame ********************************/
+    // 1、requestAnimationFrame 会把每一帧中的所有 DOM 操作集中起来，在一次重绘或回流中就完成，并且重绘或回流的时间间隔紧紧跟随浏览器的刷新频率，一般来说，这个频率为每秒60帧。
+    // 2、在隐藏或不可见的元素中，requestAnimationFrame 将不会进行重绘或回流，这当然就意味着更少的的 cpu，gpu 和内存使用量。
+    requestAnimationFrame: (fn) => {
+      if (!window.requestAnimationFrame) {
+        window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame;
+      }
+      window.requestAnimationFrame(fn)
+    },
+    dark: {},
+  };
+
+  // utils.dark.mode 当前模式 dark or light
+  // utils.dark.toggle() 暗黑模式触发器
+  // utils.dark.push(callBack[,"callBackName"]) 传入触发器回调函数
+  utils.dark.method = {
+    toggle: new RunItem(),
+  };
+  utils.dark = Object.assign(utils.dark, {
+    push: utils.dark.method.toggle.push,
+  });
+</script>
+<script>
+  const sidebar = {
+    leftbar: () => {
+      if (l_body) {
+        l_body.toggleAttribute('leftbar');
+        l_body.removeAttribute('rightbar');
+      }
+    },
+    rightbar: () => {
+      if (l_body) {
+        l_body.toggleAttribute('rightbar');
+        l_body.removeAttribute('leftbar');
+      }
+    },
+    dismiss: () => {
+      if (l_body) {
+        l_body.removeAttribute('leftbar');
+        l_body.removeAttribute('rightbar');
+      }
+    },
+    toggleTOC: () => {
+      document.querySelector('#data-toc').classList.toggle('collapse');
+    }
+  }
+</script>
+<script type="text/javascript">
+  (() => {
+    const tagSwitchers = document.querySelectorAll('.tag-subtree.parent-tag > a > .tag-switcher-wrapper')
+    for (const tagSwitcher of tagSwitchers) {
+      tagSwitcher.addEventListener('click', (e) => {
+        const parent = e.target.closest('.tag-subtree.parent-tag')
+        parent.classList.toggle('expanded')
+        e.preventDefault()
+      })
+    }
+
+    // Get active tag from query string, then activate it.
+    const urlParams = new URLSearchParams(window.location.search)
+    const activeTag = urlParams.get('tag')
+    if (activeTag) {
+      let tag = document.querySelector(`.tag-subtree[data-tag="${activeTag}"]`)
+      if (tag) {
+        tag.querySelector('a').classList.add('active')
+        
+        while (tag) {
+          tag.classList.add('expanded')
+          tag = tag.parentElement.closest('.tag-subtree.parent-tag')
+        }
+      }
+    }
+  })()
+</script>
+
+<script async src="https://gcore.jsdelivr.net/npm/vanilla-lazyload@19.1/dist/lazyload.min.js"></script>
+<script>
+  // https://www.npmjs.com/package/vanilla-lazyload
+  // Set the options globally
+  // to make LazyLoad self-initialize
+  window.lazyLoadOptions = {
+    elements_selector: ".lazy",
+    callback_loaded: (el) => {
+      el.classList.add('loaded');
+      const wrapper = el.closest('.lazy-box');
+      const icon = wrapper?.querySelector('.lazy-icon');
+      if (icon) icon.remove();
+    }
+  };
+  // Listen to the initialization event
+  // and get the instance of LazyLoad
+  window.addEventListener(
+    "LazyLoad::Initialized",
+    function (event) {
+      window.lazyLoadInstance = event.detail.instance;
+    },
+    false
+  );
+  document.addEventListener('DOMContentLoaded', function () {
+    window.lazyLoadInstance?.update();
+  });
+
+  window.wrapLazyloadImages = (container) => {
+    if (typeof container === 'string') {
+      container = document.querySelector(container);
+    }
+    if (!container) return;
+    
+    const images = container.querySelectorAll('img');
+    images.forEach((img) => {
+      if (img.classList.contains('lazy')) return;
+
+      const src = img.getAttribute('src');
+      if (!src) return;
+
+      const wrapper = document.createElement('div');
+      wrapper.className = 'lazy-box';
+
+      const newImg = img.cloneNode();
+      newImg.removeAttribute('src');
+      newImg.setAttribute('data-src', src);
+      newImg.classList.add('lazy');
+
+      const icon = document.createElement('div');
+      icon.className = 'lazy-icon';
+      if (def.loading) {
+        icon.style.backgroundImage = `url("${def.loading}")`;
+      }
+
+      wrapper.appendChild(newImg);
+      wrapper.appendChild(icon);
+
+      img.replaceWith(wrapper);
+    });
+
+    // 通知 LazyLoad 更新
+    if (window.lazyLoadInstance?.update) {
+      window.lazyLoadInstance.update();
+    }
+  }
+  
+</script>
+
+<!-- required -->
+<script src="/js/main.js?v=1.33.1" defer></script>
+
+<script type="text/javascript">
+  const applyTheme = (theme) => {
+    if (theme === 'auto') {
+      document.documentElement.removeAttribute('data-theme')
+    } else {
+      document.documentElement.setAttribute('data-theme', theme)
+    }
+
+    // applyThemeToGiscus(theme)
+  }
+
+  // FIXME: 这会导致无法使用 preferred_color_scheme 以外的主题
+  const applyThemeToGiscus = (theme) => {
+    // theme = theme === 'auto' ? 'preferred_color_scheme' : theme
+    const cmt = document.getElementById('giscus')
+    if (cmt) {
+      // This works before giscus load.
+      cmt.setAttribute('data-theme', theme)
+    }
+
+    const iframe = document.querySelector('#comments > section.giscus > iframe')
+    if (iframe) {
+      // This works after giscus loaded.
+      const src = iframe.src
+      const newSrc = src.replace(/theme=[\w]+/, `theme=${theme}`)
+      iframe.src = newSrc
+    }
+  }
+
+  const switchTheme = () => {
+    // light -> dark -> auto -> light -> ...
+    const currentTheme = document.documentElement.getAttribute('data-theme')
+    let newTheme;
+    switch (currentTheme) {
+      case 'light':
+        newTheme = 'dark'
+        break
+      case 'dark':
+        newTheme = 'auto'
+        break
+      default:
+        newTheme = 'light'
+    }
+    applyTheme(newTheme)
+    window.localStorage.setItem('Stellar.theme', newTheme)
+    utils.dark.mode = newTheme === 'auto' ? (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light") : newTheme;
+    utils.dark.method.toggle.start();
+
+    const messages = {
+      light: `切换到浅色模式`,
+      dark: `切换到深色模式`,
+      auto: `切换到跟随系统配色`,
+    }
+    hud?.toast?.(messages[newTheme])
+  }
+
+  (() => {
+    // Apply user's preferred theme, if any.
+    const theme = window.localStorage.getItem('Stellar.theme')
+    if (theme !== null) {
+      applyTheme(theme)
+    } else {
+      utils.dark.mode = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    }
+    utils.dark.method.toggle.start();
+  })()
+</script>
+
+
+<!-- optional -->
+
+  <script type="module">
+  const el = document.querySelector("#comments #utterances");
+  util.viewportLazyload(el, load_utterances, false);
+
+  function load_utterances() {
+    if (!el) return;
+    try {
+      el.innerHTML = '';
+    } catch (error) {
+      console.error(error);
+    }
+    const script = document.createElement('script');
+    script.src = 'https://utteranc.es/client.js';
+    script.async = true;
+    for (const key of Object.keys(el.attributes)) {
+      const attr = el.attributes[key];
+      if (['class', 'id'].includes(attr.name) === false) {
+        script.setAttribute(attr.name, attr.value);
+      }
+    }
+    el.appendChild(script);
+  }
+</script>
+
+
+
+
+<script defer>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    ctx.services = Object.assign({}, JSON.parse(`{"mdrender":{"js":"/js/services/mdrender.js"},"siteinfo":{"js":"/js/services/siteinfo.js","api":null},"ghinfo":{"js":"/js/services/ghinfo.js"},"rating":{"js":"/js/services/rating.js","api":"https://star-vote.xaox.cc/api/rating"},"vote":{"js":"/js/services/vote.js","api":"https://star-vote.xaox.cc/api/vote"},"sites":{"js":"/js/services/sites.js"},"friends":{"js":"/js/services/friends.js"},"friends_and_posts":{"js":"/js/services/friends_and_posts.js"},"timeline":{"js":"/js/services/timeline.js"},"fcircle":{"js":"/js/services/fcircle.js"},"weibo":{"js":"/js/services/weibo.js"},"memos":{"js":"/js/services/memos.js"},"voice":{"js":"/js/plugins/voice.js"},"video":{"js":"/js/plugins/video.js"},"download-file":{"js":"/js/plugins/download-file.js"},"twikoo":{"js":"/js/services/twikoo_latest_comment.js"},"waline":{"js":"/js/services/waline_latest_comment.js"},"artalk":{"js":"/js/services/artalk_latest_comment.js"},"giscus":{"js":"/js/services/giscus_latest_comment.js"},"contributors":{"edit_this_page":{"_posts/":null,"wiki/stellar/":"https://github.com/xaoxuu/hexo-theme-stellar-docs/blob/main/"},"js":"/js/services/contributors.js"}}`));
+    for (let id of Object.keys(ctx.services)) {
+      const js = ctx.services[id].js;
+      if (id == 'siteinfo') {
+        ctx.cardlinks = document.querySelectorAll('a.link-card[cardlink]');
+        if (ctx.cardlinks?.length > 0) {
+          utils.js(js, { defer: true }).then(function () {
+            setCardLink(ctx.cardlinks);
+          });
+        }
+      } else if (id == 'voice') {
+        ctx.voiceAudios = document.querySelectorAll('.voice>audio');
+        if (ctx.voiceAudios?.length > 0) {
+          utils.js(js, { defer: true }).then(function () {
+            createVoiceDom(ctx.voiceAudios);
+          });
+        }
+      } else if (id == 'video') {
+        ctx.videos = document.querySelectorAll('.video>video');
+        if (ctx.videos?.length > 0) {
+          utils.js(js, { defer: true }).then(function () {
+            videoEvents(ctx.videos);
+          });
+        }
+      } else if (id == 'download-file') {
+        ctx.files = document.querySelectorAll('.file');
+        if (ctx.files?.length > 0) {
+          utils.js(js, { defer: true }).then(function () {
+            downloadFileEvent(ctx.files);
+          });
+        }
+      } else {
+        const els = document.getElementsByClassName(`ds-${id}`);
+        if (els?.length > 0) {
+          utils.jq(() => {
+            if (id == 'timeline' || 'memos' || 'marked') {
+              utils.js(deps.marked).then(function () {
+                utils.js(js, { defer: true });
+              });
+            } else {
+              utils.js(js, { defer: true });
+            }
+          });
+        }
+      }
+    }
+
+    // chat iphone time
+    let phoneTimes = document.querySelectorAll('.chat .status-bar .time');
+
+    if (phoneTimes.length > 0) {
+      NowTime();
+      var date = new Date();
+      var sec = date.getSeconds();
+      var firstAdjustInterval = setInterval(firstAdjustTime, 1000 * (60 - sec));
+    }
+
+    function firstAdjustTime() {
+      NowTime();
+      clearInterval(firstAdjustInterval);
+      setInterval(NowTime, 1000 * 60);
+    }
+
+    function NowTime() {
+      for (let i = 0; i < phoneTimes.length; ++i) {
+        var timeSpan = phoneTimes[i];
+        var date = new Date();
+        var hour = date.getHours();
+        var min = date.getMinutes();
+        timeSpan.innerHTML = check(hour) + ":" + check(min);
+      }
+    };
+
+    function check(val) {
+      if (val < 10) {
+        return ("0" + val);
+      }
+      return (val);
+    }
+
+    // chat quote
+    const chat_quote_obverser = new IntersectionObserver((entries, observer) => {
+      entries.filter((entry) => { return entry.isIntersecting }).sort((a, b) => a.intersectionRect.y !== b.intersectionRect.y ? a.intersectionRect.y - b.intersectionRect.y : a.intersectionRect.x - b.intersectionRect.x).forEach((entry, index) => {
+          observer.unobserve(entry.target);
+          setTimeout(() => {
+            entry.target.classList.add('quote-blink');
+            setTimeout(() => {
+              entry.target.classList.remove('quote-blink');
+            }, 1000);
+          }, Math.max(100, 16) * (index + 1));
+        });
+    });
+
+    var chatQuotes = document.querySelectorAll(".chat .talk .quote");
+    chatQuotes.forEach((quote) => {
+      quote.addEventListener('click', function () {
+        var chatCellDom = document.getElementById("quote-" + quote.getAttribute("quotedCellTag"));
+        if (chatCellDom) {
+          var chatDiv = chatCellDom.parentElement;
+          var mid = chatDiv.clientHeight / 2;
+          var offsetTop = chatCellDom.offsetTop;
+          if (offsetTop > mid - chatCellDom.clientHeight / 2) {
+            chatDiv.scrollTo({
+              top: chatCellDom.offsetTop - mid + chatCellDom.clientHeight / 2,
+              behavior: "smooth"
+            });
+          } else {
+            chatDiv.scrollTo({
+              top: 0,
+              behavior: "smooth"
+            });
+          }
+          chat_quote_obverser.observe(chatCellDom);
+        }
+      });
+    });
+  });
+</script>
+
+<script>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    ctx.search = {
+      path: `/search.json`,
+    }
+    utils.js('/js/search/local-search.js', { defer: true });
+  });
+</script><script>
+  window.FPConfig = {
+    delay: 0,
+    ignoreKeywords: [],
+    maxRPS: 5,
+    hoverDelay: 25
+  };
+</script>
+<script defer src="https://gcore.jsdelivr.net/npm/flying-pages@2/flying-pages.min.js"></script><script>
+  ctx.fancybox = {
+    selector: `.timenode p>img`,
+    css: `https://gcore.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css`,
+    js: `https://gcore.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js`
+  };
+  var selector = '[data-fancybox]:not(.error), .with-fancybox .atk-content img:not([atk-emoticon])';
+  if (ctx.fancybox.selector) {
+    selector += `, ${ctx.fancybox.selector}`
+  }
+  var needFancybox = document.querySelectorAll(selector).length !== 0;
+  if (!needFancybox) {
+    const memos = document.getElementsByClassName('ds-memos');
+    if (memos != undefined && memos.length > 0) {
+      needFancybox = true;
+    }
+    const fancybox = document.getElementsByClassName('with-fancybox');
+    if (fancybox != undefined && fancybox.length > 0) {
+      needFancybox = true;
+    }
+  }
+  if (needFancybox) {
+    utils.css(ctx.fancybox.css);
+    utils.js(ctx.fancybox.js, { defer: true }).then(function () {
+      Fancybox.bind(selector, {
+        hideScrollbar: false,
+        Thumbs: {
+          autoStart: false,
+        },
+        caption: (fancybox, slide) => {
+          return slide.triggerEl.alt || slide.triggerEl.dataset.caption || null
+        }
+      });
+    })
+  }
+</script>
+<script>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    const swiper_api = document.getElementById('swiper-api');
+    if (swiper_api != undefined) {
+      utils.css(`https://unpkg.com/swiper@10.3/swiper-bundle.min.css`);
+      utils.js(`https://unpkg.com/swiper@10.3/swiper-bundle.min.js`, { defer: true }).then(function () {
+        const effect = swiper_api.getAttribute('effect') || '';
+        var swiper = new Swiper('.swiper#swiper-api', {
+          slidesPerView: 'auto',
+          spaceBetween: 8,
+          centeredSlides: true,
+          effect: effect,
+          rewind: true,
+          pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+          },
+          navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+          },
+        });
+      })
+    }
+  });
+</script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    window.codeElements = document.querySelectorAll('.code');
+    if (window.codeElements.length > 0) {
+      ctx.copycode = {
+        default_text: `Copy`,
+        success_text: `Copied`,
+        toast: `复制成功`,
+      };
+      utils.js('/js/plugins/copycode.js');
+    }
+  });
+</script>
+
+
+<!-- inject -->
+
+</div></body></html>

@@ -1,0 +1,934 @@
+
+<!DOCTYPE html><html lang="zh-CN">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="hexo-theme" content="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.33.1" theme-name="Stellar" theme-version="1.33.1">
+  
+  
+  <meta name="generator" content="Hexo 6.3.0">
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  <link rel="preconnect" href="https://gcore.jsdelivr.net" crossorigin><link rel="preconnect" href="https://unpkg.com" crossorigin><link rel="preconnect" href="https://cdn.bootcdn.net" crossorigin>
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000">
+  <meta name="theme-color" content="#f9fafb">
+  <title>再见，我的2023 - Hank's Blog</title>
+
+  
+    <meta name="description" content="首先我要感谢这一年的自己，对自己说一声辛苦了。虽然这一年过得十分艰难，很多事情都发展不顺利，但是还是要对自己说一声辛苦了，最起码坚持到了最后，成功又度过了一年。 一些收获从2023年底到今年年初，主要是和同学一起翻译《Python for MATLAB Development》，人民邮电出版社引进的一本比较小众的技术书，出版社审核的时间有点长，不出意外的话，应该2024年第一季度会出版，这是我正式">
+<meta property="og:type" content="article">
+<meta property="og:title" content="再见，我的2023">
+<meta property="og:url" content="https://zhaohongxuan.github.io/2023/12/27/2023-review/">
+<meta property="og:site_name" content="Hank&#39;s Blog">
+<meta property="og:description" content="首先我要感谢这一年的自己，对自己说一声辛苦了。虽然这一年过得十分艰难，很多事情都发展不顺利，但是还是要对自己说一声辛苦了，最起码坚持到了最后，成功又度过了一年。 一些收获从2023年底到今年年初，主要是和同学一起翻译《Python for MATLAB Development》，人民邮电出版社引进的一本比较小众的技术书，出版社审核的时间有点长，不出意外的话，应该2024年第一季度会出版，这是我正式">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://avatars.githubusercontent.com/u/8613196?v=4">
+<meta property="article:published_time" content="2023-12-27T12:31:22.000Z">
+<meta property="article:modified_time" content="2026-01-28T22:53:37.438Z">
+<meta property="article:author" content="Hank Zhao">
+<meta property="article:tag" content="总结">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://avatars.githubusercontent.com/u/8613196?v=4">
+  
+  
+  
+  <meta name="keywords" content="总结">
+
+  <!-- feed -->
+  
+    <link rel="alternate" href="/atom.xml" title="Hank's Blog" type="application/atom+xml">
+  
+
+  <link rel="stylesheet" href="/css/main.css?v=1.33.1">
+
+
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+
+  
+
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Hank Zhao","sameAs":[],"image":"https://avatars.githubusercontent.com/u/8613196?v=4"},"dateCreated":"2023-12-27T12:31:22+00:00","dateModified":"2026-01-28T22:53:37+00:00","datePublished":"2023-12-27T12:31:22+00:00","description":"首先我要感谢这一年的自己，对自己说一声辛苦了。虽然这一年过得十分艰难，很多事情都发展不顺利，但是还是要对自己说一声辛苦了，最起码坚持到了最后，成功又度过了一年。\n一些收获从2023年底到今年年初，主要是和同学一起翻译《Python for MATLAB Development》，人民邮电出版社引进的一本比较小众的技术书，出版社审核的时间有点长，不出意外的话，应该2024年第一季度会出版，这是我正式翻译的第一本书，难度确实不小，虽然现在各类翻译软件层出不穷，但是想要准确的翻译还是有不小的挑战的，里面的专业词汇有点多，长句也很多，花了将近半年才翻译完。","headline":"再见，我的2023","mainEntityOfPage":{"@type":"WebPage","@id":"https://zhaohongxuan.github.io/2023/12/27/2023-review/"},"publisher":{"@type":"Organization","name":"Hank Zhao","sameAs":[],"image":"https://avatars.githubusercontent.com/u/8613196?v=4","logo":{"@type":"ImageObject","url":"https://avatars.githubusercontent.com/u/8613196?v=4"}},"url":"https://zhaohongxuan.github.io/2023/12/27/2023-review/","keywords":"总结","thumbnailUrl":"https://cdn.jsdelivr.net/gh/zhaohongxuan/picgo@master/20231227122237.png","image":1}</script>
+  <link rel="shortcut icon" href="/assets/xaoxuu/favicon/favicon.ico"><meta name="theme-color" content="#f8f8f8"><link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/lxgw-wenkai-screen-webfont/1.7.0/style.min.css" media="all" /><link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.2/css/all.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="l_body content" id="start" layout="post" type="tech" ><aside class="l_left"><div class="sidebg"></div><div class="leftbar-container">
+
+
+<header class="header"><div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="https://avatars.githubusercontent.com/u/8613196?v=4" onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a><a class="title" href="/"><div class="main">Hank's Blog</div><div class="sub normal cap">做点有趣的事情</div><div class="sub hover cap" style="opacity:0"> 编程/跑步/写作</div></a></div></header>
+
+<div class="nav-area">
+
+<nav class="menu dis-select"></nav>
+</div>
+<div class="widgets">
+<div class="search-wrapper" id="search-wrapper"><form class="search-form"><a class="search-button" onclick="document.getElementById(&quot;search-input&quot;).focus();"><svg t="1705074644177" viewBox="0 0 1025 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1560" width="200" height="200"><path d="M1008.839137 935.96571L792.364903 719.491476a56.783488 56.783488 0 0 0-80.152866 0 358.53545 358.53545 0 1 1 100.857314-335.166073 362.840335 362.840335 0 0 1-3.689902 170.145468 51.248635 51.248635 0 1 0 99.217358 26.444296 462.057693 462.057693 0 1 0-158.255785 242.303546l185.930047 185.725053a51.248635 51.248635 0 0 0 72.568068 0 51.248635 51.248635 0 0 0 0-72.978056z" p-id="1561"></path><path d="M616.479587 615.969233a50.428657 50.428657 0 0 0-61.498362-5.534852 174.655348 174.655348 0 0 1-177.525271 3.484907 49.403684 49.403684 0 0 0-58.833433 6.76482l-3.074918 2.869923a49.403684 49.403684 0 0 0 8.609771 78.10292 277.767601 277.767601 0 0 0 286.992355-5.739847 49.403684 49.403684 0 0 0 8.404776-76.667958z" p-id="1562"></path></svg></a><input type="text" class="search-input" id="search-input" placeholder="站内搜索"></form><div id="search-result"></div><div class="search-no-result">没有找到内容！</div></div>
+
+
+
+<widget class="widget-wrapper recent post-list"><div class="widget-header dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><a class="item title" href="/2024/10/10/layoff-first-time/"><span class="title">记录人生第一次裁员</span></a><a class="item title" href="/2025/02/19/2024-review/"><span class="title">2024：拥抱不确定</span></a><a class="item title" href="/2026/01/28/2025-review/"><span class="title">2025：平凡的一年</span></a><a class="item title" href="/2023/02/05/bloom-taxonomy/"><span class="title">认识布鲁姆分类学</span></a><a class="item title" href="/2022/12/31/bye-2022/"><span class="title">再见2022</span></a><a class="item title" href="/2023/05/05/autogroup-your-chrome/"><span class="title">自动分组chrome标签页</span></a><a class="item title" href="/2023/06/30/how-i-learn-shuang-pin/"><span class="title">也许你该试试双拼输入法</span></a><a class="item title" href="/2023/07/08/apple-watch-to-shuzixindong/"><span class="title">将Apple Watch跑步数据同步到Garmin</span></a><a class="item title" href="/2023/11/05/shangma-auto-sign-tool/"><span class="title">上海马拉松自动签到工具</span></a><a class="item title" href="/2023/12/17/xiaomi-ax1800-shellclash/"><span class="title">小米AX1800实现科学上网</span></a></div></widget>
+</div>
+
+</div></aside><div class="l_main" id="main">
+
+
+
+
+
+<div class="article banner top">
+  <div class="content">
+    <div class="top bread-nav footnote"><div class="left"><div class="flex-row" id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a>
+<span class="sep"></span><a class="cap breadcrumb" href="/">文章</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/">年终总结</a></div>
+<div class="flex-row" id="post-meta"><span class="text created">发布于：<time datetime="2023-12-27T12:31:22.000Z">2023-12-27</time></span><span class="sep updated"></span><span class="text updated">更新于：<time datetime="2026-01-28T22:53:37.438Z">2026-01-28</time></span></div></div></div>
+    
+    <div class="bottom only-title">
+      
+      <div class="text-area">
+        <h1 class="text title"><span>再见，我的2023</span></h1>
+        
+      </div>
+    </div>
+    
+  </div>
+  </div><article class="md-text content"><p>首先我要感谢这一年的自己，对自己说一声辛苦了。虽然这一年过得十分艰难，很多事情都发展不顺利，但是还是要对自己说一声辛苦了，最起码坚持到了最后，成功又度过了一年。</p>
+<h2 id="一些收获"><a href="#一些收获" class="headerlink" title="一些收获"></a>一些收获</h2><p>从2023年底到今年年初，主要是和同学一起翻译《Python for MATLAB Development》，人民邮电出版社引进的一本比较小众的技术书，出版社审核的时间有点长，不出意外的话，应该2024年第一季度会出版，这是我正式翻译的第一本书，难度确实不小，虽然现在各类翻译软件层出不穷，但是想要准确的翻译还是有不小的挑战的，里面的专业词汇有点多，长句也很多，花了将近半年才翻译完。</p>
+<span id="more"></span>
+
+<p>开源方面，今年没挖大坑，主要就是围绕着跑步和骑行构建了一些自己的工具。首先是使用<a target="_blank" rel="noopener" href="https://github.com/ben-29">@ben-29</a> 的<a target="_blank" rel="noopener" href="https://github.com/ben-29/workouts_page">workout page</a>,把自己的骑行数据展示到<a href="https://zhaohongxuan.github.io/workouts/">我的运动主页</a>了，确实很很酷。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zhaohongxuan/picgo@master/20231227122237.png" alt="image.png"></p>
+<p>围绕着跑步也贡献了一部分代码，一个比较大的项目是：<a target="_blank" rel="noopener" href="https://github.com/zhaohongxuan/shangma_auto_sign">上马自动签到工具</a>，为了给自己偷懒，自己分析上马官网前端代码，使用Nodejs写了一个上马签到的程序，由于之前都是Java技术栈，没怎么使用过Nodejs，边查Javascript语言文档边写代码，最终花了一个晚上和一个上午把工具给做出来了。去年做的<a target="_blank" rel="noopener" href="https://github.com/zhaohongxuan/obsidian-weread-plugin">微信读书Obsidian插件</a>也是，主意都是一念之间想起来的，Typescript语言也是边学边写，那时候还没有ChatGPT，结果三天就把原型代码写出来了，还是挺佩服我自己的。</p>
+<p>此外，还给Running Page贡献了几个feature，比如为Keep导出的GPX文件增加心率数据，还有为同步到Garmin的运动记录中增加Device Info等。这些都是我在实际中遇到的问题，我只不过是把这些问题解决了而已，同时这些Feature也能帮助别人，何乐而不为呢？</p>
+<p>今年开始花费了不少在Twitter（X）上公开表达，主要是把自己的一些想法和学到的东西分享出来，主要是下半年开始玩，粉丝涨到了3K多，不是特别在意粉丝的多少，这些数据都是次要的，发推主要是为了分享自己学习的一些结果，公开学习有助于自己表达。</p>
+<h2 id="生活日常"><a href="#生活日常" class="headerlink" title="生活日常"></a>生活日常</h2><p>女儿今年已经两岁多了，这个时间段是最调皮捣蛋的时候，而且精力十分旺盛，作息时间已经和大人基本一致了，需要花费很多精力去陪她，回想刚过年的时候，女儿刚学会走路，趔趔趄趄的往前扑，仿佛看到了小时候的自己。和小朋友在一起的时候虽然有的时候各种淘气捣蛋惹人生气，但是大部分很开心，因为一切都是向上的，在每一天平淡的日子里，她们在一点点的成长。</p>
+<p>生活就是日常点滴的汇聚，大多数时候都感觉生活很幸福的，自从去年年底买了车之后，今年去的地方也多了，去了上海海洋馆，野生动物园，金山城市沙滩，东海等，自驾回老家洛阳了两趟，和老婆一起去了老君山，鸡冠洞等，除此之外，去周边的儿童乐园玩什么的，开车也是很方便的，不得不说，车在一定程度上提高了生活的幸福感。</p>
+<p>就像一个平静的湖面突然落入一颗石子一样，总是会出现一些意外来打破生活的平静，五一刚从老家回上海没几天，大哥就中风了，情况很严重，做了脑部手术，老妈需要回家一段时间照顾，我也请假在家了一段时间来照顾女儿，突然有一瞬间，我感觉这个世界太残酷了，健康是一个人的根本，但是大部分健康的人是体会不到的，你正在经历的日常可能就是他人遥不可及的梦。</p>
+<p>八月份的时候，女儿在小区里走路的时候，被一个4岁的小男孩骑车撞了一下，我赶紧带她去儿科医院缝了针，这是当爸爸的最难受的一次，虽然伤口很小，但是女儿哭的特别厉害，这时候恨不得自己替她承受这一份苦难，然而并不能，这一刻，我又一次体会到了父母的艰辛。而事情还没结束，由于当时对方父母不在场，监控又在死角，还好当时旁边有好心人说了这个小男孩家里的门牌号，最终又是一场心累的沟通，经过居委的多次调节，对方答应承担医药费了。好在小孩子的伤口都恢复的比较快，一周缝线就脱落了，但是还是有一些伤疤，一直在用去伤疤的药，现在伤疤越来越淡了，期待伤疤赶快消失。</p>
+<p>细数下来，今年发生的事情几乎都是不怎么好的事情，可能大脑对于不好的事情总是记的特别牢固，但是对于开心快乐的时刻忘的比较快，经常在翻阅照片的时候才会发现大部分时候记录的都是快乐的时光，可能快乐的时间过得太快导致记忆出现偏差了吧。</p>
+<h2 id="新玩意儿"><a href="#新玩意儿" class="headerlink" title="新玩意儿"></a>新玩意儿</h2><p>年初购买了 Macbook Pro 14  2021 ，之前的Macbook Pro 2017屏幕出现了舞台光，非常影响使用，这个应该算是通病，但是苹果没有维修计划，只能便宜卖了，刚好2021款的降价幅度比较大，不到9700就能到手了，于是果断下单了，体验下来确实要比英特尔芯片的Macbook要强大不少，出门基本上没带过充电线。</p>
+<p>Giant Revolt F1 主要用于上下班通勤，单程38km骑了好几个月，最后胖了好几斤，骑车的确不能减肥，想要减肥而买车还是需要三思。</p>
+<p>由于时光相册关停，相册备份成了一个问题，刚好双十一入手了 Green DX4600 NAS，买成品NAS主要是考虑到折腾的少，主要用于照片备份以及搭建影音库，没有必要自己折腾，刚好把之前的盛夏的三块2.5寸硬盘都利用上了。</p>
+<p>终于把之前的眼镜淘汰了，配了蔡司的眼镜，相比较之前的旧眼镜，感觉蔡司的镜片透光度提升了很多，眼镜店里测了下旧眼镜，发现透光度只有86%了，我也不知道这两年咋过的。。总之，这些天天使用的工具，一定要选好的，能提高了不少幸福度。</p>
+<p>另外，今年还花了128买了微信读书年卡会员，总体感觉还是挺值的，一年之内读了不少书，还攒了不好书币，应该算是超值了，不过明年应该不会再续了，先把手上攒的书读完再说。</p>
+<h2 id="工作相关"><a href="#工作相关" class="headerlink" title="工作相关"></a>工作相关</h2><p>这一年的中国经济的基调是“下降”，公司作为一家外企发展并不太好，呆在现在的公司已经3年了，能感受到今年要做的需求再慢慢减少，就目前来说，公司的现金流紧张，现在正在经历裁员和私有化，最最操蛋的是，已经Vest的股票也要作废，令人发指，然而Repackage却符合该国的法律，真是滑稽啊。</p>
+<p>基金投资躺平了一年之后，亏损日益扩大，最多的一只基金已经亏损了近50%，好在年中的时候看李笑来的《让时间陪你慢慢变富》的时候，学到了分散投资，把一部分资金投入了美股的ETF基金，减少了相当一部分的损失，不过整体上对未来在股市上的预期降低了很多。</p>
+<p>有那么几个瞬间，我仿佛想明白了工作的意义，工作只是手段，不是目的，如果工作是朝着自己的长期目标前进的时候，那么你一定做着自己热爱的事情，那就勇敢前行吧，如果不是，那么就要重新想象自己未来的长期目标和工作的关系了，重新寻找一个能唤起自己激情的地方吧，多寻找，多尝试，我想总会找到的。</p>
+<h2 id="读书"><a href="#读书" class="headerlink" title="读书"></a>读书</h2><p>粗略的想好像这一年没怎么读书，但是看了微信读书的报告，还是吓了一跳，发现这一年居然读了十几本书，大部分时候都是在地铁上读，因为平时自己的时间真的太少了，有的时候还挺喜欢在地铁上读书的，感觉比在家里沙发上读书更容易专注，仿佛地铁嘈杂的声音是白噪声似的，地铁上我一般使用Boox Poker3电纸书阅读，对眼睛友好，用它读了不少历史方面的书，特别是张宏杰老师的书，太上瘾了，下面简单列一下今年看的书。</p>
+<ul>
+<li>1月《悉达多》</li>
+<li>2月《纳瓦尔宝典》</li>
+<li>3月《汴京之围：北宋末年的外交、战争和人》</li>
+<li>4月《Kafka权威指南》《Designing Data-Intensive Applications》（Ongoing）</li>
+<li>5月《道德经》</li>
+<li>6月《楚汉双雄》、《智慧和魔咒》</li>
+<li>7月《法治的细节》、《饥饿的盛世》、《千年悖论》</li>
+<li>8月《大明王朝的七张面孔》</li>
+<li>9月《让时间陪你慢慢变富》</li>
+<li>10月《中国历代政治得失》</li>
+<li>11月《我与地坛》、《宝贵的人生建议》</li>
+<li>12月《定位》、《长安的荔枝》、《挑战不可能》（Ongoing）</li>
+</ul>
+<p>这里面的书除了DDIA都看完了，DDIA事由于中英对照着看，进度有点慢，到现在还有几个章节没看完，不过收获确实很大，对数据系统有了更加深刻的认知。</p>
+<h2 id="骑行和跑步"><a href="#骑行和跑步" class="headerlink" title="骑行和跑步"></a>骑行和跑步</h2><p>上半年的主旋律是骑行，3月份的时候买了一辆平把公路车Giant Revolt F1，一直拿来用于上下班，今年骑了好几次淀山湖，还有太浦河，前灯古镇，当然冬天的时候还骑了苏州太湖的东山（本来打算骑东西山的，风太吹了，放弃）。</p>
+<p>骑行的时间长了，跑步自然就少了，今年总共跑了六百多公里，和往年比应该是最少一年了，不过今年依然跑了两个马拉松，一个是苏州半程马拉松，还有一个就是上马，很明显都没PB，但是都跑到了我的理想区间，半马1个小时44分，全马3个小时50分钟，主要就是10月份练了一个月，能达到这样的成绩我已经很满意了，明年应该会继续报名上马。</p>
+<p>运动是内啡肽分泌的一个重要途径，内啡肽被称为脑内吗啡，能让人感受到幸福，所以我每周都会进行几次运动，冬天的话频次会相对减少一些，但是好的天气一定会出去运动。</p>
+<h2 id="思考和展望"><a href="#思考和展望" class="headerlink" title="思考和展望"></a>思考和展望</h2><p>2023年，过得不算太好， 但是仍然有失有的，我仍然感谢生活，至少我都挺过来了，2024年，我应该会更多的时间花费在家庭上，陪伴女儿成长，多出去玩一玩。在技术上深化一下自己的技术栈，拓展自己的职业边界，更多的时间来公开学习，多写作，多记录自己的想法，写作是澄清自己思想的方法，把遇到的各种问题和解决方法，多输出一些有价值的内容，探索自己的好奇心和Passion，寻找更多可能性，争取更多的闲暇时间来<code>build something wonderful</code>，可以是一个开源小工具，可以是写一本书，可以是任何东西，总之，可以让世界变得更加美好就够了。 </p>
+<p>我一直认为人生重在体验，体验需要Dive into，所以有的时候需要大胆一些，勇敢一些，尝试一些未曾经体验过的事物，探索内心深处的热爱，去从未到达的地方，去感受这个世界的五彩斑斓，人生是旷野，方向不止一个，多花一点思考自己前行的目标，保持内心平和，身体健康。<br>·</p>
+</article>
+<div class="article-footer">
+    <section id="license">
+      <div class="header"><span>许可协议</span></div>
+      <div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
+</div>
+    </section>
+    
+
+
+    <section id="share">
+      <div class="header"><span>分享文章</span></div>
+      <div class="body">
+        <div class="link"><input class="copy-area" readonly="true" id="copy-link" value="https://zhaohongxuan.github.io/2023/12/27/2023-review/" /></div>
+        <div class="social-wrap dis-select"><a class="social share-item wechat" onclick="util.toggle(&quot;qrcode-wechat&quot;)"><img  src="https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/social/b32ef3da1162a.svg" /></a><a class="social share-item email" href="mailto:?subject=再见，我的2023 - Hank's Blog&amp;body=https://zhaohongxuan.github.io/2023/12/27/2023-review/"><img  src="https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/social/a1b00e20f425d.svg" /></a><a class="social share-item link" onclick="util.copy(&quot;copy-link&quot;, &quot;复制成功&quot;)"><img  src="https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/social/8411ed322ced6.svg" /></a></div>
+        
+        <div class="qrcode" id="qrcode-wechat" style="opacity:0;height:0">
+          <img src="https://api.qrserver.com/v1/create-qr-code/?size=256x256&data=https://zhaohongxuan.github.io/2023/12/27/2023-review/"/>
+        </div>
+        
+      </div>
+    </section>
+    </div>
+
+<div class="related-wrap" id="read-next"><section class="body"><div class="item" id="prev"><div class="note">较新文章</div><a href="/2024/01/04/obsidian-workflow/">我的Obsidian笔记工作流</a></div><div class="item" id="next"><div class="note">较早文章</div><a href="/2023/12/20/obsidian-support-daily-poem/">使用Templater在Obsidian中实现每日诗词</a></div></section></div>
+
+
+
+
+  <div class="related-wrap md-text" id="comments">
+    <section class='header cmt-title cap theme'>
+      <p>快来参与讨论吧~</p>
+
+    </section>
+    <section class='body cmt-body utterances'>
+      
+
+<svg class="loading" style="vertical-align:middle;fill:currentColor;overflow:hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2709"><path d="M832 512c0-176-144-320-320-320V128c211.2 0 384 172.8 384 384h-64zM192 512c0 176 144 320 320 320v64C300.8 896 128 723.2 128 512h64z" p-id="2710"></path></svg>
+
+<div id="utterances" repo="zhaohongxuan/zhaohongxuan.github.io" issue-term="pathname" theme="preferred-color-scheme"></div>
+
+    </section>
+  </div>
+
+
+
+<footer class="page-footer footnote"><hr><div class="text"><p>本站由 <a href="/">Hank Zhao</a> 使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.33.1">Stellar</a> 主题创建。<br>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。<br><span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span></p>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+</div></footer>
+<div class="main-mask" onclick="sidebar.dismiss()"></div></div><aside class="l_right">
+<div class="widgets">
+
+
+
+<widget class="widget-wrapper toc" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">本文目录</span><a class="cap-action" onclick="sidebar.toggleTOC()" ><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg></a></div><div class="widget-body"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E4%BA%9B%E6%94%B6%E8%8E%B7"><span class="toc-text">一些收获</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%9F%E6%B4%BB%E6%97%A5%E5%B8%B8"><span class="toc-text">生活日常</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B0%E7%8E%A9%E6%84%8F%E5%84%BF"><span class="toc-text">新玩意儿</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B7%A5%E4%BD%9C%E7%9B%B8%E5%85%B3"><span class="toc-text">工作相关</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%BB%E4%B9%A6"><span class="toc-text">读书</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%AA%91%E8%A1%8C%E5%92%8C%E8%B7%91%E6%AD%A5"><span class="toc-text">骑行和跑步</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%9D%E8%80%83%E5%92%8C%E5%B1%95%E6%9C%9B"><span class="toc-text">思考和展望</span></a></li></ol></div><div class="widget-footer"><a class="top" onclick="util.scrollTop()"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><!-- Icon from Solar by 480 Design - https://creativecommons.org/licenses/by/4.0/ --><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"><path stroke-linejoin="round" d="m9 15.5l3-3l3 3m-6-4l3-3l3 3"/><path d="M7 3.338A9.95 9.95 0 0 1 12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12c0-1.821.487-3.53 1.338-5"/></g></svg><span>回到顶部</span></a><a class="buttom" onclick="util.scrollComment()"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><!-- Icon from Solar by 480 Design - https://creativecommons.org/licenses/by/4.0/ --><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" d="M8 10.5h8M8 14h5.5M17 3.338A9.95 9.95 0 0 0 12 2C6.477 2 2 6.477 2 12c0 1.6.376 3.112 1.043 4.453c.178.356.237.763.134 1.148l-.595 2.226a1.3 1.3 0 0 0 1.591 1.592l2.226-.596a1.63 1.63 0 0 1 1.149.133A9.96 9.96 0 0 0 12 22c5.523 0 10-4.477 10-10c0-1.821-.487-3.53-1.338-5"/></svg><span>参与讨论</span></a></div></widget>
+</div></aside><div class='float-panel'>
+  <button type='button' style='display:none' class='laptop-only rightbar-toggle mobile' onclick='sidebar.rightbar()'>
+    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg>
+  </button>
+  <button type='button' style='display:none' class='mobile-only leftbar-toggle mobile' onclick='sidebar.leftbar()'>
+    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 11c0-3.771 0-5.657 1.172-6.828C4.343 3 6.229 3 10 3h4c3.771 0 5.657 0 6.828 1.172C22 5.343 22 7.229 22 11v2c0 3.771 0 5.657-1.172 6.828C19.657 21 17.771 21 14 21h-4c-3.771 0-5.657 0-6.828-1.172C2 18.657 2 16.771 2 13z"/><path id="sep" stroke-linecap="round" d="M5.5 10h6m-5 4h4m4.5 7V3"/></g></svg>
+  </button>
+</div>
+</div><div class="scripts">
+
+
+<script type="text/javascript">
+  window.canonical = {"originalHost":null,"officialHosts":["localhost"],"encoded":""};
+  const ctx = {
+    date_suffix: {
+      just: `刚刚`,
+      min: `分钟前`,
+      hour: `小时前`,
+      day: `天前`,
+    },
+    root : `/`,
+    tag_plugins: {
+      chat: Object.assign({"api":"https://siteinfo.listentothewind.cn/api/v1"}),
+    }
+  };
+
+  // required plugins (only load if needs)
+  if (`local_search`) {
+    ctx.search = {};
+    ctx.search.service = `local_search`;
+    if (ctx.search.service == 'local_search') {
+      let service_obj = Object.assign({}, `{"field":"all","path":"/search.json","content":true,"skip_search":null,"sort":"-date"}`);
+      ctx.search[ctx.search.service] = service_obj;
+    }
+  }
+  const def = {
+    avatar: `https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/avatar/round/3442075.svg`,
+    cover: `https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/cover/76b86c0226ffd.svg`,
+    loading: `https://api.iconify.design/eos-icons:three-dots-loading.svg?color=%231cd0fd`,
+  };
+  const deps = {
+    jquery: `https://gcore.jsdelivr.net/npm/jquery@3.7/dist/jquery.min.js`,
+    marked: `https://gcore.jsdelivr.net/npm/marked@13.0/lib/marked.umd.min.js`,
+    lazyload: `/%5Bobject%20Object%5D`
+  }
+  
+
+</script>
+
+<script type="text/javascript">
+  
+  function RunItem() {
+    this.list = []; // 存放回调函数
+    this.start = () => {
+      for (var i = 0; i < this.list.length; i++) {
+        this.list[i].run();
+      }
+    };
+    this.push = (fn, name, setRequestAnimationFrame = true) => {
+      let myfn = fn
+      if (setRequestAnimationFrame) {
+        myfn = () => {
+          utils.requestAnimationFrame(fn)
+        }
+      }
+      var f = new Item(myfn, name);
+      this.list.push(f);
+    };
+    this.remove = (name) => {
+      for (let index = 0; index < this.list.length; index++) {
+        const e = this.list[index];
+        if (e.name == name) {
+          this.list.splice(index, 1);
+        }
+      }
+    }
+    // 构造一个可以run的对象
+    function Item(fn, name) {
+      // 函数名称
+      this.name = name || fn.name;
+      // run方法
+      this.run = () => {
+        try {
+          fn()
+        } catch (error) {
+          console.log(error);
+        }
+      };
+    }
+  }
+
+  const utils = {
+    // 懒加载 css https://github.com/filamentgroup/loadCSS
+    css: (href, before, media, attributes) => {
+      var doc = window.document;
+      var ss = doc.createElement("link");
+      var ref;
+      if (before) {
+        ref = before;
+      } else {
+        var refs = (doc.body || doc.getElementsByTagName("head")[0]).childNodes;
+        ref = refs[refs.length - 1];
+      }
+      var sheets = doc.styleSheets;
+      if (attributes) {
+        for (var attributeName in attributes) {
+          if (attributes.hasOwnProperty(attributeName)) {
+            ss.setAttribute(attributeName, attributes[attributeName]);
+          }
+        }
+      }
+      ss.rel = "stylesheet";
+      ss.href = href;
+      ss.media = "only x";
+      function ready(cb) {
+        if (doc.body) {
+          return cb();
+        }
+        setTimeout(function () {
+          ready(cb);
+        });
+      }
+      ready(function () {
+        ref.parentNode.insertBefore(ss, before ? ref : ref.nextSibling);
+      });
+      var onloadcssdefined = function (cb) {
+        var resolvedHref = ss.href;
+        var i = sheets.length;
+        while (i--) {
+          if (sheets[i].href === resolvedHref) {
+            return cb();
+          }
+        }
+        setTimeout(function () {
+          onloadcssdefined(cb);
+        });
+      };
+      function loadCB() {
+        if (ss.addEventListener) {
+          ss.removeEventListener("load", loadCB);
+        }
+        ss.media = media || "all";
+      }
+      if (ss.addEventListener) {
+        ss.addEventListener("load", loadCB);
+      }
+      ss.onloadcssdefined = onloadcssdefined;
+      onloadcssdefined(loadCB);
+      return ss;
+    },
+
+    js: (src, opt) => new Promise((resolve, reject) => {
+      var script = document.createElement('script');
+      if (src.startsWith('/')) {
+        src = ctx.root + src.substring(1);
+      }
+      script.src = src;
+      if (opt) {
+        for (let key of Object.keys(opt)) {
+          script[key] = opt[key]
+        }
+      } else {
+        // 默认异步，如果需要同步，第二个参数传入 {} 即可
+        script.async = true
+      }
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function () {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    }),
+
+    jq: (fn) => {
+      if (typeof jQuery === 'undefined') {
+        utils.js(deps.jquery).then(fn)
+      } else {
+        fn()
+      }
+    },
+
+    onLoading: (el) => {
+      if (el) {
+        $(el).append('<div class="loading-wrap"><svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2"><path stroke-dasharray="60" stroke-dashoffset="60" stroke-opacity=".3" d="M12 3C16.9706 3 21 7.02944 21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3Z"><animate fill="freeze" attributeName="stroke-dashoffset" dur="1.3s" values="60;0"/></path><path stroke-dasharray="15" stroke-dashoffset="15" d="M12 3C16.9706 3 21 7.02944 21 12"><animate fill="freeze" attributeName="stroke-dashoffset" dur="0.3s" values="15;0"/><animateTransform attributeName="transform" dur="1.5s" repeatCount="indefinite" type="rotate" values="0 12 12;360 12 12"/></path></g></svg></div>');
+      }
+    },
+    onLoadSuccess: (el) => {
+      if (el) {
+        $(el).find('.loading-wrap').remove();
+      }
+    },
+    onLoadFailure: (el) => {
+      if (el) {
+        $(el).find('.loading-wrap svg').remove();
+        $(el).find('.loading-wrap').append('<svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path stroke-dasharray="60" stroke-dashoffset="60" d="M12 3L21 20H3L12 3Z"><animate fill="freeze" attributeName="stroke-dashoffset" dur="0.5s" values="60;0"/></path><path stroke-dasharray="6" stroke-dashoffset="6" d="M12 10V14"><animate fill="freeze" attributeName="stroke-dashoffset" begin="0.6s" dur="0.2s" values="6;0"/></path></g><circle cx="12" cy="17" r="1" fill="currentColor" fill-opacity="0"><animate fill="freeze" attributeName="fill-opacity" begin="0.8s" dur="0.4s" values="0;1"/></circle></svg>');
+        $(el).find('.loading-wrap').addClass('error');
+      }
+    },
+    request: (el, url, callback, onFailure) => {
+      const maxRetry = 3;
+      let retryCount = 0;
+
+      return new Promise((resolve, reject) => {
+        const load = () => {
+          utils.onLoading?.(el);
+
+          let timedOut = false;
+          const timeout = setTimeout(() => {
+            timedOut = true;
+            console.warn('[request] 超时:', url);
+
+            if (++retryCount >= maxRetry) {
+              utils.onLoadFailure?.(el);
+              onFailure?.();
+              reject('请求超时');
+            } else {
+              setTimeout(load, 1000);
+            }
+          }, 5000);
+
+          fetch(url).then(resp => {
+            if (timedOut) return;
+            clearTimeout(timeout);
+
+            if (!resp.ok) throw new Error('响应失败');
+            return resp;
+          }).then(data => {
+            if (timedOut) return;
+            utils.onLoadSuccess?.(el);
+            callback(data);
+            resolve(data);
+          }).catch(err => {
+            clearTimeout(timeout);
+            console.warn('[request] 错误:', err);
+
+            if (++retryCount >= maxRetry) {
+              utils.onLoadFailure?.(el);
+              onFailure?.();
+              reject(err);
+            } else {
+              setTimeout(load, 1000);
+            }
+          });
+        };
+
+        load();
+      });
+    },
+    requestWithoutLoading: (url, options = {}, maxRetry = 2, timeout = 5000) => {
+      return new Promise((resolve, reject) => {
+        let retryCount = 0;
+
+        const tryRequest = () => {
+          let timedOut = false;
+          const timer = setTimeout(() => {
+            timedOut = true;
+            if (++retryCount > maxRetry) reject('timeout');
+            else tryRequest();
+          }, timeout);
+
+          fetch(url, options)
+            .then(resp => {
+              clearTimeout(timer);
+              if (!resp.ok) throw new Error('bad response');
+              resolve(resp);
+            })
+            .catch(err => {
+              clearTimeout(timer);
+              if (++retryCount > maxRetry) reject(err);
+              else setTimeout(tryRequest, 500);
+            });
+        };
+
+        tryRequest();
+      });
+    },
+    /********************** requestAnimationFrame ********************************/
+    // 1、requestAnimationFrame 会把每一帧中的所有 DOM 操作集中起来，在一次重绘或回流中就完成，并且重绘或回流的时间间隔紧紧跟随浏览器的刷新频率，一般来说，这个频率为每秒60帧。
+    // 2、在隐藏或不可见的元素中，requestAnimationFrame 将不会进行重绘或回流，这当然就意味着更少的的 cpu，gpu 和内存使用量。
+    requestAnimationFrame: (fn) => {
+      if (!window.requestAnimationFrame) {
+        window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame;
+      }
+      window.requestAnimationFrame(fn)
+    },
+    dark: {},
+  };
+
+  // utils.dark.mode 当前模式 dark or light
+  // utils.dark.toggle() 暗黑模式触发器
+  // utils.dark.push(callBack[,"callBackName"]) 传入触发器回调函数
+  utils.dark.method = {
+    toggle: new RunItem(),
+  };
+  utils.dark = Object.assign(utils.dark, {
+    push: utils.dark.method.toggle.push,
+  });
+</script>
+<script>
+  const sidebar = {
+    leftbar: () => {
+      if (l_body) {
+        l_body.toggleAttribute('leftbar');
+        l_body.removeAttribute('rightbar');
+      }
+    },
+    rightbar: () => {
+      if (l_body) {
+        l_body.toggleAttribute('rightbar');
+        l_body.removeAttribute('leftbar');
+      }
+    },
+    dismiss: () => {
+      if (l_body) {
+        l_body.removeAttribute('leftbar');
+        l_body.removeAttribute('rightbar');
+      }
+    },
+    toggleTOC: () => {
+      document.querySelector('#data-toc').classList.toggle('collapse');
+    }
+  }
+</script>
+<script type="text/javascript">
+  (() => {
+    const tagSwitchers = document.querySelectorAll('.tag-subtree.parent-tag > a > .tag-switcher-wrapper')
+    for (const tagSwitcher of tagSwitchers) {
+      tagSwitcher.addEventListener('click', (e) => {
+        const parent = e.target.closest('.tag-subtree.parent-tag')
+        parent.classList.toggle('expanded')
+        e.preventDefault()
+      })
+    }
+
+    // Get active tag from query string, then activate it.
+    const urlParams = new URLSearchParams(window.location.search)
+    const activeTag = urlParams.get('tag')
+    if (activeTag) {
+      let tag = document.querySelector(`.tag-subtree[data-tag="${activeTag}"]`)
+      if (tag) {
+        tag.querySelector('a').classList.add('active')
+        
+        while (tag) {
+          tag.classList.add('expanded')
+          tag = tag.parentElement.closest('.tag-subtree.parent-tag')
+        }
+      }
+    }
+  })()
+</script>
+
+<script async src="https://gcore.jsdelivr.net/npm/vanilla-lazyload@19.1/dist/lazyload.min.js"></script>
+<script>
+  // https://www.npmjs.com/package/vanilla-lazyload
+  // Set the options globally
+  // to make LazyLoad self-initialize
+  window.lazyLoadOptions = {
+    elements_selector: ".lazy",
+    callback_loaded: (el) => {
+      el.classList.add('loaded');
+      const wrapper = el.closest('.lazy-box');
+      const icon = wrapper?.querySelector('.lazy-icon');
+      if (icon) icon.remove();
+    }
+  };
+  // Listen to the initialization event
+  // and get the instance of LazyLoad
+  window.addEventListener(
+    "LazyLoad::Initialized",
+    function (event) {
+      window.lazyLoadInstance = event.detail.instance;
+    },
+    false
+  );
+  document.addEventListener('DOMContentLoaded', function () {
+    window.lazyLoadInstance?.update();
+  });
+
+  window.wrapLazyloadImages = (container) => {
+    if (typeof container === 'string') {
+      container = document.querySelector(container);
+    }
+    if (!container) return;
+    
+    const images = container.querySelectorAll('img');
+    images.forEach((img) => {
+      if (img.classList.contains('lazy')) return;
+
+      const src = img.getAttribute('src');
+      if (!src) return;
+
+      const wrapper = document.createElement('div');
+      wrapper.className = 'lazy-box';
+
+      const newImg = img.cloneNode();
+      newImg.removeAttribute('src');
+      newImg.setAttribute('data-src', src);
+      newImg.classList.add('lazy');
+
+      const icon = document.createElement('div');
+      icon.className = 'lazy-icon';
+      if (def.loading) {
+        icon.style.backgroundImage = `url("${def.loading}")`;
+      }
+
+      wrapper.appendChild(newImg);
+      wrapper.appendChild(icon);
+
+      img.replaceWith(wrapper);
+    });
+
+    // 通知 LazyLoad 更新
+    if (window.lazyLoadInstance?.update) {
+      window.lazyLoadInstance.update();
+    }
+  }
+  
+</script>
+
+<!-- required -->
+<script src="/js/main.js?v=1.33.1" defer></script>
+
+<script type="text/javascript">
+  const applyTheme = (theme) => {
+    if (theme === 'auto') {
+      document.documentElement.removeAttribute('data-theme')
+    } else {
+      document.documentElement.setAttribute('data-theme', theme)
+    }
+
+    // applyThemeToGiscus(theme)
+  }
+
+  // FIXME: 这会导致无法使用 preferred_color_scheme 以外的主题
+  const applyThemeToGiscus = (theme) => {
+    // theme = theme === 'auto' ? 'preferred_color_scheme' : theme
+    const cmt = document.getElementById('giscus')
+    if (cmt) {
+      // This works before giscus load.
+      cmt.setAttribute('data-theme', theme)
+    }
+
+    const iframe = document.querySelector('#comments > section.giscus > iframe')
+    if (iframe) {
+      // This works after giscus loaded.
+      const src = iframe.src
+      const newSrc = src.replace(/theme=[\w]+/, `theme=${theme}`)
+      iframe.src = newSrc
+    }
+  }
+
+  const switchTheme = () => {
+    // light -> dark -> auto -> light -> ...
+    const currentTheme = document.documentElement.getAttribute('data-theme')
+    let newTheme;
+    switch (currentTheme) {
+      case 'light':
+        newTheme = 'dark'
+        break
+      case 'dark':
+        newTheme = 'auto'
+        break
+      default:
+        newTheme = 'light'
+    }
+    applyTheme(newTheme)
+    window.localStorage.setItem('Stellar.theme', newTheme)
+    utils.dark.mode = newTheme === 'auto' ? (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light") : newTheme;
+    utils.dark.method.toggle.start();
+
+    const messages = {
+      light: `切换到浅色模式`,
+      dark: `切换到深色模式`,
+      auto: `切换到跟随系统配色`,
+    }
+    hud?.toast?.(messages[newTheme])
+  }
+
+  (() => {
+    // Apply user's preferred theme, if any.
+    const theme = window.localStorage.getItem('Stellar.theme')
+    if (theme !== null) {
+      applyTheme(theme)
+    } else {
+      utils.dark.mode = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    }
+    utils.dark.method.toggle.start();
+  })()
+</script>
+
+
+<!-- optional -->
+
+  <script type="module">
+  const el = document.querySelector("#comments #utterances");
+  util.viewportLazyload(el, load_utterances, false);
+
+  function load_utterances() {
+    if (!el) return;
+    try {
+      el.innerHTML = '';
+    } catch (error) {
+      console.error(error);
+    }
+    const script = document.createElement('script');
+    script.src = 'https://utteranc.es/client.js';
+    script.async = true;
+    for (const key of Object.keys(el.attributes)) {
+      const attr = el.attributes[key];
+      if (['class', 'id'].includes(attr.name) === false) {
+        script.setAttribute(attr.name, attr.value);
+      }
+    }
+    el.appendChild(script);
+  }
+</script>
+
+
+
+
+<script defer>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    ctx.services = Object.assign({}, JSON.parse(`{"mdrender":{"js":"/js/services/mdrender.js"},"siteinfo":{"js":"/js/services/siteinfo.js","api":null},"ghinfo":{"js":"/js/services/ghinfo.js"},"rating":{"js":"/js/services/rating.js","api":"https://star-vote.xaox.cc/api/rating"},"vote":{"js":"/js/services/vote.js","api":"https://star-vote.xaox.cc/api/vote"},"sites":{"js":"/js/services/sites.js"},"friends":{"js":"/js/services/friends.js"},"friends_and_posts":{"js":"/js/services/friends_and_posts.js"},"timeline":{"js":"/js/services/timeline.js"},"fcircle":{"js":"/js/services/fcircle.js"},"weibo":{"js":"/js/services/weibo.js"},"memos":{"js":"/js/services/memos.js"},"voice":{"js":"/js/plugins/voice.js"},"video":{"js":"/js/plugins/video.js"},"download-file":{"js":"/js/plugins/download-file.js"},"twikoo":{"js":"/js/services/twikoo_latest_comment.js"},"waline":{"js":"/js/services/waline_latest_comment.js"},"artalk":{"js":"/js/services/artalk_latest_comment.js"},"giscus":{"js":"/js/services/giscus_latest_comment.js"},"contributors":{"edit_this_page":{"_posts/":null,"wiki/stellar/":"https://github.com/xaoxuu/hexo-theme-stellar-docs/blob/main/"},"js":"/js/services/contributors.js"}}`));
+    for (let id of Object.keys(ctx.services)) {
+      const js = ctx.services[id].js;
+      if (id == 'siteinfo') {
+        ctx.cardlinks = document.querySelectorAll('a.link-card[cardlink]');
+        if (ctx.cardlinks?.length > 0) {
+          utils.js(js, { defer: true }).then(function () {
+            setCardLink(ctx.cardlinks);
+          });
+        }
+      } else if (id == 'voice') {
+        ctx.voiceAudios = document.querySelectorAll('.voice>audio');
+        if (ctx.voiceAudios?.length > 0) {
+          utils.js(js, { defer: true }).then(function () {
+            createVoiceDom(ctx.voiceAudios);
+          });
+        }
+      } else if (id == 'video') {
+        ctx.videos = document.querySelectorAll('.video>video');
+        if (ctx.videos?.length > 0) {
+          utils.js(js, { defer: true }).then(function () {
+            videoEvents(ctx.videos);
+          });
+        }
+      } else if (id == 'download-file') {
+        ctx.files = document.querySelectorAll('.file');
+        if (ctx.files?.length > 0) {
+          utils.js(js, { defer: true }).then(function () {
+            downloadFileEvent(ctx.files);
+          });
+        }
+      } else {
+        const els = document.getElementsByClassName(`ds-${id}`);
+        if (els?.length > 0) {
+          utils.jq(() => {
+            if (id == 'timeline' || 'memos' || 'marked') {
+              utils.js(deps.marked).then(function () {
+                utils.js(js, { defer: true });
+              });
+            } else {
+              utils.js(js, { defer: true });
+            }
+          });
+        }
+      }
+    }
+
+    // chat iphone time
+    let phoneTimes = document.querySelectorAll('.chat .status-bar .time');
+
+    if (phoneTimes.length > 0) {
+      NowTime();
+      var date = new Date();
+      var sec = date.getSeconds();
+      var firstAdjustInterval = setInterval(firstAdjustTime, 1000 * (60 - sec));
+    }
+
+    function firstAdjustTime() {
+      NowTime();
+      clearInterval(firstAdjustInterval);
+      setInterval(NowTime, 1000 * 60);
+    }
+
+    function NowTime() {
+      for (let i = 0; i < phoneTimes.length; ++i) {
+        var timeSpan = phoneTimes[i];
+        var date = new Date();
+        var hour = date.getHours();
+        var min = date.getMinutes();
+        timeSpan.innerHTML = check(hour) + ":" + check(min);
+      }
+    };
+
+    function check(val) {
+      if (val < 10) {
+        return ("0" + val);
+      }
+      return (val);
+    }
+
+    // chat quote
+    const chat_quote_obverser = new IntersectionObserver((entries, observer) => {
+      entries.filter((entry) => { return entry.isIntersecting }).sort((a, b) => a.intersectionRect.y !== b.intersectionRect.y ? a.intersectionRect.y - b.intersectionRect.y : a.intersectionRect.x - b.intersectionRect.x).forEach((entry, index) => {
+          observer.unobserve(entry.target);
+          setTimeout(() => {
+            entry.target.classList.add('quote-blink');
+            setTimeout(() => {
+              entry.target.classList.remove('quote-blink');
+            }, 1000);
+          }, Math.max(100, 16) * (index + 1));
+        });
+    });
+
+    var chatQuotes = document.querySelectorAll(".chat .talk .quote");
+    chatQuotes.forEach((quote) => {
+      quote.addEventListener('click', function () {
+        var chatCellDom = document.getElementById("quote-" + quote.getAttribute("quotedCellTag"));
+        if (chatCellDom) {
+          var chatDiv = chatCellDom.parentElement;
+          var mid = chatDiv.clientHeight / 2;
+          var offsetTop = chatCellDom.offsetTop;
+          if (offsetTop > mid - chatCellDom.clientHeight / 2) {
+            chatDiv.scrollTo({
+              top: chatCellDom.offsetTop - mid + chatCellDom.clientHeight / 2,
+              behavior: "smooth"
+            });
+          } else {
+            chatDiv.scrollTo({
+              top: 0,
+              behavior: "smooth"
+            });
+          }
+          chat_quote_obverser.observe(chatCellDom);
+        }
+      });
+    });
+  });
+</script>
+
+<script>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    ctx.search = {
+      path: `/search.json`,
+    }
+    utils.js('/js/search/local-search.js', { defer: true });
+  });
+</script><script>
+  window.FPConfig = {
+    delay: 0,
+    ignoreKeywords: [],
+    maxRPS: 5,
+    hoverDelay: 25
+  };
+</script>
+<script defer src="https://gcore.jsdelivr.net/npm/flying-pages@2/flying-pages.min.js"></script><script>
+  ctx.fancybox = {
+    selector: `.timenode p>img`,
+    css: `https://gcore.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css`,
+    js: `https://gcore.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js`
+  };
+  var selector = '[data-fancybox]:not(.error), .with-fancybox .atk-content img:not([atk-emoticon])';
+  if (ctx.fancybox.selector) {
+    selector += `, ${ctx.fancybox.selector}`
+  }
+  var needFancybox = document.querySelectorAll(selector).length !== 0;
+  if (!needFancybox) {
+    const memos = document.getElementsByClassName('ds-memos');
+    if (memos != undefined && memos.length > 0) {
+      needFancybox = true;
+    }
+    const fancybox = document.getElementsByClassName('with-fancybox');
+    if (fancybox != undefined && fancybox.length > 0) {
+      needFancybox = true;
+    }
+  }
+  if (needFancybox) {
+    utils.css(ctx.fancybox.css);
+    utils.js(ctx.fancybox.js, { defer: true }).then(function () {
+      Fancybox.bind(selector, {
+        hideScrollbar: false,
+        Thumbs: {
+          autoStart: false,
+        },
+        caption: (fancybox, slide) => {
+          return slide.triggerEl.alt || slide.triggerEl.dataset.caption || null
+        }
+      });
+    })
+  }
+</script>
+<script>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    const swiper_api = document.getElementById('swiper-api');
+    if (swiper_api != undefined) {
+      utils.css(`https://unpkg.com/swiper@10.3/swiper-bundle.min.css`);
+      utils.js(`https://unpkg.com/swiper@10.3/swiper-bundle.min.js`, { defer: true }).then(function () {
+        const effect = swiper_api.getAttribute('effect') || '';
+        var swiper = new Swiper('.swiper#swiper-api', {
+          slidesPerView: 'auto',
+          spaceBetween: 8,
+          centeredSlides: true,
+          effect: effect,
+          rewind: true,
+          pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+          },
+          navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+          },
+        });
+      })
+    }
+  });
+</script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    window.codeElements = document.querySelectorAll('.code');
+    if (window.codeElements.length > 0) {
+      ctx.copycode = {
+        default_text: `Copy`,
+        success_text: `Copied`,
+        toast: `复制成功`,
+      };
+      utils.js('/js/plugins/copycode.js');
+    }
+  });
+</script>
+
+
+<!-- inject -->
+
+</div></body></html>

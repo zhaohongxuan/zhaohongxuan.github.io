@@ -1,0 +1,781 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Hank&#39;s Blog</title>
+  <icon>https://zhaohongxuan.github.io/icon.png</icon>
+  <subtitle>做点有趣的事情 | 编程/跑步/写作</subtitle>
+  <link href="https://zhaohongxuan.github.io/atom.xml" rel="self"/>
+  
+  <link href="https://zhaohongxuan.github.io/"/>
+  <updated>2026-01-28T22:53:37.439Z</updated>
+  <id>https://zhaohongxuan.github.io/</id>
+  
+  <author>
+    <name>Hank Zhao</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>2025：平凡的一年</title>
+    <link href="https://zhaohongxuan.github.io/2026/01/28/2025-review/"/>
+    <id>https://zhaohongxuan.github.io/2026/01/28/2025-review/</id>
+    <published>2026-01-28T21:28:52.000Z</published>
+    <updated>2026-01-28T22:53:37.439Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="年终总结" scheme="https://zhaohongxuan.github.io/categories/%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/"/>
+    
+    
+    <category term="年终总结" scheme="https://zhaohongxuan.github.io/tags/%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>2024：拥抱不确定</title>
+    <link href="https://zhaohongxuan.github.io/2025/02/19/2024-review/"/>
+    <id>https://zhaohongxuan.github.io/2025/02/19/2024-review/</id>
+    <published>2025-02-19T08:43:52.000Z</published>
+    <updated>2026-01-28T22:53:37.439Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="年终总结" scheme="https://zhaohongxuan.github.io/categories/%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/"/>
+    
+    
+    <category term="年终总结" scheme="https://zhaohongxuan.github.io/tags/%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>记录人生第一次裁员</title>
+    <link href="https://zhaohongxuan.github.io/2024/10/10/layoff-first-time/"/>
+    <id>https://zhaohongxuan.github.io/2024/10/10/layoff-first-time/</id>
+    <published>2024-10-10T07:51:48.000Z</published>
+    <updated>2026-01-28T22:53:37.439Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="散文随笔" scheme="https://zhaohongxuan.github.io/categories/%E6%95%A3%E6%96%87%E9%9A%8F%E7%AC%94/"/>
+    
+    
+    <category term="裁员" scheme="https://zhaohongxuan.github.io/tags/%E8%A3%81%E5%91%98/"/>
+    
+    <category term="面试" scheme="https://zhaohongxuan.github.io/tags/%E9%9D%A2%E8%AF%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>使用Obsidian Dataview搭建微信读书阅读主页</title>
+    <link href="https://zhaohongxuan.github.io/2024/05/31/obsidian-weread-card-overview/"/>
+    <id>https://zhaohongxuan.github.io/2024/05/31/obsidian-weread-card-overview/</id>
+    <published>2024-05-31T17:13:14.000Z</published>
+    <updated>2026-01-28T22:53:37.438Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;之前在Weread的Wiki中介绍过使用Dataview和Minimal主题管理微信读书的方法：&lt;a href=&quot;https://github.com/zhaohongxuan/obsidian-weread-plugin/wiki/%E4%BD%BF%E7%94%A8Dataview%E8%BF%9B%E8%A1%8C%E4%B9%A6%E7%B1%8D%E7%AE%A1%E7%90%86&quot;&gt;使用Dataview进行书籍管理&lt;/a&gt; ，随着Weread插件的不断迭代，现在增加了不少元数据，比如，开始阅读日期:readingDate，完成阅读日期：finishedDate ，阅读进度：progress等，且不需要手动添加readYear属性了，有了这些新的数据就可以更好的汇总读书数据了。&lt;/p&gt;
+&lt;p&gt;使用效果如图：&lt;br&gt;&lt;img src=&quot;https://raw.githubusercontent.com/zhaohongxuan/picgo/master/202405311721932.png&quot; alt=&quot;Weread Card&quot;&gt;&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="工具效率" scheme="https://zhaohongxuan.github.io/categories/%E5%B7%A5%E5%85%B7%E6%95%88%E7%8E%87/"/>
+    
+    
+    <category term="obsidian" scheme="https://zhaohongxuan.github.io/tags/obsidian/"/>
+    
+    <category term="微信读书" scheme="https://zhaohongxuan.github.io/tags/%E5%BE%AE%E4%BF%A1%E8%AF%BB%E4%B9%A6/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Scala中 implicit 用法</title>
+    <link href="https://zhaohongxuan.github.io/2024/05/31/scala-implict/"/>
+    <id>https://zhaohongxuan.github.io/2024/05/31/scala-implict/</id>
+    <published>2024-05-31T07:17:54.000Z</published>
+    <updated>2026-01-28T22:53:37.438Z</updated>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;Background&quot;&gt;&lt;a href=&quot;#Background&quot; class=&quot;headerlink&quot; title=&quot;Background&quot;&gt;&lt;/a&gt;Background&lt;/h2&gt;&lt;p&gt;最近一段时间接手了几个Spark相关的大数据项目，主要使用Scala来编写代码，做了几个需求，感觉Scala这门语言还挺有意思，Scala以前也学习过，但是是很早了，很多语法点都忘了，在工作中经常编写的代码是Spark Job，使用stream的方式来编写代码，感觉非常的舒服。Spark中经常使用的一个操作是使用&lt;code&gt;$&lt;/code&gt;来选择Column，比如下面使用&lt;code&gt;$&lt;/code&gt;选择&lt;code&gt;dt&lt;/code&gt;这一列，&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="源码解析" scheme="https://zhaohongxuan.github.io/categories/%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/"/>
+    
+    
+    <category term="scala" scheme="https://zhaohongxuan.github.io/tags/scala/"/>
+    
+    <category term="spark" scheme="https://zhaohongxuan.github.io/tags/spark/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>RIME 输入法使用体验</title>
+    <link href="https://zhaohongxuan.github.io/2024/03/20/most-powerful-input-method-rime/"/>
+    <id>https://zhaohongxuan.github.io/2024/03/20/most-powerful-input-method-rime/</id>
+    <published>2024-03-20T17:46:30.000Z</published>
+    <updated>2026-01-28T22:53:37.438Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;磨刀不误砍柴工，输入法是平时&lt;strong&gt;使用频率极高&lt;/strong&gt;的工具类软件，因此值得花时间去让这个工具变得更加趁手，在 2022 年我学会了双拼输入法（如果你还在使用全拼，我强烈建议学一下双拼，可以参考我之前写的这篇博客：&lt;a href=&quot;https://zhaohongxuan.github.io/2023/06/30/how-i-learn-shuang-pin/&quot;&gt;也许你该试试双拼输入法 | Hank’s Blog&lt;/a&gt;&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="工具效率" scheme="https://zhaohongxuan.github.io/categories/%E5%B7%A5%E5%85%B7%E6%95%88%E7%8E%87/"/>
+    
+    
+    <category term="双拼输入法" scheme="https://zhaohongxuan.github.io/tags/%E5%8F%8C%E6%8B%BC%E8%BE%93%E5%85%A5%E6%B3%95/"/>
+    
+    <category term="Rime" scheme="https://zhaohongxuan.github.io/tags/Rime/"/>
+    
+    <category term="鼠须管" scheme="https://zhaohongxuan.github.io/tags/%E9%BC%A0%E9%A1%BB%E7%AE%A1/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Raft算法笔记</title>
+    <link href="https://zhaohongxuan.github.io/2024/02/22/raft-notes/"/>
+    <id>https://zhaohongxuan.github.io/2024/02/22/raft-notes/</id>
+    <published>2024-02-22T15:16:01.000Z</published>
+    <updated>2026-01-28T22:53:37.438Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;最近看了DDIA，对于分布式共识算法很感兴趣，可以说共识算法是分布式的基石，而 Raft 算法又是共识算法中最简单的一个，Raft算法是一个专门用于管理日志复制的共识算法。共识（consensus）是大家关心的某件事情（比如选举、分布式锁、全局ID、数据复制等等）达成一致的&lt;strong&gt;过程及其算法&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;Raft算法诞生与2013年，论文名字叫作《In Search of an Understandable Consensus Algorithm》，寻找一个更加容易理解的共识算法，从名字就能看出来，作者对 Paxos 的绝望。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="技术随笔" scheme="https://zhaohongxuan.github.io/categories/%E6%8A%80%E6%9C%AF%E9%9A%8F%E7%AC%94/"/>
+    
+    
+    <category term="raft" scheme="https://zhaohongxuan.github.io/tags/raft/"/>
+    
+    <category term="共识算法" scheme="https://zhaohongxuan.github.io/tags/%E5%85%B1%E8%AF%86%E7%AE%97%E6%B3%95/"/>
+    
+    <category term="分布式" scheme="https://zhaohongxuan.github.io/tags/%E5%88%86%E5%B8%83%E5%BC%8F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>生意再小，也要有自己的事业</title>
+    <link href="https://zhaohongxuan.github.io/2024/01/06/start-your-business/"/>
+    <id>https://zhaohongxuan.github.io/2024/01/06/start-your-business/</id>
+    <published>2024-01-06T12:08:50.000Z</published>
+    <updated>2026-01-28T22:53:37.438Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;读完了《重来：更为简单有效的商业思维》这本小册子，最大的感受是，「生意再小也要有自己的事业」，且越早开始越好。&lt;/p&gt;
+&lt;p&gt;事业的可以从自己的「痒处」开始，也就是打造自己需要的产品，不一定是颠覆的产品，可以在现有的产品上进行微创新，但是至少一定解决了人的一些痛点或者痒点的产品。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="散文随笔" scheme="https://zhaohongxuan.github.io/categories/%E6%95%A3%E6%96%87%E9%9A%8F%E7%AC%94/"/>
+    
+    
+    <category term="读书笔记" scheme="https://zhaohongxuan.github.io/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    
+    <category term="思考" scheme="https://zhaohongxuan.github.io/tags/%E6%80%9D%E8%80%83/"/>
+    
+    <category term="商业" scheme="https://zhaohongxuan.github.io/tags/%E5%95%86%E4%B8%9A/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>我的Obsidian笔记工作流</title>
+    <link href="https://zhaohongxuan.github.io/2024/01/04/obsidian-workflow/"/>
+    <id>https://zhaohongxuan.github.io/2024/01/04/obsidian-workflow/</id>
+    <published>2024-01-04T18:34:38.000Z</published>
+    <updated>2026-01-28T22:53:37.438Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;个人认为笔记的本质是： &lt;strong&gt;让思考继续发生&lt;/strong&gt;。记笔记不是目的，是为了更好的服务于思考，但是大脑不善于存储和检索，因此才要记笔记，本质是上是给大脑减压，记笔记的各种方法也都是为了让大脑更好的思考。大脑本能是躲避思考的，所以要尽可能简化记笔记的流程，形成习惯。&lt;/p&gt;
+&lt;p&gt;由于我对卡片笔记的理解还不够深刻，也还在探索中，因此这篇文章旨在分享我的一些心得和体会，每个人的习惯不一样，因此笔记方法因人而已，别人的方法不一定是适合自己的，每个人都要探索形成自己的笔记方法。&lt;/p&gt;
+&lt;h2 id=&quot;我的笔记原则&quot;&gt;&lt;a href=&quot;#我的笔记原则&quot; class=&quot;headerlink&quot; title=&quot;我的笔记原则&quot;&gt;&lt;/a&gt;我的笔记原则&lt;/h2&gt;</summary>
+    
+    
+    
+    <category term="工具效率" scheme="https://zhaohongxuan.github.io/categories/%E5%B7%A5%E5%85%B7%E6%95%88%E7%8E%87/"/>
+    
+    
+    <category term="obsidian" scheme="https://zhaohongxuan.github.io/tags/obsidian/"/>
+    
+    <category term="卡片笔记" scheme="https://zhaohongxuan.github.io/tags/%E5%8D%A1%E7%89%87%E7%AC%94%E8%AE%B0/"/>
+    
+    <category term="工具效率" scheme="https://zhaohongxuan.github.io/tags/%E5%B7%A5%E5%85%B7%E6%95%88%E7%8E%87/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>再见，我的2023</title>
+    <link href="https://zhaohongxuan.github.io/2023/12/27/2023-review/"/>
+    <id>https://zhaohongxuan.github.io/2023/12/27/2023-review/</id>
+    <published>2023-12-27T12:31:22.000Z</published>
+    <updated>2026-01-28T22:53:37.438Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;首先我要感谢这一年的自己，对自己说一声辛苦了。虽然这一年过得十分艰难，很多事情都发展不顺利，但是还是要对自己说一声辛苦了，最起码坚持到了最后，成功又度过了一年。&lt;/p&gt;
+&lt;h2 id=&quot;一些收获&quot;&gt;&lt;a href=&quot;#一些收获&quot; class=&quot;headerlink&quot; title=&quot;一些收获&quot;&gt;&lt;/a&gt;一些收获&lt;/h2&gt;&lt;p&gt;从2023年底到今年年初，主要是和同学一起翻译《Python for MATLAB Development》，人民邮电出版社引进的一本比较小众的技术书，出版社审核的时间有点长，不出意外的话，应该2024年第一季度会出版，这是我正式翻译的第一本书，难度确实不小，虽然现在各类翻译软件层出不穷，但是想要准确的翻译还是有不小的挑战的，里面的专业词汇有点多，长句也很多，花了将近半年才翻译完。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="年终总结" scheme="https://zhaohongxuan.github.io/categories/%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/"/>
+    
+    
+    <category term="总结" scheme="https://zhaohongxuan.github.io/tags/%E6%80%BB%E7%BB%93/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>使用Templater在Obsidian中实现每日诗词</title>
+    <link href="https://zhaohongxuan.github.io/2023/12/20/obsidian-support-daily-poem/"/>
+    <id>https://zhaohongxuan.github.io/2023/12/20/obsidian-support-daily-poem/</id>
+    <published>2023-12-20T11:06:45.000Z</published>
+    <updated>2026-01-28T22:53:37.438Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;一直使用Templater的Quote功能，使用方法也很简单，直接使用&lt;code&gt;&amp;lt;% tp.web.daily_quote() %&amp;gt;&lt;/code&gt; ，但是默认调用的接口是：&lt;a href=&quot;https://api.quotable.io/&quot;&gt;https://api.quotable.io&lt;/a&gt;, 返回的英文的名言，如果想要中文的名言或者每日诗词等就没法做到。 好在Templater的作者还留了一个口子：用户脚本，用户可以自己按照&lt;a href=&quot;https://flaviocopes.com/commonjs/&quot;&gt;CommomJS&lt;/a&gt;的规范来编写自己的脚本，文档参考这里：&lt;a href=&quot;https://silentvoid13.github.io/Templater/user-functions/script-user-functions.html&quot;&gt;Templater User function&lt;/a&gt;，这里需要注意的是：&lt;strong&gt;不支持第三方node module！！&lt;/strong&gt;&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="工具效率" scheme="https://zhaohongxuan.github.io/categories/%E5%B7%A5%E5%85%B7%E6%95%88%E7%8E%87/"/>
+    
+    
+    <category term="obsidian" scheme="https://zhaohongxuan.github.io/tags/obsidian/"/>
+    
+    <category term="古诗词" scheme="https://zhaohongxuan.github.io/tags/%E5%8F%A4%E8%AF%97%E8%AF%8D/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Kafka为什么这么快？</title>
+    <link href="https://zhaohongxuan.github.io/2023/12/19/why-kafka-so-fast/"/>
+    <id>https://zhaohongxuan.github.io/2023/12/19/why-kafka-so-fast/</id>
+    <published>2023-12-19T18:53:56.000Z</published>
+    <updated>2026-01-28T22:53:37.438Z</updated>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;Kafka为什么这么快（吞吐性高）？&quot;&gt;&lt;a href=&quot;#Kafka为什么这么快（吞吐性高）？&quot; class=&quot;headerlink&quot; title=&quot;Kafka为什么这么快（吞吐性高）？&quot;&gt;&lt;/a&gt;Kafka为什么这么快（吞吐性高）？&lt;/h2&gt;&lt;p&gt;kafka作为一个处理实时数据和日志的管道，每秒可以处理几十万条消息，那么为什么Kafka的吞吐量这么高呢？ &lt;/p&gt;
+&lt;p&gt;我们先来看一下Kafka的文件存储系统：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/zhaohongxuan/picgo/master/20231219184832.png&quot; alt=&quot;kafka file system&quot;&gt;&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="技术随笔" scheme="https://zhaohongxuan.github.io/categories/%E6%8A%80%E6%9C%AF%E9%9A%8F%E7%AC%94/"/>
+    
+    
+    <category term="kafka" scheme="https://zhaohongxuan.github.io/tags/kafka/"/>
+    
+    <category term="消息中间件" scheme="https://zhaohongxuan.github.io/tags/%E6%B6%88%E6%81%AF%E4%B8%AD%E9%97%B4%E4%BB%B6/"/>
+    
+    <category term="高并发" scheme="https://zhaohongxuan.github.io/tags/%E9%AB%98%E5%B9%B6%E5%8F%91/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>小米AX1800实现科学上网</title>
+    <link href="https://zhaohongxuan.github.io/2023/12/17/xiaomi-ax1800-shellclash/"/>
+    <id>https://zhaohongxuan.github.io/2023/12/17/xiaomi-ax1800-shellclash/</id>
+    <published>2023-12-17T08:24:27.000Z</published>
+    <updated>2026-01-28T22:53:37.438Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;一直想在家中实现全局科学上网，这样在家里就不需要一直开着各种客户端了，一方面是每个设备科学上网的客户端都还不一样，存在重复配置，另一方面，客户端也会加快电池的消耗，本来打算投资软路由或者旁路由的，经过一番搜索发现小米的AX1800路由器是基于openwrt的，可以通过&lt;a href=&quot;https://github.com/juewuy/ShellCrash/blob/master/README_CN.md&quot;&gt;ShellClash项目&lt;/a&gt;在不影响原系统的情况下实现科学上网，这篇文章记录一下安装的经过，理论上所有的openwrt的路由器都可以安装，只要搜索自己路由器的型号，查找ssh登录的方法就行了。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="工具效率" scheme="https://zhaohongxuan.github.io/categories/%E5%B7%A5%E5%85%B7%E6%95%88%E7%8E%87/"/>
+    
+    
+    <category term="科学上网" scheme="https://zhaohongxuan.github.io/tags/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/"/>
+    
+    <category term="AX1800" scheme="https://zhaohongxuan.github.io/tags/AX1800/"/>
+    
+    <category term="Clash" scheme="https://zhaohongxuan.github.io/tags/Clash/"/>
+    
+    <category term="ShellClash" scheme="https://zhaohongxuan.github.io/tags/ShellClash/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>上海马拉松自动签到工具</title>
+    <link href="https://zhaohongxuan.github.io/2023/11/05/shangma-auto-sign-tool/"/>
+    <id>https://zhaohongxuan.github.io/2023/11/05/shangma-auto-sign-tool/</id>
+    <published>2023-11-05T09:22:00.000Z</published>
+    <updated>2026-01-28T22:53:37.438Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;&lt;img src=&quot;https://github.com/zhaohongxuan/shangma_auto_sign/assets/8613196/702b57e1-eb15-4acb-b0ab-8cab448c6003&quot; alt=&quot;254017014-2ea91157-452f-4113-887b-a6de8e14cf08-2&quot;&gt;&lt;/p&gt;
+&lt;p&gt;前端时间写的&lt;a href=&quot;https://github.com/zhaohongxuan/shangma_auto_sign&quot;&gt;上海马拉松自动签到工具&lt;/a&gt;已经完成很久了，有不少跑友都反映上马抽中了，而我也在经历了8年没中之后，今年很“幸运”的抽中了上海马拉松了，开心之情溢于言表，于是便想写一些内容来记录一下这个过程。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="工具效率" scheme="https://zhaohongxuan.github.io/categories/%E5%B7%A5%E5%85%B7%E6%95%88%E7%8E%87/"/>
+    
+    
+    <category term="跑步" scheme="https://zhaohongxuan.github.io/tags/%E8%B7%91%E6%AD%A5/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>将Apple Watch跑步数据同步到Garmin</title>
+    <link href="https://zhaohongxuan.github.io/2023/07/08/apple-watch-to-shuzixindong/"/>
+    <id>https://zhaohongxuan.github.io/2023/07/08/apple-watch-to-shuzixindong/</id>
+    <published>2023-07-08T07:50:00.000Z</published>
+    <updated>2026-01-28T22:53:37.438Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;起因是这样的，上马有个积分的功能，他可以影响正常的抽签（虽然是黑盒，但是有人反馈关系很大）的权重，而积分只能通过，签到，线下比赛，以及跑步获取，前两种好理解，第三种，跑步记录换取积分，需要上马官方合作伙伴数字心动APP来提供数据，然而，数字心动APP只能通过Garmin设备通过，并不支持Apple Watch直接上传（如果支持了，那么也没有这个项目了），于是我想是否能够曲线救国，将记录上传到Garmin，然后再通过Garmin同步到数字心动，这样就可以正常获取积分了。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="工具效率" scheme="https://zhaohongxuan.github.io/categories/%E5%B7%A5%E5%85%B7%E6%95%88%E7%8E%87/"/>
+    
+    
+    <category term="跑步" scheme="https://zhaohongxuan.github.io/tags/%E8%B7%91%E6%AD%A5/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>也许你该试试双拼输入法</title>
+    <link href="https://zhaohongxuan.github.io/2023/06/30/how-i-learn-shuang-pin/"/>
+    <id>https://zhaohongxuan.github.io/2023/06/30/how-i-learn-shuang-pin/</id>
+    <published>2023-06-30T21:44:00.000Z</published>
+    <updated>2026-01-28T22:53:37.438Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;这周最大的收获是学习了双拼输入法，而且带动了一个同事也开始学习双拼输入法了，还跟我说怎么不早告诉他😂。学习的过程也踩了不少坑，感觉有必要写出来，让后人少走弯路。&lt;/p&gt;
+&lt;h2 id=&quot;为何入坑？&quot;&gt;&lt;a href=&quot;#为何入坑？&quot; class=&quot;headerlink&quot; title=&quot;为何入坑？&quot;&gt;&lt;/a&gt;为何入坑？&lt;/h2&gt;&lt;p&gt;最初开始学习双拼是在twitter TL上看到一条双拼的推：&lt;br&gt;&lt;img src=&quot;https://cdn.jsdelivr.net/gh/zhaohongxuan/picgo@master/20220731150844.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;它让我想起了大学时候学习半途而废的经经历，于是想既然这么有价值，我也许应该重新捡起来，毕竟以前vim对我来说也是一座高山，现在也被我征服了。&lt;/p&gt;
+&lt;p&gt;可能会有小朋友要问了，打字效率对于一个程序员来说真的那么重要吗？&lt;/p&gt;
+&lt;p&gt;不重要。它只是一个工具，不使用完全没有什么影响，它能帮你做的仅仅是提高一些效率，但是对于大多数人来说可能还不到拼效率的地步，大部分人来说全拼输入法够了，VSCode也够了。你可以举很多例子来反驳，但是都不如亲自试一试，这和学习vim一个道理，而且有反驳的时间，键位也都记住了。&lt;/p&gt;
+&lt;p&gt;这里，我也想用道德经里的一段话来说明：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;上士闻道，勤而行之；中士闻道，若存若亡；下士闻道，大笑之。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;假如你是一个想尝试新鲜事物的人，恰巧你也是一个“懒人”，那么我觉得你可以尝试一下双拼输入法，虽然它不能帮你摆脱重码率的困扰，但是至少能比全拼少敲几次键盘，记忆曲线也没五笔那么陡峭，基本上可以做到：1小时记忆键位，1周熟练双拼节奏，1月恢复到全拼的打字速度。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="工具效率" scheme="https://zhaohongxuan.github.io/categories/%E5%B7%A5%E5%85%B7%E6%95%88%E7%8E%87/"/>
+    
+    
+    <category term="双拼输入法" scheme="https://zhaohongxuan.github.io/tags/%E5%8F%8C%E6%8B%BC%E8%BE%93%E5%85%A5%E6%B3%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>自动分组chrome标签页</title>
+    <link href="https://zhaohongxuan.github.io/2023/05/05/autogroup-your-chrome/"/>
+    <id>https://zhaohongxuan.github.io/2023/05/05/autogroup-your-chrome/</id>
+    <published>2023-05-05T21:25:18.000Z</published>
+    <updated>2026-01-28T22:53:37.438Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;Chrome的标签功能在管理多个标签页时非常好用，但是在标签量更大一些的时候，手动的管理这些标签页就不太方便了，这个时候可以考虑使用chrome扩展来完成这一自动化的操作，特别是对于工作的场景，基本上每天打开的网站都是特定的场景。&lt;/p&gt;
+&lt;p&gt;Auto-Group Tabs是一个Chrome浏览器插件，用于自动对用户打开的多个标签进行分组，以使它们更容易管理和组织。这个插件还支持配置的导入和导出，可以方便的在多个设备上同步。&lt;/p&gt;
+&lt;h2 id=&quot;安装&quot;&gt;&lt;a href=&quot;#安装&quot; class=&quot;headerlink&quot; title=&quot;安装&quot;&gt;&lt;/a&gt;安装&lt;/h2&gt;&lt;p&gt;通过chrome商店：&lt;a href=&quot;https://chrome.google.com/webstore/detail/auto-group-tabs/danncghahncanipdoajmakdbeaophenb&quot;&gt;Auto-Group Tabs - Extensions&lt;/a&gt; 打开此链接，点击安装即可，如果在商店搜索安装的时候，有多个类似的扩展，注意选择下面这个。&lt;/p&gt;
+&lt;h2 id=&quot;配置和使用&quot;&gt;&lt;a href=&quot;#配置和使用&quot; class=&quot;headerlink&quot; title=&quot;配置和使用&quot;&gt;&lt;/a&gt;配置和使用&lt;/h2&gt;</summary>
+    
+    
+    
+    <category term="工具效率" scheme="https://zhaohongxuan.github.io/categories/%E5%B7%A5%E5%85%B7%E6%95%88%E7%8E%87/"/>
+    
+    
+    <category term="效率" scheme="https://zhaohongxuan.github.io/tags/%E6%95%88%E7%8E%87/"/>
+    
+    <category term="chrome扩展" scheme="https://zhaohongxuan.github.io/tags/chrome%E6%89%A9%E5%B1%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>认识布鲁姆分类学</title>
+    <link href="https://zhaohongxuan.github.io/2023/02/05/bloom-taxonomy/"/>
+    <id>https://zhaohongxuan.github.io/2023/02/05/bloom-taxonomy/</id>
+    <published>2023-02-05T21:25:18.000Z</published>
+    <updated>2026-01-28T22:53:37.438Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;布卢姆分类学 (Bloom’s taxonomy) 是美国教育心理学家本杰明·布鲁姆于1956年在芝加哥大学所提出的分类法，此方法将认知层次分为六个，从低到高依次是：记忆（Remember）、理解（Understand）、应用（Apply）、分析（Analyze）、评估（Evaluate）、创造（Create）。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://cdn.jsdelivr.net/gh/zhaohongxuan/picgo@master/Pasted%20image%2020230203164425.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;整个认知层次结构呈金字塔分布，记忆、理解、应用三个低阶思维水平的目标位于塔的底层，而分析、评估、创造三个高阶目标位于塔尖部分，因为它们都需要更高水平的思维技能。&lt;/p&gt;
+&lt;h2 id=&quot;第一层&quot;&gt;&lt;a href=&quot;#第一层&quot; class=&quot;headerlink&quot; title=&quot;第一层&quot;&gt;&lt;/a&gt;第一层&lt;/h2&gt;&lt;h3 id=&quot;记忆（Remember）&quot;&gt;&lt;a href=&quot;#记忆（Remember）&quot; class=&quot;headerlink&quot; title=&quot;记忆（Remember）&quot;&gt;&lt;/a&gt;记忆（Remember）&lt;/h3&gt;&lt;p&gt;记住特定知识，包括一些具体事实、基础概念、术语等，不需要理解所学内容的内在含义，也就是通常说的死记硬背。这类一般是死知识，比如河南省的省会，世界有哪几个大洲构成等等&lt;/p&gt;
+&lt;h3 id=&quot;理解-（Understand）&quot;&gt;&lt;a href=&quot;#理解-（Understand）&quot; class=&quot;headerlink&quot; title=&quot;理解 （Understand）&quot;&gt;&lt;/a&gt;理解 （Understand）&lt;/h3&gt;&lt;p&gt;理解所学内容并可以清晰的描述它，而且可以使用自己的话准确复述材料的内容。&lt;/p&gt;
+&lt;p&gt;这里面包含了三种形势来表明自己对材料的理解：&lt;br&gt;转换：也就是使用自己的话，或者使用和原文不同的方式来阐述它。&lt;br&gt;解释：可以使用自己的理解对它进行说明或者概述，这里需要有一定的抽象能力。&lt;br&gt;推断：预测发展的趋势和后果。&lt;/p&gt;
+&lt;p&gt;著名的费曼学习法就是通过输出倒逼输入的例子，如果你完全理解了一个内容，那么你就完全可以用非常浅显的语言解释给完全不懂的人听。换句话说，我们应该减少晦涩专业词语的使用，就算使用也要解释清楚其含义，如果我们无法用通俗语言来描述，大概率是自己没有真正理解它。&lt;/p&gt;
+&lt;h3 id=&quot;应用（Apply）&quot;&gt;&lt;a href=&quot;#应用（Apply）&quot; class=&quot;headerlink&quot; title=&quot;应用（Apply）&quot;&gt;&lt;/a&gt;应用（Apply）&lt;/h3&gt;&lt;p&gt;举一反三，通过前面的记忆和理解把先前学到的知识迁移到新的情境中去解决一定的实际问题。&lt;/p&gt;
+&lt;p&gt;对于大部分人来说，可能是卡在这一步，上课时，老师讲得也都听懂了，也听的津津有味，但是老师布置的作业，下课一看傻眼了，根本做不出来。这也是很正常的，&lt;br&gt;因为，对于大部分知识来说，它们并不是死的，而是互相关联的，考察的是综合能力，复杂的知识需要更多的相关的背景知识以及有逻辑思维的大脑。 而且这也要依赖前面的理解，如果理解不够透彻，那么一定做不好这一步。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="散文随笔" scheme="https://zhaohongxuan.github.io/categories/%E6%95%A3%E6%96%87%E9%9A%8F%E7%AC%94/"/>
+    
+    
+    <category term="布鲁姆分类学" scheme="https://zhaohongxuan.github.io/tags/%E5%B8%83%E9%B2%81%E5%A7%86%E5%88%86%E7%B1%BB%E5%AD%A6/"/>
+    
+    <category term="Bloom-Taxonomy" scheme="https://zhaohongxuan.github.io/tags/Bloom-Taxonomy/"/>
+    
+    <category term="方法论" scheme="https://zhaohongxuan.github.io/tags/%E6%96%B9%E6%B3%95%E8%AE%BA/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>再见2022</title>
+    <link href="https://zhaohongxuan.github.io/2022/12/31/bye-2022/"/>
+    <id>https://zhaohongxuan.github.io/2022/12/31/bye-2022/</id>
+    <published>2022-12-31T12:30:00.000Z</published>
+    <updated>2026-01-28T22:53:37.438Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;2022年可以说是非常魔幻的一年了，这一年我刚好三十而立，女儿一岁了，这一年经历了很多，经历了四五月份的封城，经历了十二月份的疫情放开，经历了失望，无意义，还有一些成长，感觉认识自己更多一点了。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="年终总结" scheme="https://zhaohongxuan.github.io/categories/%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/"/>
+    
+    
+    <category term="疫情" scheme="https://zhaohongxuan.github.io/tags/%E7%96%AB%E6%83%85/"/>
+    
+    <category term="Obsidian" scheme="https://zhaohongxuan.github.io/tags/Obsidian/"/>
+    
+    <category term="2022" scheme="https://zhaohongxuan.github.io/tags/2022/"/>
+    
+    <category term="Github" scheme="https://zhaohongxuan.github.io/tags/Github/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>以父之名</title>
+    <link href="https://zhaohongxuan.github.io/2022/11/08/as-a-father/"/>
+    <id>https://zhaohongxuan.github.io/2022/11/08/as-a-father/</id>
+    <published>2022-11-08T20:46:00.000Z</published>
+    <updated>2026-01-28T22:53:37.437Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="散文随笔" scheme="https://zhaohongxuan.github.io/categories/%E6%95%A3%E6%96%87%E9%9A%8F%E7%AC%94/"/>
+    
+    
+    <category term="育儿" scheme="https://zhaohongxuan.github.io/tags/%E8%82%B2%E5%84%BF/"/>
+    
+    <category term="感悟" scheme="https://zhaohongxuan.github.io/tags/%E6%84%9F%E6%82%9F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Spring静态Bean的原理</title>
+    <link href="https://zhaohongxuan.github.io/2022/09/21/spring-static-bean/"/>
+    <id>https://zhaohongxuan.github.io/2022/09/21/spring-static-bean/</id>
+    <published>2022-09-21T20:46:00.000Z</published>
+    <updated>2026-01-28T22:53:37.437Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;最近遇到一个spring static bean的坑，我们知道使用Java Config的方式定义一个Bean 非常简单，只需在Configuration的method上加上 @Bean 注解即可。&lt;/p&gt;
+&lt;p&gt;但是这里有个例外，假如你的Bean不是一个普通的Bean，而是一个&lt;code&gt;BeanFactoryPostProcessor&lt;/code&gt;就需要使用static方法来定义这个Bean。 否则你会得到一个警告：&lt;/p&gt;
+&lt;p&gt;&lt;code&gt; @Bean method TestConfig.customEditorConfigurer is non-static and returns an object assignable to Spring&amp;#39;s BeanFactoryPostProcessor interface. This will result in a failure to process annotations such as @Autowired, @Resource and @PostConstruct within the method&amp;#39;s declaring @Configuration class. Add the &amp;#39;static&amp;#39; modifier to this method to avoid these container lifecycle issues; see @Bean javadoc for complete details.&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;也就是说，如果你的bean是一个BFPP，必须定义为static，否则，使用@Autowired, @Resource and @PostConstruct 会有问题。&lt;/p&gt;
+&lt;p&gt;来看 @Bean注解源码里的注释：&lt;/p&gt;
+&lt;figure class=&quot;highlight plaintext&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;Special consideration must be taken for @Bean methods that return Spring BeanFactoryPostProcessor (BFPP) types. &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Because BFPP objects must be instantiated very early in the container lifecycle,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;they can interfere with processing of annotations such as @Autowired, @Value, and @PostConstruct within @Configuration classes. &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;To avoid these lifecycle issues, mark BFPP-returning @Bean methods as static. For example:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      @Bean&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      public static PropertySourcesPlaceholderConfigurer pspc() &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;          // instantiate, configure and return pspc ...&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;By marking this method as static, it can be invoked without causing instantiation of its declaring @Configuration class, thus avoiding the above-mentioned lifecycle conflicts. &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Note however that static @Bean methods will not be enhanced for scoping and AOP semantics as mentioned above. &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;This works out in BFPP cases, as they are not typically referenced by other @Bean methods. &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;As a reminder, a WARN-level log message will be issued for any non-static @Bean methods having a return type assignable to BeanFactoryPostProcessor.&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+
+&lt;p&gt;因为BFPP都需要在在Spring容器的早期进行实例化，因为他们会干扰正常的Bean实例化中处理 @Autowired @Value @PostConstruct ，这篇Blog尝试寻找一下Static Bean背后的原理。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="源码解析" scheme="https://zhaohongxuan.github.io/categories/%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/"/>
+    
+    
+    <category term="java" scheme="https://zhaohongxuan.github.io/tags/java/"/>
+    
+    <category term="spring" scheme="https://zhaohongxuan.github.io/tags/spring/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Spring 事件驱动的原理</title>
+    <link href="https://zhaohongxuan.github.io/2022/09/03/spring-event-driven/"/>
+    <id>https://zhaohongxuan.github.io/2022/09/03/spring-event-driven/</id>
+    <published>2022-09-03T17:46:00.000Z</published>
+    <updated>2026-01-28T22:53:37.437Z</updated>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;Spring事件驱动&quot;&gt;&lt;a href=&quot;#Spring事件驱动&quot; class=&quot;headerlink&quot; title=&quot;Spring事件驱动&quot;&gt;&lt;/a&gt;Spring事件驱动&lt;/h2&gt;&lt;p&gt;Spring 事件驱动的代码都位于spring-context 模块的event包中，主要包括：事件(Event)发布者() Publisher) ,订阅者(Listener)组成。&lt;/p&gt;
+&lt;h3 id=&quot;事件&quot;&gt;&lt;a href=&quot;#事件&quot; class=&quot;headerlink&quot; title=&quot;事件&quot;&gt;&lt;/a&gt;事件&lt;/h3&gt;&lt;p&gt;ApplicationEvent&lt;br&gt;java的所有事件对象一般都是java.util.EventObject的子类，Spring的整个继承体系如下:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://cdn.jsdelivr.net/gh/zhaohongxuan/picgo@master/20220218175226.png&quot; alt=&quot;ApplicationEvent&quot;&gt;&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="源码解析" scheme="https://zhaohongxuan.github.io/categories/%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/"/>
+    
+    
+    <category term="java" scheme="https://zhaohongxuan.github.io/tags/java/"/>
+    
+    <category term="spring" scheme="https://zhaohongxuan.github.io/tags/spring/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>和焦虑做朋友</title>
+    <link href="https://zhaohongxuan.github.io/2022/08/08/how-to-deal-with-anxious/"/>
+    <id>https://zhaohongxuan.github.io/2022/08/08/how-to-deal-with-anxious/</id>
+    <published>2022-08-08T11:27:00.000Z</published>
+    <updated>2026-01-28T22:53:37.437Z</updated>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;焦虑的产生&quot;&gt;&lt;a href=&quot;#焦虑的产生&quot; class=&quot;headerlink&quot; title=&quot;焦虑的产生&quot;&gt;&lt;/a&gt;焦虑的产生&lt;/h2&gt;&lt;p&gt;焦虑产生来自于恐惧，恐惧是对当下刺激的应激反应，焦虑是对未来刺激的应激反应。当我们在碰到一些严重刺激我们感官的事情时，杏仁核会接收到恐怖和惊惧，那么海马体会把这些感受记录下来。紧接着交叉神经也会启动，血压飙升、心跳加速都可以让你牢牢记住这个经历，如果它是足以对人身造成危险的情况，那么你下次很大概率会自动躲避。 换句话说也就是说，焦虑是保护自己的。&lt;/p&gt;
+&lt;p&gt;现代社会中，我们不需要再面对大量的恐惧了，但是筑巢本能依然存在，海马体依然保存了相关的能力，今年年初上海的疫情，让我们对基本的衣食住行感到焦虑，因为，平时唾手可得的食物，在疫情期间获取是如此的困难，这些恐惧让我们的海马体记录下来，很长时间内，我们会对未来产生焦虑，这些焦虑是良性的，保证我们生存的本能，在漫长的进化过程中，没有焦虑的人很可能因为没有储存过冬的食物而灭绝，我们能延续到现在，很大程度上是因为祖先适度的焦虑。&lt;/p&gt;
+&lt;h2 id=&quot;焦虑不可能完全消除&quot;&gt;&lt;a href=&quot;#焦虑不可能完全消除&quot; class=&quot;headerlink&quot; title=&quot;焦虑不可能完全消除&quot;&gt;&lt;/a&gt;焦虑不可能完全消除&lt;/h2&gt;&lt;p&gt;焦虑的本质是恐惧的提前，是对未来的不确定性的担忧，这就意味着它是不可能被消除的。它不是现代人特有的， 物质极大丰富的年代反而更加剧了这种焦虑，我们看似拥有很多东西，世纪上都是空中楼阁，我们过于依赖外界，这让一切变得不确定，不确定产生焦虑。&lt;/p&gt;
+&lt;p&gt;面对现实，承认焦虑的存在，我们才有可能和焦虑做朋友。坦诚是一个人最好的品质。特别是对自己坦诚，大部分时候，我们喜欢自欺欺人，坦诚可以让我们面对问题本身，一旦承认了问题的存在，我们才有解决问题的可能，我们才能变得更好，这也是实事求是的来源。&lt;/p&gt;
+&lt;p&gt;一个焦虑的消失会伴随着另一个焦虑的诞生，就像叔本华说的，人是在无聊和痛苦之间摇摆的动物。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="散文随笔" scheme="https://zhaohongxuan.github.io/categories/%E6%95%A3%E6%96%87%E9%9A%8F%E7%AC%94/"/>
+    
+    
+    <category term="思考" scheme="https://zhaohongxuan.github.io/tags/%E6%80%9D%E8%80%83/"/>
+    
+    <category term="焦虑" scheme="https://zhaohongxuan.github.io/tags/%E7%84%A6%E8%99%91/"/>
+    
+    <category term="心流" scheme="https://zhaohongxuan.github.io/tags/%E5%BF%83%E6%B5%81/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Spring @Transactional是如何工作的？</title>
+    <link href="https://zhaohongxuan.github.io/2022/08/06/spring-transaction-source-code/"/>
+    <id>https://zhaohongxuan.github.io/2022/08/06/spring-transaction-source-code/</id>
+    <published>2022-08-06T15:46:00.000Z</published>
+    <updated>2026-01-28T22:53:37.437Z</updated>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;Spring事务使用&quot;&gt;&lt;a href=&quot;#Spring事务使用&quot; class=&quot;headerlink&quot; title=&quot;Spring事务使用&quot;&gt;&lt;/a&gt;Spring事务使用&lt;/h2&gt;&lt;p&gt;Spring配置事务还是挺简单的，第一步创建事务管理器&lt;code&gt;TransactionManager&lt;/code&gt;，然后在配置中增加一个&lt;code&gt;@EnableTransactionManagement&lt;/code&gt;就可以启用Spring事务了，所以关键类就是&lt;code&gt;@EnableTransactionManagement&lt;/code&gt;&lt;/p&gt;
+&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta&quot;&gt;@Bean&lt;/span&gt;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; DataSourceTransactionManager &lt;span class=&quot;title function_&quot;&gt;transactionManager&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt; &amp;#123;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;title class_&quot;&gt;DataSourceTransactionManager&lt;/span&gt;(dataSource());  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;我们可以看到&lt;code&gt;@EnableTransactionManagement&lt;/code&gt; 上实际上是import了&lt;code&gt;TransactionManagementConfigurationSelector&lt;/code&gt;类，在这个Selector中实际import了&lt;br&gt;两个配置类：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;AutoProxyRegistrar&lt;/li&gt;
+&lt;li&gt;ProxyTransactionManagementConfiguration&lt;/li&gt;
+&lt;/ol&gt;
+&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta&quot;&gt;@Override&lt;/span&gt;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;protected&lt;/span&gt; String[] selectImports(AdviceMode adviceMode) &amp;#123;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   &lt;span class=&quot;keyword&quot;&gt;switch&lt;/span&gt; (adviceMode) &amp;#123;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      &lt;span class=&quot;keyword&quot;&gt;case&lt;/span&gt; PROXY:  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;         &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;title class_&quot;&gt;String&lt;/span&gt;[] &amp;#123;AutoProxyRegistrar.class.getName(),  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;               ProxyTransactionManagementConfiguration.class.getName()&amp;#125;;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      &lt;span class=&quot;keyword&quot;&gt;case&lt;/span&gt; ASPECTJ:  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;         &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;title class_&quot;&gt;String&lt;/span&gt;[] &amp;#123;determineTransactionAspectClass()&amp;#125;;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      &lt;span class=&quot;keyword&quot;&gt;default&lt;/span&gt;:  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;         &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;literal&quot;&gt;null&lt;/span&gt;;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   &amp;#125;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;下面我们来根据这个入口来分析一下Spring是如何处理事务的：&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="源码解析" scheme="https://zhaohongxuan.github.io/categories/%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/"/>
+    
+    
+    <category term="java" scheme="https://zhaohongxuan.github.io/tags/java/"/>
+    
+    <category term="spring" scheme="https://zhaohongxuan.github.io/tags/spring/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>使用chezmoi管理dotfiles</title>
+    <link href="https://zhaohongxuan.github.io/2022/08/05/use-chezmoi-manage-dotfiles/"/>
+    <id>https://zhaohongxuan.github.io/2022/08/05/use-chezmoi-manage-dotfiles/</id>
+    <published>2022-08-05T13:35:00.000Z</published>
+    <updated>2026-01-28T22:53:37.437Z</updated>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;为什么要管理dotfiles？&quot;&gt;&lt;a href=&quot;#为什么要管理dotfiles？&quot; class=&quot;headerlink&quot; title=&quot;为什么要管理dotfiles？&quot;&gt;&lt;/a&gt;为什么要管理dotfiles？&lt;/h2&gt;&lt;p&gt;dotfile是对自己的软件配置文件的总称，如果有多台开发设备的话，我们需要在不同的电脑上保持同样的配置，我们对工具的使用不是一成不变的，而是随着时间不断演进的，日常使用的过程中，会不断修改dotfile让工具越来越顺手，这时同步dotfile就变得非常重要了，你的工具的行为在多个平台上应该是一致的，就像VSCode自带的setting 同步功能一样。&lt;/p&gt;
+&lt;h2 id=&quot;dotfiles管理的痛点&quot;&gt;&lt;a href=&quot;#dotfiles管理的痛点&quot; class=&quot;headerlink&quot; title=&quot;dotfiles管理的痛点&quot;&gt;&lt;/a&gt;dotfiles管理的痛点&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;dotfile总是分布在不同的位置，想把他们汇总在同一个位置非常不方便，使用软连接之后，用github管理又非常不便。&lt;/li&gt;
+&lt;li&gt;配置文件的修改不能及时同步到github&lt;/li&gt;
+&lt;li&gt;多个设备可能跨平台，配置文件可能是不一样的&lt;/li&gt;
+&lt;li&gt;相同的平台，不同的设备也有差异化的配置，比如工作电脑和自己私人电脑，有一些配置肯定是不一样的&lt;/li&gt;
+&lt;li&gt;密码管理器，选择自己合适的密码管理软件（）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;什么是chezmoi？&quot;&gt;&lt;a href=&quot;#什么是chezmoi？&quot; class=&quot;headerlink&quot; title=&quot;什么是chezmoi？&quot;&gt;&lt;/a&gt;什么是chezmoi？&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;https://www.chezmoi.io/&quot;&gt;chezmoi&lt;/a&gt;是一款使用go语言编写的跨平台的的dot配置管理器，它是一个法语单词，意思是家，读作 &amp;#x2F;ʃeɪ mwa&amp;#x2F; (shay-moi)&lt;/p&gt;
+&lt;p&gt;chezmoi的工作原理很简单：&lt;br&gt;&lt;img src=&quot;https://raw.githubusercontent.com/zhaohongxuan/picgo/master/20220806123526.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;它使用一个working copy来管理dotfiles，&lt;code&gt;chezmoi&lt;/code&gt;负责对&lt;code&gt;working copy&lt;/code&gt;和&lt;code&gt;home directory&lt;/code&gt; 进行同步，然后使用&lt;code&gt;git&lt;/code&gt;来管理 &lt;code&gt;working copy&lt;/code&gt;和&lt;code&gt;remote repo&lt;/code&gt;的差异。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="工具效率" scheme="https://zhaohongxuan.github.io/categories/%E5%B7%A5%E5%85%B7%E6%95%88%E7%8E%87/"/>
+    
+    
+    <category term="dotfiles" scheme="https://zhaohongxuan.github.io/tags/dotfiles/"/>
+    
+    <category term="chezmoi" scheme="https://zhaohongxuan.github.io/tags/chezmoi/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>理解Jvm Class文件结构</title>
+    <link href="https://zhaohongxuan.github.io/2022/07/31/java-hello-world-in-byte/"/>
+    <id>https://zhaohongxuan.github.io/2022/07/31/java-hello-world-in-byte/</id>
+    <published>2022-07-31T09:19:00.000Z</published>
+    <updated>2026-01-28T22:53:37.437Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;理解Jvm-Class-文件结构&quot;&gt;&lt;a href=&quot;#理解Jvm-Class-文件结构&quot; class=&quot;headerlink&quot; title=&quot;理解Jvm Class 文件结构&quot;&gt;&lt;/a&gt;理解Jvm Class 文件结构&lt;/h1&gt;&lt;p&gt;Class 文件结构如下：&lt;/p&gt;
+&lt;figure class=&quot;highlight plaintext&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;ClassFile &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	u4 magic; //Class 文件的标志&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	u2 minor_version;//Class 的小版本号&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	u2 major_version;//Class 的大版本号&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	u2 constant_pool_count;//常量池的数量&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	cp_info constant_pool[constant_pool_count-1];//常量池&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	u2 access_flags;//Class 的访问标记&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	u2 this_class;//当前类&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	u2 super_class;//父类&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	u2 interfaces_count;//接口&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	u2 interfaces[interfaces_count];//一个类可以实现多个接口&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	u2 fields_count;//Class 文件的字段属性&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	field_info fields[fields_count];//一个类可以有多个字段&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	u2 methods_count;//Class 文件的方法数量&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	method_info methods[methods_count];//一个类可以有个多个方法&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	u2 attributes_count;//此类的属性表中的属性数&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	attribute_info attributes[attributes_count];//属性表集合&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;下面的这个图更加直观：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/zhaohongxuan/picgo/master/20220806135458.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;使用&lt;code&gt;010 Editor&lt;/code&gt; 打开 &lt;code&gt;Hello.class&lt;/code&gt; 可以更加直观的查看&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/zhaohongxuan/picgo/master/20220806134852.png&quot;&gt;&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="技术随笔" scheme="https://zhaohongxuan.github.io/categories/%E6%8A%80%E6%9C%AF%E9%9A%8F%E7%AC%94/"/>
+    
+    
+    <category term="jvm" scheme="https://zhaohongxuan.github.io/tags/jvm/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>SpringBoot是如何启动的？</title>
+    <link href="https://zhaohongxuan.github.io/2022/06/05/spring-bootstrap-source-code/"/>
+    <id>https://zhaohongxuan.github.io/2022/06/05/spring-bootstrap-source-code/</id>
+    <published>2022-06-05T07:27:00.000Z</published>
+    <updated>2026-01-28T22:53:37.437Z</updated>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;Spring-Boot-启动&quot;&gt;&lt;a href=&quot;#Spring-Boot-启动&quot; class=&quot;headerlink&quot; title=&quot;Spring Boot 启动&quot;&gt;&lt;/a&gt;Spring Boot 启动&lt;/h2&gt;&lt;p&gt;SpringBoot的启动类很简单，只需要调用&lt;code&gt;SpringApplication&lt;/code&gt;的run方法即可，这篇文章来分析一下SpringBoot的启动类&lt;code&gt;SpringApplication&lt;/code&gt;初始化的过程。&lt;/p&gt;
+&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title function_&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(String[] args)&lt;/span&gt; &amp;#123;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    SpringApplication.run(Application.class, args);  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;在SpingApplication 中 初始化了一个SpringApplication, 参数是当前SpringBoot启动的类&lt;/p&gt;
+&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;static&lt;/span&gt; ConfigurableApplicationContext &lt;span class=&quot;title function_&quot;&gt;run&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(Class&amp;lt;?&amp;gt;[] primarySources, String[] args)&lt;/span&gt; &amp;#123;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;title class_&quot;&gt;SpringApplication&lt;/span&gt;(primarySources).run(args);  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;h2 id=&quot;SpringApplication初始化&quot;&gt;&lt;a href=&quot;#SpringApplication初始化&quot; class=&quot;headerlink&quot; title=&quot;SpringApplication初始化&quot;&gt;&lt;/a&gt;SpringApplication初始化&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;从classpath推断 &lt;code&gt;webApplicationType&lt;/code&gt; &lt;/li&gt;
+&lt;li&gt;设置Initializers&lt;/li&gt;
+&lt;li&gt;设置Listeners&lt;/li&gt;
+&lt;li&gt;推断main class,主要用于log print以及banner print&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;title function_&quot;&gt;SpringApplication&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(ResourceLoader resourceLoader, Class&amp;lt;?&amp;gt;... primarySources)&lt;/span&gt; &amp;#123;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   &lt;span class=&quot;built_in&quot;&gt;this&lt;/span&gt;.resourceLoader = resourceLoader;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   Assert.notNull(primarySources, &lt;span class=&quot;string&quot;&gt;&amp;quot;PrimarySources must not be null&amp;quot;&lt;/span&gt;);  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   &lt;span class=&quot;built_in&quot;&gt;this&lt;/span&gt;.primarySources = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;title class_&quot;&gt;LinkedHashSet&lt;/span&gt;&amp;lt;&amp;gt;(Arrays.asList(primarySources));  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   &lt;span class=&quot;built_in&quot;&gt;this&lt;/span&gt;.webApplicationType = WebApplicationType.deduceFromClasspath();  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   setInitializers((Collection) getSpringFactoriesInstances(ApplicationContextInitializer.class));  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   setListeners((Collection) getSpringFactoriesInstances(ApplicationListener.class));  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   &lt;span class=&quot;built_in&quot;&gt;this&lt;/span&gt;.mainApplicationClass = deduceMainApplicationClass();  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
+    
+    
+    
+    <category term="源码解析" scheme="https://zhaohongxuan.github.io/categories/%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/"/>
+    
+    
+    <category term="java/spring" scheme="https://zhaohongxuan.github.io/tags/java-spring/"/>
+    
+    <category term="源码分析" scheme="https://zhaohongxuan.github.io/tags/%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Spring是如何加载BeanDefinition的？</title>
+    <link href="https://zhaohongxuan.github.io/2022/06/02/spring-load-bean-definition/"/>
+    <id>https://zhaohongxuan.github.io/2022/06/02/spring-load-bean-definition/</id>
+    <published>2022-06-02T07:58:00.000Z</published>
+    <updated>2026-01-28T22:53:37.437Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;Spring Bean生命周期中，BeanDefinition是最重要的部分，在初始化和实例化Bean之前，首先要把所有的需要Spring管理的Bean对应的BeanDefinition加载到Spring容器中，这一步非常关键，因为BeanDefinition是Bean关联的元数据，这一篇文章就以&lt;code&gt;AnnotationConfigApplicationContext&lt;/code&gt;来分析一下Spring容器是如何加载BeanDefinition的。&lt;/p&gt;
+&lt;h2 id=&quot;第一阶段：扫描Class文件加载BeanDefinition&quot;&gt;&lt;a href=&quot;#第一阶段：扫描Class文件加载BeanDefinition&quot; class=&quot;headerlink&quot; title=&quot;第一阶段：扫描Class文件加载BeanDefinition&quot;&gt;&lt;/a&gt;第一阶段：扫描Class文件加载BeanDefinition&lt;/h2&gt;&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;title function_&quot;&gt;AnnotationConfigApplicationContext&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(String... basePackages)&lt;/span&gt; &amp;#123;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   &lt;span class=&quot;built_in&quot;&gt;this&lt;/span&gt;();  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   scan(basePackages);  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   refresh();  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;我们先以package的方式来分析，初始化&lt;code&gt;AnnotationConfigApplicationContext&lt;/code&gt;的时候会scan对应的包路径，然后进行refresh&lt;/p&gt;
+&lt;p&gt;scan的动作是在&lt;code&gt;ClassPathBeanDefinitionScanner&lt;/code&gt;的doScan方法中完成的,主要任务是查找classpath下面的Class文件，判断是否为Bean，然后生成BeanDefinition。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="源码解析" scheme="https://zhaohongxuan.github.io/categories/%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/"/>
+    
+    
+    <category term="java/spring" scheme="https://zhaohongxuan.github.io/tags/java-spring/"/>
+    
+    <category term="源码分析" scheme="https://zhaohongxuan.github.io/tags/%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>微信读书Obsidian实现二维码扫描登录</title>
+    <link href="https://zhaohongxuan.github.io/2022/05/24/weread-qrcode-login-in-obsidian/"/>
+    <id>https://zhaohongxuan.github.io/2022/05/24/weread-qrcode-login-in-obsidian/</id>
+    <published>2022-05-24T08:06:00.000Z</published>
+    <updated>2026-01-28T22:53:37.437Z</updated>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;背景&quot;&gt;&lt;a href=&quot;#背景&quot; class=&quot;headerlink&quot; title=&quot;背景&quot;&gt;&lt;/a&gt;背景&lt;/h2&gt;&lt;p&gt;前几天写了个Obsidian微信读书的插件&lt;a href=&quot;https://github.com/zhaohongxuan/obsidian-weread-plugin&quot;&gt;GitHub - zhaohongxuan&amp;#x2F;obsidian-weread-plugin&lt;/a&gt;，在B站上发了一个视频&lt;a href=&quot;https://www.bilibili.com/video/BV1f34y1h7jk#reply114024637264&quot;&gt;学了3天typescript写了一个微信读书的Obsidian插件_哔哩哔哩&lt;/a&gt;，最初版本是需要手动从控制台&lt;code&gt;复制Cookie&lt;/code&gt;设置到设置界面才能使用的，很多B站网友给我私信说获取Cookie有问题，虽然在readme里已经写的很清楚了，但是对小白来说可能这也是个比较困难的步骤，所以我在想是否可以实现二维码扫码登录呢？&lt;/p&gt;
+&lt;h2 id=&quot;思路&quot;&gt;&lt;a href=&quot;#思路&quot; class=&quot;headerlink&quot; title=&quot;思路&quot;&gt;&lt;/a&gt;思路&lt;/h2&gt;&lt;p&gt;因为Obsidian其实也是个浏览器，所以理论上是可以打开浏览器窗口来展示扫码登录界面的。只要load到微信读书的扫码登录界面，然后intercept到请求的header拿到Cookie就可以了，然后后续只要被动刷新Cookie有效期即可。&lt;/p&gt;
+&lt;p&gt;所以问题就被分成了三部分：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;展示二维码扫码框&lt;/li&gt;
+&lt;li&gt;intercept 登录操作获取到Cookie&lt;/li&gt;
+&lt;li&gt;将Cookie设置到setting 中&lt;/li&gt;
+&lt;/ol&gt;</summary>
+    
+    
+    
+    <category term="obsidian" scheme="https://zhaohongxuan.github.io/categories/obsidian/"/>
+    
+    
+    <category term="obsidian" scheme="https://zhaohongxuan.github.io/tags/obsidian/"/>
+    
+    <category term="二维码登录" scheme="https://zhaohongxuan.github.io/tags/%E4%BA%8C%E7%BB%B4%E7%A0%81%E7%99%BB%E5%BD%95/"/>
+    
+    <category term="electron" scheme="https://zhaohongxuan.github.io/tags/electron/"/>
+    
+    <category term="BrowserWindow" scheme="https://zhaohongxuan.github.io/tags/BrowserWindow/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>微信读书Cookie自动延期机制分析</title>
+    <link href="https://zhaohongxuan.github.io/2022/05/16/how-to-relong-cookies-in-weread/"/>
+    <id>https://zhaohongxuan.github.io/2022/05/16/how-to-relong-cookies-in-weread/</id>
+    <published>2022-05-16T12:57:00.000Z</published>
+    <updated>2026-01-28T22:53:37.437Z</updated>
+    
+    
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;HTTP Cookie（也叫 Web Cookie 或浏览器 Cookie）是服务器发送到用户浏览器并保存在本地的一小块数据，它会在浏览器下次向同一服务器再发起请求时被携带并发送到服务器上。通常，它用于告知服务端两个请求是否来自同一浏览器，如保持用户的登录状态。Cookie 使基于&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/HTTP/Overview#http_is_stateless_but_not_sessionless&quot;&gt;无状态&lt;/a&gt;的HTTP协议记录稳定的状态信息成为了可能。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;分析Cookie&quot;&gt;&lt;a href=&quot;#分析Cookie&quot; class=&quot;headerlink&quot; title=&quot;分析Cookie&quot;&gt;&lt;/a&gt;分析Cookie&lt;/h2&gt;&lt;h3 id=&quot;登录之前&quot;&gt;&lt;a href=&quot;#登录之前&quot; class=&quot;headerlink&quot; title=&quot;登录之前&quot;&gt;&lt;/a&gt;登录之前&lt;/h3&gt;&lt;p&gt;在进入到weread.qq.com的时候，就已经存在Cookie信息了，只不过一部分的Cookie信息是空的，&lt;br&gt;下面是扫码登录之前的Cookie信息：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://cdn.jsdelivr.net/gh/zhaohongxuan/picgo@master/20220516161146.png&quot;&gt;&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="obsidian" scheme="https://zhaohongxuan.github.io/categories/obsidian/"/>
+    
+    
+    <category term="obsidian" scheme="https://zhaohongxuan.github.io/tags/obsidian/"/>
+    
+    <category term="微信读书" scheme="https://zhaohongxuan.github.io/tags/%E5%BE%AE%E4%BF%A1%E8%AF%BB%E4%B9%A6/"/>
+    
+    <category term="cookie" scheme="https://zhaohongxuan.github.io/tags/cookie/"/>
+    
+  </entry>
+  
+</feed>

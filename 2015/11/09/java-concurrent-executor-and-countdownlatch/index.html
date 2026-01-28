@@ -1,0 +1,933 @@
+
+<!DOCTYPE html><html lang="zh-CN">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="hexo-theme" content="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.33.1" theme-name="Stellar" theme-version="1.33.1">
+  
+  
+  <meta name="generator" content="Hexo 6.3.0">
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  <link rel="preconnect" href="https://gcore.jsdelivr.net" crossorigin><link rel="preconnect" href="https://unpkg.com" crossorigin><link rel="preconnect" href="https://cdn.bootcdn.net" crossorigin>
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000">
+  <meta name="theme-color" content="#f9fafb">
+  <title>Executor任务执行框架的应用 - Hank's Blog</title>
+
+  
+    <meta name="description" content="最近一段时间没有写东西了，看大名鼎鼎的Brian Goetz写的Java Concurrency in Practice时候，看到任务执行框架Executor Framework的时候，觉得纸上得来终觉浅，索性写点东西加深一下印象。 在JDK1.5中，Java平台中增加了一个并发包java.util.concurrent，这个包中包含了Executor Framework，而且还包含了很多并发包，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Executor任务执行框架的应用">
+<meta property="og:url" content="https://zhaohongxuan.github.io/2015/11/09/java-concurrent-executor-and-countdownlatch/">
+<meta property="og:site_name" content="Hank&#39;s Blog">
+<meta property="og:description" content="最近一段时间没有写东西了，看大名鼎鼎的Brian Goetz写的Java Concurrency in Practice时候，看到任务执行框架Executor Framework的时候，觉得纸上得来终觉浅，索性写点东西加深一下印象。 在JDK1.5中，Java平台中增加了一个并发包java.util.concurrent，这个包中包含了Executor Framework，而且还包含了很多并发包，">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://avatars.githubusercontent.com/u/8613196?v=4">
+<meta property="article:published_time" content="2015-11-09T00:00:00.000Z">
+<meta property="article:modified_time" content="2026-01-28T22:53:37.434Z">
+<meta property="article:author" content="Hank Zhao">
+<meta property="article:tag" content="java">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://avatars.githubusercontent.com/u/8613196?v=4">
+  
+  
+  
+  <meta name="keywords" content="executor">
+
+  <!-- feed -->
+  
+    <link rel="alternate" href="/atom.xml" title="Hank's Blog" type="application/atom+xml">
+  
+
+  <link rel="stylesheet" href="/css/main.css?v=1.33.1">
+
+
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+
+  
+
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Hank Zhao","sameAs":[],"image":"https://avatars.githubusercontent.com/u/8613196?v=4"},"dateCreated":"2015-11-09T00:00:00+00:00","dateModified":"2026-01-28T22:53:37+00:00","datePublished":"2015-11-09T00:00:00+00:00","description":"最近一段时间没有写东西了，看大名鼎鼎的Brian Goetz写的Java Concurrency in Practice时候，看到任务执行框架Executor Framework的时候，觉得纸上得来终觉浅，索性写点东西加深一下印象。\n在JDK1.5中，Java平台中增加了一个并发包java.util.concurrent，这个包中包含了Executor Framework，而且还包含了很多并发包，比如并发HashMapConcurrentHashMap、阻塞队列BlockQueue、栅栏的实现CyclicBarrier、信号量Semaphore、异步任务FutureTask等等。在处理多线程任务的时候，使用Executor和task要优于使用线程,这也不是我说的，是Effect Java的作者 Joshua Bloach说的，下面来阐述一下为什么。\n并发任务执行当要执行一个并发任务的时候，通常有两种方式，一种是串行的处理方式，一种是并行的处理,显然，串行的方式只能一次处理一个任务，当程序在执行当前的任务的时候，就说明接下来到来的任务请求都要等待当前的任务执行完毕才能获得CPU去执行任务，这种方式虽然不会犯错，但是效率太低。那么，如果每一个任务到来都分配一个新的任务呢，这种方式貌似很好，但是：\n如果任务请求量非常大的时候会出现一定的问题，因为它没有限制可以创建的线程的数量.\n线程生命周期的开销很高  线程的创建和销毁不是没有代价的,根据平台的不同，开销不同，但是不要忘记，线程的创建是需要时间的。\n活跃的线程会消耗系统资源  活跃的线程很消耗系统资源，尤其是内存，如果可运行的线程数量多于处理器核心数，那么多余的线程将闲置，但是闲置的线程仍然是消耗系统资源的，尤其  是内存，给GC回收垃圾带来压力，而且线程间在进行竞争的时候也会消耗大量的资源\n平台可创建的线程数量是有限的  也就是说，如果创建的线程超出了平台的限制那么，JVM就可能抛出OutofMemoryError的异常","headline":"Executor任务执行框架的应用","mainEntityOfPage":{"@type":"WebPage","@id":"https://zhaohongxuan.github.io/2015/11/09/java-concurrent-executor-and-countdownlatch/"},"publisher":{"@type":"Organization","name":"Hank Zhao","sameAs":[],"image":"https://avatars.githubusercontent.com/u/8613196?v=4","logo":{"@type":"ImageObject","url":"https://avatars.githubusercontent.com/u/8613196?v=4"}},"url":"https://zhaohongxuan.github.io/2015/11/09/java-concurrent-executor-and-countdownlatch/","keywords":"java","image":[]}</script>
+  <link rel="shortcut icon" href="/assets/xaoxuu/favicon/favicon.ico"><meta name="theme-color" content="#f8f8f8"><link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/lxgw-wenkai-screen-webfont/1.7.0/style.min.css" media="all" /><link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.2/css/all.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="l_body content" id="start" layout="post" type="tech" ><aside class="l_left"><div class="sidebg"></div><div class="leftbar-container">
+
+
+<header class="header"><div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="https://avatars.githubusercontent.com/u/8613196?v=4" onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a><a class="title" href="/"><div class="main">Hank's Blog</div><div class="sub normal cap">做点有趣的事情</div><div class="sub hover cap" style="opacity:0"> 编程/跑步/写作</div></a></div></header>
+
+<div class="nav-area">
+
+<nav class="menu dis-select"></nav>
+</div>
+<div class="widgets">
+<div class="search-wrapper" id="search-wrapper"><form class="search-form"><a class="search-button" onclick="document.getElementById(&quot;search-input&quot;).focus();"><svg t="1705074644177" viewBox="0 0 1025 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1560" width="200" height="200"><path d="M1008.839137 935.96571L792.364903 719.491476a56.783488 56.783488 0 0 0-80.152866 0 358.53545 358.53545 0 1 1 100.857314-335.166073 362.840335 362.840335 0 0 1-3.689902 170.145468 51.248635 51.248635 0 1 0 99.217358 26.444296 462.057693 462.057693 0 1 0-158.255785 242.303546l185.930047 185.725053a51.248635 51.248635 0 0 0 72.568068 0 51.248635 51.248635 0 0 0 0-72.978056z" p-id="1561"></path><path d="M616.479587 615.969233a50.428657 50.428657 0 0 0-61.498362-5.534852 174.655348 174.655348 0 0 1-177.525271 3.484907 49.403684 49.403684 0 0 0-58.833433 6.76482l-3.074918 2.869923a49.403684 49.403684 0 0 0 8.609771 78.10292 277.767601 277.767601 0 0 0 286.992355-5.739847 49.403684 49.403684 0 0 0 8.404776-76.667958z" p-id="1562"></path></svg></a><input type="text" class="search-input" id="search-input" placeholder="站内搜索"></form><div id="search-result"></div><div class="search-no-result">没有找到内容！</div></div>
+
+
+
+<widget class="widget-wrapper recent post-list"><div class="widget-header dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><a class="item title" href="/2024/10/10/layoff-first-time/"><span class="title">记录人生第一次裁员</span></a><a class="item title" href="/2025/02/19/2024-review/"><span class="title">2024：拥抱不确定</span></a><a class="item title" href="/2026/01/28/2025-review/"><span class="title">2025：平凡的一年</span></a><a class="item title" href="/2023/02/05/bloom-taxonomy/"><span class="title">认识布鲁姆分类学</span></a><a class="item title" href="/2022/12/31/bye-2022/"><span class="title">再见2022</span></a><a class="item title" href="/2023/05/05/autogroup-your-chrome/"><span class="title">自动分组chrome标签页</span></a><a class="item title" href="/2023/06/30/how-i-learn-shuang-pin/"><span class="title">也许你该试试双拼输入法</span></a><a class="item title" href="/2023/07/08/apple-watch-to-shuzixindong/"><span class="title">将Apple Watch跑步数据同步到Garmin</span></a><a class="item title" href="/2023/11/05/shangma-auto-sign-tool/"><span class="title">上海马拉松自动签到工具</span></a><a class="item title" href="/2023/12/17/xiaomi-ax1800-shellclash/"><span class="title">小米AX1800实现科学上网</span></a></div></widget>
+</div>
+
+</div></aside><div class="l_main" id="main">
+
+
+
+
+
+<div class="article banner top">
+  <div class="content">
+    <div class="top bread-nav footnote"><div class="left"><div class="flex-row" id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a>
+<span class="sep"></span><a class="cap breadcrumb" href="/">文章</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/java/">java</a></div>
+<div class="flex-row" id="post-meta"><span class="text created">发布于：<time datetime="2015-11-09T00:00:00.000Z">2015-11-09</time></span><span class="sep updated"></span><span class="text updated">更新于：<time datetime="2026-01-28T22:53:37.434Z">2026-01-28</time></span></div></div></div>
+    
+    <div class="bottom only-title">
+      
+      <div class="text-area">
+        <h1 class="text title"><span>Executor任务执行框架的应用</span></h1>
+        
+      </div>
+    </div>
+    
+  </div>
+  </div><article class="md-text content"><p>最近一段时间没有写东西了，看大名鼎鼎的<code>Brian Goetz</code>写的<code>Java Concurrency in Practice</code>时候，看到任务执行框架<code>Executor Framework</code><br>的时候，觉得纸上得来终觉浅，索性写点东西加深一下印象。</p>
+<p>在JDK1.5中，Java平台中增加了一个并发包<code>java.util.concurrent</code>，这个包中包含了Executor Framework，而且还包含了很多并发包，比如并发<br>HashMap<code>ConcurrentHashMap</code>、阻塞队列<code>BlockQueue</code>、栅栏的实现<code>CyclicBarrier</code>、信号量<code>Semaphore</code>、异步任务<code>FutureTask</code>等等。<br>在处理多线程任务的时候，使用Executor和task要<code>优于</code>使用线程,这也不是我说的，是Effect Java的作者 <code>Joshua Bloach</code>说的，下面来阐述一下<br>为什么。</p>
+<h2 id="并发任务执行"><a href="#并发任务执行" class="headerlink" title="并发任务执行"></a>并发任务执行</h2><p>当要执行一个并发任务的时候，通常有两种方式，一种是<code>串行</code>的处理方式，一种是<code>并行</code>的处理,显然，串行的方式只能一次处理一个任务，当程序在执行<br>当前的任务的时候，就说明接下来到来的任务请求都要等待当前的任务执行完毕才能获得CPU去执行任务，这种方式虽然不会犯错，但是效率太低。<br>那么，如果每一个任务到来都分配一个新的任务呢，这种方式貌似很好，<code>但是</code>：</p>
+<p>如果任务请求量非常大的时候会出现一定的问题，因为它没有限制可以创建的线程的<code>数量</code>.</p>
+<h3 id="线程生命周期的开销很高"><a href="#线程生命周期的开销很高" class="headerlink" title="线程生命周期的开销很高"></a>线程生命周期的开销很高</h3><p>  线程的创建和销毁不是没有代价的,根据平台的不同，开销不同，但是不要忘记，线程的创建是需要时间的。</p>
+<h3 id="活跃的线程会消耗系统资源"><a href="#活跃的线程会消耗系统资源" class="headerlink" title="活跃的线程会消耗系统资源"></a>活跃的线程会消耗系统资源</h3><p>  活跃的线程很消耗系统资源，尤其是内存，如果可运行的线程数量多于处理器核心数，那么多余的线程将闲置，但是闲置的线程仍然是消耗系统资源的，尤其<br>  是内存，给GC回收垃圾带来压力，而且线程间在进行竞争的时候也会消耗大量的资源</p>
+<h3 id="平台可创建的线程数量是有限的"><a href="#平台可创建的线程数量是有限的" class="headerlink" title="平台可创建的线程数量是有限的"></a>平台可创建的线程数量是有限的</h3><p>  也就是说，如果创建的线程超出了平台的限制那么，JVM就可能抛出<code>OutofMemoryError</code>的异常</p>
+<span id="more"></span>
+
+<h2 id="线程池"><a href="#线程池" class="headerlink" title="线程池"></a>线程池</h2><p>和数据库连接池相似，线程池指的是一组<code>同构</code>工作线程的资源池，线程池与工作队列 Work Queue密切相关<br>线程池中的线程的任务很简单：从<code>工作队列</code>（Work Queue）中取出一个任务，执行任务，人后返回线程池，等待执行下一个任务</p>
+<p>线程池比为每一个任务分配一个线程要有更多优势，通过<code>重用</code>现有线程而不是重新创建线程，可以处理多个任务请求的时候，分摊在线程创建和销毁的过程中产生的<br>巨大开销。<br>而且，当请求到达的时候，线程池中的线程也已经就绪，不需要在创建线程而延迟响应的时间，提高了响应性。通过调整线程池的大小，可以创建足够多的线程来让CPU<br>保持忙碌的状态。</p>
+<p>创建线程池有很多种方式，</p>
+<p>通过调用Executors的工厂方法可以创建线程池，<br>例如：<br><code>newFixThreadPool</code> 用来创建一个固定长度的线程池<br><code>newCacheThreadPool</code> 用来创建一个可缓存的线程池<br><code>newSingleThreadPool</code> 创建一个单线程的线程池</p>
+<h2 id="Executor框架"><a href="#Executor框架" class="headerlink" title="Executor框架"></a>Executor框架</h2><p>任务和线程不同，任务是一组<code>逻辑工作单元</code>，而线程是使任务<code>异步执行</code>的机制。<br>在Java类库中，任务执行的主要抽象不是Thread而是Executor</p>
+<p>Executor接口定义如下</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">Executor</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Executes the given command at some time in the future.  The command</span></span><br><span class="line"><span class="comment">     * may execute in a new thread, in a pooled thread, or in the calling</span></span><br><span class="line"><span class="comment">     * thread, at the discretion of the &lt;tt&gt;Executor&lt;/tt&gt; implementation.</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> command the runnable task</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> RejectedExecutionException if this task cannot be</span></span><br><span class="line"><span class="comment">     * accepted for execution.</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> NullPointerException if command is null</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">execute</span><span class="params">(Runnable command)</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>虽然Executor只是一个简单的接口，但是却为灵活而强大的异步任务执行框架提供了基础。其中Runnable表示可以执行的任务<br>Executor的实现还提供了对生命周期的支持。</p>
+<p>Executor基于 生产者-消费者模式，提交任务到线程池相当于生产者，执行任务相当于消费者。</p>
+<h2 id="闭锁"><a href="#闭锁" class="headerlink" title="闭锁"></a>闭锁</h2><p>闭锁是一种同步工具类，作用是延迟线程的进度直到其到达终止状态。<br>###举个栗子：<br>闭锁的作用相当于一扇门，当闭锁到达结束状态之前，这扇门一直是关闭的，并且没有<code>任何线程</code>能通过,当闭锁到达技术状态的时候，这扇门会打开而让<code>所有</code><br>线程通过。<br>当闭锁到达结束状态的时候，这扇门会<code>永远</code>保持<code>打开</code>状态。<br>闭锁的作用是，可以用来确保某些活动直到其他活动<code>都完成</code>后才执行。</p>
+<h2 id="实践"><a href="#实践" class="headerlink" title="实践"></a>实践</h2><p>纸上得来终觉浅，写了代码就知道为什么了。</p>
+<p>还比如上一次写的爬虫，如果单线程抓取的话，只能首先抓取首页，然后解析其中的图片链接，然后再下载图片，这样效率无疑是很低的，现在<br>我加上线程池。</p>
+<h3 id="建立工作队列"><a href="#建立工作队列" class="headerlink" title="建立工作队列"></a>建立工作队列</h3><p>一个是抓取页面的阻塞队列<code>naviQueue</code>,一个是抓取页面上的图片url的阻塞队列<code>imgQueue</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">   <span class="comment">// 定义一个页面导航的队列</span></span><br><span class="line"><span class="keyword">final</span> BlockingQueue&lt;String&gt; naviQueue = <span class="keyword">new</span> <span class="title class_">LinkedBlockingQueue</span>&lt;String&gt;(<span class="number">3</span>);</span><br><span class="line"><span class="comment">// 定义一个图片网址的队列</span></span><br><span class="line"><span class="keyword">final</span> BlockingQueue&lt;String&gt; imgQueue = <span class="keyword">new</span> <span class="title class_">LinkedBlockingQueue</span>&lt;String&gt;(<span class="number">100</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="创建线程池"><a href="#创建线程池" class="headerlink" title="创建线程池"></a>创建线程池</h3><p>线程池的大小是下载图片线程和解析页面线程的数量之和</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">final</span> <span class="type">int</span> <span class="variable">DOWNLOAD_THREAD</span> <span class="operator">=</span> <span class="number">30</span>;</span><br><span class="line"><span class="keyword">final</span> <span class="type">int</span> <span class="variable">PAGE_THREAD</span> <span class="operator">=</span> <span class="number">2</span>;</span><br><span class="line"><span class="keyword">final</span> <span class="type">ExecutorService</span> <span class="variable">exec</span> <span class="operator">=</span> Executors.newFixedThreadPool((DOWNLOAD_THREAD + PAGE_THREAD));</span><br></pre></td></tr></table></figure>
+
+<h3 id="定义闭锁"><a href="#定义闭锁" class="headerlink" title="定义闭锁"></a>定义闭锁</h3><p>定义一个开始倒数锁和一个结束倒数锁</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 定义一个开始的倒数锁</span></span><br><span class="line"><span class="keyword">final</span> <span class="type">CountDownLatch</span> <span class="variable">begin</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">CountDownLatch</span>(<span class="number">1</span>);</span><br><span class="line"><span class="comment">// 定义一个结束的倒数锁</span></span><br><span class="line"><span class="keyword">final</span> <span class="type">CountDownLatch</span> <span class="variable">end</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">CountDownLatch</span>((DOWNLOAD_THREAD + PAGE_THREAD));</span><br></pre></td></tr></table></figure>
+
+<p>其中，开始倒数锁的作用是，等待<code>主线程</code>加载首页信息，加载完成后才能继续抓取<code>下一页</code>的URL，所以开始倒数锁的初始大小为1，等初始化线程一旦执行完毕之后，<br>立刻释放所有的线程，开始执行并行任务。</p>
+<p>结束倒数锁的作用是，主线程能够等待所有的工作线程依次执行完成，而不是顺序的等待每个线程执行完毕。</p>
+<h3 id="初始化线程"><a href="#初始化线程" class="headerlink" title="初始化线程"></a>初始化线程</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="title function_">ThreadPoolMananger</span><span class="params">()</span> &#123;</span><br><span class="line">	<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span> (; i &lt;= PAGE_THREAD; i++) &#123;</span><br><span class="line">		exec.submit(<span class="keyword">new</span> <span class="title class_">PageThread</span>(i, begin, end));</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span> (; i &lt;= (DOWNLOAD_THREAD + PAGE_THREAD); i++) &#123;</span><br><span class="line">		exec.submit(<span class="keyword">new</span> <span class="title class_">ImageThread</span>(i, <span class="string">&quot;D:\\pictures&quot;</span>, begin, end));</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="type">HtmlParser</span> <span class="variable">parser</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">HtmlParser</span>();</span><br><span class="line">	<span class="type">SimpleHttpClient</span> <span class="variable">client</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">SimpleHttpClient</span>();</span><br><span class="line">	parser.setHtml(client.get(<span class="string">&quot;http://jandan.net/pic&quot;</span>));</span><br><span class="line">	System.out.println(<span class="string">&quot;====开始抓取首页&quot;</span>);</span><br><span class="line">	<span class="keyword">try</span> &#123;</span><br><span class="line">		naviQueue.put(parser.getPageNavi());</span><br><span class="line">		parser.handleImgs(imgQueue);</span><br><span class="line">	&#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">	&#125;</span><br><span class="line">	client.close();</span><br><span class="line">	System.out.println(<span class="string">&quot;首页结束，开始执行多线程抓取&quot;</span>);</span><br><span class="line">	begin.countDown();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>构造器中初始化了页面抓取线程和一些下载图片的线程到线程池中，然后开始执行首页的抓取，等待首页抓取完毕之后，begin.coutDown(),这时候<code>开始门</code><br>的大小为0，这时候会释放所有的工作线程，开始执行多线程的抓取工作。</p>
+<h3 id="页面处理线程"><a href="#页面处理线程" class="headerlink" title="页面处理线程"></a>页面处理线程</h3><p>页面抓取线程在初始化主线程执行完毕之后开始执行，从页面URL队列<code>naviQueue</code>中取出队列头部的url，使用Jsoup进行解析，得到本页面所有的<code>图片url</code>并添加到待处理<br>的图片URL队列<code>imgQueue</code>中然后得到<code>下一页</code>的链接URL，加入<code>naviQueue</code>中，如果在解析的过程中发现，Jsoup解析的下一页为空，那么就说明已经解析完成了。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">PageThread</span> <span class="keyword">implements</span> <span class="title class_">Runnable</span> &#123;</span><br><span class="line">		<span class="keyword">private</span> <span class="keyword">final</span> CountDownLatch startSignal;</span><br><span class="line">		<span class="keyword">private</span> <span class="keyword">final</span> CountDownLatch stopSignal;</span><br><span class="line">		<span class="keyword">private</span> <span class="type">int</span> index;</span><br><span class="line">		<span class="keyword">public</span> <span class="title function_">PageThread</span><span class="params">(<span class="type">int</span> index, CountDownLatch start, CountDownLatch end)</span> &#123;</span><br><span class="line">			<span class="built_in">this</span>.startSignal = start;</span><br><span class="line">			<span class="built_in">this</span>.stopSignal = end;</span><br><span class="line">			<span class="built_in">this</span>.index = index;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="meta">@Override</span></span><br><span class="line">		<span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">run</span><span class="params">()</span> &#123;</span><br><span class="line">			<span class="keyword">try</span> &#123;</span><br><span class="line">				startSignal.await();</span><br><span class="line">			&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="type">String</span> <span class="variable">html</span> <span class="operator">=</span> <span class="string">&quot;&quot;</span>;</span><br><span class="line">			<span class="type">String</span> <span class="variable">url</span> <span class="operator">=</span> <span class="string">&quot;&quot;</span>;</span><br><span class="line">			<span class="type">int</span> <span class="variable">left</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">			<span class="type">HtmlParser</span> <span class="variable">parser</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">HtmlParser</span>();</span><br><span class="line">			<span class="type">SimpleHttpClient</span> <span class="variable">client</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">SimpleHttpClient</span>();</span><br><span class="line">			<span class="keyword">while</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">				<span class="keyword">try</span> &#123;</span><br><span class="line">					url = naviQueue.take();</span><br><span class="line">					left = naviQueue.size();</span><br><span class="line">					<span class="keyword">if</span> (<span class="string">&quot;&quot;</span>.equals(url)) &#123;</span><br><span class="line">						<span class="comment">// 把结束的标志放回去，其他的线程也要调用</span></span><br><span class="line">						naviQueue.put(<span class="string">&quot;&quot;</span>);</span><br><span class="line">						<span class="keyword">break</span>;</span><br><span class="line">					&#125;</span><br><span class="line">				&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">					System.err.println(<span class="string">&quot;[&quot;</span> + index + <span class="string">&quot;]:&quot;</span> + e.getMessage());</span><br><span class="line">				&#125;</span><br><span class="line">				System.out.println(<span class="string">&quot;[&quot;</span> + index + <span class="string">&quot;][页面left:&quot;</span> + left</span><br><span class="line">						+ <span class="string">&quot;]线程抓取html--&gt;&quot;</span> + url);</span><br><span class="line">				<span class="keyword">try</span> &#123;</span><br><span class="line">					html = client.get(url);</span><br><span class="line">				&#125; <span class="keyword">catch</span> (Exception e1) &#123;</span><br><span class="line">				&#125;</span><br><span class="line">				parser.setHtml(html);</span><br><span class="line">				<span class="type">String</span> <span class="variable">next</span> <span class="operator">=</span> parser.getPageNavi();</span><br><span class="line">				<span class="keyword">try</span> &#123;</span><br><span class="line">					<span class="keyword">if</span> (next == <span class="literal">null</span>) &#123;</span><br><span class="line">						naviQueue.put(<span class="string">&quot;&quot;</span>);</span><br><span class="line">						parser.handleImgs(imgQueue); <span class="comment">// 在图片队列的最后也放上一个&quot;&quot;作为结束的标志</span></span><br><span class="line">						imgQueue.put(<span class="string">&quot;&quot;</span>);</span><br><span class="line">					&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">						naviQueue.put(next);</span><br><span class="line">						parser.handleImgs(imgQueue);</span><br><span class="line">					&#125;</span><br><span class="line">				&#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">					e.printStackTrace();</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			client.close();</span><br><span class="line">			stopSignal.countDown();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="图片下载线程"><a href="#图片下载线程" class="headerlink" title="图片下载线程"></a>图片下载线程</h3><p>图片线程的主要任务就是下载所有的图片并保存到本地。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">ImageThread</span> <span class="keyword">implements</span> <span class="title class_">Runnable</span> &#123;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">final</span> CountDownLatch startSignal;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">final</span> CountDownLatch stopSignal;</span><br><span class="line">	<span class="keyword">private</span> <span class="type">int</span> threadIdx;</span><br><span class="line">	<span class="keyword">private</span> String dest;</span><br><span class="line">	<span class="keyword">public</span> <span class="title function_">ImageThread</span><span class="params">(<span class="type">int</span> index, String dest, CountDownLatch start,</span></span><br><span class="line"><span class="params">			CountDownLatch end)</span> &#123;</span><br><span class="line">		<span class="built_in">this</span>.threadIdx = index;</span><br><span class="line">		<span class="built_in">this</span>.dest = dest;</span><br><span class="line">		<span class="built_in">this</span>.startSignal = start;</span><br><span class="line">		<span class="built_in">this</span>.stopSignal = end;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">run</span><span class="params">()</span> &#123;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			<span class="comment">// 等待初始的线程结束</span></span><br><span class="line">			startSignal.await();</span><br><span class="line">		&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">		&#125;</span><br><span class="line">		System.out.println(<span class="string">&quot;[&quot;</span> + threadIdx + <span class="string">&quot;]线程开始&quot;</span>);</span><br><span class="line">		<span class="type">SimpleHttpClient</span> <span class="variable">client</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">SimpleHttpClient</span>();</span><br><span class="line">		<span class="type">String</span> <span class="variable">picurl</span> <span class="operator">=</span> <span class="string">&quot;&quot;</span>;</span><br><span class="line">		<span class="type">int</span> <span class="variable">left</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">		<span class="comment">// 这个线程不断的从图片队列里面取出图片的地址</span></span><br><span class="line">		<span class="keyword">while</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">			<span class="comment">// 取出一个图片地址</span></span><br><span class="line">			<span class="keyword">try</span> &#123;</span><br><span class="line">				picurl = imgQueue.take();</span><br><span class="line">				left = imgQueue.size();</span><br><span class="line">			&#125; <span class="keyword">catch</span> (InterruptedException e1) &#123;</span><br><span class="line">				System.err</span><br><span class="line">						.println(<span class="string">&quot;[&quot;</span> + threadIdx + <span class="string">&quot;]:&quot;</span> + e1.getMessage());</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span> (<span class="string">&quot;&quot;</span>.equals(picurl)) &#123;</span><br><span class="line">				<span class="keyword">try</span> &#123;</span><br><span class="line">					<span class="comment">// 结束标志，丢回去，其他的线程要根据这个判断结束</span></span><br><span class="line">					imgQueue.put(<span class="string">&quot;&quot;</span>);</span><br><span class="line">				&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">					e.printStackTrace();</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="comment">// 如果说，取到图片地址为空而且页面的已经解析完毕，这个就应该要结束了。</span></span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">try</span> &#123;</span><br><span class="line">				System.out.println(<span class="string">&quot;[&quot;</span> + threadIdx + <span class="string">&quot;][图片left:&quot;</span> + left</span><br><span class="line">						+ <span class="string">&quot;]线程开始抓取image--&gt;&quot;</span> + picurl);</span><br><span class="line">				client.downloadFile(picurl, dest);</span><br><span class="line">			&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">				System.err.println(<span class="string">&quot;[&quot;</span> + threadIdx + <span class="string">&quot;]:&quot;</span> + e.getMessage());</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		client.close();</span><br><span class="line">		stopSignal.countDown();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</article>
+<div class="article-footer">
+    <section id="license">
+      <div class="header"><span>许可协议</span></div>
+      <div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
+</div>
+    </section>
+    
+
+
+    <section id="share">
+      <div class="header"><span>分享文章</span></div>
+      <div class="body">
+        <div class="link"><input class="copy-area" readonly="true" id="copy-link" value="https://zhaohongxuan.github.io/2015/11/09/java-concurrent-executor-and-countdownlatch/" /></div>
+        <div class="social-wrap dis-select"><a class="social share-item wechat" onclick="util.toggle(&quot;qrcode-wechat&quot;)"><img  src="https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/social/b32ef3da1162a.svg" /></a><a class="social share-item email" href="mailto:?subject=Executor任务执行框架的应用 - Hank's Blog&amp;body=https://zhaohongxuan.github.io/2015/11/09/java-concurrent-executor-and-countdownlatch/"><img  src="https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/social/a1b00e20f425d.svg" /></a><a class="social share-item link" onclick="util.copy(&quot;copy-link&quot;, &quot;复制成功&quot;)"><img  src="https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/social/8411ed322ced6.svg" /></a></div>
+        
+        <div class="qrcode" id="qrcode-wechat" style="opacity:0;height:0">
+          <img src="https://api.qrserver.com/v1/create-qr-code/?size=256x256&data=https://zhaohongxuan.github.io/2015/11/09/java-concurrent-executor-and-countdownlatch/"/>
+        </div>
+        
+      </div>
+    </section>
+    </div>
+
+<div class="related-wrap" id="read-next"><section class="body"><div class="item" id="prev"><div class="note">较新文章</div><a href="/2015/11/29/spring-boot-restful/">使用Spring boot 创建RestFul服务</a></div><div class="item" id="next"><div class="note">较早文章</div><a href="/2015/11/09/running-like-an-animal/">跑在立冬边上</a></div></section></div>
+
+
+
+
+  <div class="related-wrap md-text" id="comments">
+    <section class='header cmt-title cap theme'>
+      <p>快来参与讨论吧~</p>
+
+    </section>
+    <section class='body cmt-body utterances'>
+      
+
+<svg class="loading" style="vertical-align:middle;fill:currentColor;overflow:hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2709"><path d="M832 512c0-176-144-320-320-320V128c211.2 0 384 172.8 384 384h-64zM192 512c0 176 144 320 320 320v64C300.8 896 128 723.2 128 512h64z" p-id="2710"></path></svg>
+
+<div id="utterances" repo="zhaohongxuan/zhaohongxuan.github.io" issue-term="pathname" theme="preferred-color-scheme"></div>
+
+    </section>
+  </div>
+
+
+
+<footer class="page-footer footnote"><hr><div class="text"><p>本站由 <a href="/">Hank Zhao</a> 使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.33.1">Stellar</a> 主题创建。<br>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。<br><span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span></p>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+</div></footer>
+<div class="main-mask" onclick="sidebar.dismiss()"></div></div><aside class="l_right">
+<div class="widgets">
+
+
+
+<widget class="widget-wrapper toc" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">本文目录</span><a class="cap-action" onclick="sidebar.toggleTOC()" ><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg></a></div><div class="widget-body"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B9%B6%E5%8F%91%E4%BB%BB%E5%8A%A1%E6%89%A7%E8%A1%8C"><span class="toc-text">并发任务执行</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BA%BF%E7%A8%8B%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E7%9A%84%E5%BC%80%E9%94%80%E5%BE%88%E9%AB%98"><span class="toc-text">线程生命周期的开销很高</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B4%BB%E8%B7%83%E7%9A%84%E7%BA%BF%E7%A8%8B%E4%BC%9A%E6%B6%88%E8%80%97%E7%B3%BB%E7%BB%9F%E8%B5%84%E6%BA%90"><span class="toc-text">活跃的线程会消耗系统资源</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B9%B3%E5%8F%B0%E5%8F%AF%E5%88%9B%E5%BB%BA%E7%9A%84%E7%BA%BF%E7%A8%8B%E6%95%B0%E9%87%8F%E6%98%AF%E6%9C%89%E9%99%90%E7%9A%84"><span class="toc-text">平台可创建的线程数量是有限的</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BA%BF%E7%A8%8B%E6%B1%A0"><span class="toc-text">线程池</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Executor%E6%A1%86%E6%9E%B6"><span class="toc-text">Executor框架</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AD%E9%94%81"><span class="toc-text">闭锁</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E8%B7%B5"><span class="toc-text">实践</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BB%BA%E7%AB%8B%E5%B7%A5%E4%BD%9C%E9%98%9F%E5%88%97"><span class="toc-text">建立工作队列</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E7%BA%BF%E7%A8%8B%E6%B1%A0"><span class="toc-text">创建线程池</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89%E9%97%AD%E9%94%81"><span class="toc-text">定义闭锁</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96%E7%BA%BF%E7%A8%8B"><span class="toc-text">初始化线程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A1%B5%E9%9D%A2%E5%A4%84%E7%90%86%E7%BA%BF%E7%A8%8B"><span class="toc-text">页面处理线程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%BE%E7%89%87%E4%B8%8B%E8%BD%BD%E7%BA%BF%E7%A8%8B"><span class="toc-text">图片下载线程</span></a></li></ol></li></ol></div><div class="widget-footer"><a class="top" onclick="util.scrollTop()"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><!-- Icon from Solar by 480 Design - https://creativecommons.org/licenses/by/4.0/ --><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"><path stroke-linejoin="round" d="m9 15.5l3-3l3 3m-6-4l3-3l3 3"/><path d="M7 3.338A9.95 9.95 0 0 1 12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12c0-1.821.487-3.53 1.338-5"/></g></svg><span>回到顶部</span></a><a class="buttom" onclick="util.scrollComment()"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><!-- Icon from Solar by 480 Design - https://creativecommons.org/licenses/by/4.0/ --><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" d="M8 10.5h8M8 14h5.5M17 3.338A9.95 9.95 0 0 0 12 2C6.477 2 2 6.477 2 12c0 1.6.376 3.112 1.043 4.453c.178.356.237.763.134 1.148l-.595 2.226a1.3 1.3 0 0 0 1.591 1.592l2.226-.596a1.63 1.63 0 0 1 1.149.133A9.96 9.96 0 0 0 12 22c5.523 0 10-4.477 10-10c0-1.821-.487-3.53-1.338-5"/></svg><span>参与讨论</span></a></div></widget>
+</div></aside><div class='float-panel'>
+  <button type='button' style='display:none' class='laptop-only rightbar-toggle mobile' onclick='sidebar.rightbar()'>
+    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg>
+  </button>
+  <button type='button' style='display:none' class='mobile-only leftbar-toggle mobile' onclick='sidebar.leftbar()'>
+    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 11c0-3.771 0-5.657 1.172-6.828C4.343 3 6.229 3 10 3h4c3.771 0 5.657 0 6.828 1.172C22 5.343 22 7.229 22 11v2c0 3.771 0 5.657-1.172 6.828C19.657 21 17.771 21 14 21h-4c-3.771 0-5.657 0-6.828-1.172C2 18.657 2 16.771 2 13z"/><path id="sep" stroke-linecap="round" d="M5.5 10h6m-5 4h4m4.5 7V3"/></g></svg>
+  </button>
+</div>
+</div><div class="scripts">
+
+
+<script type="text/javascript">
+  window.canonical = {"originalHost":null,"officialHosts":["localhost"],"encoded":""};
+  const ctx = {
+    date_suffix: {
+      just: `刚刚`,
+      min: `分钟前`,
+      hour: `小时前`,
+      day: `天前`,
+    },
+    root : `/`,
+    tag_plugins: {
+      chat: Object.assign({"api":"https://siteinfo.listentothewind.cn/api/v1"}),
+    }
+  };
+
+  // required plugins (only load if needs)
+  if (`local_search`) {
+    ctx.search = {};
+    ctx.search.service = `local_search`;
+    if (ctx.search.service == 'local_search') {
+      let service_obj = Object.assign({}, `{"field":"all","path":"/search.json","content":true,"skip_search":null,"sort":"-date"}`);
+      ctx.search[ctx.search.service] = service_obj;
+    }
+  }
+  const def = {
+    avatar: `https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/avatar/round/3442075.svg`,
+    cover: `https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/cover/76b86c0226ffd.svg`,
+    loading: `https://api.iconify.design/eos-icons:three-dots-loading.svg?color=%231cd0fd`,
+  };
+  const deps = {
+    jquery: `https://gcore.jsdelivr.net/npm/jquery@3.7/dist/jquery.min.js`,
+    marked: `https://gcore.jsdelivr.net/npm/marked@13.0/lib/marked.umd.min.js`,
+    lazyload: `/%5Bobject%20Object%5D`
+  }
+  
+
+</script>
+
+<script type="text/javascript">
+  
+  function RunItem() {
+    this.list = []; // 存放回调函数
+    this.start = () => {
+      for (var i = 0; i < this.list.length; i++) {
+        this.list[i].run();
+      }
+    };
+    this.push = (fn, name, setRequestAnimationFrame = true) => {
+      let myfn = fn
+      if (setRequestAnimationFrame) {
+        myfn = () => {
+          utils.requestAnimationFrame(fn)
+        }
+      }
+      var f = new Item(myfn, name);
+      this.list.push(f);
+    };
+    this.remove = (name) => {
+      for (let index = 0; index < this.list.length; index++) {
+        const e = this.list[index];
+        if (e.name == name) {
+          this.list.splice(index, 1);
+        }
+      }
+    }
+    // 构造一个可以run的对象
+    function Item(fn, name) {
+      // 函数名称
+      this.name = name || fn.name;
+      // run方法
+      this.run = () => {
+        try {
+          fn()
+        } catch (error) {
+          console.log(error);
+        }
+      };
+    }
+  }
+
+  const utils = {
+    // 懒加载 css https://github.com/filamentgroup/loadCSS
+    css: (href, before, media, attributes) => {
+      var doc = window.document;
+      var ss = doc.createElement("link");
+      var ref;
+      if (before) {
+        ref = before;
+      } else {
+        var refs = (doc.body || doc.getElementsByTagName("head")[0]).childNodes;
+        ref = refs[refs.length - 1];
+      }
+      var sheets = doc.styleSheets;
+      if (attributes) {
+        for (var attributeName in attributes) {
+          if (attributes.hasOwnProperty(attributeName)) {
+            ss.setAttribute(attributeName, attributes[attributeName]);
+          }
+        }
+      }
+      ss.rel = "stylesheet";
+      ss.href = href;
+      ss.media = "only x";
+      function ready(cb) {
+        if (doc.body) {
+          return cb();
+        }
+        setTimeout(function () {
+          ready(cb);
+        });
+      }
+      ready(function () {
+        ref.parentNode.insertBefore(ss, before ? ref : ref.nextSibling);
+      });
+      var onloadcssdefined = function (cb) {
+        var resolvedHref = ss.href;
+        var i = sheets.length;
+        while (i--) {
+          if (sheets[i].href === resolvedHref) {
+            return cb();
+          }
+        }
+        setTimeout(function () {
+          onloadcssdefined(cb);
+        });
+      };
+      function loadCB() {
+        if (ss.addEventListener) {
+          ss.removeEventListener("load", loadCB);
+        }
+        ss.media = media || "all";
+      }
+      if (ss.addEventListener) {
+        ss.addEventListener("load", loadCB);
+      }
+      ss.onloadcssdefined = onloadcssdefined;
+      onloadcssdefined(loadCB);
+      return ss;
+    },
+
+    js: (src, opt) => new Promise((resolve, reject) => {
+      var script = document.createElement('script');
+      if (src.startsWith('/')) {
+        src = ctx.root + src.substring(1);
+      }
+      script.src = src;
+      if (opt) {
+        for (let key of Object.keys(opt)) {
+          script[key] = opt[key]
+        }
+      } else {
+        // 默认异步，如果需要同步，第二个参数传入 {} 即可
+        script.async = true
+      }
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function () {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    }),
+
+    jq: (fn) => {
+      if (typeof jQuery === 'undefined') {
+        utils.js(deps.jquery).then(fn)
+      } else {
+        fn()
+      }
+    },
+
+    onLoading: (el) => {
+      if (el) {
+        $(el).append('<div class="loading-wrap"><svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2"><path stroke-dasharray="60" stroke-dashoffset="60" stroke-opacity=".3" d="M12 3C16.9706 3 21 7.02944 21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3Z"><animate fill="freeze" attributeName="stroke-dashoffset" dur="1.3s" values="60;0"/></path><path stroke-dasharray="15" stroke-dashoffset="15" d="M12 3C16.9706 3 21 7.02944 21 12"><animate fill="freeze" attributeName="stroke-dashoffset" dur="0.3s" values="15;0"/><animateTransform attributeName="transform" dur="1.5s" repeatCount="indefinite" type="rotate" values="0 12 12;360 12 12"/></path></g></svg></div>');
+      }
+    },
+    onLoadSuccess: (el) => {
+      if (el) {
+        $(el).find('.loading-wrap').remove();
+      }
+    },
+    onLoadFailure: (el) => {
+      if (el) {
+        $(el).find('.loading-wrap svg').remove();
+        $(el).find('.loading-wrap').append('<svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path stroke-dasharray="60" stroke-dashoffset="60" d="M12 3L21 20H3L12 3Z"><animate fill="freeze" attributeName="stroke-dashoffset" dur="0.5s" values="60;0"/></path><path stroke-dasharray="6" stroke-dashoffset="6" d="M12 10V14"><animate fill="freeze" attributeName="stroke-dashoffset" begin="0.6s" dur="0.2s" values="6;0"/></path></g><circle cx="12" cy="17" r="1" fill="currentColor" fill-opacity="0"><animate fill="freeze" attributeName="fill-opacity" begin="0.8s" dur="0.4s" values="0;1"/></circle></svg>');
+        $(el).find('.loading-wrap').addClass('error');
+      }
+    },
+    request: (el, url, callback, onFailure) => {
+      const maxRetry = 3;
+      let retryCount = 0;
+
+      return new Promise((resolve, reject) => {
+        const load = () => {
+          utils.onLoading?.(el);
+
+          let timedOut = false;
+          const timeout = setTimeout(() => {
+            timedOut = true;
+            console.warn('[request] 超时:', url);
+
+            if (++retryCount >= maxRetry) {
+              utils.onLoadFailure?.(el);
+              onFailure?.();
+              reject('请求超时');
+            } else {
+              setTimeout(load, 1000);
+            }
+          }, 5000);
+
+          fetch(url).then(resp => {
+            if (timedOut) return;
+            clearTimeout(timeout);
+
+            if (!resp.ok) throw new Error('响应失败');
+            return resp;
+          }).then(data => {
+            if (timedOut) return;
+            utils.onLoadSuccess?.(el);
+            callback(data);
+            resolve(data);
+          }).catch(err => {
+            clearTimeout(timeout);
+            console.warn('[request] 错误:', err);
+
+            if (++retryCount >= maxRetry) {
+              utils.onLoadFailure?.(el);
+              onFailure?.();
+              reject(err);
+            } else {
+              setTimeout(load, 1000);
+            }
+          });
+        };
+
+        load();
+      });
+    },
+    requestWithoutLoading: (url, options = {}, maxRetry = 2, timeout = 5000) => {
+      return new Promise((resolve, reject) => {
+        let retryCount = 0;
+
+        const tryRequest = () => {
+          let timedOut = false;
+          const timer = setTimeout(() => {
+            timedOut = true;
+            if (++retryCount > maxRetry) reject('timeout');
+            else tryRequest();
+          }, timeout);
+
+          fetch(url, options)
+            .then(resp => {
+              clearTimeout(timer);
+              if (!resp.ok) throw new Error('bad response');
+              resolve(resp);
+            })
+            .catch(err => {
+              clearTimeout(timer);
+              if (++retryCount > maxRetry) reject(err);
+              else setTimeout(tryRequest, 500);
+            });
+        };
+
+        tryRequest();
+      });
+    },
+    /********************** requestAnimationFrame ********************************/
+    // 1、requestAnimationFrame 会把每一帧中的所有 DOM 操作集中起来，在一次重绘或回流中就完成，并且重绘或回流的时间间隔紧紧跟随浏览器的刷新频率，一般来说，这个频率为每秒60帧。
+    // 2、在隐藏或不可见的元素中，requestAnimationFrame 将不会进行重绘或回流，这当然就意味着更少的的 cpu，gpu 和内存使用量。
+    requestAnimationFrame: (fn) => {
+      if (!window.requestAnimationFrame) {
+        window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame;
+      }
+      window.requestAnimationFrame(fn)
+    },
+    dark: {},
+  };
+
+  // utils.dark.mode 当前模式 dark or light
+  // utils.dark.toggle() 暗黑模式触发器
+  // utils.dark.push(callBack[,"callBackName"]) 传入触发器回调函数
+  utils.dark.method = {
+    toggle: new RunItem(),
+  };
+  utils.dark = Object.assign(utils.dark, {
+    push: utils.dark.method.toggle.push,
+  });
+</script>
+<script>
+  const sidebar = {
+    leftbar: () => {
+      if (l_body) {
+        l_body.toggleAttribute('leftbar');
+        l_body.removeAttribute('rightbar');
+      }
+    },
+    rightbar: () => {
+      if (l_body) {
+        l_body.toggleAttribute('rightbar');
+        l_body.removeAttribute('leftbar');
+      }
+    },
+    dismiss: () => {
+      if (l_body) {
+        l_body.removeAttribute('leftbar');
+        l_body.removeAttribute('rightbar');
+      }
+    },
+    toggleTOC: () => {
+      document.querySelector('#data-toc').classList.toggle('collapse');
+    }
+  }
+</script>
+<script type="text/javascript">
+  (() => {
+    const tagSwitchers = document.querySelectorAll('.tag-subtree.parent-tag > a > .tag-switcher-wrapper')
+    for (const tagSwitcher of tagSwitchers) {
+      tagSwitcher.addEventListener('click', (e) => {
+        const parent = e.target.closest('.tag-subtree.parent-tag')
+        parent.classList.toggle('expanded')
+        e.preventDefault()
+      })
+    }
+
+    // Get active tag from query string, then activate it.
+    const urlParams = new URLSearchParams(window.location.search)
+    const activeTag = urlParams.get('tag')
+    if (activeTag) {
+      let tag = document.querySelector(`.tag-subtree[data-tag="${activeTag}"]`)
+      if (tag) {
+        tag.querySelector('a').classList.add('active')
+        
+        while (tag) {
+          tag.classList.add('expanded')
+          tag = tag.parentElement.closest('.tag-subtree.parent-tag')
+        }
+      }
+    }
+  })()
+</script>
+
+<script async src="https://gcore.jsdelivr.net/npm/vanilla-lazyload@19.1/dist/lazyload.min.js"></script>
+<script>
+  // https://www.npmjs.com/package/vanilla-lazyload
+  // Set the options globally
+  // to make LazyLoad self-initialize
+  window.lazyLoadOptions = {
+    elements_selector: ".lazy",
+    callback_loaded: (el) => {
+      el.classList.add('loaded');
+      const wrapper = el.closest('.lazy-box');
+      const icon = wrapper?.querySelector('.lazy-icon');
+      if (icon) icon.remove();
+    }
+  };
+  // Listen to the initialization event
+  // and get the instance of LazyLoad
+  window.addEventListener(
+    "LazyLoad::Initialized",
+    function (event) {
+      window.lazyLoadInstance = event.detail.instance;
+    },
+    false
+  );
+  document.addEventListener('DOMContentLoaded', function () {
+    window.lazyLoadInstance?.update();
+  });
+
+  window.wrapLazyloadImages = (container) => {
+    if (typeof container === 'string') {
+      container = document.querySelector(container);
+    }
+    if (!container) return;
+    
+    const images = container.querySelectorAll('img');
+    images.forEach((img) => {
+      if (img.classList.contains('lazy')) return;
+
+      const src = img.getAttribute('src');
+      if (!src) return;
+
+      const wrapper = document.createElement('div');
+      wrapper.className = 'lazy-box';
+
+      const newImg = img.cloneNode();
+      newImg.removeAttribute('src');
+      newImg.setAttribute('data-src', src);
+      newImg.classList.add('lazy');
+
+      const icon = document.createElement('div');
+      icon.className = 'lazy-icon';
+      if (def.loading) {
+        icon.style.backgroundImage = `url("${def.loading}")`;
+      }
+
+      wrapper.appendChild(newImg);
+      wrapper.appendChild(icon);
+
+      img.replaceWith(wrapper);
+    });
+
+    // 通知 LazyLoad 更新
+    if (window.lazyLoadInstance?.update) {
+      window.lazyLoadInstance.update();
+    }
+  }
+  
+</script>
+
+<!-- required -->
+<script src="/js/main.js?v=1.33.1" defer></script>
+
+<script type="text/javascript">
+  const applyTheme = (theme) => {
+    if (theme === 'auto') {
+      document.documentElement.removeAttribute('data-theme')
+    } else {
+      document.documentElement.setAttribute('data-theme', theme)
+    }
+
+    // applyThemeToGiscus(theme)
+  }
+
+  // FIXME: 这会导致无法使用 preferred_color_scheme 以外的主题
+  const applyThemeToGiscus = (theme) => {
+    // theme = theme === 'auto' ? 'preferred_color_scheme' : theme
+    const cmt = document.getElementById('giscus')
+    if (cmt) {
+      // This works before giscus load.
+      cmt.setAttribute('data-theme', theme)
+    }
+
+    const iframe = document.querySelector('#comments > section.giscus > iframe')
+    if (iframe) {
+      // This works after giscus loaded.
+      const src = iframe.src
+      const newSrc = src.replace(/theme=[\w]+/, `theme=${theme}`)
+      iframe.src = newSrc
+    }
+  }
+
+  const switchTheme = () => {
+    // light -> dark -> auto -> light -> ...
+    const currentTheme = document.documentElement.getAttribute('data-theme')
+    let newTheme;
+    switch (currentTheme) {
+      case 'light':
+        newTheme = 'dark'
+        break
+      case 'dark':
+        newTheme = 'auto'
+        break
+      default:
+        newTheme = 'light'
+    }
+    applyTheme(newTheme)
+    window.localStorage.setItem('Stellar.theme', newTheme)
+    utils.dark.mode = newTheme === 'auto' ? (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light") : newTheme;
+    utils.dark.method.toggle.start();
+
+    const messages = {
+      light: `切换到浅色模式`,
+      dark: `切换到深色模式`,
+      auto: `切换到跟随系统配色`,
+    }
+    hud?.toast?.(messages[newTheme])
+  }
+
+  (() => {
+    // Apply user's preferred theme, if any.
+    const theme = window.localStorage.getItem('Stellar.theme')
+    if (theme !== null) {
+      applyTheme(theme)
+    } else {
+      utils.dark.mode = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    }
+    utils.dark.method.toggle.start();
+  })()
+</script>
+
+
+<!-- optional -->
+
+  <script type="module">
+  const el = document.querySelector("#comments #utterances");
+  util.viewportLazyload(el, load_utterances, false);
+
+  function load_utterances() {
+    if (!el) return;
+    try {
+      el.innerHTML = '';
+    } catch (error) {
+      console.error(error);
+    }
+    const script = document.createElement('script');
+    script.src = 'https://utteranc.es/client.js';
+    script.async = true;
+    for (const key of Object.keys(el.attributes)) {
+      const attr = el.attributes[key];
+      if (['class', 'id'].includes(attr.name) === false) {
+        script.setAttribute(attr.name, attr.value);
+      }
+    }
+    el.appendChild(script);
+  }
+</script>
+
+
+
+
+<script defer>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    ctx.services = Object.assign({}, JSON.parse(`{"mdrender":{"js":"/js/services/mdrender.js"},"siteinfo":{"js":"/js/services/siteinfo.js","api":null},"ghinfo":{"js":"/js/services/ghinfo.js"},"rating":{"js":"/js/services/rating.js","api":"https://star-vote.xaox.cc/api/rating"},"vote":{"js":"/js/services/vote.js","api":"https://star-vote.xaox.cc/api/vote"},"sites":{"js":"/js/services/sites.js"},"friends":{"js":"/js/services/friends.js"},"friends_and_posts":{"js":"/js/services/friends_and_posts.js"},"timeline":{"js":"/js/services/timeline.js"},"fcircle":{"js":"/js/services/fcircle.js"},"weibo":{"js":"/js/services/weibo.js"},"memos":{"js":"/js/services/memos.js"},"voice":{"js":"/js/plugins/voice.js"},"video":{"js":"/js/plugins/video.js"},"download-file":{"js":"/js/plugins/download-file.js"},"twikoo":{"js":"/js/services/twikoo_latest_comment.js"},"waline":{"js":"/js/services/waline_latest_comment.js"},"artalk":{"js":"/js/services/artalk_latest_comment.js"},"giscus":{"js":"/js/services/giscus_latest_comment.js"},"contributors":{"edit_this_page":{"_posts/":null,"wiki/stellar/":"https://github.com/xaoxuu/hexo-theme-stellar-docs/blob/main/"},"js":"/js/services/contributors.js"}}`));
+    for (let id of Object.keys(ctx.services)) {
+      const js = ctx.services[id].js;
+      if (id == 'siteinfo') {
+        ctx.cardlinks = document.querySelectorAll('a.link-card[cardlink]');
+        if (ctx.cardlinks?.length > 0) {
+          utils.js(js, { defer: true }).then(function () {
+            setCardLink(ctx.cardlinks);
+          });
+        }
+      } else if (id == 'voice') {
+        ctx.voiceAudios = document.querySelectorAll('.voice>audio');
+        if (ctx.voiceAudios?.length > 0) {
+          utils.js(js, { defer: true }).then(function () {
+            createVoiceDom(ctx.voiceAudios);
+          });
+        }
+      } else if (id == 'video') {
+        ctx.videos = document.querySelectorAll('.video>video');
+        if (ctx.videos?.length > 0) {
+          utils.js(js, { defer: true }).then(function () {
+            videoEvents(ctx.videos);
+          });
+        }
+      } else if (id == 'download-file') {
+        ctx.files = document.querySelectorAll('.file');
+        if (ctx.files?.length > 0) {
+          utils.js(js, { defer: true }).then(function () {
+            downloadFileEvent(ctx.files);
+          });
+        }
+      } else {
+        const els = document.getElementsByClassName(`ds-${id}`);
+        if (els?.length > 0) {
+          utils.jq(() => {
+            if (id == 'timeline' || 'memos' || 'marked') {
+              utils.js(deps.marked).then(function () {
+                utils.js(js, { defer: true });
+              });
+            } else {
+              utils.js(js, { defer: true });
+            }
+          });
+        }
+      }
+    }
+
+    // chat iphone time
+    let phoneTimes = document.querySelectorAll('.chat .status-bar .time');
+
+    if (phoneTimes.length > 0) {
+      NowTime();
+      var date = new Date();
+      var sec = date.getSeconds();
+      var firstAdjustInterval = setInterval(firstAdjustTime, 1000 * (60 - sec));
+    }
+
+    function firstAdjustTime() {
+      NowTime();
+      clearInterval(firstAdjustInterval);
+      setInterval(NowTime, 1000 * 60);
+    }
+
+    function NowTime() {
+      for (let i = 0; i < phoneTimes.length; ++i) {
+        var timeSpan = phoneTimes[i];
+        var date = new Date();
+        var hour = date.getHours();
+        var min = date.getMinutes();
+        timeSpan.innerHTML = check(hour) + ":" + check(min);
+      }
+    };
+
+    function check(val) {
+      if (val < 10) {
+        return ("0" + val);
+      }
+      return (val);
+    }
+
+    // chat quote
+    const chat_quote_obverser = new IntersectionObserver((entries, observer) => {
+      entries.filter((entry) => { return entry.isIntersecting }).sort((a, b) => a.intersectionRect.y !== b.intersectionRect.y ? a.intersectionRect.y - b.intersectionRect.y : a.intersectionRect.x - b.intersectionRect.x).forEach((entry, index) => {
+          observer.unobserve(entry.target);
+          setTimeout(() => {
+            entry.target.classList.add('quote-blink');
+            setTimeout(() => {
+              entry.target.classList.remove('quote-blink');
+            }, 1000);
+          }, Math.max(100, 16) * (index + 1));
+        });
+    });
+
+    var chatQuotes = document.querySelectorAll(".chat .talk .quote");
+    chatQuotes.forEach((quote) => {
+      quote.addEventListener('click', function () {
+        var chatCellDom = document.getElementById("quote-" + quote.getAttribute("quotedCellTag"));
+        if (chatCellDom) {
+          var chatDiv = chatCellDom.parentElement;
+          var mid = chatDiv.clientHeight / 2;
+          var offsetTop = chatCellDom.offsetTop;
+          if (offsetTop > mid - chatCellDom.clientHeight / 2) {
+            chatDiv.scrollTo({
+              top: chatCellDom.offsetTop - mid + chatCellDom.clientHeight / 2,
+              behavior: "smooth"
+            });
+          } else {
+            chatDiv.scrollTo({
+              top: 0,
+              behavior: "smooth"
+            });
+          }
+          chat_quote_obverser.observe(chatCellDom);
+        }
+      });
+    });
+  });
+</script>
+
+<script>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    ctx.search = {
+      path: `/search.json`,
+    }
+    utils.js('/js/search/local-search.js', { defer: true });
+  });
+</script><script>
+  window.FPConfig = {
+    delay: 0,
+    ignoreKeywords: [],
+    maxRPS: 5,
+    hoverDelay: 25
+  };
+</script>
+<script defer src="https://gcore.jsdelivr.net/npm/flying-pages@2/flying-pages.min.js"></script><script>
+  ctx.fancybox = {
+    selector: `.timenode p>img`,
+    css: `https://gcore.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css`,
+    js: `https://gcore.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js`
+  };
+  var selector = '[data-fancybox]:not(.error), .with-fancybox .atk-content img:not([atk-emoticon])';
+  if (ctx.fancybox.selector) {
+    selector += `, ${ctx.fancybox.selector}`
+  }
+  var needFancybox = document.querySelectorAll(selector).length !== 0;
+  if (!needFancybox) {
+    const memos = document.getElementsByClassName('ds-memos');
+    if (memos != undefined && memos.length > 0) {
+      needFancybox = true;
+    }
+    const fancybox = document.getElementsByClassName('with-fancybox');
+    if (fancybox != undefined && fancybox.length > 0) {
+      needFancybox = true;
+    }
+  }
+  if (needFancybox) {
+    utils.css(ctx.fancybox.css);
+    utils.js(ctx.fancybox.js, { defer: true }).then(function () {
+      Fancybox.bind(selector, {
+        hideScrollbar: false,
+        Thumbs: {
+          autoStart: false,
+        },
+        caption: (fancybox, slide) => {
+          return slide.triggerEl.alt || slide.triggerEl.dataset.caption || null
+        }
+      });
+    })
+  }
+</script>
+<script>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    const swiper_api = document.getElementById('swiper-api');
+    if (swiper_api != undefined) {
+      utils.css(`https://unpkg.com/swiper@10.3/swiper-bundle.min.css`);
+      utils.js(`https://unpkg.com/swiper@10.3/swiper-bundle.min.js`, { defer: true }).then(function () {
+        const effect = swiper_api.getAttribute('effect') || '';
+        var swiper = new Swiper('.swiper#swiper-api', {
+          slidesPerView: 'auto',
+          spaceBetween: 8,
+          centeredSlides: true,
+          effect: effect,
+          rewind: true,
+          pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+          },
+          navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+          },
+        });
+      })
+    }
+  });
+</script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    window.codeElements = document.querySelectorAll('.code');
+    if (window.codeElements.length > 0) {
+      ctx.copycode = {
+        default_text: `Copy`,
+        success_text: `Copied`,
+        toast: `复制成功`,
+      };
+      utils.js('/js/plugins/copycode.js');
+    }
+  });
+</script>
+
+
+<!-- inject -->
+
+</div></body></html>
