@@ -30,6 +30,7 @@
     "hexo-server": "^0.3.2",
     "hexo-symbols-count-time": "^0.4.4",
     "hexo-theme-stellar": "^1.29.1",
-    "hexo-word-counter": "^0.0.3"
+    "hexo-word-counter": "^0.0.3",
+    "undici": "^7.19.2"
   }
 }
