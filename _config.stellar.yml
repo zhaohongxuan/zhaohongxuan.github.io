@@ -7,7 +7,6 @@ inject:
   head:
     - <link rel="shortcut icon" href="/assets/xaoxuu/favicon/favicon.ico">
     - <meta name="theme-color" content="#f8f8f8">
-    - <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/lxgw-wenkai-screen-webfont/1.7.0/style.min.css" media="all" />
     - <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.2/css/all.css" rel="stylesheet">
 
 
@@ -42,10 +41,10 @@ style:
   font-size:
     body: 1rem
   font-family:
-    logo: '"LXGW WenKai Screen", system-ui, "Microsoft Yahei", "Segoe UI", -apple-system, Roboto, Ubuntu, "Helvetica Neue", Arial, "WenQuanYi Micro Hei", sans-serif'
-    body: '"LXGW WenKai Screen", system-ui, "Microsoft Yahei", "Segoe UI", -apple-system, Roboto, Ubuntu, "Helvetica Neue", Arial, "WenQuanYi Micro Hei", sans-serif'
-    code: '"LXGW WenKai Screen", Menlo, Monaco, Consolas, system-ui, "Courier New", monospace, sans-serif'
-    codeblock: 'Menlo, Monaco, Consolas, system-ui, "Courier New", monospace, sans-serif'
+    logo: '"Helvetica Neue", Helvetica, Arial, system-ui, "Microsoft Yahei", "Segoe UI", -apple-system, Roboto, Ubuntu, sans-serif'
+    body: '"Helvetica Neue", Helvetica, Arial, system-ui, "Microsoft Yahei", "Segoe UI", -apple-system, Roboto, Ubuntu, sans-serif'
+    code: '"SF Mono", Menlo, Monaco, Consolas, system-ui, "Courier New", monospace, sans-serif'
+    codeblock: '"SF Mono", Menlo, Monaco, Consolas, system-ui, "Courier New", monospace, sans-serif'
 
 comments:
   service: utterances
