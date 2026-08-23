@@ -10,6 +10,25 @@ inject:
     - <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.2/css/all.css" rel="stylesheet">
 
 
+menubar:
+  columns: 4
+  items:
+    - id: post
+      theme: '#1BCDFC'
+      icon: default:documents
+      title: Blog
+      url: /
+    - id: reading
+      theme: '#3DC550'
+      icon: example:notebook
+      title: 阅读
+      url: /reading/
+    - id: workouts
+      theme: '#FA6400'
+      icon: custom:running
+      title: 运动
+      url: /workout/
+
 site_tree:
   home:
     sidebar: starter, welcome, recent
